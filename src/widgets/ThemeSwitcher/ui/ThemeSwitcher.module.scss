@@ -1,0 +1,12 @@
+.ThemeSwitcher {
+  background: transparent;
+  border: none;
+  height: 60px;
+  width: 60px;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all var(--animation-fast);
+  &:hover {
+    background: var(--shadow-color);
+  }
+}
