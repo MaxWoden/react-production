@@ -1,1 +1,1 @@
-{"version":3,"sources":["ThemeSwitcher.module.scss","ThemeSwitcher.module.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,YAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,kBAAA;EACA,qCAAA;ACCF;ADAE;EACE,+BAAA;ACEJ","file":"ThemeSwitcher.module.css"}
+{"version":3,"sources":["ThemeSwitcher.module.scss","ThemeSwitcher.module.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,YAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,kBAAA;EACA,qCAAA;ACCF;ADCE;EACE,+BAAA;ACCJ","file":"ThemeSwitcher.module.css"}
