@@ -13,10 +13,9 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
-
-  button {
-    cursor: pointer;
-  }
+}
+.Sidebar button {
+  cursor: pointer;
 }
 
 .collapsed {
@@ -27,4 +26,4 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
+}/*# sourceMappingURL=Sidebar.module.css.map */

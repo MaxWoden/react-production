@@ -1,7 +1,7 @@
-import { useTranslation } from 'react-i18next';
-import classes from './Navbar.module.scss';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
+import { useTranslation } from "react-i18next";
+import classes from "./Navbar.module.scss";
+import { classNames } from "shared/lib/classNames/classNames";
+import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 
 interface NavbarProps {
   className?: string;
@@ -10,13 +10,21 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   const { t } = useTranslation();
   return (
-    <nav className={classNames(classes.navbar, {}, [className])}>
+    <nav className={classNames(classes.Navbar, {}, [className])}>
       <div className={classes.links}>
-        <AppLink theme={AppLinkTheme.SECONDARY} to={'/'} className={classes.link}>
-          {t('Главная')}
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to={"/"}
+          className={classes.link}
+        >
+          {t("Главная")}
         </AppLink>
-        <AppLink theme={AppLinkTheme.SECONDARY} to={'/about'} className={classes.link}>
-          {t('О нас')}
+        <AppLink
+          theme={AppLinkTheme.SECONDARY}
+          to={"/about"}
+          className={classes.link}
+        >
+          {t("О нас")}
         </AppLink>
       </div>
     </nav>

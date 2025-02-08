@@ -6,8 +6,7 @@
   padding: 10px;
   border-radius: 50%;
   transition: all var(--animation-fast);
-
-  &:hover {
-    background: var(--shadow-color);
-  }
 }
+.ThemeSwitcher:hover {
+  background: var(--shadow-color);
+}/*# sourceMappingURL=ThemeSwitcher.module.css.map */

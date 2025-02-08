@@ -6,8 +6,7 @@
   align-items: center;
   border-radius: 50%;
   transition: all var(--animation-fast);
-
-  &:hover {
-    background: var(--shadow-color);
-  }
 }
+.LangSwitcher:hover {
+  background: var(--shadow-color);
+}/*# sourceMappingURL=LangSwitcher.module.css.map */

@@ -1,13 +1,13 @@
-.Navbar {
+.navbar {
   width: 100%;
   height: var(--navbar-height);
   background: var(--inverted-bg-color);
   display: flex;
   align-items: center;
   justify-content: end;
-  padding: 0 5%;
+  padding: 0 5% 0 5%;
 }
 
 .link {
   padding-right: 30px;
-}
+}/*# sourceMappingURL=Navbar.module.css.map */
