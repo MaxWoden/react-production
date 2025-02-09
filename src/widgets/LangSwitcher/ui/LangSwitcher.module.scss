@@ -6,6 +6,8 @@
   align-items: center;
   border-radius: 50%;
   transition: all var(--animation-fast);
+  background: transparent;
+  border: none;
 
   &:hover {
     background: var(--shadow-color);

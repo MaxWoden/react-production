@@ -4,6 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 interface ButtonProps {
   className?: string;
   onClick?: () => void;
+  onHover?: () => void;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
