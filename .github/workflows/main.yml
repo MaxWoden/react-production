@@ -6,14 +6,14 @@ on:
     branches: master
 jobs:
   pipeline:
-    runs-on: ubuntu-latest
+    runs-on:
     strategy:
       matrix:
         node-version: [17.x]
 
     steps:
-      - usees: actions/checkout@v2
-      - name: Starin Node.js ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
         uses: action/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
