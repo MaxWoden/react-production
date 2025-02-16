@@ -6,5 +6,7 @@ interface RefresherProps {
 }
 
 export const Refresher = ({ className }: RefresherProps) => {
-  return <span className={classNames(classes.Refresher, [className])}></span>;
+  return (
+    <span className={classNames(classes.Refresher, {}, [className])}></span>
+  );
 };

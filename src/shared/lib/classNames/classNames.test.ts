@@ -5,40 +5,56 @@ describe("classNames", () => {
     expect(classNames("someClass")).toBe("someClass");
   });
   test("with additional class", () => {
-    expect(classNames("someClass", ["class1", "class2"])).toBe(
+    expect(classNames("someClass", {}, ["class1", "class2"])).toBe(
       "someClass class1 class2"
     );
   });
   test("with mods", () => {
     expect(
-      classNames("someClass", ["class1", "class2"], {
-        hovered: true,
-        scrollable: true,
-      })
-    ).toBe("someClass class1 class2 hovered scrollable");
+      classNames(
+        "someClass",
+        {
+          hovered: true,
+          scrollable: true,
+        },
+        ["class1", "class2"]
+      )
+    ).toBe("someClass hovered scrollable class1 class2");
   });
   test("with mods false", () => {
     expect(
-      classNames("someClass", ["class1", "class2"], {
-        hovered: true,
-        scrollable: false,
-      })
-    ).toBe("someClass class1 class2 hovered");
+      classNames(
+        "someClass",
+        {
+          hovered: true,
+          scrollable: false,
+        },
+        ["class1", "class2"]
+      )
+    ).toBe("someClass hovered class1 class2");
   });
   test("with mods undefined", () => {
     expect(
-      classNames("someClass", ["class1", "class2"], {
-        hovered: true,
-        scrollable: undefined,
-      })
-    ).toBe("someClass class1 class2 hovered");
+      classNames(
+        "someClass",
+        {
+          hovered: true,
+          scrollable: undefined,
+        },
+        ["class1", "class2"]
+      )
+    ).toBe("someClass hovered class1 class2");
   });
   test("with mods and additional undefined", () => {
     expect(
-      classNames(undefined, ["class1", undefined], {
-        hovered: true,
-        scrollable: undefined,
-      })
-    ).toBe(" class1 hovered");
+      classNames(
+        undefined,
+        {
+          hovered: true,
+          scrollable: undefined,
+        },
+        ["class1", undefined]
+      )
+    ).toBe(" hovered class1");
   });
 });

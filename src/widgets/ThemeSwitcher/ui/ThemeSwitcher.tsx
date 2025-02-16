@@ -15,7 +15,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   return (
     <Button
       onClick={toggleTheme}
-      className={classNames(classes.ThemeSwitcher, [className])}
+      className={classNames(classes.ThemeSwitcher, {}, [className])}
     >
       <img
         height={40}

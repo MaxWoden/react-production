@@ -20,7 +20,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
   return (
     <Button
       onClick={toggle}
-      className={classNames(classes.LangSwitcher, [className])}
+      className={classNames(classes.LangSwitcher, {}, [className])}
     >
       <img src={isLanguageRu ? ru : uk} height={40} width={40} alt="Language" />
     </Button>
