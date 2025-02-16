@@ -43,6 +43,6 @@
     "./src/**/*.ts",
     "./src/**/*.tsx",
     "./webpack.config.ts",
-    "./config/build/*.ts"
+    "./config/build"
   ]
 }
