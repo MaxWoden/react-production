@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-      node: [ 17.x ]
+      node: [17.x]
     steps:
       - name: Checkout Commit
         uses: actions/checkout@v2
@@ -18,5 +18,4 @@ jobs:
         with:
         node-version: ${{ matrix.node }}
       - name: install modules
-        run: |
-        npm install
+        run: npm install
