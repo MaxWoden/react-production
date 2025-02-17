@@ -19,7 +19,7 @@ jobs:
       - name: install modules
         run: npm install
       - name: build production project
-        run: npm run build:project
+        run: npm run build:prod
       - name: linting scss
         run: npm run lint:scss
       - name: unit testing
