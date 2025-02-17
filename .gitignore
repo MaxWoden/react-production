@@ -1,5 +1,4 @@
 /node_modules
-/config
 /.vscode
 *storybook.log
 /storybook-static
