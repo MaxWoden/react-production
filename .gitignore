@@ -2,3 +2,4 @@
 /config
 /.vscode
 *storybook.log
+/storybook-static

@@ -10,9 +10,12 @@ describe("Sidebar", () => {
 
   test("Toggle", () => {
     renderWithTranslation(<Sidebar />);
-    expect(screen.getByTestId("sidebar")).toBeInTheDocument();
-    const toggleBtn = screen.getByTestId("sidebar-toggle");
+    const sidebar = screen.getByTestId("sidebar");
+    expect(sidebar).toBeInTheDocument();
+    const toggleBtn = screen.getByText("|||");
+    expect(toggleBtn).toBeInTheDocument();
+    expect(sidebar.classList.contains("collapsed")).toBe(false);
     fireEvent.click(toggleBtn);
-    expect(screen.getByTestId("sidebar")).toHaveClass("collapsed");
+    expect(sidebar.classList.contains("collapsed")).toBe(true);
   });
 });

@@ -14,3 +14,15 @@
     background: var(--shadow-color);
   }
 }
+
+.primary {
+  &:hover {
+    background: var(--shadow-color);
+  }
+}
+
+.inverted {
+  &:hover {
+    background: var(--inverted-shadow-color);
+  }
+}

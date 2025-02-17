@@ -5,17 +5,30 @@ import sun from "shared/assets/icons/sun.png";
 import moon from "shared/assets/icons/moon.png";
 import { Button } from "shared/ui/Button/Button";
 
-interface ThemeSwitcherProps {
-  className?: string;
+export enum ThemeSwitcherStyle {
+  PRIMARY = "primary",
+  INVERTED = "inverted",
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+interface ThemeSwitcherProps {
+  className?: string;
+  style?: ThemeSwitcherStyle;
+}
+ThemeSwitcherStyle;
+
+export const ThemeSwitcher = ({
+  className,
+  style = ThemeSwitcherStyle.PRIMARY,
+}: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <Button
       onClick={toggleTheme}
-      className={classNames(classes.ThemeSwitcher, {}, [className])}
+      className={classNames(classes.ThemeSwitcher, {}, [
+        classes[style],
+        className,
+      ])}
     >
       <img
         height={40}

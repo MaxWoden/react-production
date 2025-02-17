@@ -1,32 +1,32 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeSwitcher, ThemeSwitcherStyle } from "./ThemeSwitcher";
+import { LangSwitcher, LangSwitcherStyle } from "./LangSwitcher";
 import { Theme } from "app/providers/ThemeProvider";
 
-const meta: Meta<typeof ThemeSwitcher> = {
-  title: "widgets/ThemeSwitcher",
-  component: ThemeSwitcher,
+const meta: Meta<typeof LangSwitcher> = {
+  title: "widgets/LangSwitcher",
+  component: LangSwitcher,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof ThemeSwitcher>;
+type Story = StoryObj<typeof LangSwitcher>;
 
 export const Primary: Story = {
   args: {
-    style: ThemeSwitcherStyle.PRIMARY,
+    style: LangSwitcherStyle.PRIMARY,
   },
 };
 
 export const Inverted: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    style: LangSwitcherStyle.INVERTED,
   },
 };
 
 export const PrimaryDark: Story = {
   args: {
-    style: ThemeSwitcherStyle.PRIMARY,
+    style: LangSwitcherStyle.PRIMARY,
   },
   parameters: {
     theme: Theme.DARK,
@@ -35,7 +35,7 @@ export const PrimaryDark: Story = {
 
 export const InvertedDark: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    style: LangSwitcherStyle.INVERTED,
   },
   parameters: {
     theme: Theme.DARK,
