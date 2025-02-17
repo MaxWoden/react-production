@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [18]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -26,3 +26,5 @@ jobs:
         run: npm run storybook:build
       - name: screenshot testing
         run: npm run test:ui:ci
+      - name: build production project
+        run: npm run build:project
