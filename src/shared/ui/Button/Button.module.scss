@@ -1,5 +1,4 @@
 .Button {
-  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -15,4 +14,31 @@
   border: 1px solid var(--inverted-bg-color);
   background: none;
   border-radius: 25px;
+}
+
+.size_m {
+  font-size: var(--font-size-m);
+}
+
+.size_l {
+  font-size: var(--font-size-l);
+}
+
+.size_xl {
+  font-size: var(--font-size-xl);
+}
+
+.square.size_m {
+  width: var(--font-line-m);
+  height: var(--font-line-m);
+}
+
+.square.size_l {
+  width: var(--font-line-l);
+  height: var(--font-line-l);
+}
+
+.square.size_xl {
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
 }
