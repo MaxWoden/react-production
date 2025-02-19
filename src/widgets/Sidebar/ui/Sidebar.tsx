@@ -7,6 +7,9 @@ import { Button, ButtonSize } from "shared/ui/Button/Button";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { useTranslation } from "react-i18next";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
+import Home from "shared/assets/icons/home.svg";
+import About from "shared/assets/icons/about.svg";
+import { ThemeSwitcherStyle } from "widgets/ThemeSwitcher/ui/ThemeSwitcher";
 
 interface SidebarProps {
   className?: string;
@@ -36,19 +39,32 @@ export const Sidebar = ({ className }: SidebarProps) => {
         square={true}
         size={ButtonSize.SIZE_XL}
       >
+        <img src=""></img>
         {collapsed ? ">" : "<"}
       </Button>
-      <div className={classes.links}>
-        <AppLink to={RoutePath.main} theme={AppLinkTheme.INVERTED_PRIMARY}>
-          {t("Главная")}
+      <nav className={classes.navbar}>
+        <AppLink
+          className={classes.link}
+          to={RoutePath.main}
+          theme={AppLinkTheme.INVERTED_PRIMARY}
+        >
+          <Home className={classes.img} />
+
+          <div className={classes.item}>{t("Главная")}</div>
         </AppLink>
-        <AppLink to={RoutePath.about} theme={AppLinkTheme.INVERTED_PRIMARY}>
-          {t("О нас")}
+        <AppLink
+          className={classes.link}
+          to={RoutePath.about}
+          theme={AppLinkTheme.INVERTED_PRIMARY}
+        >
+          <About className={classes.img} />
+          <div className={classes.item}> {t("О нас")}</div>
         </AppLink>
-      </div>
+      </nav>
+      <div className={classes.line}></div>
       <div className={classes.switchers}>
-        <ThemeSwitcher />
-        <LangSwitcher />
+        <ThemeSwitcher className={classes.switcher} />
+        <LangSwitcher className={classes.switcher} />
       </div>
     </div>
   );

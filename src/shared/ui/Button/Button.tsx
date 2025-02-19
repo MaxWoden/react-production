@@ -9,7 +9,9 @@ export enum ButtonSize {
 
 export enum ButtonTheme {
   CLEAR = "clear",
+  CLEAR_INVERTED = "clear-inverted",
   OUTLINE = "outline",
+  OUTLINE_INVERTED = "outline-inverted",
 }
 
 interface ButtonProps {

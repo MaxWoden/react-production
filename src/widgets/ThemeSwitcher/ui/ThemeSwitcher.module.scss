@@ -16,13 +16,17 @@
 }
 
 .primary {
+  fill: var(--primary-color);
+
   &:hover {
-    background: var(--shadow-color);
+    background: var(--inverted-shadow-color);
   }
 }
 
 .inverted {
+  fill: var(--inverted-primary-color);
+
   &:hover {
-    background: var(--inverted-shadow-color);
+    background: var(--shadow-color);
   }
 }

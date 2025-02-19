@@ -1,8 +1,8 @@
 import { Theme, useTheme } from "app/providers/ThemeProvider";
 import classes from "./ThemeSwitcher.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
-import sun from "shared/assets/icons/sun.png";
-import moon from "shared/assets/icons/moon.png";
+import Moon from "shared/assets/icons/moon.svg";
+import Sun from "shared/assets/icons/sun.svg";
 import { Button } from "shared/ui/Button/Button";
 
 export enum ThemeSwitcherStyle {
@@ -18,7 +18,7 @@ ThemeSwitcherStyle;
 
 export const ThemeSwitcher = ({
   className,
-  style = ThemeSwitcherStyle.PRIMARY,
+  style = ThemeSwitcherStyle.INVERTED,
 }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
 
@@ -30,12 +30,7 @@ export const ThemeSwitcher = ({
         className,
       ])}
     >
-      <img
-        height={40}
-        width={40}
-        src={theme === Theme.DARK ? moon : sun}
-        alt="Theme"
-      />
+      {theme === Theme.DARK ? <Moon /> : <Sun />}
     </Button>
   );
 };

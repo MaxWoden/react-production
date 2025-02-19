@@ -8,20 +8,22 @@
   background: var(--inverted-bg-color);
   width: 500px;
   transition: width var(--animation-fast);
-  padding: 30px 20px;
+  padding: 30px 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .toggleBtn {
   color: var(--inverted-primary-color);
-  top: 30px;
-  right: 30px;
+  position: absolute;
+  top: 20px;
+  right: 0;
   border: 1px solid var(--inverted-shadow-color);
+  border-right: none;
   border-radius: 4px;
   background: transparent;
-  margin-bottom: 50px;
   align-self: end;
 
   &:hover {
@@ -29,28 +31,64 @@
   }
 }
 
-.collapsed {
-  width: var(--sidebar-width-collapsed);
-}
-
-.links {
-  width: 100%;
+.navbar {
+  margin-top: 90px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 50px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--inverted-primary-color);
+  gap: 25px;
   transition: var(--animation-fast);
+}
 
-  a:hover {
+.img {
+  height: 40px;
+  width: 40px;
+  fill: var(--inverted-primary-color);
+  transition: var(--animation-fast);
+}
+
+.link {
+  display: flex;
+  gap: 15px;
+  align-items: end;
+
+  &:hover {
     color: var(--inverted-shadow-color);
+
+    .img {
+      fill: var(--inverted-shadow-color);
+    }
   }
 }
 
+.line {
+  height: 1px;
+  width: 100%;
+  margin-top: 30px;
+  background: var(--inverted-primary-color);
+}
+
 .switchers {
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+}
+
+.item {
+  transition: opacity var(--animation-fast);
+}
+
+.collapsed {
+  width: var(--sidebar-width-collapsed);
+
+  .link {
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .item {
+    opacity: 0;
+    width: 0;
+  }
 }

@@ -1,21 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Navbar } from "./Navbar";
+import { Header } from "./Header";
 import { Theme } from "app/providers/ThemeProvider";
 
-const meta: Meta<typeof Navbar> = {
-  title: "widgets/Navbar",
-  component: Navbar,
+const meta: Meta<typeof Header> = {
+  title: "widgets/Header",
+  component: Header,
   tags: ["autodocs"],
+  args: {
+    needPortal: false,
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Navbar>;
+type Story = StoryObj<typeof Header>;
 
 export const Light: Story = {};
 
 export const Dark: Story = {
-  args: {},
   parameters: {
     theme: Theme.DARK,
   },

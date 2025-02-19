@@ -2,18 +2,30 @@
   cursor: pointer;
 }
 
-.clear {
+.clear,
+.clear-inverted {
   padding: 0;
   background: none;
   border: none;
   outline: none;
 }
 
-.outline {
+.clear-inverted {
+  color: var(--inverted-primary-color);
+}
+
+.outline,
+.outline-inverted {
   padding: 10px 20px;
   border: 1px solid var(--inverted-bg-color);
   background: none;
   border-radius: 25px;
+  color: var(--secondary-color);
+}
+
+.outline-inverted {
+  border: 1px solid var(--bg-color);
+  color: var(--inverted-secondary-color);
 }
 
 .size_m {

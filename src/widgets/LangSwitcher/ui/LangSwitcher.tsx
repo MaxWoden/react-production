@@ -2,8 +2,8 @@ import { useTranslation } from "react-i18next";
 import classes from "./LangSwitcher.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button/Button";
-import ru from "shared/assets/icons/russia.png";
-import uk from "shared/assets/icons/united-kingdom.png";
+import Russia from "shared/assets/icons/russia.svg";
+import Uk from "shared/assets/icons/uk.svg";
 
 export enum LangSwitcherStyle {
   PRIMARY = "primary",
@@ -17,7 +17,7 @@ interface LangSwitcherProps {
 
 export const LangSwitcher = ({
   className,
-  style = LangSwitcherStyle.PRIMARY,
+  style = LangSwitcherStyle.INVERTED,
 }: LangSwitcherProps) => {
   const { i18n } = useTranslation();
   const isLanguageRu = i18n.language === "ru";
@@ -34,7 +34,11 @@ export const LangSwitcher = ({
         className,
       ])}
     >
-      <img src={isLanguageRu ? ru : uk} height={40} width={40} alt="Language" />
+      {isLanguageRu ? (
+        <Russia width={40} height={40} />
+      ) : (
+        <Uk width={40} height={40} />
+      )}
     </Button>
   );
 };
