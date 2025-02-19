@@ -12,7 +12,7 @@ describe("Sidebar", () => {
     renderComponent(<Sidebar />);
     const sidebar = screen.getByTestId("sidebar");
     expect(sidebar).toBeInTheDocument();
-    const toggleBtn = screen.getByText("<");
+    const toggleBtn = screen.getByTestId("toggle-btn");
     expect(toggleBtn).toBeInTheDocument();
     expect(sidebar.classList.contains("collapsed")).toBe(false);
     fireEvent.click(toggleBtn);

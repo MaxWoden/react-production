@@ -38,6 +38,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
         onClick={onToggle}
         square={true}
         size={ButtonSize.SIZE_XL}
+        dataTestid="toggle-btn"
       >
         <img src=""></img>
         {collapsed ? ">" : "<"}

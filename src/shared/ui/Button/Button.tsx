@@ -20,6 +20,7 @@ interface ButtonProps {
   theme?: ButtonTheme;
   square?: boolean;
   size?: ButtonSize;
+  dataTestid?: string;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -30,12 +31,14 @@ export const Button: React.FC<ButtonProps> = (props) => {
     theme,
     size = ButtonSize.SIZE_M,
     square = false,
+    dataTestid,
   } = props;
 
   const additional: string[] = [classes[theme], classes[size], className];
 
   return (
     <button
+      data-testid={dataTestid}
       onClick={onClick}
       className={classNames(
         classes.Button,
