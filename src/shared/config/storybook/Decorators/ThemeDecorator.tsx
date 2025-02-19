@@ -1,14 +1,16 @@
 import { ThemeProvider } from "app/providers/ThemeProvider";
-import "app/styles/index.scss";
+import { useEffect } from "react";
 
 export const ThemeDecorator = (Story: any, { parameters }: any) => {
   const { theme } = parameters;
 
+  useEffect(() => {
+    document.body.className = theme;
+  });
+
   return (
     <ThemeProvider initialTheme={theme}>
-      <div className={`app ${theme}`}>
-        <Story />
-      </div>
+      <Story />
     </ThemeProvider>
   );
 };

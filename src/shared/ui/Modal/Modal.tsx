@@ -8,21 +8,13 @@ interface ModalProps {
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
-  portal?: HTMLElement;
-  needPortal?: boolean;
+  portal?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
-  const {
-    className,
-    children,
-    isOpen,
-    onClose,
-    portal,
-    needPortal = true,
-  } = props;
+  const { className, children, isOpen, onClose, portal = true } = props;
 
   const [isClosing, setIsCLosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -65,7 +57,7 @@ export const Modal = (props: ModalProps) => {
     [classes.isClosing]: isClosing,
   };
 
-  const renderModal = () => {
+  const renderComponent = () => {
     return (
       <div className={classNames(classes.Modal, mods, [className])}>
         <div className={classes.overlay} onClick={closeHandler}>
@@ -77,9 +69,7 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
-  return needPortal ? (
-    <Portal element={portal}>{renderModal()}</Portal>
-  ) : (
-    renderModal()
-  );
+  {
+    return portal ? <Portal>{renderComponent()}</Portal> : renderComponent();
+  }
 };

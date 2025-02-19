@@ -9,7 +9,7 @@ const meta: Meta<typeof Modal> = {
   tags: ["autodocs"],
   args: {
     isOpen: true,
-    needPortal: false,
+    portal: false,
     children:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam tempore dignissimos, velit doloribus ab quasi maiores iusto! A, reiciendis debitis.",
   },

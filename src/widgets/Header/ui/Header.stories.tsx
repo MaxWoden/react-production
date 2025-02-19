@@ -7,9 +7,6 @@ const meta: Meta<typeof Header> = {
   title: "widgets/Header",
   component: Header,
   tags: ["autodocs"],
-  args: {
-    needPortal: false,
-  },
 };
 
 export default meta;

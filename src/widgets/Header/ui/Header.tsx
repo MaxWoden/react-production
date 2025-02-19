@@ -7,10 +7,9 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 
 interface HeaderProps {
   className?: string;
-  needPortal?: boolean;
 }
 
-export const Header = ({ className, needPortal }: HeaderProps) => {
+export const Header = ({ className }: HeaderProps) => {
   const { t } = useTranslation();
   const [isAuthModal, setIsAuthModal] = useState(false);
 
@@ -24,7 +23,6 @@ export const Header = ({ className, needPortal }: HeaderProps) => {
         {t("Войти")}
       </Button>
       <Modal
-        needPortal={needPortal}
         isOpen={isAuthModal}
         onClose={() => setIsAuthModal(false)}
         children="fuck off"
