@@ -8,6 +8,7 @@ import {
 } from "react";
 import classes from "./Input.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
+import { useTranslation } from "react-i18next";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -39,6 +40,7 @@ export const Input = memo((props: InputProps) => {
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(value.length);
   const ref = useRef<HTMLInputElement>();
+  const { t } = useTranslation();
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value);
@@ -82,7 +84,7 @@ export const Input = memo((props: InputProps) => {
   return (
     <div className={classNames(classes.InputWrapper, {}, [className])}>
       {placeholder && (
-        <div className={classes.placeholder}>{`${placeholder}>`}</div>
+        <div className={classes.placeholder}>{`${t(placeholder)}>`}</div>
       )}
       <div className={classes.caretWrapper}>
         <input
