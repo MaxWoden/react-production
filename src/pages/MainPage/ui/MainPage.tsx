@@ -1,14 +1,13 @@
-import { Counter } from "entities/Counter";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Input } from "shared/ui/Input/Input";
 
 const MainPage = () => {
   const { t } = useTranslation();
-  return (
-    <div>
-      {t("Главная страница")}
-      <Counter />
-    </div>
-  );
+
+  const [value, setValue] = useState("fuck");
+
+  return <div>{t("Главная страница")}</div>;
 };
 
 export default MainPage;

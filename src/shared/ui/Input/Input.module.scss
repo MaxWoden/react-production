@@ -1,0 +1,36 @@
+.InputWrapper {
+  display: flex;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
+
+.input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: transparent;
+  text-shadow: 0 0 0 var(--primary-color);
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.caretWrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+.caret {
+  position: absolute;
+  height: 20px;
+  width: 9px;
+  background: var(--inverted-shadow-color);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}

@@ -9,15 +9,21 @@ interface ModalProps {
   isOpen?: boolean;
   onClose?: () => void;
   portal?: boolean;
+  lazy?: boolean;
 }
 
 const ANIMATION_DELAY = 300;
 
 export const Modal = (props: ModalProps) => {
-  const { className, children, isOpen, onClose, portal = true } = props;
+  const { className, children, isOpen, onClose, portal = true, lazy } = props;
 
   const [isClosing, setIsCLosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => {
+    isOpen && setIsMounted(true);
+  }, [isOpen]);
 
   const closeHandler = useCallback(() => {
     if (onClose) {
@@ -69,7 +75,8 @@ export const Modal = (props: ModalProps) => {
     );
   };
 
-  {
-    return portal ? <Portal>{renderComponent()}</Portal> : renderComponent();
-  }
+  if (lazy && !isMounted) return null;
+  if (!portal) renderComponent();
+
+  return <Portal>{renderComponent()}</Portal>;
 };
