@@ -38,7 +38,11 @@ export const Input = memo((props: InputProps) => {
   } = props;
 
   const [isFocused, setIsFocused] = useState(false);
+
   const [caretPosition, setCaretPosition] = useState(value.length);
+
+  console.log(value, onChange);
+
   const ref = useRef<HTMLInputElement>();
   const { t } = useTranslation();
 

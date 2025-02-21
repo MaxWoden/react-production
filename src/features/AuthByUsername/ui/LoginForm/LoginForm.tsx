@@ -12,7 +12,7 @@ interface LoginFormProps {
 export const LoginForm = ({ className }: LoginFormProps) => {
   const { t } = useTranslation();
 
-  const [login, setLogin] = useState("login");
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   return (

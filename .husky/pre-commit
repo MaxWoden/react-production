@@ -1,9 +1,8 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
-run: npm run build:prod
-run: npm run lint:scss
-run: npm run test:unit
-run: npm run storybook:build
-run: npm run test:ui
+npm run build:prod
+npm run lint:scss
+npm run test:unit
+npm run storybook:build
+npm run test:ui:ci

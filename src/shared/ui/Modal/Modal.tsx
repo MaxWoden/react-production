@@ -76,7 +76,7 @@ export const Modal = (props: ModalProps) => {
   };
 
   if (lazy && !isMounted) return null;
-  if (!portal) renderComponent();
+  if (!portal) return renderComponent();
 
   return <Portal>{renderComponent()}</Portal>;
 };

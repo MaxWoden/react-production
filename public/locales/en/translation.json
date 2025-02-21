@@ -4,13 +4,13 @@
   "Главная": "Main",
   "Главная страница": "Main page",
   "Загрузка": "Loading",
+  "Имя пользователя": "Username",
   "О нас": "About us",
   "Обновить страницу": "Reload page",
+  "Пароль": "Password",
   "Произошла непредвиденная ошибка": "Unexpected error",
   "Страница не найдена": "Page not found",
   "Страница о нас": "Page about us",
   "Увеличить": "Increment",
-  "Уменьшить": "Decrement",
-  "Пароль": "Password",
-  "Имя пользователя": "Username"
+  "Уменьшить": "Decrement"
 }
