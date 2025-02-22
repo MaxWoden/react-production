@@ -18,6 +18,13 @@ export const None: Story = {
   },
 };
 
+export const Disabled: Story = {
+  args: {
+    children: "disabled",
+    disabled: true,
+  },
+};
+
 export const Clear: Story = {
   args: {
     children: "clear",

@@ -1,3 +1,4 @@
+const { log } = require("console");
 const fs = require("fs");
 const jsonServer = require("json-server");
 const path = require("path");
@@ -21,6 +22,7 @@ server.use(async (req, res, next) => {
 server.post("/login", (req, res) => {
   try {
     const { username, password } = req.body;
+
     const db = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8")
     );
@@ -33,7 +35,7 @@ server.post("/login", (req, res) => {
     if (userFromBd) {
       return res.json(userFromBd);
     }
-
+    console.log("User not found");
     return res.status(403).json({ message: "User not found" });
   } catch (e) {
     console.log(e);

@@ -37,14 +37,10 @@ export const Input = memo((props: InputProps) => {
     ...otherProps
   } = props;
 
-  const [isFocused, setIsFocused] = useState(false);
-
-  const [caretPosition, setCaretPosition] = useState(value.length);
-
-  console.log(value, onChange);
-
-  const ref = useRef<HTMLInputElement>();
   const { t } = useTranslation();
+  const ref = useRef<HTMLInputElement>();
+  const [isFocused, setIsFocused] = useState(false);
+  const [caretPosition, setCaretPosition] = useState(value.length);
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(e.target.value);
@@ -75,15 +71,6 @@ export const Input = memo((props: InputProps) => {
       ref.current.focus();
     }
   }, []);
-
-  useEffect(() => {
-    if (isFocused) {
-      window.addEventListener("keydown", onKeyDown);
-    }
-    return () => {
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isFocused, onKeyDown]);
 
   return (
     <div className={classNames(classes.InputWrapper, {}, [className])}>

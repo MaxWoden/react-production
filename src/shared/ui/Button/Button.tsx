@@ -12,6 +12,7 @@ export enum ButtonTheme {
   CLEAR_INVERTED = "clear-inverted",
   OUTLINE = "outline",
   OUTLINE_INVERTED = "outline-inverted",
+  DISABLED = "disabled",
 }
 
 interface ButtonProps {
@@ -21,6 +22,7 @@ interface ButtonProps {
   square?: boolean;
   size?: ButtonSize;
   dataTestid?: string;
+  disabled?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = (props) => {
@@ -32,12 +34,14 @@ export const Button: React.FC<ButtonProps> = (props) => {
     size = ButtonSize.SIZE_M,
     square = false,
     dataTestid,
+    disabled = false,
   } = props;
 
   const additional: string[] = [classes[theme], classes[size], className];
 
   return (
     <button
+      disabled={disabled}
       data-testid={dataTestid}
       onClick={onClick}
       className={classNames(
