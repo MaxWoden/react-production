@@ -5,7 +5,6 @@ import { Portal } from "../Portal/Portal";
 
 interface ModalProps {
   className?: string;
-  children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
   portal?: boolean;
@@ -14,7 +13,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-export const Modal = (props: ModalProps) => {
+export const Modal: React.FC<ModalProps> = (props) => {
   const { className, children, isOpen, onClose, portal = true, lazy } = props;
 
   const [isClosing, setIsCLosing] = useState(false);

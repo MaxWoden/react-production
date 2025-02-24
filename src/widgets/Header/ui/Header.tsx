@@ -32,7 +32,11 @@ export const Header = ({ className }: HeaderProps) => {
   if (authData) {
     return (
       <header className={classNames(classes.Header, {}, [className])}>
-        <Text text={authData.username} theme={TextTheme.INVERTED}></Text>
+        <Text
+          className={classes.username}
+          text={authData.username}
+          theme={TextTheme.INVERTED}
+        ></Text>
         <Button theme={ButtonTheme.OUTLINE_INVERTED} onClick={onLogout}>
           {t("Выйти")}
         </Button>
@@ -45,7 +49,9 @@ export const Header = ({ className }: HeaderProps) => {
       <Button theme={ButtonTheme.OUTLINE_INVERTED} onClick={onOpenModal}>
         {t("Войти")}
       </Button>
-      <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      {isAuthModal && (
+        <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+      )}
     </header>
   );
 };

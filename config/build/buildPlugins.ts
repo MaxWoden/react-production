@@ -21,14 +21,15 @@ export function buildPlugins({
       __IS_DEV__: JSON.stringify(isDev),
     }),
     new webpack.DefinePlugin({ __IS_DEV__: JSON.stringify(isDev) }),
+    new BundleAnalyzerPlugin({ openAnalyzer: true }),
   ];
 
   if (isDev) {
     plugins.push(
-      new webpack.HotModuleReplacementPlugin(),
-      new BundleAnalyzerPlugin({
-        openAnalyzer: false,
-      })
+      new webpack.HotModuleReplacementPlugin()
+      // new BundleAnalyzerPlugin({
+      //   openAnalyzer: false,
+      // })
     );
   }
 
