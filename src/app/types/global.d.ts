@@ -6,8 +6,8 @@ declare module "*.scss" {
   export = classNames;
 }
 declare module "*.svg" {
-  import { FC, SVGProps } from "react";
-  const content: FC<SVGProps<SVGElement>>;
+  import { VFC, SVGProps } from "react";
+  const content: VFC<SVGProps<SVGElement>>;
 
   export default content;
 }

@@ -9,11 +9,12 @@ interface ModalProps {
   onClose?: () => void;
   portal?: boolean;
   lazy?: boolean;
+  children?: ReactNode;
 }
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: React.FC<ModalProps> = (props) => {
+export const Modal = (props: ModalProps) => {
   const { className, children, isOpen, onClose, portal = true, lazy } = props;
 
   const [isClosing, setIsCLosing] = useState(false);

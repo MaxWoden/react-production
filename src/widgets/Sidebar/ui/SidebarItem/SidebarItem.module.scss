@@ -1,0 +1,34 @@
+.img {
+  height: 40px;
+  width: 40px;
+  fill: var(--inverted-primary-color);
+  transition: var(--animation-fast);
+}
+
+.text {
+  opacity: 1;
+  transition: all var(--animation-fast);
+}
+
+.SidebarItem {
+  display: flex;
+  gap: 15px;
+  align-items: end;
+
+  &.collapsed {
+    gap: 0;
+
+    .text {
+      width: 0;
+      opacity: 0;
+    }
+  }
+
+  &:hover {
+    color: var(--inverted-shadow-color);
+
+    .img {
+      fill: var(--inverted-shadow-color);
+    }
+  }
+}

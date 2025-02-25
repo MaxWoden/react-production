@@ -1,5 +1,6 @@
 import classes from "./Button.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
+import { memo, ReactNode } from "react";
 
 export enum ButtonSize {
   SIZE_M = "size_m",
@@ -23,9 +24,10 @@ interface ButtonProps {
   size?: ButtonSize;
   dataTestid?: string;
   disabled?: boolean;
+  children?: ReactNode;
 }
 
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button = memo((props: ButtonProps) => {
   const {
     className,
     children,
@@ -53,4 +55,4 @@ export const Button: React.FC<ButtonProps> = (props) => {
       {children}
     </button>
   );
-};
+});

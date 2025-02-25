@@ -39,27 +39,6 @@
   transition: var(--animation-fast);
 }
 
-.img {
-  height: 40px;
-  width: 40px;
-  fill: var(--inverted-primary-color);
-  transition: var(--animation-fast);
-}
-
-.link {
-  display: flex;
-  gap: 15px;
-  align-items: end;
-
-  &:hover {
-    color: var(--inverted-shadow-color);
-
-    .img {
-      fill: var(--inverted-shadow-color);
-    }
-  }
-}
-
 .line {
   height: 1px;
   width: 100%;
@@ -80,15 +59,4 @@
 
 .collapsed {
   width: var(--sidebar-width-collapsed);
-
-  .link {
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .item {
-    opacity: 0;
-    width: 0;
-  }
 }

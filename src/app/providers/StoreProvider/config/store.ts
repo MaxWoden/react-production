@@ -16,10 +16,6 @@ export function createReduxStore(initialState?: StateSchema) {
     reducer: reducerManager.reduce,
     preloadedState: initialState,
     devTools: __IS_DEV__,
-    // middleware: (getDefaultMiddleware: any) =>
-    //   getDefaultMiddleware({
-    //     serializableCheck: false,
-    //   }),
   });
 
   //@ts-ignore
@@ -27,3 +23,4 @@ export function createReduxStore(initialState?: StateSchema) {
 
   return store;
 }
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];

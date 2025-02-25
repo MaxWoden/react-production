@@ -4,12 +4,13 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Refresher } from "shared/ui/Refresher/Refresher";
 import { useTheme } from "app/providers/ThemeProvider";
+import { memo } from "react";
 
 interface PageErrorProps {
   className?: string;
 }
 
-export const PageError = ({ className }: PageErrorProps) => {
+export const PageError = memo(({ className }: PageErrorProps) => {
   const { t } = useTranslation();
   const { theme } = useTheme();
 
@@ -34,4 +35,4 @@ export const PageError = ({ className }: PageErrorProps) => {
       </div>
     </div>
   );
-};
+});
