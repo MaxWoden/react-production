@@ -21,8 +21,8 @@ export const Text = memo((props: TextProps) => {
   const { t } = useTranslation();
   return (
     <div className={classNames(classes.Text, {}, [classes[theme], className])}>
-      {title && <p className={classes.title}>{t(title)}</p>}
-      {text && <p className={classes.text}>{t(text)}</p>}
+      {title && <p className={classes.title}>{title}</p>}
+      {text && <p className={classes.text}>{text}</p>}
     </div>
   );
 });

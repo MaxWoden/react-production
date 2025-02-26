@@ -16,7 +16,12 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.resolve?.extensions?.push(".ts", ".tsx");
   config.module?.rules?.push(buildCssLoader(true));
 
-  config.plugins?.push(new webpack.DefinePlugin({ __IS_DEV__: true }));
+  config.plugins?.push(
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(true),
+      __API__: JSON.stringify(""),
+    })
+  );
 
   const imageRule = config.module?.rules?.find((rule) => {
     const test = (rule as { test: RegExp }).test;

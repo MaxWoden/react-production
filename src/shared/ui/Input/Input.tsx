@@ -1,6 +1,7 @@
 import {
   InputHTMLAttributes,
   memo,
+  MutableRefObject,
   useCallback,
   useEffect,
   useRef,
@@ -38,7 +39,7 @@ export const Input = memo((props: InputProps) => {
   } = props;
 
   const { t } = useTranslation();
-  const ref = useRef<HTMLInputElement>();
+  const ref = useRef() as MutableRefObject<HTMLInputElement>;
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(value.length);
 
@@ -75,7 +76,7 @@ export const Input = memo((props: InputProps) => {
   return (
     <div className={classNames(classes.InputWrapper, {}, [className])}>
       {placeholder && (
-        <div className={classes.placeholder}>{`${t(placeholder)}>`}</div>
+        <div className={classes.placeholder}>{`${placeholder}> `}</div>
       )}
       <div className={classes.caretWrapper}>
         <input

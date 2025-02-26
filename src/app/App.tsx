@@ -1,15 +1,15 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { useTheme } from "app/providers/ThemeProvider";
-import { AppRouter } from "./providers/router";
-import { Header } from "widgets/Header";
-import { Sidebar } from "widgets/Sidebar";
+import { userActions } from "entities/User";
 import { Suspense, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { userActions } from "entities/User";
+import { useNavigate } from "react-router-dom";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Header } from "widgets/Header";
+import { Sidebar } from "widgets/Sidebar";
+import { AppRouter } from "./providers/router";
 
 export const App = () => {
-  const { theme } = useTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(userActions.initAuthData());

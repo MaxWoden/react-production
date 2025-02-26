@@ -9,17 +9,17 @@ interface UseThemeResult {
 
 export function useTheme(): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
-  document.body.className = theme;
+  document.body.className = theme || Theme.LIGHT;
 
   const toggleTheme = () => {
     const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-    setTheme(newTheme);
+    setTheme?.(newTheme);
     document.body.className = newTheme;
     localStorage.setItem(THEME_LOCAL_STORAGE_KEY, newTheme);
   };
 
   return {
-    theme,
+    theme: Theme.LIGHT,
     toggleTheme,
   };
 }
