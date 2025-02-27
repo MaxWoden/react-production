@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import webpack, { RuleSetRule } from "webpack";
 import path from "path";
 import { BuildPaths } from "../build/types/config";
 import { buildCssLoader } from "../build/loaders/buildCssLoader";
@@ -12,18 +12,18 @@ export default ({ config }: { config: webpack.Configuration }) => {
     src: path.resolve(__dirname, "..", "..", "src"),
   };
 
-  config.resolve?.modules?.push(paths.src);
-  config.resolve?.extensions?.push(".ts", ".tsx");
-  config.module?.rules?.push(buildCssLoader(true));
+  config.resolve!.modules!.push(paths.src);
+  config.resolve!.extensions!.push(".ts", ".tsx");
+  config.module!.rules!.push(buildCssLoader(true));
 
-  config.plugins?.push(
+  config.plugins!.push(
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(true),
       __API__: JSON.stringify(""),
     })
   );
 
-  const imageRule = config.module?.rules?.find((rule) => {
+  const imageRule = config.module!.rules!.find((rule) => {
     const test = (rule as { test: RegExp }).test;
 
     if (!test) {
@@ -35,7 +35,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
   imageRule.exclude = /\.svg$/;
 
-  config.module?.rules?.push({
+  config.module!.rules!.push({
     test: /\.svg$/,
     use: ["@svgr/webpack"],
   });

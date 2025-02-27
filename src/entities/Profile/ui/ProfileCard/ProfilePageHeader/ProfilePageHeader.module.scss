@@ -1,0 +1,34 @@
+.ProfilePageHeader {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.editBlock {
+  margin-left: auto;
+  display: flex;
+  gap: 30px;
+}
+
+.editBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.edit {
+  fill: var(--primary-color);
+}
+
+.confirm {
+  fill: var(--green-light);
+}
+
+.cancel {
+  fill: var(--red-light);
+}

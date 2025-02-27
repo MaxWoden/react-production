@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Text, TextTheme } from "./Text";
+import { Text, TextAlign, TextTheme } from "./Text";
 import { Theme } from "app/providers/ThemeProvider";
 
 const meta: Meta<typeof Text> = {
@@ -16,6 +16,30 @@ export const Primary: Story = {
   args: {
     title: "Lorem, ipsum dolor.",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+  },
+};
+
+export const Left: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+    align: TextAlign.LEFT,
+  },
+};
+
+export const Right: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+    align: TextAlign.RIGHT,
+  },
+};
+
+export const Center: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+    align: TextAlign.CENTER,
   },
 };
 

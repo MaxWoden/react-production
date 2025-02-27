@@ -15,7 +15,9 @@
 }
 
 .outline,
-.outline-inverted {
+.outline-inverted,
+.outline-green,
+.outline-red {
   padding: 10px 25px;
   border: 1px solid var(--inverted-bg-color);
   background: none;
@@ -24,8 +26,16 @@
 }
 
 .outline-inverted {
-  border: 1px solid var(--bg-color);
+  border-color: var(--bg-color);
   color: var(--inverted-secondary-color);
+}
+
+.outline-green {
+  border-color: var(--green-light);
+}
+
+.outline-red {
+  border-color: var(--red-light);
 }
 
 .size_m {

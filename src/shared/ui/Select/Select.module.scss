@@ -1,0 +1,55 @@
+.Select {
+  position: relative;
+}
+
+.value {
+  cursor: pointer;
+  display: inline;
+}
+
+.disabled {
+  opacity: 0.7;
+
+  .value {
+    cursor: not-allowed;
+  }
+}
+
+.label {
+  margin-right: 10px;
+}
+
+.list {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  background: var(--inverted-bg-color);
+  color: var(--inverted-primary-color);
+  min-width: 300px;
+  border-radius: 16px;
+  list-style-type: none;
+}
+
+.item {
+  cursor: pointer;
+  padding: 20px;
+  border-bottom: 1px solid var(--inverted-secondary-color);
+
+  &:hover {
+    background: var(--shadow-color);
+  }
+
+  &:first-of-type {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  &:last-of-type {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+.selected {
+  background: var(--shadow-color);
+}
