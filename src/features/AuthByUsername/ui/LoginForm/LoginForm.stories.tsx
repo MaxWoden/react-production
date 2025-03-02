@@ -1,25 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import LoginForm from "./LoginForm";
 import { Theme } from "app/providers/ThemeProvider";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import LoginForm from "./LoginForm";
 
 const meta: Meta<typeof LoginForm> = {
   title: "features/LoginForm",
   component: LoginForm,
   tags: ["autodocs"],
-
-  parameters: {
-    theme: Theme.LIGHT,
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof LoginForm>;
 
-export const Opened: Story = {};
+export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const OpenedDark: Story = {
-  parameters: {
-    theme: Theme.DARK,
-  },
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { LoginModal } from "./LoginModal";
 import { Theme } from "app/providers/ThemeProvider";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
 
 const meta: Meta<typeof LoginModal> = {
   title: "features/LoginModal",
@@ -11,18 +13,20 @@ const meta: Meta<typeof LoginModal> = {
     isOpen: true,
     portal: false,
   },
-  parameters: {
-    theme: Theme.LIGHT,
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof LoginModal>;
 
-export const Opened: Story = {};
+export const Opened: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
 export const OpenedDark: Story = {
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const Error: Story = {
+  decorators: [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({ loginForm: { error: "error" } }),
+  ],
 };

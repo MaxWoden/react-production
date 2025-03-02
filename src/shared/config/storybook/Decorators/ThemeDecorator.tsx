@@ -1,12 +1,11 @@
-import { ThemeProvider } from "app/providers/ThemeProvider";
+import { StoryFn } from "@storybook/react";
+import { Theme, ThemeProvider } from "app/providers/ThemeProvider";
 import { useEffect } from "react";
 
-export const ThemeDecorator = (Story: any, { parameters }: any) => {
-  const { theme } = parameters;
-
+export const ThemeDecorator = (theme: Theme) => (Story: StoryFn) => {
   useEffect(() => {
     document.body.className = theme;
-  });
+  }, [theme]);
 
   return (
     <ThemeProvider initialTheme={theme}>

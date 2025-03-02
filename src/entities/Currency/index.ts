@@ -1,2 +1,8 @@
 export { CurrencySelect } from "./ui/CurrencySelect/CurrencySelect";
-export { Currency } from "./model/types/currency";
+
+export enum Currency {
+  USD = "USD",
+  EUR = "EUR",
+  RUB = "RUB",
+  // ...existing code...
+}

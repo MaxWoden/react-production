@@ -55,9 +55,19 @@ const LoginForm = memo((props: LoginFormProps) => {
   );
 
   const onLoginClick = useCallback(async () => {
-    const result = await dispatch(loginByUsername({ username, password }));
-    result.meta.requestStatus === "fulfilled" && onSuccess && onSuccess();
-  }, [dispatch, password, username]);
+    console.log("onLoginClick function called");
+    try {
+      const result = await dispatch(loginByUsername({ username, password }));
+      if (result.meta.requestStatus === "fulfilled") {
+        console.log("Dispatch successful");
+        onSuccess && onSuccess();
+      } else {
+        console.error("Login failed");
+      }
+    } catch (error) {
+      console.error("Dispatch failed", error);
+    }
+  }, [dispatch, password, username, onSuccess]);
 
   return (
     <DynamicModuleLoader reducers={initialReducers}>

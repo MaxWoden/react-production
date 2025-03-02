@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Avatar } from "./Avatar";
 import { Theme } from "app/providers/ThemeProvider";
-import AvatarImg from "shared/assets/avatar.jpg";
+import avatar from "shared/assets/tests/avatar.jpg";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Avatar> = {
   title: "shared/Avatar",
@@ -9,7 +10,7 @@ const meta: Meta<typeof Avatar> = {
   tags: ["autodocs"],
   args: {
     size: 200,
-    src: AvatarImg,
+    src: avatar,
   },
   parameters: {
     theme: Theme.LIGHT,
@@ -19,15 +20,14 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const Light: Story = {};
+export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
 export const Dark: Story = {
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const Small: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
   args: {
     size: 40,
   },

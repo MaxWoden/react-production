@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Text, TextAlign, TextTheme } from "./Text";
 import { Theme } from "app/providers/ThemeProvider";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { Text, TextAlign, TextTheme } from "./Text";
 
 const meta: Meta<typeof Text> = {
   title: "shared/Text",
@@ -17,6 +18,7 @@ export const Primary: Story = {
     title: "Lorem, ipsum dolor.",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Left: Story = {
@@ -25,6 +27,7 @@ export const Left: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     align: TextAlign.LEFT,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Right: Story = {
@@ -33,6 +36,7 @@ export const Right: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     align: TextAlign.RIGHT,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Center: Story = {
@@ -41,6 +45,7 @@ export const Center: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     align: TextAlign.CENTER,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Inverted: Story = {
@@ -49,6 +54,7 @@ export const Inverted: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     theme: TextTheme.INVERTED,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Error: Story = {
@@ -57,18 +63,21 @@ export const Error: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     theme: TextTheme.ERROR,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const onlyTitle: Story = {
   args: {
     title: "Lorem, ipsum dolor.",
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const onlyText: Story = {
   args: {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const PrimarytDark: Story = {
@@ -76,9 +85,7 @@ export const PrimarytDark: Story = {
     title: "Lorem, ipsum dolor.",
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const InvertedDark: Story = {
@@ -87,9 +94,7 @@ export const InvertedDark: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     theme: TextTheme.INVERTED,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const ErrorDark: Story = {
@@ -98,25 +103,19 @@ export const ErrorDark: Story = {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
     theme: TextTheme.ERROR,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const onlyTitleDark: Story = {
   args: {
     title: "Lorem, ipsum dolor.",
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const onlyTextDark: Story = {
   args: {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { AppLink, AppLinkTheme } from "./AppLink";
 import { Theme } from "app/providers/ThemeProvider";
 
@@ -20,6 +20,7 @@ export const Primary: Story = {
     children: "primary",
     theme: AppLinkTheme.PRIMARY,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Secondary: Story = {
@@ -27,6 +28,7 @@ export const Secondary: Story = {
     children: "secondary",
     theme: AppLinkTheme.SECONDARY,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const InvertedPrimary: Story = {
@@ -34,6 +36,7 @@ export const InvertedPrimary: Story = {
     children: "inverted primary",
     theme: AppLinkTheme.INVERTED_PRIMARY,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const InvertedSecondary: Story = {
@@ -41,6 +44,7 @@ export const InvertedSecondary: Story = {
     children: "inverted secondary",
     theme: AppLinkTheme.INVERTED_SECONDARY,
   },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const PrimaryDark: Story = {
@@ -48,9 +52,7 @@ export const PrimaryDark: Story = {
     children: "primary dark",
     theme: AppLinkTheme.PRIMARY,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const SecondaryDark: Story = {
@@ -58,9 +60,7 @@ export const SecondaryDark: Story = {
     children: "secondary dark",
     theme: AppLinkTheme.SECONDARY,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const InvertedPrimaryDark: Story = {
@@ -68,9 +68,7 @@ export const InvertedPrimaryDark: Story = {
     children: "inverted primary dark",
     theme: AppLinkTheme.INVERTED_PRIMARY,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const InvertedSecondaryDark: Story = {
@@ -78,7 +76,5 @@ export const InvertedSecondaryDark: Story = {
     children: "inverted secondary dark",
     theme: AppLinkTheme.INVERTED_SECONDARY,
   },
-  parameters: {
-    theme: Theme.DARK,
-  },
+  decorators: [ThemeDecorator(Theme.DARK)],
 };

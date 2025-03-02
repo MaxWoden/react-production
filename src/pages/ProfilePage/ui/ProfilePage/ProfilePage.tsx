@@ -4,34 +4,50 @@ import {
   getProfileError,
   getProfileIsLoading,
   getProfileReadonly,
+  getProfileValidateErrors,
   profileActions,
   ProfileCard,
   profileReducer,
 } from "entities/Profile";
 import { fetchProfileData } from "entities/Profile/index";
 import { getProfileForm } from "entities/Profile/model/selectors/getProfileForm/getProfileForm";
-import { ProfilePageHeader } from "entities/Profile/ui/ProfileCard/ProfilePageHeader/ProfilePageHeader";
+import { ProfilePageHeader } from "../ProfilePageHeader/ProfilePageHeader";
 import { memo, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { ValidateProfileError } from "entities/Profile/model/types/profile";
+import { useTranslation } from "react-i18next";
 
 const initialReducers: ReducersList = { profile: profileReducer };
 
 const ProfilePage = memo(() => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const form = useSelector(getProfileForm);
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
+  const validateErrors = useSelector(getProfileValidateErrors);
+
+  const validateErrorTranslation = {
+    [ValidateProfileError.INCORRECT_AGE]: t("Неккоректный возраст"),
+    [ValidateProfileError.INCORRECT_CITY]: t("Неккоректный регион"),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t("Имя и фамилия обязательны"),
+    [ValidateProfileError.NO_DATA]: t("Данные не указаны"),
+    [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
+  };
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== "storybook") {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const onChangeFirstname = useCallback(
@@ -93,6 +109,14 @@ const ProfilePage = memo(() => {
   return (
     <DynamicModuleLoader reducers={initialReducers}>
       <ProfilePageHeader readonly={readonly} />
+      {validateErrors?.length &&
+        validateErrors.map((err) => (
+          <Text
+            key={err}
+            theme={TextTheme.ERROR}
+            text={validateErrorTranslation[err]}
+          />
+        ))}
       <ProfileCard
         data={form}
         isLoading={isLoading}

@@ -19,6 +19,7 @@ export const loginSlice = createSlice({
       state.password = action.payload;
     },
   },
+
   extraReducers: (builder) => {
     builder.addCase(loginByUsername.pending, (state) => {
       state.isLoading = true;
