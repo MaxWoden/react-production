@@ -29,7 +29,7 @@ export const ThemeSwitcher = memo(
           className,
         ])}
       >
-        {theme === Theme.DARK ? <Moon /> : <Sun />}
+        {theme === Theme.LIGHT ? <Sun /> : <Moon />}
       </Button>
     );
   }

@@ -12,14 +12,32 @@ export function useTheme(): UseThemeResult {
   document.body.className = theme || Theme.LIGHT;
 
   const toggleTheme = () => {
-    const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+    let newTheme: Theme;
+    switch (theme) {
+      case Theme.LIGHT: {
+        newTheme = Theme.DARK;
+        break;
+      }
+      case Theme.DARK: {
+        newTheme = Theme.ORANGE;
+        break;
+      }
+      case Theme.ORANGE: {
+        newTheme = Theme.LIGHT;
+        break;
+      }
+      default: {
+        newTheme = Theme.LIGHT;
+        break;
+      }
+    }
     setTheme?.(newTheme);
     document.body.className = newTheme;
     localStorage.setItem(THEME_LOCAL_STORAGE_KEY, newTheme);
   };
 
   return {
-    theme: Theme.LIGHT,
+    theme: theme || Theme.LIGHT,
     toggleTheme,
   };
 }

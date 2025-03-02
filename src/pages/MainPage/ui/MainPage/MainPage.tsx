@@ -6,7 +6,7 @@ const MainPage = memo(() => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div style={{ color: "red" }}>
       {t("Главная страница")}
       <BugButton />
     </div>
