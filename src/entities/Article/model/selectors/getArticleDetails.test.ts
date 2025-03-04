@@ -3,9 +3,9 @@ import {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
-} from "./articleDetails";
+} from "./getArticleDetails";
 
-describe("articleDetails", () => {
+describe("getArticleDetails", () => {
   test("should return error", () => {
     const state: DeepPartial<StateSchema> = {
       articleDetails: {

@@ -12,6 +12,7 @@ export const BugButton = () => {
   useEffect(() => {
     if (error === true) throw new Error();
   }, [error]);
+
   return (
     <Button theme={ButtonTheme.OUTLINE} onClick={onThrow}>
       {t("Бросить ошибку")}

@@ -23,8 +23,9 @@ import {
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { ValidateProfileError } from "entities/Profile/model/types/profile";
 import { useTranslation } from "react-i18next";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 
-const initialReducers: ReducersList = { profile: profileReducer };
+const reducers: ReducersList = { profile: profileReducer };
 
 const ProfilePage = memo(() => {
   const { t } = useTranslation();
@@ -44,11 +45,7 @@ const ProfilePage = memo(() => {
     [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchProfileData());
-    }
-  }, [dispatch]);
+  useInitialEffects(() => dispatch(fetchProfileData()));
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
@@ -107,7 +104,7 @@ const ProfilePage = memo(() => {
   );
 
   return (
-    <DynamicModuleLoader reducers={initialReducers}>
+    <DynamicModuleLoader reducers={reducers}>
       <ProfilePageHeader readonly={readonly} />
       {validateErrors?.length &&
         validateErrors.map((err) => (

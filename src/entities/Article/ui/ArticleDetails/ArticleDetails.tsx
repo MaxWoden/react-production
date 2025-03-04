@@ -25,13 +25,14 @@ import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleC
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 
 interface ArticleDetailsProps {
   className?: string;
   id: string;
 }
 
-const initialReducers: ReducersList = {
+const reducers: ReducersList = {
   articleDetails: articleDetailsReducer,
 };
 
@@ -74,11 +75,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchArticleById(id));
-    }
-  }, [dispatch, id]);
+  useInitialEffects(() => dispatch(fetchArticleById(id)));
 
   let content;
 
@@ -99,13 +96,11 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     );
   } else if (error) {
     content = (
-      <>
-        <Text
-          align={TextAlign.CENTER}
-          theme={TextTheme.ERROR}
-          title={t("Произошла ошибка при загрузке статьи")}
-        />
-      </>
+      <Text
+        align={TextAlign.CENTER}
+        theme={TextTheme.ERROR}
+        title={t("Статья не найдена")}
+      />
     );
   } else {
     content = (
@@ -138,7 +133,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   }
 
   return (
-    <DynamicModuleLoader reducers={initialReducers}>
+    <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(classes.ArticleDetails, {}, [className])}>
         {content}
       </div>

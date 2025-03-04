@@ -21,7 +21,7 @@ body {
 .page-wrapper {
   padding: 30px 50px;
   width: 100%;
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   flex-grow: 1;
   overflow-y: auto;
 }

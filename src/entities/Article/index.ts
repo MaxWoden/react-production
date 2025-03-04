@@ -2,7 +2,7 @@ export {
   getArticleDetailsData,
   getArticleDetailsError,
   getArticleDetailsIsLoading,
-} from "./model/selectors/articleDetails";
+} from "./model/selectors/getArticleDetails";
 export { articleDetailsSlice } from "./model/slice/articleDetailsSlice";
 export {
   Article,
