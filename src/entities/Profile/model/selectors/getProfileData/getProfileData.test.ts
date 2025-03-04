@@ -18,8 +18,8 @@ describe("getProfileData", () => {
       firstname: "Максим",
       lastname: "Казаков",
       age: 19,
-      currency: Currency.RUB,
       country: Country.RU,
+      currency: Currency.RUB,
       city: "Казань",
       username: "admin",
       avatar:

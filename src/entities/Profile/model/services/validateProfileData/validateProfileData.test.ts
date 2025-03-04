@@ -1,8 +1,7 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { validateProfileData } from "./validateProfileData";
-import { Profile, ValidateProfileError } from "../../types/profile";
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
+import { Profile, ValidateProfileError } from "../../types/profile";
+import { validateProfileData } from "./validateProfileData";
 
 describe("validateProfileData", () => {
   const data: Profile = {
@@ -10,6 +9,7 @@ describe("validateProfileData", () => {
     lastname: "Казаков",
     age: 19,
     country: Country.RU,
+    currency: Currency.EUR,
     city: "Казань",
     username: "admin",
     avatar:

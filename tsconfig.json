@@ -45,7 +45,6 @@
     "./src/**/*.tsx",
     "./webpack.config.ts",
     "./config/build/*.ts",
-    "./config/build/types/*.ts",
-    "src/features/AuthByUsername/model/services/loginByUsername"
+    "./config/build/types/*.ts"
   ]
 }

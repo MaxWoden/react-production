@@ -1,9 +1,15 @@
 import { getUserAuthData } from "entities/User";
+import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
 
-export const RequireAuth: React.FC = ({ children }) => {
+interface RequireAuthProps {
+  children?: ReactNode;
+}
+
+export const RequireAuth = (props: RequireAuthProps) => {
+  const { children } = props;
   const auth = useSelector(getUserAuthData);
   let location = useLocation();
 

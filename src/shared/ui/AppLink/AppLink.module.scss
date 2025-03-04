@@ -1,5 +1,9 @@
 .AppLink {
   font: var(--font-m);
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .primary {

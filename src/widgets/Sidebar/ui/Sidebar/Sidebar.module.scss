@@ -4,7 +4,7 @@
   border-bottom-right-radius: 16px;
   border-left: 0;
   border-bottom: 0;
-  height: calc(100vh - var(--navbar-height));
+  height: 100vh;
   background: var(--inverted-bg-color);
   width: 500px;
   transition: width var(--animation-fast);

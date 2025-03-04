@@ -12,7 +12,7 @@ interface CountrySelectProps {
 
 const options = [
   { value: Country.AM, content: "Армения" },
-  { value: Country.By, content: "Беларусь" },
+  { value: Country.BY, content: "Беларусь" },
   { value: Country.KZ, content: "Казахстан" },
   { value: Country.RU, content: "Россия" },
   { value: Country.UA, content: "Украина" },

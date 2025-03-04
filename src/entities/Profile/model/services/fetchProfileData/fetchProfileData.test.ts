@@ -1,4 +1,5 @@
 import { Country } from "entities/Country";
+import { Currency } from "entities/Currency";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { Profile } from "../../types/profile";
 import { fetchProfileData } from "./fetchProfileData";
@@ -8,6 +9,7 @@ const data: Profile = {
   lastname: "Казаков",
   age: 19,
   country: Country.RU,
+  currency: Currency.EUR,
   city: "Казань",
   username: "admin",
   avatar:
