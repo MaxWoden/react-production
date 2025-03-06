@@ -1,6 +1,7 @@
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
 import {
+  fetchProfileDataById,
   getProfileError,
   getProfileIsLoading,
   getProfileReadonly,
@@ -9,20 +10,21 @@ import {
   ProfileCard,
   profileReducer,
 } from "entities/Profile";
-import { fetchProfileData } from "entities/Profile/index";
 import { getProfileForm } from "entities/Profile/model/selectors/getProfileForm/getProfileForm";
-import { ProfilePageHeader } from "../ProfilePageHeader/ProfilePageHeader";
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Text, TextTheme } from "shared/ui/Text/Text";
+import { ProfilePageHeader } from "../ProfilePageHeader/ProfilePageHeader";
 
+import { ValidateProfileError } from "entities/Profile/model/types/profile";
+import { getUserAuthData } from "entities/User";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { ValidateProfileError } from "entities/Profile/model/types/profile";
-import { useTranslation } from "react-i18next";
 import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 
 const reducers: ReducersList = { profile: profileReducer };
@@ -30,12 +32,14 @@ const reducers: ReducersList = { profile: profileReducer };
 const ProfilePage = memo(() => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { id } = useParams<{ id: string }>();
 
   const form = useSelector(getProfileForm);
   const error = useSelector(getProfileError);
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
+  const userData = useSelector(getUserAuthData);
 
   const validateErrorTranslation = {
     [ValidateProfileError.INCORRECT_AGE]: t("Неккоректный возраст"),
@@ -45,7 +49,7 @@ const ProfilePage = memo(() => {
     [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useInitialEffects(() => dispatch(fetchProfileData()));
+  useInitialEffects(() => dispatch(fetchProfileDataById(id)));
 
   const onChangeFirstname = useCallback(
     (value?: string) => {

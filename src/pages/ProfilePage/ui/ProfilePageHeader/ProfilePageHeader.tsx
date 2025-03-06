@@ -9,7 +9,14 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Text } from "shared/ui/Text/Text";
 
 import classes from "./ProfilePageHeader.module.scss";
-import { profileActions, updateProfileData } from "entities/Profile";
+import {
+  getProfileData,
+  profileActions,
+  updateProfileData,
+} from "entities/Profile";
+import { useSearchParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getUserAuthData } from "entities/User";
 
 interface ProfilePageHeaderProps {
   className?: string;
@@ -19,8 +26,11 @@ interface ProfilePageHeaderProps {
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   const { t } = useTranslation();
   const { className, readonly } = props;
-
   const dispatch = useAppDispatch();
+
+  const profileData = useSelector(getProfileData);
+  const userData = useSelector(getUserAuthData);
+  const ownProfile = profileData?.id === userData?.id;
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -36,46 +46,52 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     dispatch(profileActions.cancelEdit());
   }, [dispatch]);
 
+  let editButtons;
+
+  if (readonly) {
+    editButtons = (
+      <div className={classes.editBlock}>
+        {" "}
+        <Button
+          onClick={onEdit}
+          className={classes.editBtn}
+          theme={ButtonTheme.OUTLINE}
+        >
+          <Edit className={classNames(classes.icon, {}, [classes.edit])} />
+          {t("Редактировать")}
+        </Button>
+      </div>
+    );
+  } else {
+    editButtons = (
+      <div className={classes.editBlock}>
+        <Button
+          onClick={onSaveEdit}
+          theme={ButtonTheme.OUTLINE_GREEN}
+          className={classes.editBtn}
+        >
+          <Confirm
+            className={classNames(classes.icon, {}, [classes.confirm])}
+          />
+          {t("Сохранить")}
+        </Button>
+
+        <Button
+          onClick={onCancelEdit}
+          theme={ButtonTheme.OUTLINE_RED}
+          className={classes.editBtn}
+        >
+          <Cancel className={classNames(classes.icon, {}, [classes.cancel])} />
+          {t("Отменить")}
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
       <Text title={t("Профиль")} />
-      {readonly ? (
-        <div className={classes.editBlock}>
-          {" "}
-          <Button
-            onClick={onEdit}
-            className={classes.editBtn}
-            theme={ButtonTheme.OUTLINE}
-          >
-            <Edit className={classNames(classes.icon, {}, [classes.edit])} />
-            {t("Редактировать")}
-          </Button>
-        </div>
-      ) : (
-        <div className={classes.editBlock}>
-          <Button
-            onClick={onSaveEdit}
-            theme={ButtonTheme.OUTLINE_GREEN}
-            className={classes.editBtn}
-          >
-            <Confirm
-              className={classNames(classes.icon, {}, [classes.confirm])}
-            />
-            {t("Сохранить")}
-          </Button>
-
-          <Button
-            onClick={onCancelEdit}
-            theme={ButtonTheme.OUTLINE_RED}
-            className={classes.editBtn}
-          >
-            <Cancel
-              className={classNames(classes.icon, {}, [classes.cancel])}
-            />
-            {t("Отменить")}
-          </Button>
-        </div>
-      )}
+      {ownProfile && editButtons}
     </div>
   );
 };

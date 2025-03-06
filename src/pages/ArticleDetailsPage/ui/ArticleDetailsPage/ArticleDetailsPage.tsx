@@ -1,14 +1,7 @@
 import { ArticleDetails, getArticleDetailsError } from "entities/Article";
 import { CommentList } from "entities/Comment";
-import {
-  getArticleCommentsError,
-  getArticleCommentsIsLoading,
-} from "pages/ArticleDetailsPage/model/selectors/comments";
-import {
-  articleDetailsCommentsReducer,
-  getArticleComments,
-} from "pages/ArticleDetailsPage/model/slice/articleDetailsCommentSlice";
-import { memo } from "react";
+import { AddCommentForm } from "features/AddNewComment";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -17,11 +10,18 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { Text } from "shared/ui/Text/Text";
-import classes from "./ArticleDetailsPage.module.scss";
-import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { fetchCommentsByArticleId } from "pages/ArticleDetailsPage/model/services/fetchComments/fetchCommentsByArticleId";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { Text } from "shared/ui/Text/Text";
+import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
+import { fetchCommentsByArticleId } from "../../model/services/fetchComments/fetchCommentsByArticleId";
+
+import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
+import {
+  articleDetailsCommentsReducer,
+  getArticleComments,
+} from "../../model/slice/articleDetailsCommentSlice";
+import classes from "./ArticleDetailsPage.module.scss";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -43,6 +43,13 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     dispatch(fetchCommentsByArticleId(id));
   });
 
+  const onSendComment = useCallback(
+    (value: string) => {
+      dispatch(addCommentForArticle(value));
+    },
+    [dispatch]
+  );
+
   if (!id)
     return (
       <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
@@ -54,6 +61,14 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
         <ArticleDetails id={id} />
+        <AddCommentForm
+          onSendComment={onSendComment}
+          className={classes.commentForm}
+        ></AddCommentForm>
+        <Text
+          className={classes.commentTitle}
+          title={t(`Комментарии(${comments?.length})`)}
+        />
         {!error && <CommentList isLoading={isLoading} comments={comments} />}
       </div>
     </DynamicModuleLoader>

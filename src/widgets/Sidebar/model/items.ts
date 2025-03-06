@@ -29,7 +29,7 @@ export const SidebarItemsList: SidebarItemType[] = [
     authOnly: true,
   },
   {
-    path: RoutePath.articles,
+    path: `${RoutePath.articles}/1`,
     text: "Блог",
     Icon: Blog,
     authOnly: true,

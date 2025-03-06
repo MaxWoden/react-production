@@ -1,6 +1,4 @@
-import { getUserInited } from "entities/User";
 import { memo, Suspense, useCallback } from "react";
-import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
   AppRouteProps,

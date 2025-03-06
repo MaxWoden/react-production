@@ -5,6 +5,10 @@ import { SidebarItemType } from "../../model/items";
 import classes from "./SidebarItem.module.scss";
 import { useSelector } from "react-redux";
 import { getUserAuthData } from "entities/User";
+import {
+  routeConfig,
+  RoutePath,
+} from "shared/config/routerConfig/routerConfig";
 
 interface SidebarItemProps {
   item: SidebarItemType;
@@ -31,7 +35,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
         },
         []
       )}
-      to={path}
+      to={path === RoutePath.profile ? `${path}${isAuth?.id}` : path}
       theme={AppLinkTheme.INVERTED_PRIMARY}
     >
       <Icon className={classes.img} />

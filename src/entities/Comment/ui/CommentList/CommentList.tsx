@@ -31,10 +31,6 @@ export const CommentList = memo((props: CommentListProps) => {
 
   return (
     <div className={classNames(classes.CommentList, {}, [className])}>
-      <Text
-        className={classes.commentTitle}
-        title={t(`Комментарии(${comments?.length})`)}
-      />
       {comments?.length
         ? comments.map((comment) => (
             <CommentCard
