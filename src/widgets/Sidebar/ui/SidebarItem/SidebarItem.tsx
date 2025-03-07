@@ -1,14 +1,12 @@
+import { getUserAuthData } from "entities/User";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import { RoutePath } from "shared/config/routerConfig/routerConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { SidebarItemType } from "../../model/items";
+
 import classes from "./SidebarItem.module.scss";
-import { useSelector } from "react-redux";
-import { getUserAuthData } from "entities/User";
-import {
-  routeConfig,
-  RoutePath,
-} from "shared/config/routerConfig/routerConfig";
+import { SidebarItemType } from "widgets/Sidebar/model/types/sidebar";
 
 interface SidebarItemProps {
   item: SidebarItemType;
@@ -17,14 +15,8 @@ interface SidebarItemProps {
 
 export const SidebarItem = (props: SidebarItemProps) => {
   const { item, collapsed } = props;
-  const { path, text, Icon, authOnly } = item;
-
-  const isAuth = useSelector(getUserAuthData);
+  const { path, text, Icon } = item;
   const { t } = useTranslation();
-
-  if (authOnly && !isAuth) {
-    return null;
-  }
 
   return (
     <AppLink
@@ -35,7 +27,7 @@ export const SidebarItem = (props: SidebarItemProps) => {
         },
         []
       )}
-      to={path === RoutePath.profile ? `${path}${isAuth?.id}` : path}
+      to={path}
       theme={AppLinkTheme.INVERTED_PRIMARY}
     >
       <Icon className={classes.img} />

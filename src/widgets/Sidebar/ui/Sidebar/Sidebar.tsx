@@ -3,9 +3,11 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonSize } from "shared/ui/Button/Button";
 import { LangSwitcher } from "widgets/LangSwitcher";
 import { ThemeSwitcher } from "widgets/ThemeSwitcher";
-import { SidebarItemsList } from "../../model/items";
+
+import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import classes from "./Sidebar.module.scss";
+import { useSelector } from "react-redux";
 
 interface SidebarProps {
   className?: string;
@@ -18,11 +20,13 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     setCollapsed((prev) => !prev);
   };
 
-  const itemsList = useMemo(() => {
-    return SidebarItemsList.map((item) => (
-      <SidebarItem collapsed={collapsed} key={item.path} item={item} />
-    ));
-  }, [collapsed]);
+  const sidebarItemsList = useSelector(getSidebarItems);
+
+  // const itemsList = useMemo(() => {
+  //   return sidebarItemsList.map((item) => (
+  //     <SidebarItem collapsed={collapsed} key={item.path} item={item} />
+  //   ));
+  // }, [collapsed, sidebarItemsList]);
 
   return (
     <div
@@ -44,7 +48,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         {collapsed ? ">" : "<"}
       </Button>
 
-      <nav className={classes.navbar}>{itemsList}</nav>
+      <nav className={classes.navbar}>
+        {sidebarItemsList.map((item) => (
+          <SidebarItem collapsed={collapsed} key={item.text} item={item} />
+        ))}
+      </nav>
 
       <div className={classes.line}></div>
 
