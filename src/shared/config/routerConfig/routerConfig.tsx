@@ -3,7 +3,7 @@ import { AboutPage } from "pages/AboutPage";
 import { RouteProps } from "react-router-dom";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { ProfilePage } from "pages/ProfilePage";
-import ArticlePage from "pages/ArticlesPage/ui/ArticlePage/ArticlePage";
+import ArticlePage from "pages/ArticlesPage/ui/ArticlesPage/ArticlesPage";
 import ArticleDetailsPage from "pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage";
 
 export type AppRouteProps = RouteProps & {

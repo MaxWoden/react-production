@@ -1,0 +1,71 @@
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Text, TextAlign } from "shared/ui/Text/Text";
+import { Article, ArticleView } from "../../model/types/article";
+import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
+import classes from "./ArticleList.module.scss";
+import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
+
+interface ArticleListProps {
+  className?: string;
+  articles: Article[];
+  isLoading?: boolean;
+  view?: ArticleView;
+}
+
+const getSkeletons = (view: ArticleView) => {
+  return new Array(view === ArticleView.LIST ? 9 : 3)
+    .fill(0)
+    .map((_, index) => (
+      <ArticleListItemSkeleton
+        view={view}
+        key={index}
+        className={classes.card}
+      />
+    ));
+};
+
+export const ArticleList = memo((props: ArticleListProps) => {
+  const { className, articles, isLoading, view = ArticleView.LIST } = props;
+  const { t } = useTranslation();
+
+  if (isLoading) {
+    return (
+      <div
+        className={classNames(classes.ArticleList, {}, [
+          className,
+          classes[view],
+        ])}
+      >
+        {getSkeletons(view)}
+      </div>
+    );
+  }
+
+  const renderArticle = (article: Article) => {
+    return (
+      <ArticleListItem
+        key={article.id}
+        article={article}
+        view={view}
+        className={classes.card}
+      />
+    );
+  };
+
+  return (
+    <div
+      className={classNames(classes.ArticleList, {}, [
+        className,
+        classes[view],
+      ])}
+    >
+      {articles.length > 0 ? (
+        articles.map(renderArticle)
+      ) : (
+        <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />
+      )}
+    </div>
+  );
+});

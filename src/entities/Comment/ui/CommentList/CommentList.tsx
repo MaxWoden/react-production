@@ -3,8 +3,8 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Text } from "shared/ui/Text/Text";
-import classes from "./CommentList.module.scss";
 import { CommentCard } from "../CommentCard/CommentCard";
+import classes from "./CommentList.module.scss";
 
 interface CommentListProps {
   className?: string;

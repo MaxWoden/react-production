@@ -1,4 +1,4 @@
-import { addCommentFormSchema } from "../../../../features/AddNewComment/model/types/addCommentForm";
+import { addCommentFormSchema } from "features/AddNewComment";
 import {
   AnyAction,
   CombinedState,
@@ -7,11 +7,11 @@ import {
   ReducersMapObject,
 } from "@reduxjs/toolkit";
 import { AxiosInstance } from "axios";
-import { ArticleDetailsSchema } from "entities/Article/model/types/articleDetailsSchema";
+import { ArticleDetailsSchema } from "entities/Article";
 import { CounterSchema } from "entities/Counter";
 import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
-import { LoginSchema } from "features/AuthByUsername/model/types/loginSchema";
+import { LoginSchema } from "features/AuthByUsername";
 import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
 import { NavigateOptions, To } from "react-router-dom";
 

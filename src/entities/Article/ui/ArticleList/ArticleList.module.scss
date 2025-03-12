@@ -1,0 +1,15 @@
+.PLATE {
+  .card {
+    margin-bottom: 30px;
+  }
+}
+
+.LIST {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card {
+    margin: 30px 0 0 30px;
+  }
+}

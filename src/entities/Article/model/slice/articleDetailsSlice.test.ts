@@ -9,6 +9,10 @@ describe("loginSlice", () => {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK6sMfLmRjh2jzr0fZKfxKnczeq6Qu-uyPi613_ZtUjVj4JNmW26pGxB0Bgu3h_MErxcI&usqp=CAU",
     views: 1488,
     createdAt: "03.03.2025",
+    user: {
+      id: "1",
+      username: "user",
+    },
     type: [ArticleType.IT],
     blocks: [
       {

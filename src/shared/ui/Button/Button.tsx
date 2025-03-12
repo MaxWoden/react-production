@@ -1,6 +1,6 @@
 import classes from "./Button.module.scss";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
-import { memo, ReactNode } from "react";
+import { ButtonHTMLAttributes, memo, ReactNode } from "react";
 
 export enum ButtonSize {
   SIZE_M = "size_m",
@@ -18,14 +18,12 @@ export enum ButtonTheme {
   DISABLED = "disabled",
 }
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  onClick?: () => void;
   theme?: ButtonTheme;
   square?: boolean;
   size?: ButtonSize;
   dataTestid?: string;
-  disabled?: boolean;
   children?: ReactNode;
 }
 
@@ -39,6 +37,7 @@ export const Button = memo((props: ButtonProps) => {
     square,
     dataTestid,
     disabled,
+    ...otherProps
   } = props;
 
   const mods: Mods = {
@@ -54,6 +53,7 @@ export const Button = memo((props: ButtonProps) => {
       data-testid={dataTestid}
       onClick={onClick}
       className={classNames(classes.Button, mods, [className])}
+      {...otherProps}
     >
       {children}
     </button>
