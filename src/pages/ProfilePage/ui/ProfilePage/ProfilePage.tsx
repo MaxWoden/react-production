@@ -29,7 +29,7 @@ import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitial
 
 const reducers: ReducersList = { profile: profileReducer };
 
-const ProfilePage = memo(() => {
+const ProfilePage = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
@@ -39,7 +39,6 @@ const ProfilePage = memo(() => {
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
-  const userData = useSelector(getUserAuthData);
 
   const validateErrorTranslation = {
     [ValidateProfileError.INCORRECT_AGE]: t("Неккоректный возраст"),
@@ -134,6 +133,6 @@ const ProfilePage = memo(() => {
       />
     </DynamicModuleLoader>
   );
-});
+};
 
-export default ProfilePage;
+export default memo(ProfilePage);

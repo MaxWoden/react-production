@@ -1,0 +1,19 @@
+.btn {
+  margin-left: 10px;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--secondary-color);
+  opacity: 0.2;
+  transition: all var(--animation-fast);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.selected {
+  opacity: 1;
+}

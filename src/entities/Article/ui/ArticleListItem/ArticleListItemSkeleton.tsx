@@ -14,7 +14,7 @@ export const ArticleListItemSkeleton = memo(
   (props: ArticleListItemSkeletonProps) => {
     const { className, view } = props;
 
-    if (view === ArticleView.PLATE) {
+    if (view === ArticleView.LIST) {
       return (
         <div
           className={classNames(classes.ArticleListItem, {}, [

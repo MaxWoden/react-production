@@ -16,7 +16,6 @@ import { Text } from "shared/ui/Text/Text";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import { fetchCommentsByArticleId } from "../../model/services/fetchComments/fetchCommentsByArticleId";
 
-import { getArticleDetailsError } from "entities/Article/model/selectors/getArticleDetails";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
@@ -41,7 +40,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const dispatch = useAppDispatch();
   const isLoading = useSelector(getArticleCommentsIsLoading);
   const comments = useSelector(getArticleComments.selectAll);
-  const error = useSelector(getArticleDetailsError);
 
   useInitialEffects(() => {
     dispatch(fetchCommentsByArticleId(id));
@@ -71,6 +69,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t("Все статьи")}
         </Button>
+
         <ArticleDetails id={id} />
         <AddCommentForm
           onSendComment={onSendComment}

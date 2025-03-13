@@ -11,11 +11,11 @@ interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
-  view?: ArticleView;
+  view: ArticleView;
 }
 
 const getSkeletons = (view: ArticleView) => {
-  return new Array(view === ArticleView.LIST ? 9 : 3)
+  return new Array(view === ArticleView.LIST ? 3 : 16)
     .fill(0)
     .map((_, index) => (
       <ArticleListItemSkeleton

@@ -1,4 +1,4 @@
-.PLATE {
+.LIST {
   .header {
     display: flex;
     align-items: center;
@@ -17,6 +17,12 @@
 
   .types {
     margin-top: 8px;
+  }
+
+  .author {
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
 
   .date {
@@ -55,7 +61,7 @@
   }
 }
 
-.LIST {
+.GRID {
   width: 230px;
   cursor: pointer;
 
@@ -69,6 +75,13 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+  }
+
+  .author {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
   .date {
@@ -116,7 +129,8 @@
     transform: scale(1.01);
     transition: all var(--animation-fast);
 
-    .date {
+    .date,
+    .author {
       display: block;
     }
   }

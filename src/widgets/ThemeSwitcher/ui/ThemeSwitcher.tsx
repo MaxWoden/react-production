@@ -1,10 +1,11 @@
 import { Theme, useTheme } from "app/providers/ThemeProvider";
-import classes from "./ThemeSwitcher.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import Moon from "shared/assets/icons/moon.svg";
-import Sun from "shared/assets/icons/sun.svg";
-import { Button } from "shared/ui/Button/Button";
 import { memo } from "react";
+import Moon from "shared/assets/icons/moon.svg";
+import Orange from "shared/assets/icons/orange.svg";
+import Sun from "shared/assets/icons/sun.svg";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Button } from "shared/ui/Button/Button";
+import classes from "./ThemeSwitcher.module.scss";
 
 export enum ThemeSwitcherStyle {
   PRIMARY = "primary",
@@ -15,22 +16,34 @@ interface ThemeSwitcherProps {
   className?: string;
   style?: ThemeSwitcherStyle;
 }
-ThemeSwitcherStyle;
 
-export const ThemeSwitcher = memo(
-  ({ className, style = ThemeSwitcherStyle.INVERTED }: ThemeSwitcherProps) => {
-    const { theme, toggleTheme } = useTheme();
+export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
+  const { className, style = ThemeSwitcherStyle.INVERTED } = props;
+  const { theme, toggleTheme } = useTheme();
 
-    return (
-      <Button
-        onClick={toggleTheme}
-        className={classNames(classes.ThemeSwitcher, {}, [
-          classes[style],
-          className,
-        ])}
-      >
-        {theme === Theme.LIGHT ? <Sun /> : <Moon />}
-      </Button>
-    );
+  let icon;
+
+  switch (theme) {
+    case Theme.LIGHT:
+      icon = <Sun />;
+      break;
+    case Theme.DARK:
+      icon = <Moon />;
+      break;
+    case Theme.ORANGE:
+      icon = <Orange />;
+      break;
   }
-);
+
+  return (
+    <Button
+      onClick={toggleTheme}
+      className={classNames(classes.ThemeSwitcher, {}, [
+        classes[style],
+        className,
+      ])}
+    >
+      {icon}
+    </Button>
+  );
+});

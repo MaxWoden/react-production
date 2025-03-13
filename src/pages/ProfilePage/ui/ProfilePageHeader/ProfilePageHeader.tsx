@@ -47,7 +47,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
   return (
     <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
-      <Text title={t("Профиль")} />
+      <Text title={t(ownProfile ? "Ваш профиль" : "Профиль")} />
       {ownProfile && (
         <div className={classes.editBlock}>
           {readonly ? (

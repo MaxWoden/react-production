@@ -16,6 +16,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<
     const { data } = await extra.api.get<Comment[]>("/comments", {
       params: { articleId, _expand: "user" },
     });
+    console.log(data);
 
     if (!data) throw new Error();
 

@@ -26,6 +26,8 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from "../../model/selectors/getArticleDetails";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { RoutePath } from "shared/config/routerConfig/routerConfig";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -119,14 +121,22 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
           title={t(`${article?.title}`)}
           text={t(`${article?.subtitle}`)}
         />
-        <div className={classes.articleInfo}>
-          <Icon Svg={EyeIcon} className={classes.icon} />
-          <Text text={t(`${article?.views}`)} />
-        </div>
+        <AppLink
+          className={classes.author}
+          to={RoutePath.profile + article?.user.id}
+        >
+          <Avatar size={50} src={article?.user.avatar} />
+          <Text text={article?.user.username} />
+        </AppLink>
         <div className={classes.articleInfo}>
           <Icon Svg={CalendarIcon} className={classes.icon} />
           <Text text={t(`${article?.createdAt}`)} />
         </div>
+        <div className={classes.articleInfo}>
+          <Icon Svg={EyeIcon} className={classes.icon} />
+          <Text text={t(`${article?.views}`)} />
+        </div>
+
         {article?.blocks.map(renderBLock)}
       </>
     );

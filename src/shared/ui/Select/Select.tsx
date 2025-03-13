@@ -21,7 +21,7 @@ export const Select = memo((props: SelectProps) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(selectedItem || options[0]);
 
-  const selectHandle = (event: React.MouseEvent, item: SelectOption) => {
+  const selectHandler = (event: React.MouseEvent, item: SelectOption) => {
     event.stopPropagation();
     onSelect?.(item.value);
     setSelected(item);
@@ -30,12 +30,11 @@ export const Select = memo((props: SelectProps) => {
 
   const onToggle = () => {
     if (readonly) return;
-    console.log("click");
     setOpen((prev) => !prev);
   };
 
   useEffect(() => {
-    setOpen(false);
+    readonly && setOpen(false);
   }, [readonly]);
 
   const optionsList = useMemo(
@@ -47,7 +46,7 @@ export const Select = memo((props: SelectProps) => {
               [classes.selected]: selected.value === item.value,
             })}
             key={item.value}
-            onClick={(event) => selectHandle(event, item)}
+            onClick={(event) => selectHandler(event, item)}
           >
             {item.content}
           </li>
@@ -56,12 +55,12 @@ export const Select = memo((props: SelectProps) => {
     [options, selected]
   );
 
-  const mods: Mods = {
-    [classes.disabled]: readonly,
-  };
-
   return (
-    <div className={classNames(classes.Select, mods, [, className])}>
+    <div
+      className={classNames(classes.Select, { [classes.disabled]: readonly }, [
+        className,
+      ])}
+    >
       {label && <span className={classes.label}>{`${label}>`}</span>}
       <div className={classes.value} onClick={onToggle}>
         {selected.content}

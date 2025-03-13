@@ -3,8 +3,8 @@ import { AboutPage } from "pages/AboutPage";
 import { RouteProps } from "react-router-dom";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { ProfilePage } from "pages/ProfilePage";
-import ArticlePage from "pages/ArticlesPage/ui/ArticlesPage/ArticlesPage";
-import ArticleDetailsPage from "pages/ArticleDetailsPage/ui/ArticleDetailsPage/ArticleDetailsPage";
+import { ArticlesPage } from "pages/ArticlesPage";
+import { ArticleDetailsPage } from "pages/ArticleDetailsPage";
 
 export type AppRouteProps = RouteProps & {
   authOnly?: boolean;
@@ -46,7 +46,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
   },
   [AppRoutes.ARTICLES]: {
     path: RoutePath.articles,
-    element: <ArticlePage />,
+    element: <ArticlesPage />,
     authOnly: true,
   },
   [AppRoutes.ARTICLE_DETAILS]: {

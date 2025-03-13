@@ -17,6 +17,8 @@ import {
 } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleListItem.module.scss";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { RoutePath } from "shared/config/routerConfig/routerConfig";
 
 interface ArticleListItemProps {
   className?: string;
@@ -45,7 +47,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     </>
   );
 
-  if (view === ArticleView.PLATE) {
+  if (view === ArticleView.LIST) {
     const textBLock = article.blocks.find(
       (block) => block.type === ArticleBLockType.TEXT
     ) as ArticleTextBlock;
@@ -59,19 +61,28 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       >
         <Card>
           <div className={classes.header}>
-            <Avatar src={article.user.avatar} />
-            <Text text={article.user.username} className={classes.username} />
+            <AppLink
+              to={RoutePath.profile + article.user.id}
+              className={classes.author}
+            >
+              <Avatar size={50} src={article.user.avatar} />
+              <Text text={article.user.username} className={classes.username} />
+            </AppLink>
             <Text text={article.createdAt} className={classes.date} />
           </div>
+
           <Text text={article.title} className={classes.title} />
           {types}
+
           <img alt={article.title} src={article.img} className={classes.img} />
+
           {textBLock && (
             <ArticleTextBlockComponent
               block={textBLock}
               className={classes.textBlock}
             />
           )}
+
           <div className={classes.footer}>
             <Button onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
               {t("Читать далее")}...{" "}
@@ -95,6 +106,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       <Card>
         <div className={classes.imageWrapper}>
           <img alt={article.title} src={article.img} className={classes.img} />
+          <AppLink
+            onClick={(e) => e.stopPropagation()}
+            to={RoutePath.profile + article.user.id}
+            className={classes.author}
+          >
+            {article.user.username}
+          </AppLink>
           <Text text={article.createdAt} className={classes.date} />
         </div>
         <div className={classes.infoWrapper}>

@@ -41,8 +41,8 @@ export enum ArticleType {
 }
 
 export enum ArticleView {
-  PLATE = "PLATE",
   LIST = "LIST",
+  GRID = "GRID",
 }
 
 export interface Article {

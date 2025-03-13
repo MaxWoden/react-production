@@ -1,0 +1,28 @@
+import { ArticleView } from "entities/Article";
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from "shared/const/localstorage";
+import { ArticlesPageSchema } from "../types/articlesPageSchema";
+import { articlesPageActions, articlesPageReducer } from "./articlesPageSlice";
+
+describe("profileSlice", () => {
+  test("test setView", () => {
+    const state: DeepPartial<ArticlesPageSchema> = { view: ArticleView.LIST };
+    expect(state.view).toEqual(ArticleView.LIST);
+    expect(
+      articlesPageReducer(
+        state as ArticlesPageSchema,
+        articlesPageActions.setView(ArticleView.GRID)
+      )
+    ).toEqual({ view: ArticleView.GRID });
+  });
+
+  test("test init initState", () => {
+    const state: DeepPartial<ArticlesPageSchema> = {};
+    localStorage.setItem(ARTICLES_VIEW_LOCALSTORAGE_KEY, ArticleView.GRID);
+    expect(
+      articlesPageReducer(
+        state as ArticlesPageSchema,
+        articlesPageActions.initState()
+      )
+    ).toEqual({ view: ArticleView.GRID });
+  });
+});

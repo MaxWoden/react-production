@@ -1,4 +1,3 @@
-import { addCommentFormSchema } from "features/AddNewComment";
 import {
   AnyAction,
   CombinedState,
@@ -11,8 +10,10 @@ import { ArticleDetailsSchema } from "entities/Article";
 import { CounterSchema } from "entities/Counter";
 import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
+import { addCommentFormSchema } from "features/AddNewComment";
 import { LoginSchema } from "features/AuthByUsername";
 import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
+import { ArticlesPageSchema } from "pages/ArticlesPage";
 import { NavigateOptions, To } from "react-router-dom";
 
 export interface StateSchema {
@@ -26,6 +27,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addCommentForm?: addCommentFormSchema;
+  articlesPage?: ArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;
