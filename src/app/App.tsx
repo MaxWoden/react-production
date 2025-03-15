@@ -5,14 +5,15 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Header } from "widgets/Header";
 import { Sidebar } from "widgets/Sidebar";
 import { AppRouter } from "./providers/router";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 
 export const App = () => {
   const dispatch = useDispatch();
   const inited = useSelector(getUserInited);
 
-  useEffect(() => {
+  useInitialEffects(() => {
     dispatch(userActions.initAuthData());
-  }, [dispatch]);
+  });
 
   return (
     <div className={classNames("app", {}, [])}>

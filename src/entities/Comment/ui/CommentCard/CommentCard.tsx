@@ -1,6 +1,5 @@
 import { Comment } from "entities/Comment/model/types/comment";
 import { memo } from "react";
-import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink } from "shared/ui/AppLink/AppLink";

@@ -1,5 +1,4 @@
 import { ArticleList } from "entities/Article";
-import { fetchNextArticlesPage } from "pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -14,13 +13,13 @@ import { Page } from "shared/ui/Page/Page";
 import { Text } from "shared/ui/Text/Text";
 import {
   getArticlesPageError,
+  getArticlesPageInited,
   getArticlesPageIsLoading,
-  getArticlesPageNum,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
-import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
+import { fetchNextArticlesPage } from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage";
+import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 import {
-  articlesPageActions,
   articlesPageReducer,
   getArticles,
 } from "../../model/slice/articlesPageSlice";
@@ -43,15 +42,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
-  const page = useSelector(getArticlesPageNum);
+  const inited = useSelector(getArticlesPageInited);
 
-  useInitialEffects(() => {
-    dispatch(articlesPageActions.initState());
-    dispatch(fetchArticlesList({ page }));
-  });
+  useInitialEffects(() => !inited && dispatch(initArticlesPage()));
 
   const onLoadNextPart = useCallback(() => {
-    console.log("callback");
     dispatch(fetchNextArticlesPage());
   }, [dispatch]);
 
@@ -64,7 +59,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   }
 
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader removeAfterRemount={false} reducers={reducers}>
       <Page
         onScrollEnd={onLoadNextPart}
         className={classNames(classes.ArticlesPage, {}, [className])}

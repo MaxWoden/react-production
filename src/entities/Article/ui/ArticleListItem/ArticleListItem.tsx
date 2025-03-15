@@ -61,7 +61,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           {types}
           <img alt={article.title} src={article.img} className={classes.img} />
           <div className={classes.footer}>
-            <Button theme={ButtonTheme.OUTLINE}>{t("Читать далее")}...</Button>
+            <Button onClick={onClickHandle} theme={ButtonTheme.OUTLINE}>
+              {t("Читать далее")}...
+            </Button>
             {views}
           </div>
         </Card>

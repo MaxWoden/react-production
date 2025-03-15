@@ -34,6 +34,6 @@ describe("profileSlice", () => {
         state as ArticlesPageSchema,
         articlesPageActions.initState()
       )
-    ).toEqual({ limit: 16, view: ArticleView.GRID });
+    ).toEqual({ _inited: true, limit: 16, view: ArticleView.GRID });
   });
 });
