@@ -24,6 +24,7 @@ import {
   getArticleComments,
 } from "../../model/slice/articleDetailsCommentSlice";
 import classes from "./ArticleDetailsPage.module.scss";
+import { Page } from "shared/ui/Page/Page";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -65,7 +66,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t("Все статьи")}
         </Button>
@@ -80,7 +81,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
           title={t(`Комментарии(${comments?.length})`)}
         />
         <CommentList isLoading={isLoading} comments={comments} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

@@ -30,19 +30,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
   const { className, articles, isLoading, view = ArticleView.LIST } = props;
   const { t } = useTranslation();
 
-  if (isLoading) {
-    return (
-      <div
-        className={classNames(classes.ArticleList, {}, [
-          className,
-          classes[view],
-        ])}
-      >
-        {getSkeletons(view)}
-      </div>
-    );
-  }
-
   const renderArticle = (article: Article) => {
     return (
       <ArticleListItem
@@ -54,6 +41,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
     );
   };
 
+  if (isLoading)
+    return (
+      <div
+        className={classNames(classes.ArticleList, {}, [
+          className,
+          classes[view],
+        ])}
+      >
+        {getSkeletons(view)}
+      </div>
+    );
+
   return (
     <div
       className={classNames(classes.ArticleList, {}, [
@@ -61,7 +60,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         classes[view],
       ])}
     >
-      {articles.length > 0 ? (
+      {articles.length ? (
         articles.map(renderArticle)
       ) : (
         <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />

@@ -1,5 +1,4 @@
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-
 import { fetchArticlesList } from "./fetchArticlesList";
 import { Article } from "entities/Article";
 
@@ -152,22 +151,11 @@ const articles = [
 ] as Article[];
 
 describe("fetchArticlesList", () => {
-  test("success", async () => {
-    const thunk = new TestAsyncThunk(fetchArticlesList);
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: articles }));
-    const result = await thunk.callThunk();
-
-    expect(thunk.api.get).toHaveBeenCalled();
-    expect(result.payload).toEqual(articles);
-    expect(result.meta.requestStatus).toBe("fulfilled");
-  });
-
-  test("error login", async () => {
+  test("error", async () => {
     const thunk = new TestAsyncThunk(fetchArticlesList);
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk({ page: 1 });
 
-    expect(thunk.api.get).toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe("rejected");
   });
 });

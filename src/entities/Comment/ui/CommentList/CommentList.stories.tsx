@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { CommentList } from "./CommentList";
-import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
-import { articleDetailsCommentsReducer } from "pages/ArticleDetailsPage/model/slice/articleDetailsCommentSlice";
 
 const meta: Meta<typeof CommentList> = {
   title: "entities/CommentList",

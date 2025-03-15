@@ -1,5 +1,6 @@
 import { ArticleList } from "entities/Article";
-import { memo } from "react";
+import { fetchNextArticlesPage } from "pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -9,11 +10,14 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { Page } from "shared/ui/Page/Page";
 import { Text } from "shared/ui/Text/Text";
 import {
+  getArticlesPageError,
   getArticlesPageIsLoading,
+  getArticlesPageNum,
   getArticlesPageView,
-} from "../../model/selectors/articlePage";
+} from "../../model/selectors/articlesPageSelectors";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import {
   articlesPageActions,
@@ -37,18 +41,35 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const dispatch = useAppDispatch();
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
+  const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
+  const page = useSelector(getArticlesPageNum);
 
   useInitialEffects(() => {
-    dispatch(fetchArticlesList());
     dispatch(articlesPageActions.initState());
+    dispatch(fetchArticlesList({ page }));
   });
+
+  const onLoadNextPart = useCallback(() => {
+    console.log("callback");
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
+  if (error) {
+    return (
+      <Page className={classNames(classes.ArticlesPage, {}, [className])}>
+        <Text title={error} className={classes.title} />
+      </Page>
+    );
+  }
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(classes.ArticlesPage, {}, [className])}>
+      <Page
+        onScrollEnd={onLoadNextPart}
+        className={classNames(classes.ArticlesPage, {}, [className])}
+      >
         <ArticlePageHeader view={view} />
-
         <Text title={t("Блог")} className={classes.title} />
 
         <ArticleList
@@ -57,7 +78,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
           view={view}
           articles={articles}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

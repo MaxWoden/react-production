@@ -23,7 +23,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   const sidebarItemsList = useSelector(getSidebarItems);
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={classNames(
         classes.Sidebar,
@@ -54,6 +54,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         <ThemeSwitcher className={classes.switcher} />
         <LangSwitcher className={classes.switcher} />
       </div>
-    </div>
+    </menu>
   );
 });

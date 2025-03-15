@@ -77,18 +77,19 @@
     object-fit: cover;
   }
 
-  .author {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
+  .author,
   .date {
     display: none;
     position: absolute;
-    right: 0;
     top: 0;
+  }
+
+  .author {
+    left: 0;
+  }
+
+  .date {
+    right: 0;
   }
 
   .infoWrapper {

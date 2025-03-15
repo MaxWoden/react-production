@@ -3,10 +3,10 @@ import {
   getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
-} from "./articlePage";
+} from "./articlesPageSelectors";
 import { ArticleView } from "entities/Article";
 
-describe("articlePage", () => {
+describe("articlesPageSelectors", () => {
   test("should return error", () => {
     const state: DeepPartial<StateSchema> = {
       articlesPage: {
