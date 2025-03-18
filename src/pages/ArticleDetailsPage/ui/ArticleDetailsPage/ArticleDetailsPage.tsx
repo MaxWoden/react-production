@@ -24,7 +24,7 @@ import {
   getArticleComments,
 } from "../../model/slice/articleDetailsCommentSlice";
 import classes from "./ArticleDetailsPage.module.scss";
-import { Page } from "shared/ui/Page/Page";
+import { Page } from "widgets/Page";
 
 interface ArticleDetailsPageProps {
   className?: string;

@@ -23,22 +23,20 @@ export const CountrySelect = memo((props: CountrySelectProps) => {
 
   const { t } = useTranslation();
 
-  const selectedItem = options.find((item) => item.value === value);
-
   const changeHandler = useCallback(
-    (value: string) => {
-      onChange?.(value as Country);
+    (value: Country) => {
+      onChange?.(value);
     },
     [onChange]
   );
 
   return (
-    <Select
+    <Select<Country>
       className={className}
       label={t("Укажите страну")}
       readonly={readonly}
       options={options}
-      selectedItem={selectedItem}
+      value={value}
       onSelect={changeHandler}
     />
   );

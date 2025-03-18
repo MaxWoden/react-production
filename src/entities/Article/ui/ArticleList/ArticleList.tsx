@@ -4,18 +4,18 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Text, TextAlign } from "shared/ui/Text/Text";
 import { Article, ArticleView } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
-import classes from "./ArticleList.module.scss";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
+import classes from "./ArticleList.module.scss";
 
 interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
-  view: ArticleView;
+  view: ArticleView | undefined;
 }
 
 const getSkeletons = (view: ArticleView) => {
-  return new Array(view === ArticleView.LIST ? 3 : 16)
+  return new Array(view === ArticleView.LIST ? 4 : 24)
     .fill(0)
     .map((_, index) => (
       <ArticleListItemSkeleton
@@ -41,17 +41,15 @@ export const ArticleList = memo((props: ArticleListProps) => {
     );
   };
 
-  if (isLoading)
-    return (
-      <div
-        className={classNames(classes.ArticleList, {}, [
-          className,
-          classes[view],
-        ])}
-      >
-        {getSkeletons(view)}
-      </div>
-    );
+  let content;
+
+  if (isLoading) {
+    content = getSkeletons(view);
+  } else if (!isLoading && !articles.length) {
+    content = <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />;
+  } else {
+    content = articles.map(renderArticle);
+  }
 
   return (
     <div
@@ -60,11 +58,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         classes[view],
       ])}
     >
-      {articles.length ? (
-        articles.map(renderArticle)
-      ) : (
-        <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />
-      )}
+      {content}
     </div>
   );
 });

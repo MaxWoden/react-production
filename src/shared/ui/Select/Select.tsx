@@ -1,32 +1,39 @@
-import { memo, useEffect, useMemo, useState } from "react";
-import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Select.module.scss";
 
-export interface SelectOption {
-  value: string;
+export interface SelectOption<T extends string> {
+  value: T;
   content: string;
 }
 
-interface SelectProps {
+interface SelectProps<T extends string> {
   className?: string;
-  options: Array<SelectOption>;
-  selectedItem?: SelectOption;
+  options: SelectOption<T>[];
+  value?: T | undefined;
   label?: string;
   readonly?: boolean;
-  onSelect?: (value: string) => void;
+  onSelect: (value: T) => void;
 }
 
-export const Select = memo((props: SelectProps) => {
-  const { className, options, onSelect, label, selectedItem, readonly } = props;
+export const Select = <T extends string>(props: SelectProps<T>) => {
+  const { className, options, onSelect, label, value, readonly } = props;
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(selectedItem || options[0]);
+  const [selected, setSelected] = useState(options[0]);
 
-  const selectHandler = (event: React.MouseEvent, item: SelectOption) => {
-    event.stopPropagation();
-    onSelect?.(item.value);
-    setSelected(item);
-    onToggle();
-  };
+  useEffect(() => {
+    setSelected(options.find((item) => item.value === value)!);
+  }, [value]);
+
+  const onSelectHandler = useCallback(
+    (event: React.MouseEvent, item: SelectOption<T>) => {
+      event.stopPropagation();
+      onSelect(item.value);
+      setSelected(item);
+      onToggle();
+    },
+    []
+  );
 
   const onToggle = () => {
     if (readonly) return;
@@ -46,7 +53,7 @@ export const Select = memo((props: SelectProps) => {
               [classes.selected]: selected.value === item.value,
             })}
             key={item.value}
-            onClick={(event) => selectHandler(event, item)}
+            onClick={(event) => onSelectHandler(event, item)}
           >
             {item.content}
           </li>
@@ -72,4 +79,4 @@ export const Select = memo((props: SelectProps) => {
       )}
     </div>
   );
-});
+};

@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ArticleViewSwitcher } from "./ArticleViewSwitcher";
+import { ArticlesPageViewSelector } from "./ArticlesPageViewSelector";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { ArticleView } from "entities/Article";
 import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
 
-const meta: Meta<typeof ArticleViewSwitcher> = {
-  title: "widgets/ArticleViewSwitcher",
-  component: ArticleViewSwitcher,
+const meta: Meta<typeof ArticlesPageViewSelector> = {
+  title: "widgets/ArticlesPageViewSelector",
+  component: ArticlesPageViewSelector,
   tags: ["autodocs"],
   decorators: [StoreDecorator({})],
   args: {
@@ -17,7 +17,7 @@ const meta: Meta<typeof ArticleViewSwitcher> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ArticleViewSwitcher>;
+type Story = StoryObj<typeof ArticlesPageViewSelector>;
 
 export const LightList: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],

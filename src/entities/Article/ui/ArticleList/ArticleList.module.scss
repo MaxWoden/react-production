@@ -8,8 +8,5 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
-  .card {
-    margin: 30px 0 0 30px;
-  }
+  gap: 30px;
 }

@@ -1,0 +1,20 @@
+.Tabs {
+  display: flex;
+  gap: 15px;
+}
+
+.item {
+  cursor: pointer;
+  padding: 10px 25px;
+  border: 1px solid transparent;
+  transition: all var(--animation-fast);
+
+  &:hover {
+    border: 1px solid var(--shadow-color);
+  }
+}
+
+.selected {
+  background: var(--inverted-bg-color);
+  color: var(--inverted-primary-color);
+}

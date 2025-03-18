@@ -9,8 +9,8 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { Page } from "shared/ui/Page/Page";
 import { Text } from "shared/ui/Text/Text";
+import { Page } from "widgets/Page";
 import {
   getArticlesPageError,
   getArticlesPageInited,
@@ -23,8 +23,10 @@ import {
   articlesPageReducer,
   getArticles,
 } from "../../model/slice/articlesPageSlice";
-import { ArticlePageHeader } from "../ArticlePageHeader/ArticlePageHeader";
+
+import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 import classes from "./ArticlesPage.module.scss";
+import { useSearchParams } from "react-router-dom";
 
 interface ArticlesPageProps {
   className?: string;
@@ -38,13 +40,16 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
   const error = useSelector(getArticlesPageError);
   const view = useSelector(getArticlesPageView);
   const inited = useSelector(getArticlesPageInited);
 
-  useInitialEffects(() => !inited && dispatch(initArticlesPage()));
+  const [searchParams] = useSearchParams();
+
+  useInitialEffects(() => !inited && dispatch(initArticlesPage(searchParams)));
 
   const onLoadNextPart = useCallback(() => {
     dispatch(fetchNextArticlesPage());
@@ -64,7 +69,8 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         onScrollEnd={onLoadNextPart}
         className={classNames(classes.ArticlesPage, {}, [className])}
       >
-        <ArticlePageHeader view={view} />
+        <ArticlesPageFilters />
+
         <Text title={t("Блог")} className={classes.title} />
 
         <ArticleList

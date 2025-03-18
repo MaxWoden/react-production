@@ -25,7 +25,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { Page } from "shared/ui/Page/Page";
+import { Page } from "widgets/Page";
 
 const reducers: ReducersList = { profile: profileReducer };
 

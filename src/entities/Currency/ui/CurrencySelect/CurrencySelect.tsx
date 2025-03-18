@@ -21,11 +21,9 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
 
   const { t } = useTranslation();
 
-  const selectedItem = options.find((item) => item.value === value);
-
   const changeHandler = useCallback(
-    (value: string) => {
-      onChange?.(value as Currency);
+    (value: Currency) => {
+      onChange?.(value);
     },
     [onChange]
   );
@@ -36,7 +34,7 @@ export const CurrencySelect = memo((props: CurrencySelectProps) => {
       label={t("Укажите валюту")}
       readonly={readonly}
       options={options}
-      selectedItem={selectedItem}
+      value={value}
       onSelect={changeHandler}
     />
   );

@@ -3,7 +3,6 @@ import { addCommentFormSchema } from "../types/addCommentForm";
 
 const initialState: addCommentFormSchema = {
   text: "",
-  isLoading: false,
   error: undefined,
 };
 
