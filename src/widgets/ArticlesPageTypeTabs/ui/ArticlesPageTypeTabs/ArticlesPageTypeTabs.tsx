@@ -3,7 +3,7 @@ import { memo, useMemo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button/Button";
 import classes from "./ArticlesPageTypeTabs.module.scss";
-import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
+import { TabItem, Tabs, TabsTheme } from "shared/ui/Tabs/Tabs";
 import { useTranslation } from "react-i18next";
 
 interface ArticlesPageTypeTabsProps {

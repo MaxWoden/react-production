@@ -110,6 +110,28 @@ export const OutlineDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
+export const NoneOrange: Story = {
+  args: {
+    children: "none orange",
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const ClearOrange: Story = {
+  args: {
+    children: "clear orange",
+    theme: ButtonTheme.CLEAR,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const OutlineOrange: Story = {
+  args: {
+    children: "outline orange",
+    theme: ButtonTheme.OUTLINE,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
 export const Square: Story = {
   args: {
     children: ">",

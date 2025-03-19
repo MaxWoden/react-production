@@ -22,12 +22,29 @@ type Story = StoryObj<typeof Avatar>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
+export const SmallLight: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+  args: {
+    size: 40,
+  },
+};
+
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const Small: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+export const SmallDark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+  args: {
+    size: 40,
+  },
+};
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const SmallOrange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
   args: {
     size: 40,
   },

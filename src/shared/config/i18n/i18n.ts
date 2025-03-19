@@ -10,7 +10,7 @@ i18next
   .init({
     // debug: __IS_DEV__ ? true : false,
     debug: false,
-
+    fallbackLng: "ru",
     interpolation: {
       escapeValue: false,
     },

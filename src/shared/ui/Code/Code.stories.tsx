@@ -21,6 +21,6 @@ type Story = StoryObj<typeof Code>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-};
+export const Dark: Story = { decorators: [ThemeDecorator(Theme.DARK)] };
+
+export const Orange: Story = { decorators: [ThemeDecorator(Theme.ORANGE)] };

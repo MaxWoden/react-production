@@ -8,6 +8,9 @@ import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
 import { SortOrder } from "shared/types";
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
+import { ArticlesPageSortSelect } from "widgets/ArticlesPageSortSelect";
+import { ArticlesPageTypeTabs } from "widgets/ArticlesPageTypeTabs";
+import { ArticlesPageViewSelector } from "widgets/ArticlesPageViewSelector";
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
@@ -17,9 +20,6 @@ import {
 } from "../../model/selectors/articlesPageSelectors";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import { articlesPageActions } from "../../model/slice/articlesPageSlice";
-import { ArticlesPageSortSelect } from "widgets/ArticlesPageSortSelect/ArticlesPageSortSelect";
-import { ArticlesPageTypeTabs } from "widgets/ArticlesPageTypeTabs/ArticlesPageTypeTabs";
-import { ArticlesPageViewSelector } from "widgets/ArticlesPageViewSelector/ArticlesPageViewSelector";
 import classes from "./ArticlesPageFilters.module.scss";
 
 interface ArticlesPageFiltersProps {
@@ -37,15 +37,17 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
   const order = useSelector(getArticlesPageOrder);
   const search = useSelector(getArticlesPageSearch);
 
+  const fetchData = () => dispatch(fetchArticlesList({}));
+
   const debouncedFetchData = useDebounce(() => {
-    dispatch(fetchArticlesList({}));
+    fetchData();
   }, 500);
 
   const onChangeView = useCallback(
     (articleView: ArticleView) => {
       dispatch(articlesPageActions.setView(articleView));
       dispatch(articlesPageActions.setPage(1));
-      debouncedFetchData();
+      fetchData();
     },
     [dispatch, debouncedFetchData]
   );
@@ -54,7 +56,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     (articleType: ArticleType) => {
       dispatch(articlesPageActions.setType(articleType));
       dispatch(articlesPageActions.setPage(1));
-      debouncedFetchData();
+      fetchData();
     },
     [dispatch, debouncedFetchData]
   );
@@ -63,7 +65,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     (newSort: ArticleSortField) => {
       dispatch(articlesPageActions.setSort(newSort));
       dispatch(articlesPageActions.setPage(1));
-      debouncedFetchData();
+      fetchData();
     },
     [dispatch, debouncedFetchData]
   );
@@ -72,7 +74,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     (newOrder: SortOrder) => {
       dispatch(articlesPageActions.setOrder(newOrder));
       dispatch(articlesPageActions.setPage(1));
-      debouncedFetchData();
+      fetchData();
     },
     [dispatch, debouncedFetchData]
   );

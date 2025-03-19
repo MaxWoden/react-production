@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { Input } from "./Input";
 import { Theme } from "app/providers/ThemeProvider";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { Input } from "./Input";
 
 const meta: Meta<typeof Input> = {
   title: "shared/Input",
@@ -11,18 +11,13 @@ const meta: Meta<typeof Input> = {
     placeholder: "Text",
     value: "Example",
   },
-  parameters: {
-    theme: Theme.LIGHT,
-  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Input>;
 
-export const Opened: Story = {};
+export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const OpenedDark: Story = {
-  parameters: {
-    theme: Theme.DARK,
-  },
-};
+export const Dark: Story = { decorators: [ThemeDecorator(Theme.DARK)] };
+
+export const Orange: Story = { decorators: [ThemeDecorator(Theme.ORANGE)] };

@@ -51,6 +51,7 @@ export const profileSlice = createSlice({
       )
       .addCase(fetchProfileDataById.rejected, (state, action) => {
         state.isLoading = false;
+        state.readonly = true;
         state.error = action.payload;
       })
 
@@ -72,6 +73,7 @@ export const profileSlice = createSlice({
       )
       .addCase(updateProfileData.rejected, (state, action) => {
         state.isLoading = false;
+        state.readonly = true;
         state.validateErrors = action.payload;
       });
   },

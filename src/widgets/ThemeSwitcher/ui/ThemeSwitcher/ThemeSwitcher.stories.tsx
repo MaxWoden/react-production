@@ -40,3 +40,17 @@ export const InvertedDark: Story = {
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
+
+export const PrimaryOrange: Story = {
+  args: {
+    style: ThemeSwitcherStyle.PRIMARY,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const InvertedOrange: Story = {
+  args: {
+    style: ThemeSwitcherStyle.INVERTED,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};

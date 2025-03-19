@@ -21,6 +21,6 @@ type Story = StoryObj<typeof Modal>;
 
 export const Opened: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const OpenedDark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-};
+export const Dark: Story = { decorators: [ThemeDecorator(Theme.DARK)] };
+
+export const Orange: Story = { decorators: [ThemeDecorator(Theme.ORANGE)] };

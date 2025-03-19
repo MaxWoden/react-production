@@ -1,17 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Theme } from "app/providers/ThemeProvider";
+import { ArticleType } from "entities/Article";
+import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
-import { PageError } from "./PageError";
+import { ArticlesPageTypeTabs } from "./ArticlesPageTypeTabs";
 
-const meta: Meta<typeof PageError> = {
-  title: "widgets/PageError",
-  component: PageError,
+const meta: Meta<typeof ArticlesPageTypeTabs> = {
+  title: "widgets/ArticlesPageTypeTabs",
+  component: ArticlesPageTypeTabs,
   tags: ["autodocs"],
+  decorators: [StoreDecorator({ articlesPage: {} })],
+  args: {
+    type: ArticleType.ALL,
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof PageError>;
+type Story = StoryObj<typeof ArticlesPageTypeTabs>;
 
 export const Light: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],

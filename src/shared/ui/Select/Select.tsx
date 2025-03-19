@@ -22,7 +22,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
   const [selected, setSelected] = useState(options[0]);
 
   useEffect(() => {
-    setSelected(options.find((item) => item.value === value)!);
+    value && setSelected(options.find((item) => item.value === value)!);
   }, [value]);
 
   const onSelectHandler = useCallback(

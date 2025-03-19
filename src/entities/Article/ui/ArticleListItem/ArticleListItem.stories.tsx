@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { Article, ArticleView } from "../../model/types/article";
@@ -96,33 +95,33 @@ const meta: Meta<typeof ArticleListItem> = {
 export default meta;
 type Story = StoryObj<typeof ArticleListItem>;
 
-export const LightPlate: Story = {
+export const PlateLight: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const DarkPlate: Story = {
+export const ListLight: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+  args: {
+    view: ArticleView.GRID,
+  },
+};
+
+export const PlateDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const OrangePlate: Story = {
+export const ListDark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+  args: {
+    view: ArticleView.GRID,
+  },
+};
+
+export const PlateOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };
 
-export const LightList: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-  args: {
-    view: ArticleView.GRID,
-  },
-};
-
-export const DarkList: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-  args: {
-    view: ArticleView.GRID,
-  },
-};
-
-export const OrangeList: Story = {
+export const ListOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
   args: {
     view: ArticleView.GRID,

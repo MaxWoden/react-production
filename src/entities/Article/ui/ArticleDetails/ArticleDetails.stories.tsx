@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import { ArticleDetails } from "./ArticleDetails";
 import { Theme } from "app/providers/ThemeProvider";
-import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
+import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import {
   Article,
   ArticleBLockType,
   ArticleType,
 } from "../../model/types/article";
+import { ArticleDetails } from "./ArticleDetails";
 
 const article: Article = {
   id: "1",
@@ -116,6 +115,32 @@ export const LoadingDark: Story = {
 export const ErrorDark: Story = {
   decorators: [
     ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      articleDetails: {
+        error: "error",
+      },
+    }),
+  ],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LoadingOrange: Story = {
+  decorators: [
+    ThemeDecorator(Theme.ORANGE),
+    StoreDecorator({
+      articleDetails: {
+        isLoading: true,
+      },
+    }),
+  ],
+};
+
+export const ErrorOrange: Story = {
+  decorators: [
+    ThemeDecorator(Theme.ORANGE),
     StoreDecorator({
       articleDetails: {
         error: "error",

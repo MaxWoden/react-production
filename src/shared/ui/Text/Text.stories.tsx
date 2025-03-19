@@ -115,16 +115,42 @@ export const ErrorDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const onlyTitleDark: Story = {
+export const onlyTitleOrange: Story = {
   args: {
     title: "Lorem, ipsum dolor.",
   },
-  decorators: [ThemeDecorator(Theme.DARK)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };
 
-export const onlyTextDark: Story = {
+export const onlyTextOrange: Story = {
   args: {
     text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
   },
-  decorators: [ThemeDecorator(Theme.DARK)],
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const PrimaryOrange: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const InvertedOrange: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+    theme: TextTheme.INVERTED,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const ErrorOrange: Story = {
+  args: {
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+    theme: TextTheme.ERROR,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };

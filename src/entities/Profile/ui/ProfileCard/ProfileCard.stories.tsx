@@ -29,20 +29,52 @@ type Story = StoryObj<typeof ProfileCard>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-};
-
-export const withError: Story = {
+export const withErrorLight: Story = {
   args: {
     error: "true",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Loading: Story = {
+export const LoadingLight: Story = {
   args: {
     isLoading: true,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const withErrorDark: Story = {
+  args: {
+    error: "true",
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const LoadingDark: Story = {
+  args: {
+    isLoading: true,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const withErrorOrange: Story = {
+  args: {
+    error: "true",
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LoadingOrange: Story = {
+  args: {
+    isLoading: true,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };

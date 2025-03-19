@@ -39,3 +39,12 @@ export const LoadingDark: Story = {
   args: { isLoading: true },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LoadingOrange: Story = {
+  args: { isLoading: true },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import classes from "./PageError.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Refresher } from "shared/ui/Refresher/Refresher";
+import { Refresher, RefresherTheme } from "shared/ui/Refresher/Refresher";
 import { useTheme } from "app/providers/ThemeProvider";
 import { memo } from "react";
 
@@ -30,7 +30,7 @@ export const PageError = memo(({ className }: PageErrorProps) => {
           onClick={reloadPage}
         >
           {t("Обновить страницу")}
-          <Refresher />
+          <Refresher theme={RefresherTheme.INVERTED} />
         </Button>
       </div>
     </div>

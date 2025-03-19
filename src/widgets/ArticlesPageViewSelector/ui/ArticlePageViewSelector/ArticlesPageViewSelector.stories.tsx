@@ -10,7 +10,7 @@ const meta: Meta<typeof ArticlesPageViewSelector> = {
   title: "widgets/ArticlesPageViewSelector",
   component: ArticlesPageViewSelector,
   tags: ["autodocs"],
-  decorators: [StoreDecorator({})],
+  decorators: [StoreDecorator({ articlesPage: {} })],
   args: {
     view: ArticleView.LIST,
   },

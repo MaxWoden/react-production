@@ -8,7 +8,6 @@ const meta: Meta<typeof Header> = {
   title: "widgets/Header",
   component: Header,
   tags: ["autodocs"],
-  decorators: [StoreDecorator()],
 };
 
 export default meta;
@@ -28,11 +27,19 @@ export const Dark: Story = {
 };
 
 export const AuthedDark: Story = {
-  parameters: {
-    theme: Theme.DARK,
-    decorators: [
-      ThemeDecorator(Theme.LIGHT),
-      StoreDecorator({ user: { authData: {} } }),
-    ],
-  },
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({ user: { authData: {} } }),
+  ],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const AuthedOrange: Story = {
+  decorators: [
+    ThemeDecorator(Theme.ORANGE),
+    StoreDecorator({ user: { authData: {} } }),
+  ],
 };

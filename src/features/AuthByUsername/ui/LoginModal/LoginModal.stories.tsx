@@ -18,15 +18,33 @@ const meta: Meta<typeof LoginModal> = {
 export default meta;
 type Story = StoryObj<typeof LoginModal>;
 
-export const Opened: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
+export const OpenedLight: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
+
+export const ErrorLight: Story = {
+  decorators: [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({ loginForm: { error: "error" } }),
+  ],
+};
 
 export const OpenedDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const Error: Story = {
+export const ErrorDark: Story = {
   decorators: [
-    ThemeDecorator(Theme.LIGHT),
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({ loginForm: { error: "error" } }),
+  ],
+};
+
+export const OpenedOrange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const ErrorOrange: Story = {
+  decorators: [
+    ThemeDecorator(Theme.ORANGE),
     StoreDecorator({ loginForm: { error: "error" } }),
   ],
 };

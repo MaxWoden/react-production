@@ -15,7 +15,7 @@ const meta: Meta<typeof AppLink> = {
 export default meta;
 type Story = StoryObj<typeof AppLink>;
 
-export const Primary: Story = {
+export const PrimaryLight: Story = {
   args: {
     children: "primary",
     theme: AppLinkTheme.PRIMARY,
@@ -23,7 +23,7 @@ export const Primary: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Secondary: Story = {
+export const SecondaryLight: Story = {
   args: {
     children: "secondary",
     theme: AppLinkTheme.SECONDARY,
@@ -31,7 +31,7 @@ export const Secondary: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const InvertedPrimary: Story = {
+export const InvertedPrimaryLight: Story = {
   args: {
     children: "inverted primary",
     theme: AppLinkTheme.INVERTED_PRIMARY,
@@ -39,7 +39,7 @@ export const InvertedPrimary: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const InvertedSecondary: Story = {
+export const InvertedSecondaryLight: Story = {
   args: {
     children: "inverted secondary",
     theme: AppLinkTheme.INVERTED_SECONDARY,
@@ -77,4 +77,36 @@ export const InvertedSecondaryDark: Story = {
     theme: AppLinkTheme.INVERTED_SECONDARY,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const PrimaryOrange: Story = {
+  args: {
+    children: "primary orange",
+    theme: AppLinkTheme.PRIMARY,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const SecondaryOrange: Story = {
+  args: {
+    children: "secondary orange",
+    theme: AppLinkTheme.SECONDARY,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const InvertedPrimaryOrange: Story = {
+  args: {
+    children: "inverted primary orange",
+    theme: AppLinkTheme.INVERTED_PRIMARY,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const InvertedSecondaryOrange: Story = {
+  args: {
+    children: "inverted secondary orange",
+    theme: AppLinkTheme.INVERTED_SECONDARY,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };

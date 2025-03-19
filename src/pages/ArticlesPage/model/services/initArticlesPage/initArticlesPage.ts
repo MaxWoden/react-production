@@ -22,11 +22,8 @@ export const initArticlesPage = createAsyncThunk<
     const searchFromUrl = searchParams.get("search");
 
     orderFromUrl && dispatch(articlesPageActions.setOrder(orderFromUrl));
-
     sortFromUrl && dispatch(articlesPageActions.setSort(sortFromUrl));
-
     typeFromUrl && dispatch(articlesPageActions.setType(typeFromUrl));
-
     searchFromUrl && dispatch(articlesPageActions.setSearch(searchFromUrl));
 
     dispatch(articlesPageActions.initState());

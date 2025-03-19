@@ -8,13 +8,26 @@
   padding: 10px 25px;
   border: 1px solid transparent;
   transition: all var(--animation-fast);
+}
 
-  &:hover {
+.clear {
+  .item:hover {
     border: 1px solid var(--shadow-color);
+  }
+
+  .selected {
+    background: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
   }
 }
 
-.selected {
-  background: var(--inverted-bg-color);
-  color: var(--inverted-primary-color);
+.outline {
+  .item:hover {
+    background: var(--inverted-bg-color);
+    color: var(--inverted-primary-color);
+  }
+
+  .selected {
+    border: 1px solid var(--shadow-color);
+  }
 }

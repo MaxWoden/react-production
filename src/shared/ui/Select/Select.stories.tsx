@@ -22,21 +22,21 @@ type Story = StoryObj<typeof Select>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const Label: Story = {
+export const LabelLight: Story = {
   args: {
     label: "Select",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Readonly: Story = {
+export const ReadonlyLight: Story = {
   args: {
     readonly: true,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const LabelReadonly: Story = {
+export const LabelReadonlyLight: Story = {
   args: {
     label: "Select",
     readonly: true,
@@ -53,4 +53,45 @@ export const LabelDark: Story = {
     label: "Select",
   },
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const ReadonlyDark: Story = {
+  args: {
+    readonly: true,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const LabelReadonlyDark: Story = {
+  args: {
+    label: "Select",
+    readonly: true,
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LabelOrange: Story = {
+  args: {
+    label: "Select",
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const ReadonlyOrange: Story = {
+  args: {
+    readonly: true,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LabelReadonlyOrange: Story = {
+  args: {
+    label: "Select",
+    readonly: true,
+  },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };

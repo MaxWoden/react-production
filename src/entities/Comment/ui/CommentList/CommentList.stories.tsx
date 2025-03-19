@@ -38,12 +38,12 @@ type Story = StoryObj<typeof CommentList>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const Empty: Story = {
+export const EmptyLight: Story = {
   args: { comments: [] },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Loading: Story = {
+export const LoadingLight: Story = {
   args: { isLoading: true },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -60,4 +60,18 @@ export const EmptyDark: Story = {
 export const LoadingDark: Story = {
   args: { isLoading: true },
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const EmptyOrange: Story = {
+  args: { comments: [] },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const LoadingOrange: Story = {
+  args: { isLoading: true },
+  decorators: [ThemeDecorator(Theme.ORANGE)],
 };

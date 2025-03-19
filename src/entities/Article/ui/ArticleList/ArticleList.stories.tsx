@@ -96,77 +96,77 @@ const meta: Meta<typeof ArticleList> = {
 export default meta;
 type Story = StoryObj<typeof ArticleList>;
 
-export const LightPlate: Story = {
+export const PlateLight: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const DarkPlate: Story = {
+export const IsLoadingPlateLight: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+  args: {
+    isLoading: true,
+  },
+};
+
+export const ListLight: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+  args: {
+    view: ArticleView.GRID,
+  },
+};
+
+export const IsLoadingListLight: Story = {
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+  args: {
+    isLoading: true,
+    view: ArticleView.GRID,
+  },
+};
+
+export const PlateDark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const OrangePlate: Story = {
+export const IsLoadingPlateDark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+  args: {
+    isLoading: true,
+  },
+};
+
+export const ListDark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+  args: {
+    view: ArticleView.GRID,
+  },
+};
+
+export const IsLoadingListDark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+  args: {
+    isLoading: true,
+    view: ArticleView.GRID,
+  },
+};
+
+export const PlateOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };
 
-export const IsLoadingLightPlate: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-  args: {
-    isLoading: true,
-  },
-};
-
-export const IsLoadingDarkPlate: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-  args: {
-    isLoading: true,
-  },
-};
-
-export const IsLoadingOrangePlate: Story = {
+export const IsLoadingPlateOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
   args: {
     isLoading: true,
   },
 };
 
-export const LightList: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-  args: {
-    view: ArticleView.GRID,
-  },
-};
-
-export const DarkList: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-  args: {
-    view: ArticleView.GRID,
-  },
-};
-
-export const OrangeList: Story = {
+export const ListOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
   args: {
     view: ArticleView.GRID,
   },
 };
 
-export const IsLoadingLightList: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-  args: {
-    isLoading: true,
-    view: ArticleView.GRID,
-  },
-};
-
-export const IsLoadingDarkList: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-  args: {
-    isLoading: true,
-    view: ArticleView.GRID,
-  },
-};
-
-export const IsLoadingOrangeList: Story = {
+export const IsLoadingListOrange: Story = {
   decorators: [ThemeDecorator(Theme.ORANGE)],
   args: {
     isLoading: true,

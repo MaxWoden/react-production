@@ -10,6 +10,7 @@ import classes from "./Header.module.scss";
 interface HeaderProps {
   className?: string;
 }
+
 export const Header = memo(({ className }: HeaderProps) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();

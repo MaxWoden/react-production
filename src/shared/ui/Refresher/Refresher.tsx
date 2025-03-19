@@ -2,12 +2,21 @@ import classes from "./Refresher.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { memo } from "react";
 
-interface RefresherProps {
-  className?: string;
+export enum RefresherTheme {
+  PRIMARY = "primary",
+  INVERTED = "inverted",
 }
 
-export const Refresher = memo(({ className }: RefresherProps) => {
+interface RefresherProps {
+  className?: string;
+  theme?: RefresherTheme;
+}
+
+export const Refresher = memo((props: RefresherProps) => {
+  const { className, theme = RefresherTheme.PRIMARY } = props;
   return (
-    <span className={classNames(classes.Refresher, {}, [className])}></span>
+    <span
+      className={classNames(classes.Refresher, {}, [classes[theme], className])}
+    ></span>
   );
 });

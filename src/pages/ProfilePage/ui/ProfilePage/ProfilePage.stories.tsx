@@ -34,15 +34,44 @@ type Story = StoryObj<typeof ProfilePage>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
-};
-
-export const withError: Story = {
+export const withErrorLight: Story = {
   decorators: [
     ThemeDecorator(Theme.LIGHT),
     StoreDecorator({
       profile: {
+        readonly: true,
+        error: "true",
+      },
+    }),
+  ],
+};
+
+export const Dark: Story = {
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const withErrorDark: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      profile: {
+        readonly: true,
+        error: "true",
+      },
+    }),
+  ],
+};
+
+export const Orange: Story = {
+  decorators: [ThemeDecorator(Theme.ORANGE)],
+};
+
+export const withErrorOrange: Story = {
+  decorators: [
+    ThemeDecorator(Theme.ORANGE),
+    StoreDecorator({
+      profile: {
+        readonly: true,
         error: "true",
       },
     }),
