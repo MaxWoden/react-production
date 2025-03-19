@@ -59,6 +59,12 @@
   .title {
     margin-top: 8px;
   }
+
+  .articleLink {
+    padding: 10px 20px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 25px;
+  }
 }
 
 .GRID {
@@ -69,6 +75,9 @@
     position: relative;
     width: 200px;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .img {
@@ -77,14 +86,14 @@
     object-fit: cover;
   }
 
-  .author,
+  .authorLink,
   .date {
     display: none;
     position: absolute;
     top: 0;
   }
 
-  .author {
+  .authorLink {
     left: 0;
   }
 
@@ -131,7 +140,7 @@
     transition: all var(--animation-fast);
 
     .date,
-    .author {
+    .authorLink {
       display: block;
     }
   }
