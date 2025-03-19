@@ -4,6 +4,14 @@
   background: var(--inverted-bg-color);
   display: flex;
   align-items: center;
-  justify-content: end;
   padding: 0 2%;
+}
+
+.appName {
+  width: var(--sidebar-width);
+  margin-left: 15px;
+}
+
+.profileInfo {
+  margin-left: auto;
 }

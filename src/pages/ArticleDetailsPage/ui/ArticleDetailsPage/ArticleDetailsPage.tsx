@@ -4,8 +4,7 @@ import { AddCommentForm } from "features/AddNewComment";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { RoutePath } from "shared/config/routerConfig/routerConfig";
+import { useParams } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
@@ -13,7 +12,6 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Text, TextSize } from "shared/ui/Text/Text";
 import { Page } from "widgets/Page";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
@@ -25,6 +23,7 @@ import { getArticleComments } from "../../model/slices/articleDetailsCommentSlic
 import { getArticleRecommendations } from "../../model/slices/articleDetailsRecommendationsSlice";
 import { articleDetailsPageReducer } from "../../model/slices/index";
 import classes from "./ArticleDetailsPage.module.scss";
+import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -37,7 +36,6 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const comments = useSelector(getArticleComments.selectAll);
@@ -60,10 +58,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     [dispatch]
   );
 
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles);
-  }, [navigate]);
-
   if (!id)
     return (
       <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
@@ -74,10 +68,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(classes.ArticleDetailsPage, {}, [className])}>
-        <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-          {t("Все статьи")}
-        </Button>
-
+        <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
 
         <Text

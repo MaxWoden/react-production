@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import classes from "./Header.module.scss";
+import { Text, TextTheme } from "shared/ui/Text/Text";
+import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
+import { RoutePath } from "shared/config/routerConfig/routerConfig";
 
 interface HeaderProps {
   className?: string;
@@ -32,7 +35,23 @@ export const Header = memo(({ className }: HeaderProps) => {
   if (authData) {
     return (
       <header className={classNames(classes.Header, {}, [className])}>
-        <Button theme={ButtonTheme.OUTLINE_INVERTED} onClick={onLogout}>
+        <Text
+          className={classes.appName}
+          theme={TextTheme.INVERTED}
+          title={t("Max Woden App")}
+        />
+        <AppLink
+          className={classes.createBtn}
+          theme={AppLinkTheme.INVERTED_SECONDARY}
+          to={RoutePath.article_create}
+        >
+          {t("Создать статью")}
+        </AppLink>
+        <Button
+          className={classes.profileInfo}
+          theme={ButtonTheme.OUTLINE_INVERTED}
+          onClick={onLogout}
+        >
           {t("Выйти")}
         </Button>
       </header>
@@ -41,7 +60,11 @@ export const Header = memo(({ className }: HeaderProps) => {
 
   return (
     <header className={classNames(classes.Header, {}, [className])}>
-      <Button theme={ButtonTheme.OUTLINE_INVERTED} onClick={onOpenModal}>
+      <Button
+        className={classes.profileInfo}
+        theme={ButtonTheme.OUTLINE_INVERTED}
+        onClick={onOpenModal}
+      >
         {t("Войти")}
       </Button>
       {isAuthModal && (
