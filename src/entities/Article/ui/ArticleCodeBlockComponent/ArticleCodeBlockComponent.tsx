@@ -1,9 +1,8 @@
-import { useTranslation } from "react-i18next";
-import classes from "./ArticleCodeBlockComponent.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { memo } from "react";
 import { ArticleCodeBlock } from "entities/Article/model/types/article";
+import { memo } from "react";
+import { classNames } from "shared/lib/classNames/classNames";
 import { Code } from "shared/ui/Code/Code";
+import classes from "./ArticleCodeBlockComponent.module.scss";
 
 interface ArticleCodeBlockComponentProps {
   className?: string;
@@ -20,7 +19,7 @@ export const ArticleCodeBlockComponent = memo(
           className,
         ])}
       >
-        <Code text={block.code} language={block.language} />
+        <Code text={block.code} />
       </div>
     );
   }

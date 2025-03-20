@@ -1,22 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { Code } from "./Code";
+import ArticleEditPage from "./ArticleEditPage";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 
-const meta: Meta<typeof Code> = {
-  title: "shared/Code",
-  component: Code,
+const meta: Meta<typeof ArticleEditPage> = {
+  title: "pages/ArticleEditPage",
+  component: ArticleEditPage,
   tags: ["autodocs"],
-  args: {
-    text:
-      "import type { Meta, StoryObj } from '@storybook/react';\n" +
-      "import { Code } from './Code';",
-  },
 };
 
 export default meta;
-type Story = StoryObj<typeof Code>;
+type Story = StoryObj<typeof ArticleEditPage>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 
