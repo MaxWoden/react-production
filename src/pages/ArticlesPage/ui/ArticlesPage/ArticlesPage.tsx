@@ -1,7 +1,7 @@
 import { ArticleList } from "entities/Article";
 import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
@@ -23,10 +23,8 @@ import {
   articlesPageReducer,
   getArticles,
 } from "../../model/slice/articlesPageSlice";
-
 import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 import classes from "./ArticlesPage.module.scss";
-import { useSearchParams } from "react-router-dom";
 
 interface ArticlesPageProps {
   className?: string;
@@ -38,7 +36,6 @@ const reducers: ReducersList = {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props;
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const articles = useSelector(getArticles.selectAll);
@@ -48,7 +45,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const inited = useSelector(getArticlesPageInited);
 
   const [searchParams] = useSearchParams();
-
   useInitialEffects(() => !inited && dispatch(initArticlesPage(searchParams)));
 
   const onLoadNextPart = useCallback(() => {
@@ -70,9 +66,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         className={classNames(classes.ArticlesPage, {}, [className])}
       >
         <ArticlesPageFilters />
-
-        <Text title={t("Блог")} className={classes.title} />
-
         <ArticleList
           className={classes.list}
           isLoading={isLoading}

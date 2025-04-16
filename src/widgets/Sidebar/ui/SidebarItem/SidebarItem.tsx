@@ -1,12 +1,8 @@
-import { getUserAuthData } from "entities/User";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { RoutePath } from "shared/config/routerConfig/routerConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-
+import { SidebarItemType } from "../../model/types/sidebar";
 import classes from "./SidebarItem.module.scss";
-import { SidebarItemType } from "widgets/Sidebar/model/types/sidebar";
 
 interface SidebarItemProps {
   item: SidebarItemType;

@@ -1,4 +1,4 @@
-import webpack, { RuleSetRule } from "webpack";
+import webpack from "webpack";
 import path from "path";
 import { BuildPaths } from "../build/types/config";
 import { buildCssLoader } from "../build/loaders/buildCssLoader";
@@ -10,6 +10,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
     html: "",
     public: "",
     src: path.resolve(__dirname, "..", "..", "src"),
+    locales: path.resolve(__dirname, "..", "..", "public", "locales"),
+    buildLocales: path.resolve(__dirname, "..", "", "public", "locales"),
   };
 
   config.resolve!.modules!.push(paths.src);

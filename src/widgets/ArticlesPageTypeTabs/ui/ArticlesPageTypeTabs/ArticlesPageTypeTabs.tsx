@@ -1,10 +1,9 @@
 import { ArticleType } from "entities/Article";
 import { memo, useMemo } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui/Button/Button";
-import classes from "./ArticlesPageTypeTabs.module.scss";
-import { TabItem, Tabs, TabsTheme } from "shared/ui/Tabs/Tabs";
 import { useTranslation } from "react-i18next";
+import { classNames } from "shared/lib/classNames/classNames";
+import { TabItem, Tabs } from "shared/ui/Tabs/Tabs";
+import classes from "./ArticlesPageTypeTabs.module.scss";
 
 interface ArticlesPageTypeTabsProps {
   className?: string;

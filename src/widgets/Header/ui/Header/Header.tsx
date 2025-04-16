@@ -1,6 +1,6 @@
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
-import { memo, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -20,17 +20,17 @@ export const Header = memo(({ className }: HeaderProps) => {
   const [isAuthModal, setIsAuthModal] = useState(false);
   const authData = useSelector(getUserAuthData);
 
-  const onOpenModal = () => {
+  const onOpenModal = useCallback(() => {
     setIsAuthModal(true);
-  };
+  }, [setIsAuthModal]);
 
-  const onCloseModal = () => {
+  const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
-  };
+  }, [setIsAuthModal]);
 
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
     dispatch(userActions.logout());
-  };
+  }, [dispatch]);
 
   if (authData) {
     return (

@@ -11,7 +11,7 @@ interface RequireAuthProps {
 export const RequireAuth = (props: RequireAuthProps) => {
   const { children } = props;
   const auth = useSelector(getUserAuthData);
-  let location = useLocation();
+  const location = useLocation();
 
   if (!auth) {
     return <Navigate to={RoutePath.main} state={{ from: location }} />;

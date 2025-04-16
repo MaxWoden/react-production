@@ -1,15 +1,15 @@
-import { getCanEditArticle } from "pages/ArticleDetailsPage/model/selectors/article";
+import { getArticleDetailsData } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import editIcon from "shared/assets/icons/edit.svg";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Icon } from "shared/ui/Icon/Icon";
+import { getCanEditArticle } from "../../model/selectors/article";
 import classes from "./ArticleDetailsPageHeader.module.scss";
-import { getArticleDetailsData } from "entities/Article";
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;

@@ -1,11 +1,11 @@
 import { getUserInited, userActions } from "entities/User";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { Header } from "widgets/Header";
 import { Sidebar } from "widgets/Sidebar";
 import { AppRouter } from "./providers/router";
-import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 
 export const App = () => {
   const dispatch = useDispatch();

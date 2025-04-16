@@ -12,11 +12,7 @@ import { ProfileSchema } from "entities/Profile";
 import { UserSchema } from "entities/User";
 import { addCommentFormSchema } from "features/AddNewComment";
 import { LoginSchema } from "features/AuthByUsername";
-import {
-  ArticleDetailsCommentsSchema,
-  ArticleDetailsPageSchema,
-  articleDetailsRecommendationsSchema,
-} from "pages/ArticleDetailsPage";
+import { ArticleDetailsPageSchema } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
 import { ScrollSaveSchema } from "widgets/Page";
 

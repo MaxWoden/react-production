@@ -1,5 +1,4 @@
 import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
 import { Profile, ProfileSchema, ValidateProfileError } from "../types/profile";
 import { profileActions, profileReducer } from "./profileSlice";
@@ -9,7 +8,6 @@ const data: Profile = {
   lastname: "Казаков",
   age: 19,
   country: Country.RU,
-
   city: "Казань",
   username: "admin",
   avatar:

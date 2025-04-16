@@ -22,8 +22,8 @@ import { fetchCommentsByArticleId } from "../../model/services/fetchComments/fet
 import { getArticleComments } from "../../model/slices/articleDetailsCommentSlice";
 import { getArticleRecommendations } from "../../model/slices/articleDetailsRecommendationsSlice";
 import { articleDetailsPageReducer } from "../../model/slices/index";
-import classes from "./ArticleDetailsPage.module.scss";
 import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";
+import classes from "./ArticleDetailsPage.module.scss";
 
 interface ArticleDetailsPageProps {
   className?: string;

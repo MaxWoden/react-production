@@ -1,8 +1,6 @@
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
+import { Article } from "entities/Article";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { fetchCommentsByArticleId } from "./fetchCommentsByArticleId";
-import { Article } from "entities/Article";
 
 const article = {
   id: "1",
