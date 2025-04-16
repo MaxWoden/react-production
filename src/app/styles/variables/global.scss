@@ -2,12 +2,27 @@
   // Fonts
 
   --font-family-main: consolas, "Times New Roman", serif;
+
+  // S size
+
+  --font-size-s: 12px;
+  --font-line-s: 20px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
+  // M size
+
   --font-size-m: 16px;
   --font-line-m: 24px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+
+  // L size
+
   --font-size-l: 24px;
   --font-line-l: 32px;
   --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+  // XL size
+
   --font-size-xl: 32px;
   --font-line-xl: 40px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);

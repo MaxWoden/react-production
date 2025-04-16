@@ -30,6 +30,15 @@ export const Size_L: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
+export const Size_S: Story = {
+  args: {
+    size: TextSize.S,
+    title: "Lorem, ipsum dolor.",
+    text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur natus mollitia tempore quia iure deserunt asperiores, omnis quae. Esse, cum?",
+  },
+  decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+
 export const Left: Story = {
   args: {
     title: "Lorem, ipsum dolor.",

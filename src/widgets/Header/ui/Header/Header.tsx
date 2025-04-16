@@ -60,7 +60,10 @@ export const Header = memo(({ className }: HeaderProps) => {
   }
 
   return (
-    <HStack className={classNames(classes.Header, {}, [className])}>
+    <HStack
+      role="heading"
+      className={classNames(classes.Header, {}, [className])}
+    >
       <Text
         className={classes.appName}
         theme={TextTheme.INVERTED}

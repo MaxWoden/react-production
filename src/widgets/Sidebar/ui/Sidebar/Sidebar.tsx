@@ -31,6 +31,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 
   return (
     <VStack
+      role="menu"
       gap="32"
       dataTestid="sidebar"
       className={classNames(
@@ -46,11 +47,16 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         size={ButtonSize.SIZE_XL}
         dataTestid="toggle-btn"
       >
-        <img src=""></img>
         {collapsed ? ">" : "<"}
       </Button>
 
-      <VStack max align="center" className={classes.navbar} gap="32">
+      <VStack
+        role="navigation"
+        max
+        align="center"
+        className={classes.navbar}
+        gap="32"
+      >
         {sidebarItemsList}
       </VStack>
 
