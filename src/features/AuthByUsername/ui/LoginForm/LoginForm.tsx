@@ -17,6 +17,7 @@ import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
 import { loginActions, loginReducer } from "../../model/slice/loginSlice";
 import classes from "./LoginForm.module.scss";
+import { VStack } from "shared/ui/Stack";
 
 export interface LoginFormProps {
   className?: string;
@@ -65,7 +66,7 @@ const LoginForm = (props: LoginFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(classes.LoginForm, {}, [className])}>
+      <VStack className={classNames(classes.LoginForm, {}, [className])}>
         <Text title="Форма авторизации"></Text>
         {error && <Text text={error} theme={TextTheme.ERROR}></Text>}
         <Input
@@ -89,7 +90,7 @@ const LoginForm = (props: LoginFormProps) => {
         >
           {t("Войти")}
         </Button>
-      </div>{" "}
+      </VStack>
     </DynamicModuleLoader>
   );
 };

@@ -5,6 +5,7 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Refresher, RefresherTheme } from "shared/ui/Refresher/Refresher";
 import { useTheme } from "app/providers/ThemeProvider";
 import { memo } from "react";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface PageErrorProps {
   className?: string;
@@ -18,21 +19,27 @@ export const PageError = memo(({ className }: PageErrorProps) => {
     location.reload();
   };
 
-  console.log(`theme is ${theme}`);
-
   return (
     <div className={classNames("app", {}, [theme])}>
-      <div className={classNames(classes.PageError, {}, [className])}>
+      <VStack
+        gap="32"
+        max
+        justify="center"
+        align="center"
+        className={classNames(classes.PageError, {}, [className])}
+      >
         <h1>{t("Произошла непредвиденная ошибка")}</h1>
         <Button
           theme={ButtonTheme.CLEAR}
-          className={classes.button}
+          className={classes.btnWrapper}
           onClick={reloadPage}
         >
-          {t("Обновить страницу")}
-          <Refresher theme={RefresherTheme.INVERTED} />
+          <HStack className={classes.btn} justify="center">
+            {t("Обновить страницу")}
+            <Refresher theme={RefresherTheme.INVERTED} />
+          </HStack>
         </Button>
-      </div>
+      </VStack>
     </div>
   );
 });

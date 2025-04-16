@@ -16,6 +16,7 @@ import {
 } from "../../model/types/article";
 import classes from "./ArticleListItem.module.scss";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface ArticleListItemProps {
   className?: string;
@@ -30,15 +31,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   const pathToAuthor = RoutePath.profile + article.user.id;
   const pathToArticle = RoutePath.article_details + article.id;
-  const types = (
-    <Text text={article.type.join(", ")} className={classes.types} />
-  );
+
+  const types = <Text text={article.type.join(", ")} />;
 
   const views = (
-    <>
-      <Text text={String(article.views)} className={classes.views} />
+    <HStack gap="8">
+      <Text text={String(article.views)} />
       <Icon Svg={EyeIcon} className={classes.viewsIcon} />
-    </>
+    </HStack>
   );
 
   if (view === ArticleView.LIST) {
@@ -46,51 +46,53 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       (block) => block.type === ArticleBLockType.TEXT
     ) as ArticleTextBlock;
 
+    const additionalClasses = [className, classes[view]];
+
     return (
-      <div
-        className={classNames(classes.ArticleListItem, {}, [
-          className,
-          classes[view],
-        ])}
-      >
-        <Card>
-          <div className={classes.header}>
-            <AppLink
-              target={target}
-              to={pathToAuthor}
-              className={classes.author}
-            >
-              <Avatar src={article.user.avatar} />
-              <Text text={article.user.username} className={classes.username} />
+      <Card className={classNames("", {}, additionalClasses)}>
+        <VStack gap="8">
+          <HStack max justify="between">
+            <AppLink target={target} to={pathToAuthor}>
+              <HStack gap="8">
+                <Avatar src={article.user.avatar} />
+                <Text text={article.user.username} />
+              </HStack>
             </AppLink>
 
-            <Text text={article.createdAt} className={classes.date} />
-          </div>
+            <Text text={article.createdAt} />
+          </HStack>
 
-          <Text text={article.title} className={classes.title} />
-          {types}
+          <Text text={article.title} />
 
-          <img alt={article.title} src={article.img} className={classes.img} />
+          <VStack gap="32">
+            {types}
 
-          {textBlock && (
-            <ArticleTextBlockComponent
-              block={textBlock}
-              className={classes.textBlock}
+            <img
+              alt={article.title}
+              src={article.img}
+              className={classes.img}
             />
-          )}
 
-          <div className={classes.footer}>
-            <AppLink
-              target={target}
-              className={classes.articleLink}
-              to={pathToArticle}
-            >
-              {t("Читать далее")}...
-            </AppLink>
-            {views}
-          </div>
-        </Card>
-      </div>
+            {textBlock && (
+              <ArticleTextBlockComponent
+                block={textBlock}
+                className={classes.textBlock}
+              />
+            )}
+
+            <HStack max justify="between">
+              <AppLink
+                target={target}
+                className={classes.articleLink}
+                to={pathToArticle}
+              >
+                {t("Читать далее")}...
+              </AppLink>
+              {views}
+            </HStack>
+          </VStack>
+        </VStack>
+      </Card>
     );
   }
 
@@ -104,23 +106,31 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       to={pathToArticle}
     >
       <Card>
-        <div className={classes.imageWrapper}>
-          <img alt={article.title} src={article.img} className={classes.img} />
-          <AppLink
-            target={target}
-            onClick={(e) => e.stopPropagation()}
-            to={pathToAuthor}
-            className={classes.authorLink}
-          >
-            {article.user.username}
-          </AppLink>
-          <Text text={article.createdAt} className={classes.date} />
-        </div>
-        <div className={classes.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <Text text={article.title} className={classes.title} />
+        <VStack gap="8">
+          <div className={classes.imageWrapper}>
+            <img
+              alt={article.title}
+              src={article.img}
+              className={classes.img}
+            />
+            <AppLink
+              target={target}
+              onClick={(e) => e.stopPropagation()}
+              to={pathToAuthor}
+              className={classes.authorLink}
+            >
+              {article.user.username}
+            </AppLink>
+            <Text text={article.createdAt} className={classes.date} />
+          </div>
+
+          <HStack max justify="between">
+            {types}
+            {views}
+          </HStack>
+
+          <Text text={article.title} className={classes.title} />
+        </VStack>
       </Card>
     </AppLink>
   );

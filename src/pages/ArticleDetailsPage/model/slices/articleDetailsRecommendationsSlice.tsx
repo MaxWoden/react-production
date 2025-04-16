@@ -42,7 +42,6 @@ const articleDetailsRecommendationsSlice = createSlice({
         (state, action: PayloadAction<Article[]>) => {
           state.isLoading = false;
           recommendationsAdapter.setAll(state, action.payload);
-          console.log(action.payload);
         }
       )
       .addCase(fetchArticleRecommendations.rejected, (state, action) => {

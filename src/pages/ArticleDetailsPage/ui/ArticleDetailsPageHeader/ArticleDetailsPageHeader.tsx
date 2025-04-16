@@ -10,6 +10,7 @@ import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Icon } from "shared/ui/Icon/Icon";
 import { getCanEditArticle } from "../../model/selectors/article";
 import classes from "./ArticleDetailsPageHeader.module.scss";
+import { HStack } from "shared/ui/Stack";
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;
@@ -33,29 +34,23 @@ export const ArticleDetailsPageHeader = memo(
     }, [navigate, article?.id]);
 
     return (
-      <div
-        className={classNames(classes.ArticleDetailsPageHeader, {}, [
-          className,
-        ])}
-      >
+      <HStack max justify="between" className={className}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t("Все статьи")}
         </Button>
 
         {canEdit && (
-          <Button
-            onClick={onEditArticle}
-            className={classes.editBtn}
-            theme={ButtonTheme.OUTLINE}
-          >
-            <Icon
-              Svg={editIcon}
-              className={classNames(classes.icon, {}, [classes.editIcon])}
-            />
-            {t("Редактировать")}
+          <Button onClick={onEditArticle} theme={ButtonTheme.OUTLINE}>
+            <HStack gap="8">
+              <Icon
+                Svg={editIcon}
+                className={classNames(classes.icon, {}, [classes.editIcon])}
+              />
+              {t("Редактировать")}
+            </HStack>
           </Button>
         )}
-      </div>
+      </HStack>
     );
   }
 );

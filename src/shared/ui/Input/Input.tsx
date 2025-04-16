@@ -8,6 +8,7 @@ import {
 } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Input.module.scss";
+import { HStack } from "../Stack";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -69,12 +70,9 @@ export const Input = memo((props: InputProps) => {
   }, []);
 
   return (
-    <div
-      className={classNames(
-        classes.InputWrapper,
-        { [classes.readonly]: readonly },
-        [className]
-      )}
+    <HStack
+      gap="4"
+      className={classNames("", { [classes.readonly]: readonly }, [className])}
     >
       {placeholder && (
         <div className={classes.placeholder}>{`${placeholder}> `}</div>
@@ -99,6 +97,6 @@ export const Input = memo((props: InputProps) => {
           ></span>
         )}
       </div>
-    </div>
+    </HStack>
   );
 });

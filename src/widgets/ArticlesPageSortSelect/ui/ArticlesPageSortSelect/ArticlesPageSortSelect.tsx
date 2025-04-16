@@ -3,8 +3,9 @@ import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Select, SelectOption } from "shared/ui/Select/Select";
-import classes from "./ArticlesPageSortSelect.module.scss";
+
 import { SortOrder } from "shared/types";
+import { HStack } from "shared/ui/Stack";
 
 interface ArticlesPageSortSelectProps {
   className?: string;
@@ -43,9 +44,7 @@ export const ArticlesPageSortSelect = memo(
     );
 
     return (
-      <div
-        className={classNames(classes.ArticlesPageSortSelect, {}, [className])}
-      >
+      <HStack gap="32" className={classNames("", {}, [className])}>
         <Select<ArticleSortField>
           label={t("Сортировать ПО")}
           options={sortFieldOptions}
@@ -58,7 +57,7 @@ export const ArticlesPageSortSelect = memo(
           onSelect={(newOrder: SortOrder) => onChangeOrder(newOrder)}
           value={order}
         ></Select>
-      </div>
+      </HStack>
     );
   }
 );

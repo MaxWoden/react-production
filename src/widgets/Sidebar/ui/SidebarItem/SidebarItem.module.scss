@@ -11,10 +11,6 @@
 }
 
 .SidebarItem {
-  display: flex;
-  gap: 15px;
-  align-items: end;
-
   &.collapsed {
     gap: 0;
 

@@ -3,6 +3,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { SidebarItemType } from "../../model/types/sidebar";
 import classes from "./SidebarItem.module.scss";
+import { HStack } from "shared/ui/Stack";
 
 interface SidebarItemProps {
   item: SidebarItemType;
@@ -15,19 +16,20 @@ export const SidebarItem = (props: SidebarItemProps) => {
   const { t } = useTranslation();
 
   return (
-    <AppLink
-      className={classNames(
-        classes.SidebarItem,
-        {
-          [classes.collapsed]: collapsed,
-        },
-        []
-      )}
-      to={path}
-      theme={AppLinkTheme.INVERTED_PRIMARY}
-    >
-      <Icon className={classes.img} />
-      <span className={classes.text}>{t(text)}</span>
+    <AppLink to={path} theme={AppLinkTheme.INVERTED_PRIMARY}>
+      <HStack
+        className={classNames(
+          classes.SidebarItem,
+          {
+            [classes.collapsed]: collapsed,
+          },
+          []
+        )}
+        gap="16"
+      >
+        <Icon className={classes.img} />
+        <span className={classes.text}>{t(text)}</span>
+      </HStack>
     </AppLink>
   );
 };

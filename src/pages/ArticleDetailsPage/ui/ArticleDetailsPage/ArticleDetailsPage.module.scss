@@ -2,18 +2,9 @@
   min-height: 100%;
 }
 
-.commentTitle {
-  margin-top: 30px;
-}
-
-.commentForm {
-  margin-top: 30px;
-}
-
 .recommendations {
-  margin-top: 30px;
-  flex-wrap: nowrap;
-  justify-content: start;
   overflow-y: hidden;
   overflow-x: auto;
+  justify-content: start;
+  flex-wrap: nowrap;
 }

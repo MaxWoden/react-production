@@ -28,6 +28,7 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
+import { HStack, VStack } from "shared/ui/Stack";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -107,35 +108,38 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   } else {
     content = (
       <>
-        <div className={classes.avatarWrapper}>
+        <HStack max>
           <Avatar
             src={article?.img}
             alt="avatar"
             size={200}
             className={classes.avatar}
           />
-        </div>
-        <Text
-          size={TextSize.L}
-          className={classes.title}
-          title={t(`${article?.title}`)}
-          text={t(`${article?.subtitle}`)}
-        />
-        <AppLink
-          className={classes.author}
-          to={RoutePath.profile + article?.user.id}
-        >
-          <Avatar size={50} src={article?.user.avatar} />
-          <Text text={article?.user.username} />
-        </AppLink>
-        <div className={classes.articleInfo}>
-          <Icon Svg={CalendarIcon} className={classes.icon} />
-          <Text text={t(`${article?.createdAt}`)} />
-        </div>
-        <div className={classes.articleInfo}>
-          <Icon Svg={EyeIcon} className={classes.icon} />
-          <Text text={t(`${article?.views}`)} />
-        </div>
+        </HStack>
+        <VStack gap="8">
+          <Text
+            size={TextSize.L}
+            className={classes.title}
+            title={t(`${article?.title}`)}
+            text={t(`${article?.subtitle}`)}
+          />
+
+          <AppLink to={RoutePath.profile + article?.user.id}>
+            <HStack gap="16">
+              <Avatar size={50} src={article?.user.avatar} />
+              <Text text={article?.user.username} />
+            </HStack>
+          </AppLink>
+
+          <HStack gap="8">
+            <Icon Svg={CalendarIcon} className={classes.icon} />
+            <Text text={t(`${article?.createdAt}`)} />
+          </HStack>
+          <HStack gap="8">
+            <Icon Svg={EyeIcon} className={classes.icon} />
+            <Text text={t(`${article?.views}`)} />
+          </HStack>
+        </VStack>
 
         {article?.blocks.map(renderBLock)}
       </>
@@ -144,9 +148,13 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(classes.ArticleDetails, {}, [className])}>
+      <VStack
+        gap="16"
+        max
+        className={classNames(classes.ArticleDetails, {}, [className])}
+      >
         {content}
-      </div>
+      </VStack>
     </DynamicModuleLoader>
   );
 });

@@ -6,6 +6,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button/Button";
 import { Icon } from "shared/ui/Icon/Icon";
 import classes from "./ArticlesPageViewSelector.module.scss";
+import { HStack } from "shared/ui/Stack";
 
 interface ArticlesPageViewSelectorProps {
   className?: string;
@@ -23,13 +24,9 @@ export const ArticlesPageViewSelector = memo(
     const { className, view, onViewClick } = props;
 
     return (
-      <div className={classNames("", {}, [className])}>
+      <HStack gap="8" className={classNames("", {}, [className])}>
         {viewTypes.map((item, index) => (
-          <Button
-            key={index}
-            className={classes.btn}
-            onClick={() => onViewClick(item.view)}
-          >
+          <Button key={index} onClick={() => onViewClick(item.view)}>
             <Icon
               Svg={item.Icon}
               className={classNames(classes.icon, {
@@ -38,7 +35,7 @@ export const ArticlesPageViewSelector = memo(
             />
           </Button>
         ))}
-      </div>
+      </HStack>
     );
   }
 );

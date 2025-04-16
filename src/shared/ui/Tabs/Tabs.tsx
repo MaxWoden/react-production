@@ -1,6 +1,7 @@
 import { ReactNode, useCallback, useEffect, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Card } from "../Card/Card";
+import { HStack } from "../Stack";
 import classes from "./Tabs.module.scss";
 
 export enum TabsTheme {
@@ -39,8 +40,10 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
     [onTabClick]
   );
 
+  const additionalClasses = [className, classes[theme]];
+
   return (
-    <div className={classNames(classes.Tabs, {}, [className, classes[theme]])}>
+    <HStack wrap gap="16" className={classNames("", {}, additionalClasses)}>
       {tabs.map((item) => (
         <Card
           key={item.value}
@@ -52,6 +55,6 @@ export const Tabs = <T extends string>(props: TabsProps<T>) => {
           {item.content}
         </Card>
       ))}
-    </div>
+    </HStack>
   );
 };

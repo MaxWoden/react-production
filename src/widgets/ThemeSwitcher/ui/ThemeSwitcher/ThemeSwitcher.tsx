@@ -5,6 +5,7 @@ import Orange from "shared/assets/icons/orange.svg";
 import Sun from "shared/assets/icons/sun.svg";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button } from "shared/ui/Button/Button";
+import { HStack } from "shared/ui/Stack";
 import classes from "./ThemeSwitcher.module.scss";
 
 export enum ThemeSwitcherStyle {
@@ -35,15 +36,14 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
       break;
   }
 
+  const additionalClasses = [classes[style], className];
+
   return (
     <Button
       onClick={toggleTheme}
-      className={classNames(classes.ThemeSwitcher, {}, [
-        classes[style],
-        className,
-      ])}
+      className={classNames(classes.ThemeSwitcher, {}, additionalClasses)}
     >
-      {icon}
+      <HStack align="center">{icon}</HStack>
     </Button>
   );
 });

@@ -9,6 +9,7 @@ import classes from "./Header.module.scss";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
+import { HStack } from "shared/ui/Stack";
 
 interface HeaderProps {
   className?: string;
@@ -34,11 +35,11 @@ export const Header = memo(({ className }: HeaderProps) => {
 
   if (authData) {
     return (
-      <header className={classNames(classes.Header, {}, [className])}>
+      <HStack className={classNames(classes.Header, {}, [className])}>
         <Text
           className={classes.appName}
           theme={TextTheme.INVERTED}
-          title={t("Max Woden App")}
+          title={"Woden App"}
         />
         <AppLink
           className={classes.createBtn}
@@ -54,12 +55,17 @@ export const Header = memo(({ className }: HeaderProps) => {
         >
           {t("Выйти")}
         </Button>
-      </header>
+      </HStack>
     );
   }
 
   return (
-    <header className={classNames(classes.Header, {}, [className])}>
+    <HStack className={classNames(classes.Header, {}, [className])}>
+      <Text
+        className={classes.appName}
+        theme={TextTheme.INVERTED}
+        title={"Woden App"}
+      />
       <Button
         className={classes.profileInfo}
         theme={ButtonTheme.OUTLINE_INVERTED}
@@ -70,6 +76,6 @@ export const Header = memo(({ className }: HeaderProps) => {
       {isAuthModal && (
         <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
       )}
-    </header>
+    </HStack>
   );
 });

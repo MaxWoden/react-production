@@ -20,6 +20,7 @@ import {
   addCommentFormReducer,
 } from "../../model/slice/addCommentFormSlice";
 import classes from "./AddCommentForm.module.scss";
+import { HStack } from "shared/ui/Stack";
 
 export interface AddCommentFormProps {
   className?: string;
@@ -59,7 +60,10 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(classes.AddCommentForm, {}, [className])}>
+      <HStack
+        max
+        className={classNames(classes.AddCommentForm, {}, [className])}
+      >
         {error ? (
           <Text
             theme={TextTheme.ERROR}
@@ -82,7 +86,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
             </Button>
           </>
         )}
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 });

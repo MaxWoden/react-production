@@ -5,29 +5,25 @@ import { Text, TextAlign } from "shared/ui/Text/Text";
 import { Article, ArticleView } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
-import classes from "./ArticleList.module.scss";
+import classes from "./ArticlesList.module.scss";
+import { HStack } from "shared/ui/Stack";
 
-interface ArticleListProps {
+interface ArticlesListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
   view: ArticleView | undefined;
   target?: HTMLAttributeAnchorTarget;
+  wrap?: boolean;
 }
 
 const getSkeletons = (view: ArticleView) => {
   return new Array(view === ArticleView.LIST ? 4 : 24)
     .fill(0)
-    .map((_, index) => (
-      <ArticleListItemSkeleton
-        view={view}
-        key={index}
-        className={classes.card}
-      />
-    ));
+    .map((_, index) => <ArticleListItemSkeleton view={view} key={index} />);
 };
 
-export const ArticleList = memo((props: ArticleListProps) => {
+export const ArticlesList = memo((props: ArticlesListProps) => {
   const {
     className,
     articles,
@@ -44,7 +40,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
         key={article.id}
         article={article}
         view={view}
-        className={classes.card}
       />
     );
   };
@@ -59,14 +54,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
     content = articles.map(renderArticle);
   }
 
+  const additionalClasses = [className, classes[view]];
+
   return (
-    <div
-      className={classNames(classes.ArticleList, {}, [
-        className,
-        classes[view],
-      ])}
+    <HStack
+      align="none"
+      justify="center"
+      wrap
+      gap="32"
+      max
+      className={classNames("", {}, additionalClasses)}
     >
       {content}
-    </div>
+    </HStack>
   );
 });

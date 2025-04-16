@@ -15,6 +15,7 @@ import {
 } from "entities/Profile";
 import { getUserAuthData } from "entities/User";
 import { useSelector } from "react-redux";
+import { HStack } from "shared/ui/Stack/HStack/HStack";
 import classes from "./ProfilePageHeader.module.scss";
 
 interface ProfilePageHeaderProps {
@@ -29,7 +30,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
 
   const profileData = useSelector(getProfileData);
   const userData = useSelector(getUserAuthData);
-  const ownProfile = profileData?.id === userData?.id;
+  const canEdit = profileData?.id === userData?.id;
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -46,46 +47,37 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(classes.ProfilePageHeader, {}, [className])}>
-      <Text title={t(ownProfile ? "Ваш профиль" : "Профиль")} />
-      {ownProfile && (
-        <div className={classes.editBlock}>
-          {readonly ? (
-            <Button
-              onClick={onEdit}
-              className={classes.editBtn}
-              theme={ButtonTheme.OUTLINE}
-            >
+    <HStack justify="between" max className={className}>
+      <Text title={t(canEdit ? "Ваш профиль" : "Профиль")} />
+      {canEdit ? (
+        readonly ? (
+          <Button onClick={onEdit} theme={ButtonTheme.OUTLINE}>
+            <HStack gap="16">
               <Edit className={classNames(classes.icon, {}, [classes.edit])} />
               {t("Редактировать")}
-            </Button>
-          ) : (
-            <>
-              {" "}
-              <Button
-                onClick={onSaveEdit}
-                theme={ButtonTheme.OUTLINE_GREEN}
-                className={classes.editBtn}
-              >
+            </HStack>
+          </Button>
+        ) : (
+          <HStack className={classes.editBlock} gap="32">
+            <Button onClick={onSaveEdit} theme={ButtonTheme.OUTLINE_GREEN}>
+              <HStack gap="16">
                 <Confirm
                   className={classNames(classes.icon, {}, [classes.confirm])}
                 />
                 {t("Сохранить")}
-              </Button>
-              <Button
-                onClick={onCancelEdit}
-                theme={ButtonTheme.OUTLINE_RED}
-                className={classes.editBtn}
-              >
+              </HStack>
+            </Button>
+            <Button onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
+              <HStack gap="16">
                 <Cancel
                   className={classNames(classes.icon, {}, [classes.cancel])}
                 />
                 {t("Отменить")}
-              </Button>
-            </>
-          )}
-        </div>
-      )}
-    </div>
+              </HStack>
+            </Button>
+          </HStack>
+        )
+      ) : null}
+    </HStack>
   );
 };

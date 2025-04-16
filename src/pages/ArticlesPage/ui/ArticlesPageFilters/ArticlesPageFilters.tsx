@@ -2,12 +2,13 @@ import { ArticleSortField, ArticleType, ArticleView } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
+
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
 import { SortOrder } from "shared/types";
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
+import { HStack, VStack } from "shared/ui/Stack";
 import { ArticlesPageSortSelect } from "widgets/ArticlesPageSortSelect";
 import { ArticlesPageTypeTabs } from "widgets/ArticlesPageTypeTabs";
 import { ArticlesPageViewSelector } from "widgets/ArticlesPageViewSelector";
@@ -22,12 +23,7 @@ import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchA
 import { articlesPageActions } from "../../model/slice/articlesPageSlice";
 import classes from "./ArticlesPageFilters.module.scss";
 
-interface ArticlesPageFiltersProps {
-  className?: string;
-}
-
-export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
-  const { className } = props;
+export const ArticlesPageFilters = memo(() => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -89,8 +85,8 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
   );
 
   return (
-    <div className={classNames(classes.ArticlesPageFilters, {}, [className])}>
-      <div className={classes.sortWrapper}>
+    <VStack gap="16">
+      <HStack max justify="between">
         <ArticlesPageSortSelect
           order={order}
           sort={sort}
@@ -98,7 +94,8 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
           onChangeSort={onChangeSort}
         />
         <ArticlesPageViewSelector onViewClick={onChangeView} view={view} />
-      </div>
+      </HStack>
+
       <Card className={classes.search}>
         <Input
           value={search}
@@ -106,7 +103,8 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
           placeholder={t("Поиск")}
         />
       </Card>
+
       <ArticlesPageTypeTabs type={type} onChangeType={onChangeType} />
-    </div>
+    </VStack>
   );
 });

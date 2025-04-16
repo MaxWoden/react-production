@@ -1,4 +1,4 @@
-import { ArticleList } from "entities/Article";
+import { ArticlesList } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
@@ -66,7 +66,8 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         className={classNames(classes.ArticlesPage, {}, [className])}
       >
         <ArticlesPageFilters />
-        <ArticleList
+        <ArticlesList
+          wrap
           className={classes.list}
           isLoading={isLoading}
           view={view}

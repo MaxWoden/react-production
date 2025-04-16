@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { Article, ArticleView } from "../../model/types/article";
-import { ArticleList } from "./ArticleList";
+import { ArticlesList } from "./ArticlesList";
 
 const article = {
   id: "1",
@@ -83,9 +83,9 @@ const article = {
   ],
 } as Article;
 
-const meta: Meta<typeof ArticleList> = {
-  title: "entities/ArticleList",
-  component: ArticleList,
+const meta: Meta<typeof ArticlesList> = {
+  title: "entities/ArticlesList",
+  component: ArticlesList,
   tags: ["autodocs"],
   args: {
     articles: [article],
@@ -94,7 +94,7 @@ const meta: Meta<typeof ArticleList> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ArticleList>;
+type Story = StoryObj<typeof ArticlesList>;
 
 export const PlateLight: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],

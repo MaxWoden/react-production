@@ -8,10 +8,8 @@
   transition: width var(--animation-fast);
   width: var(--sidebar-width);
   padding: 30px 15px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
+  height: 100vh;
 }
 
 .toggleBtn {
@@ -32,24 +30,13 @@
 
 .navbar {
   margin-top: 90px;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
   transition: var(--animation-fast);
 }
 
 .line {
   height: 1px;
   width: 100%;
-  margin-top: 30px;
   background: var(--inverted-primary-color);
-}
-
-.switchers {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
 }
 
 .item {
