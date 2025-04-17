@@ -29,6 +29,7 @@ export default [
       "wodenPlugin/path-checker": "error",
       "no-undef": "off",
       "no-unused-vars": "off",
+      "@typescript-eslint/no-require-imports": "off",
     },
   },
 ];
