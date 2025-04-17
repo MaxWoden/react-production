@@ -1,0 +1,46 @@
+.Dropdown {
+  position: relative;
+}
+
+.btn {
+  background: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.menu {
+  background: var(--card-bg);
+  position: absolute;
+  z-index: 1000;
+  left: -20px;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  display: flex;
+  flex-direction: column;
+
+  &:focus {
+    outline: none;
+  }
+
+  a {
+    border-radius: inherit;
+  }
+}
+
+.item {
+  padding: 10px 25px;
+  width: 100%;
+  border: none;
+  background: none;
+  outline: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  border-radius: inherit;
+}
+
+.active {
+  background: var(--inverted-shadow-color);
+}

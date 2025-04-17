@@ -25,12 +25,16 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     value && setSelected(options.find((item) => item.value === value)!);
   }, [value]);
 
+  useEffect(() => {
+    readonly && setOpen(false);
+  }, [readonly]);
+
   const onSelectHandler = useCallback(
     (event: React.MouseEvent, item: SelectOption<T>) => {
       event.stopPropagation();
       onSelect(item.value);
       setSelected(item);
-      onToggle();
+      setOpen(false);
     },
     []
   );
@@ -39,10 +43,6 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     if (readonly) return;
     setOpen((prev) => !prev);
   };
-
-  useEffect(() => {
-    readonly && setOpen(false);
-  }, [readonly]);
 
   const optionsList = useMemo(
     () =>

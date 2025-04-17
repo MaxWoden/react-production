@@ -1,15 +1,10 @@
 .Header {
-  width: 100%;
   height: var(--header-height);
   background: var(--inverted-bg-color);
-  padding: 0 2%;
+  padding: 0 5%;
 }
 
 .appName {
   width: var(--sidebar-width);
   margin-left: 15px;
-}
-
-.profileInfo {
-  margin-left: auto;
 }
