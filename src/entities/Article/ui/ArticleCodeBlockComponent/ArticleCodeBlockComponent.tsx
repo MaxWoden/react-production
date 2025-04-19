@@ -2,7 +2,7 @@ import { memo } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Code } from "shared/ui/Code/Code";
 import { ArticleCodeBlock } from "../../model/types/article";
-import classes from "./ArticleCodeBlockComponent.module.scss";
+import { VStack } from "shared/ui/Stack";
 
 interface ArticleCodeBlockComponentProps {
   className?: string;
@@ -14,13 +14,9 @@ export const ArticleCodeBlockComponent = memo(
     const { className, block } = props;
 
     return (
-      <div
-        className={classNames(classes.ArticleImageBlockComponent, {}, [
-          className,
-        ])}
-      >
+      <VStack max className={classNames("", {}, [className])}>
         <Code text={block.code} />
-      </div>
+      </VStack>
     );
   }
 );

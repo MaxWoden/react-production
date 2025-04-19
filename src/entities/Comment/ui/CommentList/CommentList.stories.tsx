@@ -4,7 +4,7 @@ import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorato
 import { CommentList } from "./CommentList";
 
 const meta: Meta<typeof CommentList> = {
-  title: "entities/CommentList",
+  title: "entities/Comment/CommentList",
   component: CommentList,
   tags: ["autodocs"],
   args: {

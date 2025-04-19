@@ -15,12 +15,12 @@ import {
   getAddCommentFormText,
 } from "../../model/selectors/addCommentFormSelectors";
 
+import { HStack } from "shared/ui/Stack";
 import {
   addCommentFormActions,
   addCommentFormReducer,
 } from "../../model/slice/addCommentFormSlice";
 import classes from "./AddCommentForm.module.scss";
-import { HStack } from "shared/ui/Stack";
 
 export interface AddCommentFormProps {
   className?: string;

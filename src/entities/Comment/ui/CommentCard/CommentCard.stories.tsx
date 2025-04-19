@@ -4,7 +4,7 @@ import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorato
 import { CommentCard } from "./CommentCard";
 
 const meta: Meta<typeof CommentCard> = {
-  title: "entities/CommentCard",
+  title: "entities/Comment/CommentCard",
   component: CommentCard,
   tags: ["autodocs"],
   args: {

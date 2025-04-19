@@ -45,6 +45,6 @@ export const fetchArticlesList = createAsyncThunk<
   } catch (e) {
     console.log(e);
 
-    return rejectWithValue("error");
+    return rejectWithValue("Произошла ошибка при загрузке данных");
   }
 });

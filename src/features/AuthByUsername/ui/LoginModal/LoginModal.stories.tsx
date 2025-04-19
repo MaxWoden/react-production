@@ -6,7 +6,7 @@ import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorato
 import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
 
 const meta: Meta<typeof LoginModal> = {
-  title: "features/LoginModal",
+  title: "features/AuthByUsername/LoginModal",
   component: LoginModal,
   tags: ["autodocs"],
   args: {

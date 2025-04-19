@@ -15,6 +15,7 @@ import { AppLink } from "shared/ui/AppLink/AppLink";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Icon } from "shared/ui/Icon/Icon";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
 import {
   getArticleDetailsData,
@@ -28,7 +29,6 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
-import { HStack, VStack } from "shared/ui/Stack";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -43,9 +43,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const { className, id } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const article = useSelector(getArticleDetailsData);
   const isLoading = useSelector(getArticleDetailsIsLoading);
   const error = useSelector(getArticleDetailsError);
+
+  useInitialEffects(() => dispatch(fetchArticleById(id)));
 
   const renderBLock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
@@ -77,8 +80,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         return null;
     }
   }, []);
-
-  useInitialEffects(() => dispatch(fetchArticleById(id)));
 
   let content;
 
@@ -148,11 +149,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <VStack
-        gap="16"
-        max
-        className={classNames(classes.ArticleDetails, {}, [className])}
-      >
+      <VStack gap="32" max className={classNames("", {}, [className])}>
         {content}
       </VStack>
     </DynamicModuleLoader>

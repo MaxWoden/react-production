@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import { Article, ArticleView } from "../../model/types/article";
@@ -84,7 +83,7 @@ const article = {
 } as Article;
 
 const meta: Meta<typeof ArticlesList> = {
-  title: "entities/ArticlesList",
+  title: "entities/Article/ArticlesList",
   component: ArticlesList,
   tags: ["autodocs"],
   args: {
