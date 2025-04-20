@@ -1,7 +1,7 @@
 export { getArticleDetailsData } from "./model/selectors/getArticleDetails";
 export {
   Article,
-  ArticleBLockType,
+  ArticleBlockType,
   ArticleSortField,
   ArticleType,
   ArticleView,

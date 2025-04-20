@@ -24,7 +24,7 @@ import {
 } from "../../model/selectors/getArticleDetails";
 import { fetchArticleById } from "../../model/services/fetchArticleById/fetchArticleById";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
-import { ArticleBlock, ArticleBLockType } from "../../model/types/article";
+import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
 import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
@@ -52,7 +52,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   const renderBLock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
-      case ArticleBLockType.TEXT:
+      case ArticleBlockType.TEXT:
         return (
           <ArticleTextBlockComponent
             key={block.id}
@@ -60,7 +60,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             className={classes.block}
           />
         );
-      case ArticleBLockType.CODE:
+      case ArticleBlockType.CODE:
         return (
           <ArticleCodeBlockComponent
             key={block.id}
@@ -68,7 +68,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             className={classes.block}
           />
         );
-      case ArticleBLockType.IMAGE:
+      case ArticleBlockType.IMAGE:
         return (
           <ArticleImageBlockComponent
             key={block.id}

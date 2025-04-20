@@ -4,7 +4,7 @@ import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorato
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import {
   Article,
-  ArticleBLockType,
+  ArticleBlockType,
   ArticleType,
 } from "../../model/types/article";
 import { ArticleDetails } from "./ArticleDetails";
@@ -24,31 +24,31 @@ const article: Article = {
   blocks: [
     {
       id: "1",
-      type: ArticleBLockType.TEXT,
+      type: ArticleBlockType.TEXT,
       title: "Заголовок этого блока",
       paragraphs: ["Параграф 1", "Параграф 2", "Параграф 3"],
     },
     {
       id: "5",
-      type: ArticleBLockType.CODE,
+      type: ArticleBlockType.CODE,
       language: "java",
       code: "console.log('Hello, World!');",
     },
     {
       id: "4",
-      type: ArticleBLockType.TEXT,
+      type: ArticleBlockType.TEXT,
       title: "Заголовок этого блока",
       paragraphs: ["Параграф 1", "Параграф 2"],
     },
     {
       id: "2",
-      type: ArticleBLockType.IMAGE,
+      type: ArticleBlockType.IMAGE,
       title: "Рисунок 1 - скриншот сайта",
       src: "https://habrastorage.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
     },
     {
       id: "3",
-      type: ArticleBLockType.CODE,
+      type: ArticleBlockType.CODE,
       language: "javascript",
       code: "console.log('Code');",
     },

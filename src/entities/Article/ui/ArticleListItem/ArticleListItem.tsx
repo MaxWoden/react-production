@@ -10,7 +10,7 @@ import { Icon } from "shared/ui/Icon/Icon";
 import { Text } from "shared/ui/Text/Text";
 import {
   Article,
-  ArticleBLockType,
+  ArticleBlockType,
   ArticleTextBlock,
   ArticleView,
 } from "../../model/types/article";
@@ -43,7 +43,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   if (view === ArticleView.LIST) {
     const textBlock = article.blocks.find(
-      (block) => block.type === ArticleBLockType.TEXT
+      (block) => block.type === ArticleBlockType.TEXT
     ) as ArticleTextBlock;
 
     const additionalClasses = [className, classes[view]];

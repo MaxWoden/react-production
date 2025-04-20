@@ -56,7 +56,7 @@ export interface FlexProps extends DivProps {
   gap?: FlexGap;
   max?: boolean;
   wrap?: boolean;
-  dataTestid?: string;
+  "data-testid"?: string;
 }
 
 export const Flex = memo((props: FlexProps) => {
@@ -69,7 +69,7 @@ export const Flex = memo((props: FlexProps) => {
     gap,
     max,
     wrap,
-    dataTestid,
+    "data-testid": dataTestId = "Flex",
   } = props;
 
   const additionalClasses = [
@@ -87,7 +87,7 @@ export const Flex = memo((props: FlexProps) => {
 
   return (
     <div
-      data-testid={dataTestid}
+      data-testid={dataTestId}
       className={classNames(classes.Flex, mods, additionalClasses)}
     >
       {children}

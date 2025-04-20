@@ -1,8 +1,7 @@
-/node_modules
-/.vscode
-/storybook-static
-/reports
-/build
-.loki/report.json
-.loki/report.html
-/storbook-static
+node_modules
+.vscode
+storybook-static
+reports
+build
+storbook-static
+.loki

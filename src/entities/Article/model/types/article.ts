@@ -6,7 +6,7 @@ export enum ArticleSortField {
   CREATED = "createdAt",
 }
 
-export enum ArticleBLockType {
+export enum ArticleBlockType {
   TEXT = "TEXT",
   CODE = "CODE",
   IMAGE = "IMAGE",
@@ -14,23 +14,23 @@ export enum ArticleBLockType {
 
 export interface ArticleBlockBase {
   id: string;
-  type: ArticleBLockType;
+  type: ArticleBlockType;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-  type: ArticleBLockType.TEXT;
+  type: ArticleBlockType.TEXT;
   title?: string;
   paragraphs: string[];
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-  type: ArticleBLockType.CODE;
+  type: ArticleBlockType.CODE;
   code: string;
   language: string;
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-  type: ArticleBLockType.IMAGE;
+  type: ArticleBlockType.IMAGE;
   title: string;
   src: string;
 }

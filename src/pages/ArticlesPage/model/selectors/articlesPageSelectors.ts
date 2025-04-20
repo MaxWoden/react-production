@@ -14,7 +14,7 @@ export const getArticlesPageHasMore = (state: StateSchema) =>
   state.articlesPage?.hasMore;
 
 export const getArticlesPageLimit = (state: StateSchema) =>
-  state.articlesPage?.limit || 16;
+  state.articlesPage?.limit || 4;
 
 export const getArticlesPageNum = (state: StateSchema) =>
   state.articlesPage?.page || 1;

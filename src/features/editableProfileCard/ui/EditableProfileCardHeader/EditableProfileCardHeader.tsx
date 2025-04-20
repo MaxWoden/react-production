@@ -20,19 +20,20 @@ import classes from "./EditableProfileCardHeader.module.scss";
 
 interface EditableProfileCardHeaderProps {
   className?: string;
+  id?: string;
 }
 
 export const EditableProfileCardHeader = (
   props: EditableProfileCardHeaderProps
 ) => {
-  const { className } = props;
+  const { className, id } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const profileData = useSelector(getProfileData);
   const userData = useSelector(getUserAuthData);
   const readonly = useSelector(getProfileReadonly);
-  const canEdit = profileData?.id === userData?.id;
+  const canEdit = profileData?.id === id;
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -53,7 +54,11 @@ export const EditableProfileCardHeader = (
       <Text title={t(canEdit ? "Ваш профиль" : "Профиль")} />
       {canEdit ? (
         readonly ? (
-          <Button onClick={onEdit} theme={ButtonTheme.OUTLINE}>
+          <Button
+            data-testid="EditableProfileCardHeader.EditButton"
+            onClick={onEdit}
+            theme={ButtonTheme.OUTLINE}
+          >
             <HStack gap="16">
               <Edit className={classNames(classes.icon, {}, [classes.edit])} />
               {t("Редактировать")}
@@ -61,7 +66,11 @@ export const EditableProfileCardHeader = (
           </Button>
         ) : (
           <HStack className={classes.editBlock} gap="32">
-            <Button onClick={onSaveEdit} theme={ButtonTheme.OUTLINE_GREEN}>
+            <Button
+              data-testid="EditableProfileCardHeader.SaveButton"
+              onClick={onSaveEdit}
+              theme={ButtonTheme.OUTLINE_GREEN}
+            >
               <HStack gap="16">
                 <Confirm
                   className={classNames(classes.icon, {}, [classes.confirm])}
@@ -69,7 +78,11 @@ export const EditableProfileCardHeader = (
                 {t("Сохранить")}
               </HStack>
             </Button>
-            <Button onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
+            <Button
+              data-testid="EditableProfileCardHeader.CancelButton"
+              onClick={onCancelEdit}
+              theme={ButtonTheme.OUTLINE_RED}
+            >
               <HStack gap="16">
                 <Cancel
                   className={classNames(classes.icon, {}, [classes.cancel])}

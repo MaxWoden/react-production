@@ -33,7 +33,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     <VStack
       role="menu"
       gap="32"
-      dataTestid="sidebar"
+      data-testid="sidebar"
       className={classNames(
         classes.Sidebar,
         { [classes.collapsed]: collapsed },
@@ -45,7 +45,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
         onClick={onToggle}
         square={true}
         size={ButtonSize.SIZE_XL}
-        dataTestid="toggle-btn"
+        data-testid="toggle-btn"
       >
         {collapsed ? ">" : "<"}
       </Button>

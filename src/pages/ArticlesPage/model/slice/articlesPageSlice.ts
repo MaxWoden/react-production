@@ -33,7 +33,7 @@ const articlesPageSlice = createSlice({
     page: 1,
     hasMore: true,
     _inited: false,
-    limit: 16,
+    limit: 4,
     sort: ArticleSortField.CREATED,
     search: "",
     order: "ASC",
@@ -62,9 +62,11 @@ const articlesPageSlice = createSlice({
       state.order = action.payload;
     },
     initState: (state) => {
+      console.log(state.view);
       const view = localStorage.getItem(
         ARTICLES_VIEW_LOCALSTORAGE_KEY
       ) as ArticleView;
+
       state.view = view;
       state.limit = view === ArticleView.LIST ? 4 : 16;
       state._inited = true;

@@ -2,10 +2,8 @@ import { ArticleSortField, ArticleType, ArticleView } from "entities/Article";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
-import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { SortOrder } from "shared/types";
 import { Card } from "shared/ui/Card/Card";
 import { Input } from "shared/ui/Input/Input";
@@ -14,7 +12,6 @@ import { ArticlesPageSortSelect } from "widgets/ArticlesPageSortSelect";
 import { ArticlesPageTypeTabs } from "widgets/ArticlesPageTypeTabs";
 import { ArticlesPageViewSelector } from "widgets/ArticlesPageViewSelector";
 import {
-  getArticlesPageInited,
   getArticlesPageOrder,
   getArticlesPageSearch,
   getArticlesPageSort,
@@ -22,7 +19,6 @@ import {
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
-import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 import { articlesPageActions } from "../../model/slice/articlesPageSlice";
 import classes from "./ArticlesPageFilters.module.scss";
 
@@ -35,12 +31,8 @@ export const ArticlesPageFilters = memo(() => {
   const sort = useSelector(getArticlesPageSort);
   const order = useSelector(getArticlesPageOrder);
   const search = useSelector(getArticlesPageSearch);
-  const inited = useSelector(getArticlesPageInited);
 
   const fetchData = () => dispatch(fetchArticlesList({}));
-
-  const [searchParams] = useSearchParams();
-  useInitialEffects(() => !inited && dispatch(initArticlesPage(searchParams)));
 
   const debouncedFetchData = useDebounce(() => {
     fetchData();

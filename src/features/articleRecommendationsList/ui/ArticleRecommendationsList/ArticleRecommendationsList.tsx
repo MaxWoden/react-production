@@ -1,10 +1,10 @@
 import { ArticlesList, ArticleView } from "entities/Article";
-import { useArticleRecommendationsList } from "../../api/articleRecommendationsApi";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { VStack } from "shared/ui/Stack";
 import { Text, TextSize } from "shared/ui/Text/Text";
+import { useArticleRecommendationsList } from "../../api/articleRecommendationsApi";
 import classes from "./ArticleRecommendationsList.module.scss";
 
 interface ArticleRecommendationsListProps {
@@ -21,6 +21,10 @@ export const ArticleRecommendationsList = memo(
       data: articles,
       error,
     } = useArticleRecommendationsList(4);
+
+    if (isLoading || error || !articles) {
+      return null;
+    }
 
     return (
       <VStack max gap="8" className={classNames("", {}, [className])}>

@@ -23,6 +23,7 @@ interface InputProps extends HTMLInputProps {
   placeholder?: string;
   autofocus?: boolean;
   readonly?: boolean;
+  "data-testid"?: string;
 }
 
 const CARET_WIDTH = 8.8;
@@ -36,6 +37,7 @@ export const Input = memo((props: InputProps) => {
     type = "text",
     autofocus,
     readonly,
+    "data-testid": dataTestId = "Input",
     ...otherProps
   } = props;
 
@@ -71,6 +73,7 @@ export const Input = memo((props: InputProps) => {
 
   return (
     <HStack
+      data-testid={dataTestId}
       gap="4"
       className={classNames("", { [classes.readonly]: readonly }, [className])}
     >
