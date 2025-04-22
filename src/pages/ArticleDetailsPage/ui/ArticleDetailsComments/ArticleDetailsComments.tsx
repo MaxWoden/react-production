@@ -30,7 +30,10 @@ export const ArticleDetailsComments = memo(
 
     return (
       <VStack max gap="16" className={className}>
-        <Text size={TextSize.L} title={t(`Комментарии(${comments?.length})`)} />
+        <Text
+          size={TextSize.L}
+          title={t(`Комментарии${!isLoading ? `(${comments?.length})` : ""}`)}
+        />
         {error ? (
           <Text title={t("Произошла ошибка при загрузке комментариев")} />
         ) : (

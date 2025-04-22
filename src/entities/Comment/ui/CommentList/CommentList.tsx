@@ -19,10 +19,10 @@ export const CommentList = memo((props: CommentListProps) => {
 
   if (isLoading) {
     content = (
-      <div>
+      <>
         <CommentCard isLoading={isLoading} />
         <CommentCard isLoading={isLoading} />
-      </div>
+      </>
     );
   } else {
     content = <Text text={t("Комментарии отсутствуют")} />;

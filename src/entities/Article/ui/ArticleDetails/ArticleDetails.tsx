@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import CalendarIcon from "shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "shared/assets/icons/eyeIcon.svg";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
-import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -149,7 +148,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <VStack gap="32" max className={classNames("", {}, [className])}>
+      <VStack gap="32" max className={className}>
         {content}
       </VStack>
     </DynamicModuleLoader>
