@@ -20,20 +20,19 @@ import classes from "./EditableProfileCardHeader.module.scss";
 
 interface EditableProfileCardHeaderProps {
   className?: string;
-  id?: string;
 }
 
 export const EditableProfileCardHeader = (
   props: EditableProfileCardHeaderProps
 ) => {
-  const { className, id } = props;
+  const { className } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const profileData = useSelector(getProfileData);
   const userData = useSelector(getUserAuthData);
   const readonly = useSelector(getProfileReadonly);
-  const canEdit = profileData?.id === id;
+  const canEdit = profileData?.id === userData?.id;
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
