@@ -1,22 +1,22 @@
 import { Profile } from "entities/Profile";
-import { ValidateProfileError } from "../../types/editableProfileCardSchema";
+import { ValidateProfileErrors } from "../../consts/consts";
 
 export const validateProfileData = (profile?: Profile) => {
-  if (!profile) return [ValidateProfileError.NO_DATA];
+  if (!profile) return [ValidateProfileErrors.NO_DATA];
 
   const { firstname, lastname, age, city } = profile;
-  const errors: ValidateProfileError[] = [];
+  const errors: ValidateProfileErrors[] = [];
 
   if (!firstname || !lastname) {
-    errors.push(ValidateProfileError.INCORRECT_USER_DATA);
+    errors.push(ValidateProfileErrors.INCORRECT_USER_DATA);
   }
 
   if (!age || !Number.isInteger(age)) {
-    errors.push(ValidateProfileError.INCORRECT_AGE);
+    errors.push(ValidateProfileErrors.INCORRECT_AGE);
   }
 
   if (!city) {
-    errors.push(ValidateProfileError.INCORRECT_CITY);
+    errors.push(ValidateProfileErrors.INCORRECT_CITY);
   }
 
   return errors;

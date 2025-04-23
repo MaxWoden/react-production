@@ -1,4 +1,5 @@
-import { Article, ArticleBlockType, ArticleType } from "../types/article";
+import { ArticleBlockType, ArticleType } from "../consts/consts";
+import { Article } from "../types/article";
 import { ArticleDetailsSchema } from "../types/articleDetailsSchema";
 
 describe("loginSlice", () => {

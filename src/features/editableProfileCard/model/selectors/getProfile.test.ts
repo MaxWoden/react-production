@@ -2,6 +2,7 @@ import { StateSchema } from "app/providers/StoreProvider";
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency/model/types/currency";
 
+import { ValidateProfileErrors } from "../consts/consts";
 import {
   getProfileData,
   getProfileError,
@@ -9,7 +10,6 @@ import {
   getProfileReadonly,
   getProfileValidateErrors,
 } from "../selectors/getProfile";
-import { ValidateProfileError } from "../types/editableProfileCardSchema";
 import { getProfileForm } from "./getProfile";
 
 describe("getProfile", () => {
@@ -125,12 +125,12 @@ describe("getProfile", () => {
   });
 
   test("should return filled state", () => {
-    const data: ValidateProfileError[] = [
-      ValidateProfileError.INCORRECT_AGE,
-      ValidateProfileError.INCORRECT_CITY,
-      ValidateProfileError.INCORRECT_USER_DATA,
-      ValidateProfileError.NO_DATA,
-      ValidateProfileError.SERVER_ERROR,
+    const data: ValidateProfileErrors[] = [
+      ValidateProfileErrors.INCORRECT_AGE,
+      ValidateProfileErrors.INCORRECT_CITY,
+      ValidateProfileErrors.INCORRECT_USER_DATA,
+      ValidateProfileErrors.NO_DATA,
+      ValidateProfileErrors.SERVER_ERROR,
     ];
     const state: DeepPartial<StateSchema> = {
       profile: { validateErrors: data },

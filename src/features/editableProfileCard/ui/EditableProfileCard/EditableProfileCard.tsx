@@ -21,7 +21,8 @@ import {
 } from "../../model/selectors/getProfile";
 import { fetchProfileDataById } from "../../model/services/fetchProfileDataById/fetchProfileDataById";
 import { profileActions, profileReducer } from "../../model/slice/profileSlice";
-import { ValidateProfileError } from "../../model/types/editableProfileCardSchema";
+
+import { ValidateProfileErrors } from "../../model/consts/consts";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
 
 interface EditableProfileCardProps {
@@ -43,12 +44,12 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
 
-  const validateErrorTranslation: Record<ValidateProfileError, string> = {
-    [ValidateProfileError.INCORRECT_AGE]: t("Неккоректный возраст"),
-    [ValidateProfileError.INCORRECT_CITY]: t("Неккоректный регион"),
-    [ValidateProfileError.INCORRECT_USER_DATA]: t("Имя и фамилия обязательны"),
-    [ValidateProfileError.NO_DATA]: t("Данные не указаны"),
-    [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
+  const validateErrorTranslation: Record<ValidateProfileErrors, string> = {
+    [ValidateProfileErrors.INCORRECT_AGE]: t("Неккоректный возраст"),
+    [ValidateProfileErrors.INCORRECT_CITY]: t("Неккоректный регион"),
+    [ValidateProfileErrors.INCORRECT_USER_DATA]: t("Имя и фамилия обязательны"),
+    [ValidateProfileErrors.NO_DATA]: t("Данные не указаны"),
+    [ValidateProfileErrors.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
   useInitialEffects(() => id && dispatch(fetchProfileDataById(id)));
@@ -119,7 +120,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
       >
         <EditableProfileCardHeader />
         {validateErrors?.length &&
-          validateErrors.map((error: ValidateProfileError) => (
+          validateErrors.map((error: ValidateProfileErrors) => (
             <Text
               key={error}
               theme={TextTheme.ERROR}

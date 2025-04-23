@@ -1,7 +1,7 @@
 import { Country } from "entities/Country";
 import { Currency } from "entities/Currency";
 import { Profile } from "entities/Profile";
-import { ValidateProfileError } from "../../types/editableProfileCardSchema";
+import { ValidateProfileErrors } from "../../consts/consts";
 import { validateProfileData } from "./validateProfileData";
 
 describe("validateProfileData", () => {
@@ -28,7 +28,7 @@ describe("validateProfileData", () => {
       firstname: "",
       lastname: "",
     });
-    expect(result).toEqual([ValidateProfileError.INCORRECT_USER_DATA]);
+    expect(result).toEqual([ValidateProfileErrors.INCORRECT_USER_DATA]);
   });
 
   test("incorrect age", async () => {
@@ -36,7 +36,7 @@ describe("validateProfileData", () => {
       ...data,
       age: undefined,
     });
-    expect(result).toEqual([ValidateProfileError.INCORRECT_AGE]);
+    expect(result).toEqual([ValidateProfileErrors.INCORRECT_AGE]);
   });
 
   test("incorrect city", async () => {
@@ -44,20 +44,20 @@ describe("validateProfileData", () => {
       ...data,
       city: undefined,
     });
-    expect(result).toEqual([ValidateProfileError.INCORRECT_CITY]);
+    expect(result).toEqual([ValidateProfileErrors.INCORRECT_CITY]);
   });
 
   test("empty request", async () => {
     const result = validateProfileData();
-    expect(result).toEqual([ValidateProfileError.NO_DATA]);
+    expect(result).toEqual([ValidateProfileErrors.NO_DATA]);
   });
 
   test("incorrect all", async () => {
     const result = validateProfileData({});
     expect(result).toEqual([
-      ValidateProfileError.INCORRECT_USER_DATA,
-      ValidateProfileError.INCORRECT_AGE,
-      ValidateProfileError.INCORRECT_CITY,
+      ValidateProfileErrors.INCORRECT_USER_DATA,
+      ValidateProfileErrors.INCORRECT_AGE,
+      ValidateProfileErrors.INCORRECT_CITY,
     ]);
   });
 });

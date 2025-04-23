@@ -16,6 +16,7 @@ import { Icon } from "shared/ui/Icon/Icon";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
 import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
+import { ArticleBlockType } from "../../model/consts/consts";
 import {
   getArticleDetailsData,
   getArticleDetailsError,
@@ -23,7 +24,7 @@ import {
 } from "../../model/selectors/getArticleDetails";
 import { fetchArticleById } from "../../model/services/fetchArticleById/fetchArticleById";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
-import { ArticleBlock, ArticleBlockType } from "../../model/types/article";
+import { ArticleBlock } from "../../model/types/article";
 import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";

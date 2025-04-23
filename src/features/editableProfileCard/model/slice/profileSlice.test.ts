@@ -1,10 +1,8 @@
 import { Country } from "entities/Country";
 import { Profile } from "entities/Profile";
+import { ValidateProfileErrors } from "../consts/consts";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
-import {
-  ProfileSchema,
-  ValidateProfileError,
-} from "../types/editableProfileCardSchema";
+import { ProfileSchema } from "../types/editableProfileCardSchema";
 import { profileActions, profileReducer } from "./profileSlice";
 
 const data: Profile = {
@@ -74,7 +72,7 @@ describe("profileSlice", () => {
   test("test update profile service pending", () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: false,
-      validateErrors: [ValidateProfileError.SERVER_ERROR],
+      validateErrors: [ValidateProfileErrors.SERVER_ERROR],
     };
 
     expect(
@@ -88,7 +86,7 @@ describe("profileSlice", () => {
   test("test update profile service fullfiled", () => {
     const state: DeepPartial<ProfileSchema> = {
       isLoading: false,
-      validateErrors: [ValidateProfileError.SERVER_ERROR],
+      validateErrors: [ValidateProfileErrors.SERVER_ERROR],
     };
 
     expect(
