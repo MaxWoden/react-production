@@ -73,7 +73,6 @@ export const Input = memo((props: InputProps) => {
 
   return (
     <HStack
-      data-testid={dataTestId}
       gap="4"
       className={classNames("", { [classes.readonly]: readonly }, [className])}
     >
@@ -82,6 +81,7 @@ export const Input = memo((props: InputProps) => {
       )}
       <div className={classes.caretWrapper}>
         <input
+          data-testid={dataTestId}
           ref={ref}
           type={type}
           value={value}

@@ -2,15 +2,22 @@ import { CommentList } from "entities/Comment";
 import { AddCommentForm } from "features/AddNewComment";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { VStack } from "shared/ui/Stack";
 import { Text, TextSize } from "shared/ui/Text/Text";
-import { useArticleCommentsList } from "../../api/articleCommentsApi";
+import {
+  getArticleCommentsError,
+  getArticleCommentsIsLoading,
+} from "../../model/selectors/comments";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
+import { fetchCommentsByArticleId } from "../../model/services/fetchComments/fetchCommentsByArticleId";
+import { getArticleComments } from "../../model/slices/articleDetailsCommentsSlice";
 
 interface ArticleDetailsCommentsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 export const ArticleDetailsComments = memo(
@@ -18,8 +25,13 @@ export const ArticleDetailsComments = memo(
     const { className, id } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
+    const comments = useSelector(getArticleComments.selectAll);
+    const isLoading = useSelector(getArticleCommentsIsLoading);
+    const error = useSelector(getArticleCommentsError);
 
-    const { isLoading, data: comments, error } = useArticleCommentsList(id);
+    useInitialEffects(() => {
+      dispatch(fetchCommentsByArticleId(id));
+    });
 
     const onSendComment = useCallback(
       (value: string) => {
@@ -30,10 +42,7 @@ export const ArticleDetailsComments = memo(
 
     return (
       <VStack max gap="16" className={className}>
-        <Text
-          size={TextSize.L}
-          title={t(`Комментарии${!isLoading ? `(${comments?.length})` : ""}`)}
-        />
+        <Text size={TextSize.L} title={t(`Комментарии(${comments.length})`)} />
         {error ? (
           <Text title={t("Произошла ошибка при загрузке комментариев")} />
         ) : (

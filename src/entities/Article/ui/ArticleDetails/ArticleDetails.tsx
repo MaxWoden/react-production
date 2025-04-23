@@ -31,7 +31,8 @@ import classes from "./ArticleDetails.module.scss";
 
 interface ArticleDetailsProps {
   className?: string;
-  id: string;
+  id?: string;
+  setArticleNotFound?: (flag: boolean) => void;
 }
 
 const reducers: ReducersList = {
@@ -39,7 +40,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-  const { className, id } = props;
+  const { className, id, setArticleNotFound } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -98,10 +99,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
       </>
     );
   } else if (error) {
+    setArticleNotFound?.(true);
     content = (
       <Text
         align={TextAlign.CENTER}
         theme={TextTheme.ERROR}
+        className={classes.error}
         title={t("Статья не найдена")}
       />
     );
@@ -148,7 +151,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <VStack gap="32" max className={className}>
+      <VStack justify="center" gap="32" max className={className}>
         {content}
       </VStack>
     </DynamicModuleLoader>

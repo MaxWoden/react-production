@@ -38,19 +38,9 @@
     object-fit: cover;
   }
 
-  .authorLink,
-  .date {
-    display: none;
+  .top {
     position: absolute;
     top: 0;
-  }
-
-  .authorLink {
-    left: 0;
-  }
-
-  .date {
-    right: 0;
   }
 
   .types p {

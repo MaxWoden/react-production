@@ -7,6 +7,7 @@ import { AppLink } from "shared/ui/AppLink/AppLink";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Card } from "shared/ui/Card/Card";
 import { Icon } from "shared/ui/Icon/Icon";
+import { HStack, VStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
 import {
   Article,
@@ -14,9 +15,8 @@ import {
   ArticleTextBlock,
   ArticleView,
 } from "../../model/types/article";
-import classes from "./ArticleListItem.module.scss";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { HStack, VStack } from "shared/ui/Stack";
+import classes from "./ArticleListItem.module.scss";
 
 interface ArticleListItemProps {
   className?: string;
@@ -113,15 +113,16 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
               src={article.img}
               className={classes.img}
             />
-            <AppLink
-              target={target}
-              onClick={(e) => e.stopPropagation()}
-              to={pathToAuthor}
-              className={classes.authorLink}
-            >
-              {article.user.username}
-            </AppLink>
-            <Text text={article.createdAt} className={classes.date} />
+            <HStack max justify="between" className={classes.top}>
+              <AppLink
+                target={target}
+                onClick={(e) => e.stopPropagation()}
+                to={pathToAuthor}
+              >
+                {article.user.username}
+              </AppLink>
+              <Text text={article.createdAt} />
+            </HStack>
           </div>
 
           <HStack max justify="between">

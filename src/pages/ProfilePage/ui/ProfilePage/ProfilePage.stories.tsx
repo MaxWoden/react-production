@@ -6,6 +6,19 @@ import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorato
 import ProfilePage from "./ProfilePage";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 
+const data = {
+  id: "1",
+  firstname: "Максим",
+  lastname: "Казаков",
+  age: 19,
+  currency: Currency.RUB,
+  country: Country.RU,
+  city: "Казань",
+  username: "admin",
+  avatar:
+    "https://i.pinimg.com/736x/37/8a/27/378a270e775265622393da8c0527417e.jpg",
+};
+
 const meta: Meta<typeof ProfilePage> = {
   title: "pages/ProfilePage",
   component: ProfilePage,
@@ -13,16 +26,12 @@ const meta: Meta<typeof ProfilePage> = {
   decorators: [
     StoreDecorator({
       profile: {
-        form: {
-          firstname: "Максим",
-          lastname: "Казаков",
-          age: 19,
-          currency: Currency.RUB,
-          country: Country.RU,
-          city: "Казань",
-          username: "adminfds",
-          avatar:
-            "https://i.pinimg.com/736x/37/8a/27/378a270e775265622393da8c0527417e.jpg",
+        data: data,
+        form: data,
+      },
+      user: {
+        authData: {
+          id: "1",
         },
       },
     }),

@@ -37,6 +37,7 @@ export const profileSlice = createSlice({
 
   extraReducers: (builder) => {
     //fetchProfileDataById
+
     builder
       .addCase(fetchProfileDataById.pending, (state) => {
         state.isLoading = true;

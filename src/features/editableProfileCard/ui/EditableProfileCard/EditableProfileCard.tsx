@@ -26,7 +26,7 @@ import { EditableProfileCardHeader } from "../EditableProfileCardHeader/Editable
 
 interface EditableProfileCardProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 const reducers: ReducersList = { profile: profileReducer };
@@ -51,7 +51,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useInitialEffects(() => dispatch(fetchProfileDataById(id)));
+  useInitialEffects(() => id && dispatch(fetchProfileDataById(id)));
 
   const onChangeFirstname = useCallback(
     (value?: string) => {

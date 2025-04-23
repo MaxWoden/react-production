@@ -87,7 +87,11 @@ const meta: Meta<typeof ArticlesList> = {
   component: ArticlesList,
   tags: ["autodocs"],
   args: {
-    articles: [article],
+    articles: [
+      { ...article, id: "1" },
+      { ...article, id: "2" },
+      { ...article, id: "3" },
+    ],
     view: ArticleView.LIST,
   },
 };

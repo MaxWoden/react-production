@@ -51,8 +51,8 @@ export const EditableProfileCardHeader = (
   return (
     <HStack justify="between" max className={className}>
       <Text title={t(canEdit ? "Ваш профиль" : "Профиль")} />
-      {canEdit ? (
-        readonly ? (
+      {canEdit &&
+        (readonly ? (
           <Button
             data-testid="EditableProfileCardHeader.EditButton"
             onClick={onEdit}
@@ -90,8 +90,7 @@ export const EditableProfileCardHeader = (
               </HStack>
             </Button>
           </HStack>
-        )
-      ) : null}
+        ))}
     </HStack>
   );
 };

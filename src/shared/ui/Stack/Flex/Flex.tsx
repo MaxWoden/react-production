@@ -69,7 +69,7 @@ export const Flex = memo((props: FlexProps) => {
     gap,
     max,
     wrap,
-    "data-testid": dataTestId = "Flex",
+    "data-testid": dataTestId,
   } = props;
 
   const additionalClasses = [
