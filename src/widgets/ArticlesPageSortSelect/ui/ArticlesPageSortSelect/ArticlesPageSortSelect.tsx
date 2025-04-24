@@ -32,11 +32,11 @@ export const ArticlesPageSortSelect = memo(
       () => [
         {
           value: "DESC",
-          content: t("убыванию"),
+          content: t("по убыванию"),
         },
         {
           value: "ASC",
-          content: t("возрастанию"),
+          content: t("по возрастанию"),
         },
       ],
       [t]
@@ -45,13 +45,13 @@ export const ArticlesPageSortSelect = memo(
     return (
       <HStack gap="32" className={classNames("", {}, [className])}>
         <Select<ArticleSortField>
-          label={t("Сортировать ПО")}
+          label={t("Сортировать по")}
           options={sortFieldOptions}
           onSelect={(newSort: ArticleSortField) => onChangeSort(newSort)}
           value={sort}
         ></Select>
         <Select
-          label={t("по")}
+          label={t("↑↓")}
           options={orderOptions}
           onSelect={(newOrder: SortOrder) => onChangeOrder(newOrder)}
           value={order}

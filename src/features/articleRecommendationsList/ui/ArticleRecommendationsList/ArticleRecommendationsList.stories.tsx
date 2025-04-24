@@ -90,7 +90,7 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
   parameters: {
     mockData: [
       {
-        url: `${__API__}/articles?_limit=3`,
+        url: "https://react-production-server.onrender.com/articles?_limit=3",
         method: "GET",
         status: 200,
         response: { data: [{ ...article, id: "1" }] },

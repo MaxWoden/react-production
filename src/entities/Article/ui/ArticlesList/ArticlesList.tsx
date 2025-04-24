@@ -1,7 +1,6 @@
 import { HTMLAttributeAnchorTarget, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "shared/lib/classNames/classNames";
-import { HStack } from "shared/ui/Stack";
+import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import { ArticleView } from "../../model/consts/consts";
 import { Article } from "../../model/types/article";
@@ -17,6 +16,7 @@ interface ArticlesListProps {
   target?: HTMLAttributeAnchorTarget;
   wrap?: boolean;
   error?: boolean;
+  isVirtualized?: boolean;
 }
 
 export const ArticlesList = memo((props: ArticlesListProps) => {
@@ -30,10 +30,19 @@ export const ArticlesList = memo((props: ArticlesListProps) => {
   } = props;
   const { t } = useTranslation();
 
+  const isList = view === ArticleView.LIST;
+  const Stack = isList ? VStack : HStack;
+
   const renderSkeletons = useCallback(() => {
-    return new Array(view === ArticleView.LIST ? 4 : 24)
+    return new Array(isList ? 4 : 24)
       .fill(0)
-      .map((_, index) => <ArticleListItemSkeleton view={view} key={index} />);
+      .map((_, index) => (
+        <ArticleListItemSkeleton
+          className={classes[view]}
+          view={view}
+          key={index}
+        />
+      ));
   }, [view]);
 
   const renderArticle = useCallback(
@@ -62,24 +71,15 @@ export const ArticlesList = memo((props: ArticlesListProps) => {
         text={t("Произошла ошибка")}
       />
     );
-  } else if (!isLoading && !articles.length) {
+  } else if (!articles.length) {
     content = <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />;
   } else {
     content = articles.map(renderArticle);
   }
 
-  const additionalClasses = [className, classes[view]];
-
   return (
-    <HStack
-      align="none"
-      justify="center"
-      wrap
-      gap="32"
-      max
-      className={classNames("", {}, additionalClasses)}
-    >
+    <Stack wrap gap="32" max className={className}>
       {content}
-    </HStack>
+    </Stack>
   );
 });

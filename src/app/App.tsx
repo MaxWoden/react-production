@@ -20,7 +20,7 @@ export const App = () => {
     <div className={classNames("app", {}, [])}>
       <Suspense fallback="">
         <Header />
-        <HStack>
+        <HStack align="start">
           <Sidebar />
           {inited && <AppRouter />}
         </HStack>

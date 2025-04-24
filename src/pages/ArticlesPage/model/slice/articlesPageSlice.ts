@@ -62,7 +62,6 @@ const articlesPageSlice = createSlice({
       state.order = action.payload;
     },
     initState: (state) => {
-      console.log(state.view);
       const view = localStorage.getItem(
         ARTICLES_VIEW_LOCALSTORAGE_KEY
       ) as ArticleView;

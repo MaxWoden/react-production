@@ -1,8 +1,9 @@
-import { useTranslation } from "react-i18next";
-import classes from "./NotFoundPage.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import { classNames } from "shared/lib/classNames/classNames";
+import { Text, TextAlign, TextSize } from "shared/ui/Text/Text";
 import { Page } from "widgets/Page";
+import classes from "./NotFoundPage.module.scss";
 
 interface NotFoundPageProps {
   className?: string;
@@ -12,8 +13,12 @@ export const NotFoundPage = memo(({ className }: NotFoundPageProps) => {
   const { t } = useTranslation();
   return (
     <Page className={classNames(classes.NotFoundPage, {}, [className])}>
-      <h1>404</h1>
-      <h2>{t("Страница не найдена")}</h2>
+      <Text
+        align={TextAlign.CENTER}
+        size={TextSize.L}
+        title="404"
+        text={t("Страница не найдена")}
+      />
     </Page>
   );
 });

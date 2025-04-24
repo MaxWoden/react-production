@@ -23,6 +23,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
   return (
     <ArticlesList
       wrap
+      isVirtualized
       className={className}
       isLoading={isLoading}
       view={view}

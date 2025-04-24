@@ -10,8 +10,11 @@ body {
   color: var(--primary-color);
 }
 
+html,
+body,
+#root,
 .app {
-  min-height: 100vh;
+  height: 100%;
 }
 
 *::-webkit-scrollbar {

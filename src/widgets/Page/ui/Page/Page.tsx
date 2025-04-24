@@ -53,6 +53,7 @@ export const Page = memo((props: PageProps) => {
 
   return (
     <main
+      id="PAGE_ID"
       onScroll={onScrollHandler}
       ref={wrapperRef}
       className={classNames(classes.Page, {}, [className])}

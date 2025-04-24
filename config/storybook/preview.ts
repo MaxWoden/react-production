@@ -13,6 +13,7 @@ const preview: Preview = {
       },
     },
   },
+
   decorators: [
     StoreDecorator(),
     RouterDecorator,

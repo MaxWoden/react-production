@@ -20,16 +20,11 @@ import { articlesPageReducer } from "../../model/slice/articlesPageSlice";
 import { ArticleInfiniteList } from "../ArticleInfiniteList/ArticleInfiniteList";
 import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 
-interface ArticlesPageProps {
-  className?: string;
-}
-
 const reducers: ReducersList = {
   articlesPage: articlesPageReducer,
 };
 
-const ArticlesPage = (props: ArticlesPageProps) => {
-  const { className } = props;
+const ArticlesPage = () => {
   const dispatch = useAppDispatch();
 
   const error = useSelector(getArticlesPageError);
@@ -52,7 +47,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
   return (
     <DynamicModuleLoader removeAfterRemount={false} reducers={reducers}>
-      <Page className={className} onScrollEnd={onLoadNextPart}>
+      <Page onScrollEnd={onLoadNextPart}>
         <VStack max gap="32">
           <ArticlesPageFilters />
           <ArticleInfiniteList />
