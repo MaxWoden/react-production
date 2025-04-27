@@ -18,7 +18,6 @@ import { fetchNextArticlesPage } from "../../model/services/fetchNextArticlesPag
 import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage";
 import { articlesPageReducer } from "../../model/slice/articlesPageSlice";
 import { ArticleInfiniteList } from "../ArticleInfiniteList/ArticleInfiniteList";
-import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 
 const reducers: ReducersList = {
   articlesPage: articlesPageReducer,
@@ -47,12 +46,9 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader removeAfterRemount={false} reducers={reducers}>
-      <Page onScrollEnd={onLoadNextPart}>
-        <VStack max gap="32">
-          <ArticlesPageFilters />
-          <ArticleInfiniteList />
-        </VStack>
-      </Page>
+      <VStack max>
+        <ArticleInfiniteList onLoadNextPart={onLoadNextPart} />
+      </VStack>
     </DynamicModuleLoader>
   );
 };

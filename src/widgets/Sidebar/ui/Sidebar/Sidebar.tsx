@@ -31,6 +31,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 
   return (
     <VStack
+      max
       role="menu"
       gap="32"
       data-testid="sidebar"

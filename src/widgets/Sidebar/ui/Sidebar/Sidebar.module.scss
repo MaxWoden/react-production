@@ -9,7 +9,8 @@
   width: var(--sidebar-width);
   padding: 30px 15px;
   position: relative;
-  height: 100vh;
+  align-self: normal;
+  min-height: 100%;
 }
 
 .toggleBtn {

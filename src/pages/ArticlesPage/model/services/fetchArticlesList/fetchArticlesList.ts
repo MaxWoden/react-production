@@ -4,6 +4,7 @@ import { Article } from "entities/Article";
 import { addQueryParams } from "shared/lib/url/addQueryParams/addQueryParams";
 import {
   getArticlesPageLimit,
+  getArticlesPageNum,
   getArticlesPageOrder,
   getArticlesPageSearch,
   getArticlesPageSort,
@@ -25,7 +26,7 @@ export const fetchArticlesList = createAsyncThunk<
   const sort = getArticlesPageSort(getState());
   const order = getArticlesPageOrder(getState());
   const search = getArticlesPageSearch(getState());
-  const page = getArticlesPageSearch(getState());
+  const page = getArticlesPageNum(getState());
 
   try {
     addQueryParams({ sort, order, search, type });

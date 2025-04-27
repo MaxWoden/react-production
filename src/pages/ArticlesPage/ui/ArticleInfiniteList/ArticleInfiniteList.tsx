@@ -7,13 +7,15 @@ import {
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
 import { getArticles } from "../../model/slice/articlesPageSlice";
+import { ArticlesPageFilters } from "../ArticlesPageFilters/ArticlesPageFilters";
 
 interface ArticleInfiniteListProps {
   className?: string;
+  onLoadNextPart: () => void;
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
-  const { className } = props;
+  const { className, onLoadNextPart } = props;
 
   const articles = useSelector(getArticles.selectAll);
   const isLoading = useSelector(getArticlesPageIsLoading);
@@ -22,8 +24,11 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
 
   return (
     <ArticlesList
+      virtualized={{
+        Header: ArticlesPageFilters,
+        onLoadNextPart: onLoadNextPart,
+      }}
       wrap
-      isVirtualized
       className={className}
       isLoading={isLoading}
       view={view}

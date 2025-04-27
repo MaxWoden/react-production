@@ -109,7 +109,8 @@
     "react-i18next": "^11.16.4",
     "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.1"
+    "react-router-dom": "^6.2.1",
+    "react-virtuoso": "^4.12.6"
   },
   "loki": {
     "looks-same": {

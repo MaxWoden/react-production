@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, memo } from "react";
+import { HTMLAttributeAnchorTarget, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import EyeIcon from "shared/assets/icons/eyeIcon.svg";
 import { RoutePath } from "shared/config/routerConfig/routerConfig";
@@ -13,17 +13,26 @@ import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleListItem.module.scss";
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "shared/const/localstorage";
 
 interface ArticleListItemProps {
   className?: string;
   article: Article;
   view: ArticleView;
   target?: HTMLAttributeAnchorTarget;
+  index?: number;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { className, article, view, target } = props;
+  const { className, article, view, target, index } = props;
   const { t } = useTranslation();
+
+  const handleButtonClick = useCallback(() => {
+    sessionStorage.setItem(
+      ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX,
+      JSON.stringify(index)
+    );
+  }, [article.id]);
 
   const pathToAuthor = RoutePath.profile + article.user.id;
   const pathToArticle = RoutePath.article_details + article.id;
@@ -78,6 +87,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
             <HStack max justify="between">
               <AppLink
+                onClick={handleButtonClick}
                 target={target}
                 className={classes.articleLink}
                 to={pathToArticle}
@@ -94,6 +104,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   return (
     <AppLink
+      onClick={handleButtonClick}
       target={target}
       className={classNames(classes.ArticleListItem, {}, [
         className,

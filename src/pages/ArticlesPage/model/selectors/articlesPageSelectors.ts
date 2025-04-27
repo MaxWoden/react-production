@@ -20,7 +20,7 @@ export const getArticlesPageNum = (state: StateSchema) =>
   state.articlesPage?.page || 1;
 
 export const getArticlesPageView = (state: StateSchema) =>
-  state.articlesPage?.view || ArticleView.LIST;
+  state.articlesPage?.view ?? ArticleView.LIST;
 
 export const getArticlesPageSort = (state: StateSchema) =>
   state.articlesPage?.sort ?? ArticleSortField.VIEWS;
