@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useState } from "react";
+import { ReactNode, useCallback, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Card } from "../Card/Card";
 import { HStack } from "../Stack";
@@ -24,11 +24,7 @@ interface TabsProps<T extends string> {
 
 export const Tabs = <T extends string>(props: TabsProps<T>) => {
   const { className, tabs, value, onTabClick, theme = TabsTheme.CLEAR } = props;
-  const [selected, setSelected] = useState(tabs[0].value);
-
-  useEffect(() => {
-    value && setSelected(value);
-  }, [value]);
+  const [selected, setSelected] = useState(value);
 
   const onClickHandler = useCallback(
     (item: TabItem<T>) => {

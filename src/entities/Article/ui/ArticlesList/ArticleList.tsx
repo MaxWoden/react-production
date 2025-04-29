@@ -22,14 +22,14 @@ import { ArticleView } from "../../model/consts/consts";
 import { Article } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
-import classes from "./ArticlesList.module.scss";
+import classes from "./ArticleList.module.scss";
 
 interface VirtualizedArticlesList {
   Header: React.ComponentType<ContextProp<any>>;
   onLoadNextPart: () => void;
 }
 
-interface ArticlesListProps {
+interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
@@ -40,7 +40,7 @@ interface ArticlesListProps {
   virtualized?: VirtualizedArticlesList;
 }
 
-export const ArticlesList = memo((props: ArticlesListProps) => {
+export const ArticleList = memo((props: ArticleListProps) => {
   const {
     className,
     articles,
@@ -72,7 +72,6 @@ export const ArticlesList = memo((props: ArticlesListProps) => {
         }
       }, 100);
     }
-    console.log(selectedArticleId);
     return () => clearTimeout(timeoutId);
   }, [selectedArticleId, view]);
 
@@ -84,7 +83,7 @@ export const ArticlesList = memo((props: ArticlesListProps) => {
         className={classes.skeleton}
       />
     ),
-    []
+    [view]
   );
 
   const renderSkeletons = useCallback(() => {
@@ -182,7 +181,7 @@ export const ArticlesList = memo((props: ArticlesListProps) => {
   }
   return (
     <div
-      className={classNames(classes.ArticlesList, {}, [
+      className={classNames(classes.ArticleList, {}, [
         className,
         classes[view],
       ])}

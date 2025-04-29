@@ -3,7 +3,12 @@ import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
 import ArticlesPage from "./ArticlesPage";
 import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
-import { Article } from "entities/Article";
+import {
+  Article,
+  ArticleSortField,
+  ArticleType,
+  ArticleView,
+} from "entities/Article";
 
 const article = {
   id: "1",
@@ -93,6 +98,15 @@ const meta: Meta<typeof ArticlesPage> = {
         ids: ["1", "2", "3"],
         error: undefined,
         isLoading: false,
+        _inited: false,
+        hasMore: true,
+        page: 1,
+        limit: 4,
+        view: ArticleView.LIST,
+        type: ArticleType.ALL,
+        sort: ArticleSortField.VIEWS,
+        order: "ASC",
+        search: "",
         entities: {
           "1": article,
           "2": { ...article, id: "2" },

@@ -94,6 +94,15 @@ const meta: Meta<typeof ArticleDetailsPage> = {
       articleDetailsPage: articleDetailsPageReducer,
     }),
   ],
+  parameters: {
+    mockData: [
+      {
+        url: "https://react-production-server.onrender.com/articles",
+        method: "GET",
+        status: 200,
+      },
+    ],
+  },
 };
 
 export default meta;

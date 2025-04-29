@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
-import { ArticleRecommendationsList } from "./ArticleRecommendationsList";
+import { ArticleRecommendationList } from "./ArticleRecommendationList";
 import { Article } from "entities/Article";
 
 const article = {
@@ -82,15 +82,14 @@ const article = {
   ],
 } as Article;
 
-const meta: Meta<typeof ArticleRecommendationsList> = {
-  title: "features/ArticleRecommendationsList",
-  component: ArticleRecommendationsList,
+const meta: Meta<typeof ArticleRecommendationList> = {
+  title: "features/ArticleRecommendationList",
+  component: ArticleRecommendationList,
   tags: ["autodocs"],
-  decorators: [],
   parameters: {
     mockData: [
       {
-        url: "https://react-production-server.onrender.com/articles?_limit=3",
+        url: "https://react-production-server.onrender.com/articles",
         method: "GET",
         status: 200,
         response: { data: [{ ...article, id: "1" }] },
@@ -100,7 +99,7 @@ const meta: Meta<typeof ArticleRecommendationsList> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof ArticleRecommendationsList>;
+type Story = StoryObj<typeof ArticleRecommendationList>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 

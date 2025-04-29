@@ -12,6 +12,7 @@ import { HStack } from "shared/ui/Stack/HStack/HStack";
 import { Text } from "shared/ui/Text/Text";
 import {
   getProfileData,
+  getProfileIsLoading,
   getProfileReadonly,
 } from "../../model/selectors/getProfile";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
@@ -29,6 +30,7 @@ export const EditableProfileCardHeader = (
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
+  const isLoading = useSelector(getProfileIsLoading);
   const profileData = useSelector(getProfileData);
   const userData = useSelector(getUserAuthData);
   const readonly = useSelector(getProfileReadonly);
@@ -54,6 +56,7 @@ export const EditableProfileCardHeader = (
       {canEdit &&
         (readonly ? (
           <Button
+            disabled={isLoading}
             data-testid="EditableProfileCardHeader.EditButton"
             onClick={onEdit}
             theme={ButtonTheme.OUTLINE}
@@ -66,6 +69,7 @@ export const EditableProfileCardHeader = (
         ) : (
           <HStack className={classes.editBlock} gap="32">
             <Button
+              disabled={isLoading}
               data-testid="EditableProfileCardHeader.SaveButton"
               onClick={onSaveEdit}
               theme={ButtonTheme.OUTLINE_GREEN}
@@ -78,6 +82,7 @@ export const EditableProfileCardHeader = (
               </HStack>
             </Button>
             <Button
+              disabled={isLoading}
               data-testid="EditableProfileCardHeader.CancelButton"
               onClick={onCancelEdit}
               theme={ButtonTheme.OUTLINE_RED}

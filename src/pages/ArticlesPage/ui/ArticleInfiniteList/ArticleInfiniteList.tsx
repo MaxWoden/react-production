@@ -1,4 +1,4 @@
-import { ArticlesList } from "entities/Article";
+import { ArticleList } from "entities/Article";
 import { memo } from "react";
 import { useSelector } from "react-redux";
 import {
@@ -23,7 +23,7 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
   const error = useSelector(getArticlesPageError);
 
   return (
-    <ArticlesList
+    <ArticleList
       virtualized={{
         Header: ArticlesPageFilters,
         onLoadNextPart: onLoadNextPart,

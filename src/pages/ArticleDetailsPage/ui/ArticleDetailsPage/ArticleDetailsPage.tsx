@@ -1,5 +1,6 @@
 import { ArticleDetails } from "entities/Article";
-import { ArticleRecommendationsList } from "features/articleRecommendationsList";
+
+import { ArticleRecommendationList } from "features/articleRecommendationsList";
 import { memo, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -26,7 +27,7 @@ const ArticleDetailsPage = () => {
         <VStack gap="32">
           <ArticleDetailsPageHeader />
           <ArticleDetails setArticleNotFound={setArticleNotFound} id={id} />
-          <ArticleRecommendationsList />
+          <ArticleRecommendationList />
           {!articleNotFound && <ArticleDetailsComments id={id} />}
         </VStack>
       </Page>
