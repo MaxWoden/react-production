@@ -7,18 +7,14 @@
   z-index: -1;
   opacity: 0;
   pointer-events: none;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  background: var(--overlay-color);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .content {
+  position: absolute;
+  z-index: 1000;
   padding: 20px;
   border-radius: 12px;
   background: var(--bg-color);

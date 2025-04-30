@@ -1,11 +1,12 @@
 import { NotificationList } from "entities/Notification";
-import { memo } from "react";
+import { memo, useCallback, useState } from "react";
+import { BrowserView, MobileView } from "react-device-detect";
 import NotificationIcon from "shared/assets/icons/NotificationIcon.svg";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Drawer } from "shared/ui/Drawer/Drawer";
 import { Icon } from "shared/ui/Icon/Icon";
 import { Popover } from "shared/ui/Popups";
-import { useNotificationsByUserId } from "../../api/notificationApi";
-import { useSelector } from "react-redux";
-import { getUserAuthData } from "entities/User";
+import classes from "./NotificationButton.module.scss";
 
 interface NotificationButtonProps {
   className?: string;
@@ -13,26 +14,30 @@ interface NotificationButtonProps {
 
 export const NotificationButton = memo((props: NotificationButtonProps) => {
   const { className } = props;
-  const authData = useSelector(getUserAuthData);
 
-  if (!authData) {
-    return null;
-  }
+  const [isOpen, setIsOpen] = useState(false);
 
-  const { isLoading, data, error } = useNotificationsByUserId(authData.id, {
-    pollingInterval: 5000,
-  });
+  const onOpenDrawer = useCallback(() => setIsOpen(true), [setIsOpen]);
+  const onCloseDrawer = useCallback(() => setIsOpen(false), [setIsOpen]);
+
+  const trigger = <Icon inverted Svg={NotificationIcon} />;
 
   return (
-    <Popover
-      className={className}
-      trigger={<Icon inverted Svg={NotificationIcon} />}
-    >
-      <NotificationList
-        isLoading={isLoading}
-        notifications={data}
-        error={Boolean(error)}
-      />
-    </Popover>
+    <>
+      <BrowserView>
+        <Popover className={className} trigger={trigger}>
+          <NotificationList className={classes.list} />
+        </Popover>
+      </BrowserView>
+
+      <MobileView>
+        <Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
+          {trigger}
+        </Button>
+        <Drawer portal isOpen={isOpen} onClose={onCloseDrawer}>
+          <NotificationList />
+        </Drawer>
+      </MobileView>
+    </>
   );
 });

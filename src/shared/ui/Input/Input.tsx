@@ -1,14 +1,13 @@
 import {
   InputHTMLAttributes,
-  memo,
   MutableRefObject,
   useEffect,
   useRef,
   useState,
 } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
-import classes from "./Input.module.scss";
 import { HStack } from "../Stack";
+import classes from "./Input.module.scss";
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
@@ -28,7 +27,7 @@ interface InputProps extends HTMLInputProps {
 
 const CARET_WIDTH = 8.8;
 
-export const Input = memo((props: InputProps) => {
+export const Input = (props: InputProps) => {
   const {
     className,
     value = "",
@@ -102,4 +101,4 @@ export const Input = memo((props: InputProps) => {
       </div>
     </HStack>
   );
-});
+};

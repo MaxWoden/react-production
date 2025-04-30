@@ -1,4 +1,5 @@
 import {
+  memo,
   MutableRefObject,
   ReactNode,
   useCallback,
@@ -7,6 +8,7 @@ import {
   useState,
 } from "react";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
 
@@ -21,7 +23,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-export const Modal = (props: ModalProps) => {
+export const Modal = memo((props: ModalProps) => {
   const { className, children, isOpen, onClose, portal = true, lazy } = props;
 
   const [isClosing, setIsCLosing] = useState(false);
@@ -51,10 +53,6 @@ export const Modal = (props: ModalProps) => {
     [closeHandler]
   );
 
-  const onContentClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   useEffect(() => {
     if (isOpen) {
       window.addEventListener("keydown", onKeyDown);
@@ -70,20 +68,20 @@ export const Modal = (props: ModalProps) => {
     [classes.isClosing]: isClosing,
   };
 
-  const renderComponent = () => {
+  const renderComponent = useCallback(() => {
     return (
       <div className={classNames(classes.Modal, mods, [className])}>
-        <div className={classes.overlay} onClick={closeHandler}>
-          <div className={classes.content} onClick={onContentClick}>
-            {children}
-          </div>
-        </div>
+        <Overlay onClick={closeHandler} />
+        <div className={classes.content}>{children}</div>
       </div>
     );
-  };
+  }, [mods, children]);
 
   if (lazy && !isMounted) return null;
-  if (!portal) return renderComponent();
 
-  return <Portal>{renderComponent()}</Portal>;
-};
+  if (portal) {
+    return <Portal>{renderComponent()}</Portal>;
+  }
+
+  return renderComponent();
+});
