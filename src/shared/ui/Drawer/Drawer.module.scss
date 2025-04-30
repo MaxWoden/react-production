@@ -45,3 +45,9 @@
     transform: translateY(-100%);
   }
 }
+
+.isClosing {
+  .content {
+    transform: translateY(100%);
+  }
+}

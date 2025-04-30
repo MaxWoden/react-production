@@ -1,13 +1,6 @@
-import {
-  memo,
-  MutableRefObject,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { memo, ReactNode, useCallback } from "react";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { useModal } from "shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
 import { Portal } from "../Portal/Portal";
 import classes from "./Modal.module.scss";
@@ -21,47 +14,18 @@ interface ModalProps {
   children?: ReactNode;
 }
 
-const ANIMATION_DELAY = 300;
-
 export const Modal = memo((props: ModalProps) => {
   const { className, children, isOpen, onClose, portal = true, lazy } = props;
 
-  const [isClosing, setIsCLosing] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
-
-  useEffect(() => {
-    isOpen && setIsMounted(true);
-  }, [isOpen]);
-
-  const closeHandler = useCallback(() => {
-    if (onClose) {
-      setIsCLosing(true);
-      timerRef.current = setTimeout(() => {
-        onClose();
-        setIsCLosing(false);
-      }, ANIMATION_DELAY);
-    }
-  }, [onClose]);
-
-  const onKeyDown = useCallback(
-    (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        closeHandler();
-      }
-    },
-    [closeHandler]
-  );
-
-  useEffect(() => {
-    if (isOpen) {
-      window.addEventListener("keydown", onKeyDown);
-    }
-    return () => {
-      clearTimeout(timerRef.current);
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen, onKeyDown]);
+  const {
+    isMounted,
+    isClosing,
+    close: closeHandler,
+  } = useModal({
+    onClose: onClose,
+    isOpen: isOpen,
+    animationDelay: 300,
+  });
 
   const mods: Mods = {
     [classes.opened]: isOpen,
