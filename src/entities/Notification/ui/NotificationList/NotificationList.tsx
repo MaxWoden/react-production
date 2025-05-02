@@ -35,11 +35,12 @@ export const NotificationList = memo((props: NotificationListProps) => {
 
   if (isLoading) {
     content = (
-      <>
+      <VStack max gap="8">
         <Skeleton width="100%" height="80px" />
         <Skeleton width="100%" height="80px" />
         <Skeleton width="100%" height="80px" />
-      </>
+        <Skeleton width="100%" height="80px" />
+      </VStack>
     );
   } else if (error) {
     content = (
