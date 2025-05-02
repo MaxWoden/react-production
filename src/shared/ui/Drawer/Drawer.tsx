@@ -1,8 +1,11 @@
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import {
+  AnimationProvider,
+  useAnimationLibs,
+} from "@/shared/lib/components/AnimationProvider";
+import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Portal } from "@headlessui/react";
 import { memo, ReactNode, useCallback, useEffect } from "react";
-import { classNames, Mods } from "@/shared/lib/classNames/classNames";
-import { useAnimationLibs } from "@/shared/lib/components/AnimationProvider";
-import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
 import classes from "./Drawer.module.scss";
 
@@ -66,7 +69,6 @@ const DrawerContent = memo((props: DrawerProps) => {
       movement: [, my],
       cancel,
     }) => {
-      console.log(my);
       if (my < -70) cancel();
 
       if (last) {
@@ -108,7 +110,7 @@ const DrawerContent = memo((props: DrawerProps) => {
   return renderComponent();
 });
 
-export const Drawer = memo((props: DrawerProps) => {
+const DrawerAsync = (props: DrawerProps) => {
   const { isLoaded } = useAnimationLibs();
 
   if (!isLoaded) {
@@ -116,4 +118,12 @@ export const Drawer = memo((props: DrawerProps) => {
   }
 
   return <DrawerContent {...props} />;
+};
+
+export const Drawer = memo((props: DrawerProps) => {
+  return (
+    <AnimationProvider>
+      <DrawerAsync {...props} />
+    </AnimationProvider>
+  );
 });
