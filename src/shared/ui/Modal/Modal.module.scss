@@ -14,12 +14,12 @@
 
 .content {
   position: absolute;
-  z-index: 1000;
   padding: 20px;
   border-radius: 12px;
   background: var(--bg-color);
   transition: transform 0.3s;
   transform: scale(0.5);
+  z-index: var(--modal-z-index);
 }
 
 .opened {

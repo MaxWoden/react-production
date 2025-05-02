@@ -1,5 +1,5 @@
-import { ArticleView } from "entities/Article";
-import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from "shared/const/localstorage";
+import { ArticleView } from "@/entities/Article";
+import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from "@/shared/const/localstorage";
 import { ArticlesPageSchema } from "../types/articlesPageSchema";
 import { articlesPageActions, articlesPageReducer } from "./articlesPageSlice";
 

@@ -1,21 +1,21 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import CalendarIcon from "shared/assets/icons/calendarIcon.svg";
-import EyeIcon from "shared/assets/icons/eyeIcon.svg";
-import { RoutePath } from "shared/config/routerConfig/routerConfig";
+import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
+import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
+import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { AppLink } from "shared/ui/AppLink/AppLink";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Icon } from "shared/ui/Icon/Icon";
-import { Skeleton } from "shared/ui/Skeleton/Skeleton";
-import { HStack, VStack } from "shared/ui/Stack";
-import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { Text, TextAlign, TextSize, TextTheme } from "@/shared/ui/Text/Text";
 import { ArticleBlockType } from "../../model/consts/consts";
 import {
   getArticleDetailsData,

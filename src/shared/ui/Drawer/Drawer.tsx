@@ -1,8 +1,8 @@
 import { Portal } from "@headlessui/react";
 import { memo, ReactNode, useCallback, useEffect } from "react";
-import { classNames, Mods } from "shared/lib/classNames/classNames";
-import { useAnimationLibs } from "shared/lib/components/AnimationProvider";
-import { useModal } from "shared/lib/hooks/useModal/useModal";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import { useAnimationLibs } from "@/shared/lib/components/AnimationProvider";
+import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
 import classes from "./Drawer.module.scss";
 

@@ -13,11 +13,11 @@ import {
   VirtuosoGrid,
   VirtuosoGridHandle,
 } from "react-virtuoso";
-import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "shared/const/localstorage";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useInitialEffects } from "shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { HStack, VStack } from "shared/ui/Stack";
-import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { Text, TextAlign, TextTheme } from "@/shared/ui/Text/Text";
 import { ArticleView } from "../../model/consts/consts";
 import { Article } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
@@ -73,7 +73,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       }, 100);
     }
     return () => clearTimeout(timeoutId);
-  }, [selectedArticleId, view]);
+  }, [selectedArticleId, view, isList]);
 
   const ItemsContainerComp = useCallback(
     ({ index }: { index: number }) => (

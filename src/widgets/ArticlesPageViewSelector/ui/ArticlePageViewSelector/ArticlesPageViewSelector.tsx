@@ -1,12 +1,12 @@
-import { ArticleView } from "entities/Article";
+import { ArticleView } from "@/entities/Article";
 import { memo } from "react";
-import Grid from "shared/assets/icons/grid.svg";
-import List from "shared/assets/icons/list.svg";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui/Button/Button";
-import { Icon } from "shared/ui/Icon/Icon";
+import Grid from "@/shared/assets/icons/grid.svg";
+import List from "@/shared/assets/icons/list.svg";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Button } from "@/shared/ui/Button/Button";
+import { Icon } from "@/shared/ui/Icon/Icon";
 import classes from "./ArticlesPageViewSelector.module.scss";
-import { HStack } from "shared/ui/Stack";
+import { HStack } from "@/shared/ui/Stack";
 
 interface ArticlesPageViewSelectorProps {
   className?: string;

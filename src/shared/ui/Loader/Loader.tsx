@@ -1,5 +1,5 @@
 import classes from "./Loader.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { memo } from "react";
 
 export enum LoaderTheme {

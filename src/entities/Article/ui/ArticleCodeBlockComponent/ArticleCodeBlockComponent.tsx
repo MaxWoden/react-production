@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Code } from "shared/ui/Code/Code";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Code } from "@/shared/ui/Code/Code";
 import { ArticleCodeBlock } from "../../model/types/article";
-import { VStack } from "shared/ui/Stack";
+import { VStack } from "@/shared/ui/Stack";
 
 interface ArticleCodeBlockComponentProps {
   className?: string;

@@ -1,15 +1,15 @@
-import { getUserAuthData } from "entities/User";
+import { getUserAuthData } from "@/entities/User";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import Cancel from "shared/assets/icons/cancel.svg";
-import Confirm from "shared/assets/icons/confirm.svg";
-import Edit from "shared/assets/icons/edit.svg";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { HStack } from "shared/ui/Stack/HStack/HStack";
-import { Text } from "shared/ui/Text/Text";
+import Cancel from "@/shared/assets/icons/cancel.svg";
+import Confirm from "@/shared/assets/icons/confirm.svg";
+import Edit from "@/shared/assets/icons/edit.svg";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { HStack } from "@/shared/ui/Stack/HStack/HStack";
+import { Text } from "@/shared/ui/Text/Text";
 import {
   getProfileData,
   getProfileIsLoading,

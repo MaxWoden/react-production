@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Theme } from "app/providers/ThemeProvider";
-import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 import { ArticleInfiniteList } from "./ArticleInfiniteList";
-import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
-import { Article } from "entities/Article";
+import { StoreDecorator } from "@/shared/config/storybook/Decorators/StoreDecorator";
+import { Article } from "@/entities/Article";
 
 const article = {
   id: "1",

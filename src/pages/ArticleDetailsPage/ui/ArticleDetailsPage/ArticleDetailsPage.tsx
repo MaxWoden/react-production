@@ -1,14 +1,14 @@
-import { ArticleDetails } from "entities/Article";
+import { ArticleDetails } from "@/entities/Article";
 
-import { ArticleRecommendationList } from "features/articleRecommendationsList";
+import { ArticleRecommendationList } from "@/features/articleRecommendationsList";
 import { memo, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { VStack } from "shared/ui/Stack";
-import { Page } from "widgets/Page";
+} from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { VStack } from "@/shared/ui/Stack";
+import { Page } from "@/widgets/Page";
 import { articleDetailsPageReducer } from "../../model/slices/index";
 import { ArticleDetailsComments } from "../ArticleDetailsComments/ArticleDetailsComments";
 import { ArticleDetailsPageHeader } from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader";

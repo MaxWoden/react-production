@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ThunkConfig } from "app/providers/StoreProvider/config/StateSchema";
-import { RoutePath } from "shared/config/routerConfig/routerConfig";
-import { Profile } from "entities/Profile";
+import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema";
+import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
+import { Profile } from "@/entities/Profile";
 
 export const fetchProfileDataById = createAsyncThunk<
   Profile,

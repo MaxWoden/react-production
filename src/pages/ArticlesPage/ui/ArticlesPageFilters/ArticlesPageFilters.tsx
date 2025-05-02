@@ -1,16 +1,16 @@
-import { ArticleSortField, ArticleType, ArticleView } from "entities/Article";
+import { ArticleSortField, ArticleType, ArticleView } from "@/entities/Article";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useDebounce } from "shared/lib/hooks/useDebounce/useDebounce";
-import { SortOrder } from "shared/types";
-import { Card } from "shared/ui/Card/Card";
-import { Input } from "shared/ui/Input/Input";
-import { HStack, VStack } from "shared/ui/Stack";
-import { ArticlesPageSortSelect } from "widgets/ArticlesPageSortSelect";
-import { ArticlesPageTypeTabs } from "widgets/ArticlesPageTypeTabs";
-import { ArticlesPageViewSelector } from "widgets/ArticlesPageViewSelector";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
+import { SortOrder } from "@/shared/types";
+import { Card } from "@/shared/ui/Card/Card";
+import { Input } from "@/shared/ui/Input/Input";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { ArticlesPageSortSelect } from "@/widgets/ArticlesPageSortSelect";
+import { ArticlesPageTypeTabs } from "@/widgets/ArticlesPageTypeTabs";
+import { ArticlesPageViewSelector } from "@/widgets/ArticlesPageViewSelector";
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,

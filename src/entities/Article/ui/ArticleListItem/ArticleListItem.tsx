@@ -1,19 +1,19 @@
 import { HTMLAttributeAnchorTarget, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import EyeIcon from "shared/assets/icons/eyeIcon.svg";
-import { RoutePath } from "shared/config/routerConfig/routerConfig";
-import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink } from "shared/ui/AppLink/AppLink";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Card } from "shared/ui/Card/Card";
-import { Icon } from "shared/ui/Icon/Icon";
-import { HStack, VStack } from "shared/ui/Stack";
-import { Text } from "shared/ui/Text/Text";
+import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
+import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Card } from "@/shared/ui/Card/Card";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { Text } from "@/shared/ui/Text/Text";
 import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleListItem.module.scss";
-import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "shared/const/localstorage";
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
 
 interface ArticleListItemProps {
   className?: string;

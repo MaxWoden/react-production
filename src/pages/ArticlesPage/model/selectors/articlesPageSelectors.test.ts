@@ -1,10 +1,10 @@
-import { StateSchema } from "app/providers/StoreProvider";
+import { StateSchema } from "@/app/providers/StoreProvider";
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "./articlesPageSelectors";
-import { ArticleView } from "entities/Article";
+import { ArticleView } from "@/entities/Article";
 
 describe("articlesPageSelectors", () => {
   test("should return error", () => {

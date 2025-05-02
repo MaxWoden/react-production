@@ -5,7 +5,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { HStack } from "../Stack";
 import classes from "./Input.module.scss";
 

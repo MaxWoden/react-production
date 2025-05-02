@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Theme } from "app/providers/ThemeProvider";
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import { StoreDecorator } from "@/shared/config/storybook/Decorators/StoreDecorator";
 import ProfilePage from "./ProfilePage";
-import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const data = {
   id: "1",

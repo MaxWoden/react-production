@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Theme } from "app/providers/ThemeProvider";
-import { ThemeDecorator } from "shared/config/storybook/Decorators/ThemeDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 import ArticlesPage from "./ArticlesPage";
-import { StoreDecorator } from "shared/config/storybook/Decorators/StoreDecorator";
+import { StoreDecorator } from "@/shared/config/storybook/Decorators/StoreDecorator";
 import {
   Article,
   ArticleSortField,
   ArticleType,
   ArticleView,
-} from "entities/Article";
+} from "@/entities/Article";
 
 const article = {
   id: "1",

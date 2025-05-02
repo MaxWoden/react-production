@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import Russia from "shared/assets/icons/russia.svg";
-import Uk from "shared/assets/icons/uk.svg";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "shared/ui/Button/Button";
-import { HStack } from "shared/ui/Stack";
+import Russia from "@/shared/assets/icons/russia.svg";
+import Uk from "@/shared/assets/icons/uk.svg";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Button } from "@/shared/ui/Button/Button";
+import { HStack } from "@/shared/ui/Stack";
 import classes from "./LangSwitcher.module.scss";
 
 export enum LangSwitcherStyle {
