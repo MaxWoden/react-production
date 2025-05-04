@@ -1,4 +1,3 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { Card } from "@/shared/ui/Card/Card";
 import { Drawer } from "@/shared/ui/Drawer/Drawer";
@@ -10,7 +9,6 @@ import { Text } from "@/shared/ui/Text/Text";
 import { memo, useCallback, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
 import { useTranslation } from "react-i18next";
-import classes from "./RatingCard.module.scss";
 
 interface RatingCardProps {
   className?: string;
@@ -19,13 +17,21 @@ interface RatingCardProps {
   hasFeedback?: boolean;
   onCancel?: (starsCount: number) => void;
   onAccept?: (starsCount: number, feedback?: string) => void;
+  rate?: number;
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
-  const { className, title, feedbackTitle, hasFeedback, onCancel, onAccept } =
-    props;
+  const {
+    className,
+    title,
+    feedbackTitle,
+    hasFeedback,
+    onCancel,
+    onAccept,
+    rate = 0,
+  } = props;
   const { t } = useTranslation();
-  const [starsCount, setStarsCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(rate);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
 
@@ -49,6 +55,8 @@ export const RatingCard = memo((props: RatingCardProps) => {
 
   const cancelHandle = useCallback(() => {
     setIsModalOpen(false);
+    setStarsCount(0);
+    setFeedback("");
     onCancel?.(starsCount);
   }, [onCancel, starsCount]);
 
@@ -68,9 +76,9 @@ export const RatingCard = memo((props: RatingCardProps) => {
   );
 
   return (
-    <Card className={classNames(classes.RatingCard, {}, [className])}>
-      <VStack align="center" gap="8">
-        <Text title={title} />
+    <Card max className={className}>
+      <VStack max align="center" gap="8">
+        <Text title={starsCount ? t("Спасибо за оценку!") : title} />
         <StarRating
           size={40}
           onSelect={onSelectStars}

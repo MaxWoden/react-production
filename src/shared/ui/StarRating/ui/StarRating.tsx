@@ -1,6 +1,6 @@
 import Star from "@/shared/assets/icons/star.svg";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
-import { memo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { Icon } from "../../Icon/Icon";
 import { HStack } from "../../Stack";
 import classes from "./StarRating.module.scss";
@@ -18,29 +18,41 @@ export const StarRating = memo((props: StarRatingProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
-  const onClick = (starNumber: number) => () => {
-    if (!isSelected) {
-      setIsSelected(true);
-      onSelect?.(starNumber);
-      setCurrentStarsCount(starNumber + 1);
-    }
-  };
+  useEffect(() => {
+    setCurrentStarsCount(selectedStars);
+    setIsSelected(Boolean(selectedStars));
+  }, [selectedStars]);
 
-  const onHover = (starNumber: number) => () => {
-    if (!isSelected) {
-      setIsHovered(true);
-      setCurrentStarsCount(starNumber + 1);
-    }
-  };
+  const onClick = useCallback(
+    (starNumber: number) => () => {
+      if (!isSelected) {
+        setIsSelected(true);
+        setCurrentStarsCount(starNumber + 1);
+        onSelect?.(starNumber + 1);
+      }
+    },
+    [isSelected, onSelect]
+  );
 
-  const onLeave = () => {
+  const onHover = useCallback(
+    (starNumber: number) => () => {
+      if (!isSelected) {
+        setIsHovered(true);
+        setCurrentStarsCount(starNumber + 1);
+      }
+    },
+    [isSelected]
+  );
+
+  const onLeave = useCallback(() => {
     if (!isSelected) {
       setCurrentStarsCount(0);
     }
-  };
+  }, [isSelected]);
 
   const mods = (starNumber: number): Mods => ({
-    [classes.hovered]: isHovered && starNumber < currentStarsCount,
+    [classes.hovered]:
+      (isHovered || isSelected) && starNumber < currentStarsCount,
     [classes.selected]: isSelected,
   });
 

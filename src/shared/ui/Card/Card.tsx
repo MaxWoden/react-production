@@ -5,12 +5,16 @@ import classes from "./Card.module.scss";
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   children?: ReactNode;
+  max?: boolean;
 }
 
 export const Card = memo((props: CardProps) => {
-  const { className, children, ...otherProps } = props;
+  const { className, children, max, ...otherProps } = props;
   return (
-    <div className={classNames(classes.Card, {}, [className])} {...otherProps}>
+    <div
+      className={classNames(classes.Card, { [classes.max]: max }, [className])}
+      {...otherProps}
+    >
       {children}
     </div>
   );
