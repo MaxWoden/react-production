@@ -25,6 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   children?: ReactNode;
   "data-testid"?: string;
+  fullWidth?: boolean;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -37,6 +38,7 @@ export const Button = memo((props: ButtonProps) => {
     square,
     "data-testid": dataTestid = "Button",
     disabled,
+    fullWidth,
     ...otherProps
   } = props;
 
@@ -45,6 +47,7 @@ export const Button = memo((props: ButtonProps) => {
     [classes[size]]: true,
     [classes.square]: square,
     [classes.disabled]: disabled,
+    [classes.fullWidth]: fullWidth,
   };
 
   return (
