@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import ArticleRating from "./ArticleRating";
+import {ProfileRating} from "./ProfileRating";
 import { Theme } from "@/app/providers/ThemeProvider";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
-const meta: Meta<typeof ArticleRating> = {
-  title: "features/ArticleRating/ArticleRating",
-  component: ArticleRating,
+const meta: Meta<typeof ProfileRating> = {
+  title: "features/ProfileRating",
+  component: ProfileRating,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof ArticleRating>;
+type Story = StoryObj<typeof ProfileRating>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 

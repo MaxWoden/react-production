@@ -1,12 +1,12 @@
 import { CommentList } from "@/entities/Comment";
 import { AddCommentForm } from "@/features/AddNewComment";
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   getArticleCommentsError,
   getArticleCommentsIsLoading,
@@ -17,12 +17,12 @@ import { getArticleComments } from "../../model/slices/articleDetailsCommentsSli
 
 interface ArticleDetailsCommentsProps {
   className?: string;
-  id?: string;
+  articleId?: string;
 }
 
 export const ArticleDetailsComments = memo(
   (props: ArticleDetailsCommentsProps) => {
-    const { className, id } = props;
+    const { className, articleId } = props;
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const comments = useSelector(getArticleComments.selectAll);
@@ -30,7 +30,7 @@ export const ArticleDetailsComments = memo(
     const error = useSelector(getArticleCommentsError);
 
     useInitialEffects(() => {
-      dispatch(fetchCommentsByArticleId(id));
+      dispatch(fetchCommentsByArticleId(articleId));
     });
 
     const onSendComment = useCallback(

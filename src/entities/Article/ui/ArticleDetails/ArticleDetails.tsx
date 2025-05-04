@@ -1,6 +1,3 @@
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
 import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
@@ -16,6 +13,9 @@ import { Icon } from "@/shared/ui/Icon/Icon";
 import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
 import { HStack, VStack } from "@/shared/ui/Stack";
 import { Text, TextAlign, TextSize, TextTheme } from "@/shared/ui/Text/Text";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { ArticleBlockType } from "../../model/consts/consts";
 import {
   getArticleDetailsData,
@@ -32,7 +32,7 @@ import classes from "./ArticleDetails.module.scss";
 
 interface ArticleDetailsProps {
   className?: string;
-  id?: string;
+  articleId?: string;
   setArticleNotFound?: (flag: boolean) => void;
 }
 
@@ -41,7 +41,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-  const { className, id, setArticleNotFound } = props;
+  const { className, articleId, setArticleNotFound } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -49,7 +49,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const isLoading = useSelector(getArticleDetailsIsLoading);
   const error = useSelector(getArticleDetailsError);
 
-  useInitialEffects(() => dispatch(fetchArticleById(id)));
+  useInitialEffects(() => dispatch(fetchArticleById(articleId)));
 
   const renderBLock = useCallback((block: ArticleBlock) => {
     switch (block.type) {

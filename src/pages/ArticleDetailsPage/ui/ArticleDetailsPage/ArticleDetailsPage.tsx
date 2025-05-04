@@ -1,5 +1,5 @@
 import { ArticleDetails } from "@/entities/Article";
-import { ArticleRating } from "@/features/articleRating";
+import { ArticleRating, AverageArticleRating } from "@/features/articleRating";
 import { ArticleRecommendationList } from "@/features/articleRecommendationsList";
 import {
   DynamicModuleLoader,
@@ -18,10 +18,10 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id: articleId } = useParams<{ id: string }>();
   const [articleNotFound, setArticleNotFound] = useState(false);
 
-  if (!id) {
+  if (!articleId) {
     return null;
   }
 
@@ -30,10 +30,14 @@ const ArticleDetailsPage = () => {
       <Page>
         <VStack gap="32">
           <ArticleDetailsPageHeader />
-          <ArticleDetails setArticleNotFound={setArticleNotFound} id={id} />
-          {!articleNotFound && <ArticleRating articleId={id} />}
+          {!articleNotFound && <AverageArticleRating articleId={articleId} />}
+          <ArticleDetails
+            setArticleNotFound={setArticleNotFound}
+            articleId={articleId}
+          />
+          {!articleNotFound && <ArticleRating articleId={articleId} />}
           <ArticleRecommendationList />
-          {!articleNotFound && <ArticleDetailsComments id={id} />}
+          {!articleNotFound && <ArticleDetailsComments articleId={articleId} />}
         </VStack>
       </Page>
     </DynamicModuleLoader>

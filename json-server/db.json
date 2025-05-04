@@ -806,6 +806,26 @@
       "rate": 5,
       "feedback": "",
       "id": "gGMghXQ"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "feedback": "fds",
+      "id": "DLEV-_k"
+    },
+    {
+      "userId": "2",
+      "articleId": "1",
+      "rate": 5,
+      "feedback": "",
+      "id": "SNZQB3E"
+    },
+    {
+      "userId": "2",
+      "profileId": "2",
+      "rate": 5,
+      "id": "OXX72VZ"
     }
   ],
   "profile-ratings": [
@@ -822,6 +842,13 @@
       "feedback": "Хороший профиль",
       "userId": "1",
       "profileId": "2"
+    },
+    {
+      "userId": "2",
+      "profileId": "2",
+      "rate": 5,
+      "feedback": "nike",
+      "id": "-ywwxOP"
     }
   ]
 }

@@ -27,13 +27,13 @@ import { EditableProfileCardHeader } from "../EditableProfileCardHeader/Editable
 
 interface EditableProfileCardProps {
   className?: string;
-  id?: string;
+  profieId: string;
 }
 
 const reducers: ReducersList = { profile: profileReducer };
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
-  const { className, id } = props;
+  const { className, profieId } = props;
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
@@ -52,7 +52,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     [ValidateProfileErrors.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useInitialEffects(() => id && dispatch(fetchProfileDataById(id)));
+  useInitialEffects(() => dispatch(fetchProfileDataById(profieId)));
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
