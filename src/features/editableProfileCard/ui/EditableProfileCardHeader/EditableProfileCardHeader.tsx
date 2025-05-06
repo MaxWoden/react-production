@@ -1,7 +1,4 @@
 import { getUserAuthData } from "@/entities/User";
-import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import Cancel from "@/shared/assets/icons/cancel.svg";
 import Confirm from "@/shared/assets/icons/confirm.svg";
 import Edit from "@/shared/assets/icons/edit.svg";
@@ -10,30 +7,29 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Text } from "@/shared/ui/Text/Text";
-import {
-  getProfileData,
-  getProfileIsLoading,
-  getProfileReadonly,
-} from "../../model/selectors/getProfile";
+import { useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData";
 import { profileActions } from "../../model/slice/profileSlice";
 import classes from "./EditableProfileCardHeader.module.scss";
+import { getProfileData } from "../../model/selectors/getProfile";
 
 interface EditableProfileCardHeaderProps {
   className?: string;
+  isLoading?: boolean;
+  readonly?: boolean;
 }
 
 export const EditableProfileCardHeader = (
   props: EditableProfileCardHeaderProps
 ) => {
-  const { className } = props;
+  const { className, isLoading, readonly } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const isLoading = useSelector(getProfileIsLoading);
-  const profileData = useSelector(getProfileData);
   const userData = useSelector(getUserAuthData);
-  const readonly = useSelector(getProfileReadonly);
+  const profileData = useSelector(getProfileData);
   const canEdit = profileData?.id === userData?.id;
 
   const onEdit = useCallback(() => {
@@ -50,9 +46,18 @@ export const EditableProfileCardHeader = (
     dispatch(profileActions.cancelEdit());
   }, [dispatch]);
 
+  const title = isLoading
+    ? t("Профиль")
+    : canEdit
+    ? t("Ваш профиль")
+    : `${t("Профиль пользоватея")} ${profileData?.username}`;
+
   return (
     <HStack justify="between" max className={className}>
-      <Text title={t(canEdit ? "Ваш профиль" : "Профиль")} />
+      <HStack gap="16">
+        <Text title={title} />
+      </HStack>
+
       {canEdit &&
         (readonly ? (
           <Button

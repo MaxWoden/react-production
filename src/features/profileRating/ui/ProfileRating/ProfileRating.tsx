@@ -57,9 +57,7 @@ export const ProfileRating = memo((props: ProfileRatingProps) => {
       className={className}
       title={t("Оцените профиль")}
       hasFeedback
-      feedbackTitle={t(
-        "Оставьте свой отзыв о статье, это поможет улучшить качество статей"
-      )}
+      feedbackTitle={t("Оставьте свой отзыв о профиле")}
     />
   );
 });

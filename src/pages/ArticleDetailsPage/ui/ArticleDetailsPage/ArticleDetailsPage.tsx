@@ -1,5 +1,6 @@
 import { ArticleDetails } from "@/entities/Article";
-import { ArticleRating, AverageArticleRating } from "@/features/articleRating";
+import { ArticleRating } from "@/features/articleRating";
+import ArticleAverageRating from "@/features/articleRating/ui/ArticleAverageRating/ArticleAverageRating";
 import { ArticleRecommendationList } from "@/features/articleRecommendationsList";
 import {
   DynamicModuleLoader,
@@ -30,7 +31,7 @@ const ArticleDetailsPage = () => {
       <Page>
         <VStack gap="32">
           <ArticleDetailsPageHeader />
-          {!articleNotFound && <AverageArticleRating articleId={articleId} />}
+          {!articleNotFound && <ArticleAverageRating articleId={articleId} />}
           <ArticleDetails
             setArticleNotFound={setArticleNotFound}
             articleId={articleId}

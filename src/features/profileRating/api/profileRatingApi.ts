@@ -24,6 +24,14 @@ const profileRatingApi = rtkApi.injectEndpoints({
         },
       }),
     }),
+    getAllProfileRatings: build.query<Rating[], string>({
+      query: (profileId) => ({
+        url: "/profile-ratings",
+        params: {
+          profileId,
+        },
+      }),
+    }),
     rateArticle: build.mutation<void, RateProfileArg>({
       query: (arg) => ({
         url: "/profile-ratings",
@@ -35,4 +43,6 @@ const profileRatingApi = rtkApi.injectEndpoints({
 });
 
 export const useGetProfileRating = profileRatingApi.useGetProfileRatingQuery;
+export const useGetAllProfileRatings =
+  profileRatingApi.useGetAllProfileRatingsQuery;
 export const useRateProfile = profileRatingApi.useRateArticleMutation;

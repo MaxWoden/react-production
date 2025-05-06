@@ -1,9 +1,6 @@
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
 import { ProfileCard } from "@/entities/Profile";
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -12,6 +9,9 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   getProfileError,
   getProfileForm,
@@ -28,14 +28,14 @@ import { EditableProfileCardHeader } from "../EditableProfileCardHeader/Editable
 interface EditableProfileCardProps {
   className?: string;
   profieId: string;
+  setProfileNotFound: (value: boolean) => void;
 }
 
 const reducers: ReducersList = { profile: profileReducer };
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
-  const { className, profieId } = props;
+  const { className, profieId, setProfileNotFound } = props;
   const { t } = useTranslation();
-
   const dispatch = useAppDispatch();
 
   const form = useSelector(getProfileForm);
@@ -43,6 +43,10 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const isLoading = useSelector(getProfileIsLoading);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
+
+  if (error) {
+    setProfileNotFound(true);
+  }
 
   const validateErrorTranslation: Record<ValidateProfileErrors, string> = {
     [ValidateProfileErrors.INCORRECT_AGE]: t("Неккоректный возраст"),
@@ -118,7 +122,12 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         className={className}
         data-testid="EditableProfileCard"
       >
-        <EditableProfileCardHeader />
+        {!error && (
+          <EditableProfileCardHeader
+            isLoading={isLoading}
+            readonly={readonly}
+          />
+        )}
         {validateErrors?.length &&
           validateErrors.map((error: ValidateProfileErrors) => (
             <Text

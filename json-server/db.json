@@ -83,7 +83,7 @@
       "lastname": "Казаков",
       "age": 19,
       "currency": "EUR",
-      "country": "Armenia",
+      "country": "Kazakhstan",
       "city": "Казань",
       "username": "admin",
       "avatar": "https://i.pinimg.com/736x/37/8a/27/378a270e775265622393da8c0527417e.jpg"
@@ -849,6 +849,20 @@
       "rate": 5,
       "feedback": "nike",
       "id": "-ywwxOP"
+    },
+    {
+      "userId": "3",
+      "profileId": "1",
+      "rate": 5,
+      "feedback": "",
+      "id": "UrRF6je"
+    },
+    {
+      "userId": "3",
+      "profileId": "2",
+      "rate": 1,
+      "feedback": "",
+      "id": "okB3AdO"
     }
   ]
 }

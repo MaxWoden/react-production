@@ -1,17 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
-import AverageArticleRating from "./AverageArticleRating";
 import { Theme } from "@/app/providers/ThemeProvider";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
+import ArticleAverageRating from "./ArticleAverageRating";
 
-const meta: Meta<typeof AverageArticleRating> = {
-  title: "features/ArticleRating/AverageArticleRating",
-  component: AverageArticleRating,
+const meta: Meta<typeof ArticleAverageRating> = {
+  title: "features/ArticleRating/ArticleAverageRating",
+  component: ArticleAverageRating,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof AverageArticleRating>;
+type Story = StoryObj<typeof ArticleAverageRating>;
 
 export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
 

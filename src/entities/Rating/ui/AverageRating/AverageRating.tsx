@@ -1,27 +1,27 @@
 import Star from "@/shared/assets/icons/star.svg";
 import { Icon } from "@/shared/ui/Icon/Icon";
 import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
-import { HStack } from "@/shared/ui/Stack";
+import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Text, TextSize } from "@/shared/ui/Text/Text";
 import { memo } from "react";
-import { useTranslation } from "react-i18next";
-import { useGetAllArticleRatings } from "../../api/articleRatingApi";
+import { Rating } from "../../model/types/types";
 
-interface AverageArticleRatingProps {
+interface AverageRatingProps {
   className?: string;
-  articleId: string;
+  isLoading?: boolean;
+  data?: Rating[];
+  digits?: number;
 }
 
-const AverageArticleRating = (props: AverageArticleRatingProps) => {
-  const { className, articleId } = props;
-  const { t } = useTranslation();
-
-  const { data, isLoading } = useGetAllArticleRatings(articleId);
+export const AverageRating = memo((props: AverageRatingProps) => {
+  const { className, isLoading, data, digits = 2 } = props;
 
   const summaryRating =
     data?.reduce((accum, item) => (accum += item.rate), 0) || 0;
   const ratingsCount = data?.length || 0;
-  const averageRating = summaryRating / ratingsCount || 0;
+  const averageRating = parseFloat(
+    (summaryRating / ratingsCount || 0).toFixed(digits)
+  );
 
   if (isLoading) {
     return <Skeleton width={150} height={30} />;
@@ -36,9 +36,7 @@ const AverageArticleRating = (props: AverageArticleRatingProps) => {
         style={{ fill: "goldenrod" }}
         Svg={Star}
       />
-      <Text size={TextSize.L} text={t(`${averageRating}(${ratingsCount})`)} />
+      <Text size={TextSize.L} text={`${averageRating}(${ratingsCount})`} />
     </HStack>
   );
-};
-
-export default memo(AverageArticleRating);
+});
