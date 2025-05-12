@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "@/app/providers/ThemeProvider";
-import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
-import { ArticleRecommendationList } from "./ArticleRecommendationList";
 import { Article } from "@/entities/Article";
+import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
+import type { Meta, StoryObj } from "@storybook/react";
+import { ArticleRecommendationList } from "./ArticleRecommendationList";
 
 const article = {
   id: "1",
@@ -89,7 +89,7 @@ const meta: Meta<typeof ArticleRecommendationList> = {
   parameters: {
     mockData: [
       {
-        url: "https://react-production-server.onrender.com/articles",
+        url: `${__API__}/articles`,
         method: "GET",
         status: 200,
         response: { data: [{ ...article, id: "1" }] },

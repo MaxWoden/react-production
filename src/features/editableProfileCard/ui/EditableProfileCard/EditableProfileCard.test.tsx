@@ -27,7 +27,7 @@ const options = {
       form: profile,
     },
     user: {
-      authData: { id: "1", username: "admin" },
+      authData: { profileId: "1", username: "admin" },
     },
   },
   asyncReducers: {
@@ -37,7 +37,7 @@ const options = {
 
 describe("features/EditableProfileCard", () => {
   test("Режим рид онли должен переключиться", async () => {
-    renderComponent(<EditableProfileCard id="1" />, options);
+    renderComponent(<EditableProfileCard profileId="1" />, options);
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -47,7 +47,7 @@ describe("features/EditableProfileCard", () => {
   });
 
   test("При отмене значения должны обнуляться", async () => {
-    renderComponent(<EditableProfileCard id="1" />, options);
+    renderComponent(<EditableProfileCard profileId="1" />, options);
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -73,7 +73,7 @@ describe("features/EditableProfileCard", () => {
   });
 
   test("Должна появиться ошибка", async () => {
-    renderComponent(<EditableProfileCard id="1" />, options);
+    renderComponent(<EditableProfileCard profileId="1" />, options);
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );
@@ -91,7 +91,7 @@ describe("features/EditableProfileCard", () => {
 
   test("Если нет ошибок валидации, то на сервер должен уйти PUT запрос", async () => {
     const mockPutReq = jest.spyOn($api, "put");
-    renderComponent(<EditableProfileCard id="1" />, options);
+    renderComponent(<EditableProfileCard profileId="1" />, options);
     await userEvent.click(
       screen.getByTestId("EditableProfileCardHeader.EditButton")
     );

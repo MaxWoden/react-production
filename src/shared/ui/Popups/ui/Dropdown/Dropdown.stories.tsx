@@ -7,7 +7,7 @@ import { Dropdown } from "./Dropdown";
 import { Avatar } from "../../../Avatar/Avatar";
 
 const meta: Meta<typeof Dropdown> = {
-  title: "shared/Dropdown",
+  title: "shared/Popups/Dropdown",
   component: Dropdown,
   tags: ["autodocs"],
   args: {

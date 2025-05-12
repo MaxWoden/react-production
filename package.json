@@ -70,7 +70,7 @@
     "css-loader": "^6.6.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-woden-plugin": "^0.0.3",
+    "eslint-plugin-woden-plugin": "^0.0.4",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "globals": "^16.0.0",

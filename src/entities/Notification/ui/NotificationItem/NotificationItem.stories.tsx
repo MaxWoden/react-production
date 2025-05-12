@@ -5,9 +5,16 @@ import { Theme } from "@/app/providers/ThemeProvider";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof NotificationItem> = {
-  title: "entities/NotificationItem",
+  title: "entities/Notification/NotificationItem",
   component: NotificationItem,
   tags: ["autodocs"],
+  args: {
+    item: {
+      id: "1",
+      title: " title",
+      description: "description",
+    },
+  },
 };
 
 export default meta;

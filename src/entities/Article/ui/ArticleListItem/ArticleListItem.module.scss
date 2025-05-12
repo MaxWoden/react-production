@@ -38,11 +38,6 @@
     object-fit: cover;
   }
 
-  .top {
-    position: absolute;
-    top: 0;
-  }
-
   .types p {
     width: 120px;
     white-space: nowrap;
@@ -61,15 +56,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .top {
+    display: none;
+    position: absolute;
+    top: 0;
+  }
 
   &:hover {
     opacity: 0.8;
     transform: scale(1.01);
     transition: all var(--animation-fast);
 
-    .date,
-    .authorLink {
-      display: block;
+    .top {
+      display: flex;
     }
   }
 }

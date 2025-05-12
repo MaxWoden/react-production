@@ -20,7 +20,7 @@ const ProfilePage = () => {
         {!profileNotFound && <ProfileAverageRating profileId={profileId} />}
         <EditableProfileCard
           setProfileNotFound={setProfileNotFound}
-          profieId={profileId}
+          profileId={profileId}
         />
         {!profileNotFound && <ProfileRating profileId={profileId} />}
       </VStack>

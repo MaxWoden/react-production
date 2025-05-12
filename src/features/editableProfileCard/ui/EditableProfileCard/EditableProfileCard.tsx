@@ -27,14 +27,14 @@ import { EditableProfileCardHeader } from "../EditableProfileCardHeader/Editable
 
 interface EditableProfileCardProps {
   className?: string;
-  profieId: string;
-  setProfileNotFound: (value: boolean) => void;
+  profileId: string;
+  setProfileNotFound?: (value: boolean) => void;
 }
 
 const reducers: ReducersList = { profile: profileReducer };
 
 export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
-  const { className, profieId, setProfileNotFound } = props;
+  const { className, profileId, setProfileNotFound } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -45,7 +45,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
   const validateErrors = useSelector(getProfileValidateErrors);
 
   if (error) {
-    setProfileNotFound(true);
+    setProfileNotFound?.(true);
   }
 
   const validateErrorTranslation: Record<ValidateProfileErrors, string> = {
@@ -56,7 +56,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     [ValidateProfileErrors.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useInitialEffects(() => dispatch(fetchProfileDataById(profieId)));
+  useInitialEffects(() => dispatch(fetchProfileDataById(profileId)));
 
   const onChangeFirstname = useCallback(
     (value?: string) => {

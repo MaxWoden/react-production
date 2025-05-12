@@ -7,6 +7,16 @@ const meta: Meta<typeof ArticleAverageRating> = {
   title: "features/ArticleRating/ArticleAverageRating",
   component: ArticleAverageRating,
   tags: ["autodocs"],
+  parameters: {
+    mockData: [
+      {
+        url: `${__API__}/article-ratings?articleId=1`,
+        method: "GET",
+        status: 200,
+        response: [[{ rate: 5 }, { rate: 4 }]],
+      },
+    ],
+  },
 };
 
 export default meta;
