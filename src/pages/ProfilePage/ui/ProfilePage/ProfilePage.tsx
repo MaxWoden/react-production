@@ -1,6 +1,6 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
 import { ProfileRating } from "@/features/profileRating";
-import ProfileAverageRating from "@/features/profileRating/ui/ProfileAverageRating/ProfileAverageRating";
+import { ProfileAverageRating } from "@/features/profileRating";
 import { VStack } from "@/shared/ui/Stack";
 import { Page } from "@/widgets/Page";
 import { memo, useState } from "react";

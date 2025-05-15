@@ -4,13 +4,13 @@ import { useGetAllProfileRatings } from "../../api/profileRatingApi";
 
 export interface ProfileAverageRatingProps {
   className?: string;
-  profileId: string;
+  articleId: string;
 }
 
 const ProfileAverageRating = (props: ProfileAverageRatingProps) => {
-  const { className, profileId } = props;
+  const { className, articleId } = props;
 
-  const { data, isLoading } = useGetAllProfileRatings(profileId);
+  const { data, isLoading } = useGetAllProfileRatings(articleId);
 
   return (
     <AverageRating className={className} isLoading={isLoading} data={data} />

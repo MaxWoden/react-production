@@ -1,6 +1,5 @@
 import { ArticleDetails } from "@/entities/Article";
-import { ArticleRating } from "@/features/articleRating";
-import ArticleAverageRating from "@/features/articleRating/ui/ArticleAverageRating/ArticleAverageRating";
+import { ArticleAverageRating, ArticleRating } from "@/features/articleRating";
 import { ArticleRecommendationList } from "@/features/articleRecommendationsList";
 import {
   DynamicModuleLoader,

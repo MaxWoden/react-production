@@ -1,11 +1,10 @@
-import { screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { Country } from "@/entities/Country";
 import { Currency } from "@/entities/Currency";
 import { Profile } from "@/entities/Profile";
 import { $api } from "@/shared/api/api";
 import { renderComponent } from "@/shared/lib/tests/renderComponent/renderComponent";
-import { profileReducer } from "../../model/slice/profileSlice";
+import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { EditableProfileCard } from "./EditableProfileCard";
 
 const profile: Profile = {
@@ -29,9 +28,6 @@ const options = {
     user: {
       authData: { profileId: "1", username: "admin" },
     },
-  },
-  asyncReducers: {
-    profile: profileReducer,
   },
 };
 

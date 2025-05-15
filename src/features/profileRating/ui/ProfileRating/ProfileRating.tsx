@@ -9,12 +9,12 @@ import {
   useRateProfile,
 } from "../../api/profileRatingApi";
 
-interface ProfileRatingProps {
+export interface ProfileRatingProps {
   className?: string;
   profileId: string;
 }
 
-export const ProfileRating = memo((props: ProfileRatingProps) => {
+const ProfileRating = (props: ProfileRatingProps) => {
   const { className, profileId } = props;
   const { t } = useTranslation();
 
@@ -60,4 +60,6 @@ export const ProfileRating = memo((props: ProfileRatingProps) => {
       feedbackTitle={t("Оставьте свой отзыв о профиле")}
     />
   );
-});
+};
+
+export default memo(ProfileRating);

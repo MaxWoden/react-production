@@ -27,6 +27,7 @@ export default [
       "react/no-deprecated": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "wodenPlugin/path-checker": ["error", { alias: "@" }],
+      "wodenPlugin/public-api-imports": ["error", { alias: "@" }],
       "no-undef": "off",
       "no-unused-vars": "off",
       "@typescript-eslint/no-require-imports": "off",
