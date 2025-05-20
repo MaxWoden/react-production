@@ -1,4 +1,4 @@
-import { memo, ReactNode, useCallback } from "react";
+import { memo, ReactNode, useCallback, useMemo } from "react";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
 import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../Overlay/Overlay";
@@ -27,10 +27,13 @@ export const Modal = memo((props: ModalProps) => {
     animationDelay: 300,
   });
 
-  const mods: Mods = {
-    [classes.opened]: isOpen,
-    [classes.isClosing]: isClosing,
-  };
+  const mods: Mods = useMemo(
+    () => ({
+      [classes.opened]: isOpen,
+      [classes.isClosing]: isClosing,
+    }),
+    [isClosing, isOpen]
+  );
 
   const renderComponent = useCallback(() => {
     return (
@@ -39,7 +42,7 @@ export const Modal = memo((props: ModalProps) => {
         <div className={classes.content}>{children}</div>
       </div>
     );
-  }, [mods, children]);
+  }, [mods, children, className, closeHandler]);
 
   if (lazy && !isMounted) return null;
 

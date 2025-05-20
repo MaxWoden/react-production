@@ -34,7 +34,7 @@ const ProfileRating = (props: ProfileRatingProps) => {
     (starsCount: number, feedback?: string) => {
       try {
         rateProfileMutation({
-          userId: userData?.id,
+          userId: userData.id,
           profileId,
           rate: starsCount,
           feedback,
@@ -43,7 +43,7 @@ const ProfileRating = (props: ProfileRatingProps) => {
         console.log(error);
       }
     },
-    [rateProfileMutation, profileId]
+    [rateProfileMutation, profileId, userData.id]
   );
 
   if (isLoading) {

@@ -23,7 +23,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
 
   useEffect(() => {
     value && setSelected(options.find((item) => item.value === value)!);
-  }, [value]);
+  }, [value, options]);
 
   useEffect(() => {
     readonly && setOpen(false);
@@ -36,7 +36,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
       setSelected(item);
       setOpen(false);
     },
-    []
+    [onSelect]
   );
 
   const onToggle = () => {
@@ -59,7 +59,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
           </li>
         );
       }),
-    [options, selected]
+    [options, selected, onSelectHandler]
   );
 
   return (

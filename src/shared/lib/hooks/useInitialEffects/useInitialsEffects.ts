@@ -5,5 +5,5 @@ export const useInitialEffects = (callback: () => void) => {
     if (__PROJECT__ !== "storybook" && __PROJECT__ !== "jest") {
       callback();
     }
-  }, []);
+  }, [callback]);
 };

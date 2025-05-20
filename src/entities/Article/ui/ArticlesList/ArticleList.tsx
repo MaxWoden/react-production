@@ -110,7 +110,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         )}
       </VStack>
     );
-  }, [view]);
+  }, [view, isList, virtualized]);
 
   const renderArticle = useCallback(
     (index: number, article: Article) => {
@@ -125,7 +125,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         />
       );
     },
-    [articles]
+    [target, view]
   );
 
   let content;

@@ -32,7 +32,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX,
       JSON.stringify(index)
     );
-  }, [article.id]);
+  }, [index]);
 
   const pathToAuthor = RoutePath.profile + article.user.id;
   const pathToArticle = RoutePath.article_details + article.id;

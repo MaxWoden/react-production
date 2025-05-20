@@ -3,13 +3,20 @@ import pluginReact from "eslint-plugin-react";
 import wodenPlugin from "eslint-plugin-woden-plugin";
 import globals from "globals";
 import tseslint from "typescript-eslint";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
 
 export default [
   pluginReact.configs.flat.recommended,
   ...tseslint.configs.recommended,
   pluginJs.configs.recommended,
   {
-    plugins: { pluginJs, pluginReact, tseslint, wodenPlugin },
+    plugins: {
+      pluginJs,
+      pluginReact,
+      tseslint,
+      wodenPlugin,
+      "react-hooks": reactHooksPlugin,
+    },
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: { globals: globals.browser },
     settings: {
@@ -18,6 +25,7 @@ export default [
       },
     },
     rules: {
+      "react-hooks/exhaustive-deps": "error",
       "react/react-in-jsx-scope": "off",
       "no-unused-expressions": "off",
       "@typescript-eslint/no-unused-expressions": "off",

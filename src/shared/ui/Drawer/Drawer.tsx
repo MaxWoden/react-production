@@ -5,7 +5,7 @@ import {
 } from "@/shared/lib/components/AnimationProvider";
 import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Portal } from "@headlessui/react";
-import { memo, ReactNode, useCallback, useEffect } from "react";
+import { memo, ReactNode, useCallback, useEffect, useMemo } from "react";
 import { Overlay } from "../Overlay/Overlay";
 import classes from "./Drawer.module.scss";
 
@@ -34,10 +34,13 @@ const DrawerContent = memo((props: DrawerProps) => {
     animationDelay: 300,
   });
 
-  const mods: Mods = {
-    [classes.opened]: isOpen,
-    [classes.isClosing]: isClosing,
-  };
+  const mods: Mods = useMemo(
+    () => ({
+      [classes.opened]: isOpen,
+      [classes.isClosing]: isClosing,
+    }),
+    [isClosing, isOpen]
+  );
 
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
@@ -46,7 +49,7 @@ const DrawerContent = memo((props: DrawerProps) => {
       y: 0,
       immediate: false,
     });
-  }, []);
+  }, [api]);
 
   useEffect(() => {
     isOpen && openDrawer();
@@ -98,7 +101,7 @@ const DrawerContent = memo((props: DrawerProps) => {
         </Spring.a.div>
       </div>
     ),
-    [children, mods]
+    [children, mods, closeHandler, Spring, bind, className, display, y]
   );
 
   if (!isOpen || (lazy && !isMounted)) return null;

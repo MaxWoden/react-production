@@ -34,7 +34,7 @@ const ArticleRating = (props: ArticleRatingProps) => {
     (starsCount: number, feedback?: string) => {
       try {
         rateArticleMutation({
-          userId: userData?.id,
+          userId: userData.id,
           articleId,
           rate: starsCount,
           feedback,
@@ -43,7 +43,7 @@ const ArticleRating = (props: ArticleRatingProps) => {
         console.log(error);
       }
     },
-    [rateArticleMutation, articleId]
+    [rateArticleMutation, articleId, userData.id]
   );
 
   if (isLoading) {

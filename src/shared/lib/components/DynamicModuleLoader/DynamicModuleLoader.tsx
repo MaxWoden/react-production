@@ -1,9 +1,9 @@
-import { Reducer } from "@reduxjs/toolkit";
 import { ReduxStoreWithManager } from "@/app/providers/StoreProvider";
 import {
   StateSchema,
   StateSchemaKey,
 } from "@/app/providers/StoreProvider/config/StateSchema";
+import { Reducer } from "@reduxjs/toolkit";
 import { ReactNode, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
 
@@ -41,7 +41,7 @@ export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
         });
       };
     }
-  }, []);
+  }, [dispatch, removeAfterRemount, reducers, store.reducerManager]);
 
   return <>{children}</>;
 };

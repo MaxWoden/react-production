@@ -68,7 +68,7 @@ export const Input = (props: InputProps) => {
       setIsFocused(true);
       ref.current.focus();
     }
-  }, []);
+  }, [autofocus]);
 
   return (
     <HStack

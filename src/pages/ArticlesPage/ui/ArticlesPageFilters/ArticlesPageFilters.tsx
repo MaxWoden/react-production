@@ -32,7 +32,10 @@ export const ArticlesPageFilters = memo(() => {
   const order = useSelector(getArticlesPageOrder);
   const search = useSelector(getArticlesPageSearch);
 
-  const fetchData = () => dispatch(fetchArticlesList({}));
+  const fetchData = useCallback(
+    () => dispatch(fetchArticlesList({})),
+    [dispatch]
+  );
 
   const debouncedFetchData = useDebounce(() => {
     fetchData();
@@ -44,7 +47,7 @@ export const ArticlesPageFilters = memo(() => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, debouncedFetchData]
+    [dispatch, fetchData]
   );
 
   const onChangeType = useCallback(
@@ -53,7 +56,7 @@ export const ArticlesPageFilters = memo(() => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, debouncedFetchData]
+    [dispatch, fetchData]
   );
 
   const onChangeSort = useCallback(
@@ -62,7 +65,7 @@ export const ArticlesPageFilters = memo(() => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, debouncedFetchData]
+    [dispatch, fetchData]
   );
 
   const onChangeOrder = useCallback(
@@ -71,7 +74,7 @@ export const ArticlesPageFilters = memo(() => {
       dispatch(articlesPageActions.setPage(1));
       fetchData();
     },
-    [dispatch, debouncedFetchData]
+    [dispatch, fetchData]
   );
 
   const onChangeSearch = useCallback(
