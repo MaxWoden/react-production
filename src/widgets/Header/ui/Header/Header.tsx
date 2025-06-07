@@ -2,15 +2,15 @@ import { getUserAuthData } from "@/entities/User";
 import { LoginModal } from "@/features/AuthByUsername";
 import { AvatarDropdown } from "@/features/avatarDropdown";
 import { NotificationButton } from "@/features/notificationButton";
-import { memo, useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
-import { RoutePath } from "@/app/providers/router/config/routeConfig";
+import { RoutePath } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { HStack } from "@/shared/ui/Stack";
 import { Text, TextTheme } from "@/shared/ui/Text/Text";
+import { memo, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import classes from "./Header.module.scss";
 
 interface HeaderProps {
