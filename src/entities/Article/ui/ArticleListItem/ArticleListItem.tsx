@@ -1,7 +1,7 @@
 import { HTMLAttributeAnchorTarget, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
-import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
+import { RoutePath } from "@/app/providers/router/config/routeConfig";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";

@@ -4,7 +4,7 @@ import AboutIcon from "@/shared/assets/icons/about.svg";
 import Blog from "@/shared/assets/icons/blog.svg";
 import HomeIcon from "@/shared/assets/icons/home.svg";
 import ProfileIcon from "@/shared/assets/icons/profile.svg";
-import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
+import { RoutePath } from "@/app/providers/router/config/routeConfig";
 import { SidebarItemType } from "../types/sidebar";
 
 export const getSidebarItems = createSelector(getUserAuthData, (userData) => {

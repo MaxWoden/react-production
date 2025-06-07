@@ -1,6 +1,6 @@
 import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
-import { RoutePath } from "@/shared/config/routerConfig/routerConfig";
+import { RoutePath } from "@/app/providers/router/config/routeConfig";
 import {
   DynamicModuleLoader,
   ReducersList,
