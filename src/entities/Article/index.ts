@@ -1,4 +1,3 @@
-export { articleDetailsReducer } from "./model/slice/articleDetailsSlice";
 export {
   ArticleBlockType,
   ArticleSortField,
