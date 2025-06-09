@@ -29,7 +29,7 @@ const ArticleDetailsPage = () => {
     <DynamicModuleLoader reducers={reducers}>
       <Page>
         <VStack gap="32">
-          <ArticleDetailsPageHeader />
+          <ArticleDetailsPageHeader articleId={articleId} />
           {!articleNotFound && <ArticleAverageRating articleId={articleId} />}
           <ArticleDetails
             setArticleNotFound={setArticleNotFound}

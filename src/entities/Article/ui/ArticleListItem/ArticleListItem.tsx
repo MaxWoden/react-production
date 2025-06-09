@@ -1,6 +1,6 @@
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
-import { RoutePath } from "@/shared/const/router";
+import { getRouteArticleDetails, getRouteProfile } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink } from "@/shared/ui/AppLink";
 import { Avatar } from "@/shared/ui/Avatar";
@@ -34,8 +34,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     );
   }, [index]);
 
-  const pathToAuthor = RoutePath.profile + article.user.id;
-  const pathToArticle = RoutePath.article_details + article.id;
+  const pathToAuthor = getRouteProfile(article.user.id);
+  const pathToArticle = getRouteArticleDetails(article.id);
 
   const types = <Text text={article.type.join(", ")} />;
 

@@ -4,7 +4,7 @@ import {
   isUserManager,
   userActions,
 } from "@/entities/User";
-import { RoutePath } from "@/shared/const/router";
+import { getRouteAdmin, getRouteProfile } from "@/shared/const/router";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Dropdown } from "@/shared/ui/Popups";
@@ -31,6 +31,10 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  if (!authData?.id) {
+    return null;
+  }
+
   return (
     <Dropdown
       className={className}
@@ -39,13 +43,13 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
           ? [
               {
                 content: t("Админка"),
-                href: RoutePath.admin_panel,
+                href: getRouteAdmin(),
               },
             ]
           : []),
         {
           content: t("Профиль"),
-          href: RoutePath.profile + authData?.id,
+          href: getRouteProfile(authData.id),
         },
         { content: t("Выйти"), onClick: onLogout },
       ]}

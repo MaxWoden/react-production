@@ -1,6 +1,5 @@
 import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
-import { RoutePath } from "@/shared/const/router";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -29,6 +28,7 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
+import { getRouteProfile } from "@/shared/const/router";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -50,6 +50,10 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const error = useSelector(getArticleDetailsError);
 
   useInitialEffects(() => dispatch(fetchArticleById(articleId)));
+
+  if (!article?.user) {
+    return null;
+  }
 
   const renderBLock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
@@ -128,7 +132,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             text={t(`${article?.subtitle}`)}
           />
 
-          <AppLink to={RoutePath.profile + article?.user.id}>
+          <AppLink to={getRouteProfile(article?.user.id)}>
             <HStack gap="16">
               <Avatar size={50} src={article?.user.avatar} />
               <Text text={article?.user.username} />

@@ -1,4 +1,3 @@
-import { RoutePath } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink } from "@/shared/ui/AppLink";
 import { Avatar } from "@/shared/ui/Avatar";
@@ -8,6 +7,7 @@ import { Text } from "@/shared/ui/Text";
 import { memo } from "react";
 import { Comment } from "../../model/types/comment";
 import classes from "./CommentCard.module.scss";
+import { getRouteProfile } from "@/shared/const/router";
 
 interface CommentCardProps {
   className?: string;
@@ -17,6 +17,10 @@ interface CommentCardProps {
 
 export const CommentCard = memo((props: CommentCardProps) => {
   const { className, comment, isLoading } = props;
+
+  if (!comment?.user) {
+    return null;
+  }
 
   if (isLoading) {
     return (
@@ -38,7 +42,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
 
   return (
     <VStack max className={classNames(classes.CommentCard, {}, [className])}>
-      <AppLink to={`${RoutePath.profile}${comment?.user.id}`}>
+      <AppLink to={getRouteProfile(comment?.user.id)}>
         <HStack gap="8">
           {comment?.user.avatar && (
             <Avatar size={30} src={comment.user.avatar} />

@@ -1,6 +1,6 @@
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Profile } from "@/entities/Profile";
-import { RoutePath } from "@/shared/const/router";
+import { getRouteProfile } from "@/shared/const/router";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchProfileDataById = createAsyncThunk<
@@ -15,9 +15,7 @@ export const fetchProfileDataById = createAsyncThunk<
   }
 
   try {
-    const { data } = await extra.api.get<Profile>(
-      `${RoutePath.profile}${profileId}`
-    );
+    const { data } = await extra.api.get<Profile>(getRouteProfile(profileId));
 
     if (!data) throw new Error();
 

@@ -1,10 +1,10 @@
+import { ArticleSortField } from "@/entities/Article";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { SortOrder } from "@/shared/types";
+import { Select, SelectOption } from "@/shared/ui/Select";
+import { HStack } from "@/shared/ui/Stack";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { ArticleSortField } from "@/entities/Article";
-import { SortOrder } from "@/shared/types";
-import { HStack } from "@/shared/ui/Stack";
-import { Select, SelectOption } from "@/shared/ui/Select";
 
 interface ArticlesPageSortSelectProps {
   className?: string;
@@ -47,13 +47,13 @@ export const ArticlesPageSortSelect = memo(
         <Select<ArticleSortField>
           label={t("Сортировать по")}
           options={sortFieldOptions}
-          onSelect={(newSort: ArticleSortField) => onChangeSort(newSort)}
+          onSelect={onChangeSort}
           value={sort}
         ></Select>
-        <Select
+        <Select<SortOrder>
           label={t("↑↓")}
           options={orderOptions}
-          onSelect={(newOrder: SortOrder) => onChangeOrder(newOrder)}
+          onSelect={onChangeOrder}
           value={order}
         ></Select>
       </HStack>

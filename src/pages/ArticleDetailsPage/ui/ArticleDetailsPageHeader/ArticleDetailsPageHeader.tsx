@@ -1,6 +1,5 @@
-import { getArticleDetailsData } from "@/entities/Article";
 import editIcon from "@/shared/assets/icons/edit.svg";
-import { RoutePath } from "@/shared/const/router";
+import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Icon } from "@/shared/ui/Icon";
@@ -14,24 +13,24 @@ import classes from "./ArticleDetailsPageHeader.module.scss";
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;
+  articleId: string;
 }
 
 export const ArticleDetailsPageHeader = memo(
   (props: ArticleDetailsPageHeaderProps) => {
-    const { className } = props;
+    const { className, articleId } = props;
     const { t } = useTranslation();
 
     const navigate = useNavigate();
     const canEdit = useSelector(getCanEditArticle);
-    const article = useSelector(getArticleDetailsData);
 
     const onBackToList = useCallback(() => {
-      navigate(RoutePath.articles);
+      navigate(getRouteArticles());
     }, [navigate]);
 
     const onEditArticle = useCallback(() => {
-      navigate(`${RoutePath.article_details}${article?.id}/edit`);
-    }, [navigate, article?.id]);
+      navigate(getRouteArticleEdit(articleId));
+    }, [navigate, articleId]);
 
     return (
       <HStack max justify="between" className={className}>
