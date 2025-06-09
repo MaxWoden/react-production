@@ -1,10 +1,11 @@
-import { Theme, useTheme } from "@/app/providers/ThemeProvider";
-import { memo } from "react";
 import Moon from "@/shared/assets/icons/moon.svg";
 import Orange from "@/shared/assets/icons/orange.svg";
 import Sun from "@/shared/assets/icons/sun.svg";
+import { Theme } from "@/shared/const/theme";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
 import { Button } from "@/shared/ui/Button/Button";
+import { memo } from "react";
 import classes from "./ThemeSwitcher.module.scss";
 
 export enum ThemeSwitcherStyle {

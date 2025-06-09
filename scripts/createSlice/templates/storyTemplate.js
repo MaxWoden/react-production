@@ -4,7 +4,7 @@ module.exports = (
 ) => `import type { Meta, StoryObj } from "@storybook/react";
 
 import {${componentName}} from "./${componentName}";
-import { Theme } from "@/app/providers/ThemeProvider";
+import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof ${componentName}> = {

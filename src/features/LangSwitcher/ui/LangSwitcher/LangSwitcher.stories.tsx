@@ -1,56 +1,56 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeSwitcher, ThemeSwitcherStyle } from "./ThemeSwitcher";
-import { Theme } from "@/app/providers/ThemeProvider";
+import { LangSwitcher, LangSwitcherStyle } from "./LangSwitcher";
+import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
-const meta: Meta<typeof ThemeSwitcher> = {
-  title: "widgets/ThemeSwitcher",
-  component: ThemeSwitcher,
+const meta: Meta<typeof LangSwitcher> = {
+  title: "widgets/LangSwitcher",
+  component: LangSwitcher,
   tags: ["autodocs"],
 };
 
 export default meta;
-type Story = StoryObj<typeof ThemeSwitcher>;
+type Story = StoryObj<typeof LangSwitcher>;
 
 export const Primary: Story = {
   args: {
-    style: ThemeSwitcherStyle.PRIMARY,
+    style: LangSwitcherStyle.PRIMARY,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Inverted: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    style: LangSwitcherStyle.INVERTED,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const PrimaryDark: Story = {
   args: {
-    style: ThemeSwitcherStyle.PRIMARY,
+    style: LangSwitcherStyle.PRIMARY,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const InvertedDark: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    style: LangSwitcherStyle.INVERTED,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const PrimaryOrange: Story = {
   args: {
-    style: ThemeSwitcherStyle.PRIMARY,
+    style: LangSwitcherStyle.PRIMARY,
   },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };
 
 export const InvertedOrange: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    style: LangSwitcherStyle.INVERTED,
   },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };

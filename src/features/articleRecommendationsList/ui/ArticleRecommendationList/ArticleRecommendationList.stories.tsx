@@ -1,4 +1,4 @@
-import { Theme } from "@/app/providers/ThemeProvider";
+import { Theme } from "@/shared/const/theme";
 import { Article } from "@/entities/Article";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 import type { Meta, StoryObj } from "@storybook/react";

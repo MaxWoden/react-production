@@ -1,4 +1,4 @@
-import { ThunkConfig } from "@/app/providers/StoreProvider/config/StateSchema";
+import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Profile } from "@/entities/Profile";
 import { RoutePath } from "@/shared/const/router";
 import { createAsyncThunk } from "@reduxjs/toolkit";

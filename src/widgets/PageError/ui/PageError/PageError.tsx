@@ -1,11 +1,11 @@
-import { useTranslation } from "react-i18next";
-import classes from "./PageError.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
 import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
 import { Refresher, RefresherTheme } from "@/shared/ui/Refresher/Refresher";
-import { useTheme } from "@/app/providers/ThemeProvider";
-import { memo } from "react";
 import { HStack, VStack } from "@/shared/ui/Stack";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
+import classes from "./PageError.module.scss";
 
 interface PageErrorProps {
   className?: string;

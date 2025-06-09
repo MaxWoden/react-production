@@ -1,5 +1,7 @@
+// eslint-disable-next-line wodenPlugin/layer-imports
+import { ThemeProvider } from "@/app/providers/ThemeProvider";
+import { Theme } from "@/shared/const/theme";
 import { StoryFn } from "@storybook/react";
-import { Theme, ThemeProvider } from "@/app/providers/ThemeProvider";
 import { useEffect } from "react";
 
 export const ThemeDecorator = (theme: Theme) => (Story: StoryFn) => {
