@@ -36,8 +36,6 @@ const ArticlesPage = () => {
     dispatch(fetchNextArticlesPage());
   }, [dispatch]);
 
-  console.log();
-
   if (error) {
     return (
       <Page>

@@ -8,9 +8,9 @@ import { SortOrder } from "@/shared/types";
 import { Card } from "@/shared/ui/Card";
 import { Input } from "@/shared/ui/Input";
 import { HStack, VStack } from "@/shared/ui/Stack";
-import { ArticlesPageSortSelect } from "@/widgets/ArticlesPageSortSelect";
-import { ArticlesPageTypeTabs } from "@/widgets/ArticlesPageTypeTabs";
-import { ArticlesPageViewSelector } from "@/widgets/ArticlesPageViewSelector";
+import { ArticlesPageSortSelect } from "@/features/ArticlesPageSortSelect";
+import { ArticlesPageTypeTabs } from "@/features/ArticlesPageTypeTabs";
+import { ArticlesPageViewSelector } from "@/features/ArticlesPageViewSelector";
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
