@@ -1,20 +1,29 @@
-import { AverageRating } from "@/entities/Rating";
-import { memo } from "react";
-import { useGetAllProfileRatings } from "../../api/profileRatingApi";
+import type { Meta, StoryObj } from "@storybook/react";
+import { Theme } from "@/shared/const/theme";
+import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
+import ProfileAverageRating from "./ProfileAverageRating";
 
-export interface ProfileAverageRatingProps {
-  className?: string;
-  articleId: string;
-}
-
-const ProfileAverageRating = (props: ProfileAverageRatingProps) => {
-  const { className, articleId } = props;
-
-  const { data, isLoading } = useGetAllProfileRatings(articleId);
-
-  return (
-    <AverageRating className={className} isLoading={isLoading} data={data} />
-  );
+const meta: Meta<typeof ProfileAverageRating> = {
+  title: "features/ProfileRating/ProfileAverageRating",
+  component: ProfileAverageRating,
+  tags: ["autodocs"],
+  parameters: {
+    mockData: [
+      {
+        url: `${__API__}/profile-ratings?profileId=1`,
+        method: "GET",
+        status: 200,
+        response: [[{ rate: 5 }, { rate: 4 }]],
+      },
+    ],
+  },
 };
 
-export default memo(ProfileAverageRating);
+export default meta;
+type Story = StoryObj<typeof ProfileAverageRating>;
+
+export const Light: Story = { decorators: [ThemeDecorator(Theme.LIGHT)] };
+
+export const Dark: Story = { decorators: [ThemeDecorator(Theme.DARK)] };
+
+export const Orange: Story = { decorators: [ThemeDecorator(Theme.ORANGE)] };
