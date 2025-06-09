@@ -1,6 +1,7 @@
 import pluginJs from "@eslint/js";
 import pluginReact from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
+import unusedImports from "eslint-plugin-unused-imports";
 import wodenPlugin from "eslint-plugin-woden-plugin";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -15,6 +16,7 @@ export default [
       pluginReact,
       tseslint,
       wodenPlugin,
+      "unused-imports": unusedImports,
       "react-hooks": reactHooksPlugin,
     },
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
@@ -35,6 +37,7 @@ export default [
       "react/no-deprecated": "off",
       "@typescript-eslint/ban-ts-comment": "off",
       "wodenPlugin/path-checker": ["error", { alias: "@" }],
+      "unused-imports/no-unused-imports": "error",
       "wodenPlugin/layer-imports": [
         "error",
         {
