@@ -1,8 +1,8 @@
 import Star from "@/shared/assets/icons/star.svg";
-import { Icon } from "@/shared/ui/Icon/Icon";
-import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
-import { HStack } from "@/shared/ui/Stack/HStack/HStack";
-import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Icon } from "@/shared/ui/Icon";
+import { Skeleton } from "@/shared/ui/Skeleton";
+import { HStack } from "@/shared/ui/Stack";
+import { Text, TextSize } from "@/shared/ui/Text";
 import { memo } from "react";
 import { Rating } from "../../model/types/types";
 

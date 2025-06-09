@@ -3,8 +3,8 @@ import { memo } from "react";
 import Grid from "@/shared/assets/icons/grid.svg";
 import List from "@/shared/assets/icons/list.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button } from "@/shared/ui/Button/Button";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Button } from "@/shared/ui/Button";
+import { Icon } from "@/shared/ui/Icon";
 import classes from "./ArticlesPageViewSelector.module.scss";
 import { HStack } from "@/shared/ui/Stack";
 

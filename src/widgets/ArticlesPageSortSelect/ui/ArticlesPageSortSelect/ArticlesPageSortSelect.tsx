@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { ArticleSortField } from "@/entities/Article";
 import { SortOrder } from "@/shared/types";
 import { HStack } from "@/shared/ui/Stack";
-import { Select, SelectOption } from "@/shared/ui/Select/Select";
+import { Select, SelectOption } from "@/shared/ui/Select";
 
 interface ArticlesPageSortSelectProps {
   className?: string;

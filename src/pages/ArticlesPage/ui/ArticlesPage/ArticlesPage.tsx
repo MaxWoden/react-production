@@ -8,7 +8,7 @@ import {
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { VStack } from "@/shared/ui/Stack";
-import { Text, TextAlign } from "@/shared/ui/Text/Text";
+import { Text, TextAlign } from "@/shared/ui/Text";
 import { Page } from "@/widgets/Page";
 import {
   getArticlesPageError,

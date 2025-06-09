@@ -1,4 +1,4 @@
-import { Loader } from "@/shared/ui/Loader/Loader";
+import { Loader } from "@/shared/ui/Loader";
 import classes from "./PageLoader.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { memo } from "react";
