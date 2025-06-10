@@ -66,8 +66,7 @@
       "id": "3",
       "username": "manager",
       "password": "manager",
-      "roles": ["MANAGER"],
-      "avatar": "https://i.pinimg.com/736x/71/81/14/7181149979b9cc345415d3b6465b192b.jpg"
+      "roles": ["MANAGER"]
     }
   ],
   "profile": [

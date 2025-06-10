@@ -1,30 +1,47 @@
+import avatarFiller from "@/shared/assets/icons/avatar-filler.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import classes from "./Avatar.module.scss";
 import { CSSProperties, useMemo } from "react";
+import { AppImage } from "../AppImage";
+import { Icon } from "../Icon";
+import { Skeleton } from "../Skeleton";
+import classes from "./Avatar.module.scss";
 
 interface AvatarProps {
   className?: string;
   src?: string;
   size?: number;
   alt?: string;
+  fallbackInverted?: boolean;
 }
 
 export const Avatar = (props: AvatarProps) => {
-  const { className, src, size, alt } = props;
+  const { className, src, size = 100, alt, fallbackInverted } = props;
 
   const styles = useMemo<CSSProperties>(() => {
     return {
-      width: size || 100,
-      height: size || 100,
+      width: size,
+      height: size,
     };
   }, [size]);
 
+  const errorFallback = (
+    <Icon
+      Svg={avatarFiller}
+      inverted={fallbackInverted}
+      height={size}
+      width={size}
+    />
+  );
+  const fallback = <Skeleton width={size} height={size} border="50%" />;
+
   return (
-    <img
+    <AppImage
+      errorFallback={errorFallback}
+      fallback={fallback}
       alt={alt}
       src={src}
       style={styles}
       className={classNames(classes.Avatar, {}, [className])}
-    ></img>
+    ></AppImage>
   );
 };

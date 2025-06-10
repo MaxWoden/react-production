@@ -14,6 +14,8 @@ import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleListItem.module.scss";
+import { AppImage } from "@/shared/ui/AppImage";
+import { Skeleton } from "@/shared/ui/Skeleton";
 
 interface ArticleListItemProps {
   className?: string;
@@ -72,7 +74,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           <VStack gap="32">
             {types}
 
-            <img
+            <AppImage
+              fallback={<Skeleton width="100%" height={250} />}
               alt={article.title}
               src={article.img}
               className={classes.img}
@@ -115,7 +118,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
       <Card>
         <VStack gap="8">
           <div className={classes.imageWrapper}>
-            <img
+            <AppImage
+              fallback={<Skeleton width={200} height={200} />}
               alt={article.title}
               src={article.img}
               className={classes.img}
