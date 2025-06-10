@@ -1,4 +1,5 @@
-import { getUserAuthData, getUserRoles, UserRole } from "@/entities/User";
+import { getUserRoles, UserRole } from "@/entities/User";
+import { useUserAuthData } from "@/entities/User";
 import { getRouteForbidden, getRouteMain } from "@/shared/const/router";
 import { ReactNode, useMemo } from "react";
 import { useSelector } from "react-redux";
@@ -12,7 +13,7 @@ interface RequireAuthProps {
 export const RequireAuth = (props: RequireAuthProps) => {
   const { children, roles } = props;
   const location = useLocation();
-  const auth = useSelector(getUserAuthData);
+  const auth = useUserAuthData();
   const userRoles = useSelector(getUserRoles);
 
   const hasRequiredRoles = useMemo(() => {

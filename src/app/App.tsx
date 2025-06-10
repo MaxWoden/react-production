@@ -1,19 +1,19 @@
-import { getUserInited, userActions } from "@/entities/User";
+import { getUserInited, useUserActions } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { HStack } from "@/shared/ui/Stack";
 import { Header } from "@/widgets/Header";
 import { Sidebar } from "@/widgets/Sidebar";
 import { Suspense } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { AppRouter } from "./providers/router";
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const { initAuthData } = useUserActions();
   const inited = useSelector(getUserInited);
 
   useInitialEffects(() => {
-    dispatch(userActions.initAuthData());
+    initAuthData();
   });
 
   return (
