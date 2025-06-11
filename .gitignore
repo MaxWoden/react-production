@@ -1,5 +1,5 @@
 node_modules
 .vscode
-./reports
-./build
-./scripts
+/reports/unit
+/build
+/storybook-static
