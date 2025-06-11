@@ -15,7 +15,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <Page>
+    <Page data-testid="ProfilePage">
       <VStack max gap="32">
         {!profileNotFound && <ProfileAverageRating profileId={profileId} />}
         <EditableProfileCard
