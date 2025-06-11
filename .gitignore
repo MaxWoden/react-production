@@ -1,5 +1,5 @@
 node_modules
 .vscode
-storybook-static
-reports
-build
+/reports
+/build
+/scripts
