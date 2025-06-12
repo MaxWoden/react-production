@@ -1,10 +1,4 @@
-import {
-  MutableRefObject,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 interface UseModalProps {
   onClose?: () => void;
@@ -17,7 +11,9 @@ export const useModal = (props: UseModalProps) => {
 
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
+  const timerRef = useRef(undefined) as RefObject<
+    ReturnType<typeof setTimeout> | undefined
+  >;
 
   const close = useCallback(() => {
     if (onClose) {

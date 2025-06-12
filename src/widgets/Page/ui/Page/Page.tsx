@@ -1,16 +1,19 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
-import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { UseInfiniteScroll } from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
+import {
+  UseInfiniteScroll,
+  UseInfiniteScrollOption,
+} from "@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { useThrottle } from "@/shared/lib/hooks/useThrottle/useThrottle";
+import { TestProps } from "@/shared/types/tests";
+import { memo, ReactNode, RefObject, UIEvent, useRef } from "react";
+import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getScrollByPath } from "../../model/selectors/scrollSave";
 import { scrollSaveActions } from "../../model/slice/scrollSaveSlice";
 import classes from "./Page.module.scss";
-import { TestProps } from "@/shared/types/tests";
 
 interface PageProps extends TestProps {
   className?: string;
@@ -23,8 +26,8 @@ export const Page = memo((props: PageProps) => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
-  const wrapperRef = useRef() as MutableRefObject<HTMLDivElement>;
-  const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+  const wrapperRef = useRef(null) as RefObject<HTMLDivElement | null>;
+  const triggerRef = useRef(null) as RefObject<HTMLDivElement | null>;
   const scrollPosition = useSelector((state: StateSchema) =>
     getScrollByPath(state, pathname)
   );
@@ -43,14 +46,14 @@ export const Page = memo((props: PageProps) => {
   };
 
   useInitialEffects(() => {
-    wrapperRef.current.scrollTo(scrollOptions);
+    wrapperRef.current?.scrollTo(scrollOptions);
   });
 
   UseInfiniteScroll({
     triggerRef,
     wrapperRef,
     callback: onScrollEnd,
-  });
+  } as UseInfiniteScrollOption);
 
   return (
     <main

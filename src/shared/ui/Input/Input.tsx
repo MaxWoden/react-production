@@ -1,6 +1,6 @@
 import {
   InputHTMLAttributes,
-  MutableRefObject,
+  RefObject,
   useEffect,
   useRef,
   useState,
@@ -40,7 +40,7 @@ export const Input = (props: InputProps) => {
     ...otherProps
   } = props;
 
-  const ref = useRef() as MutableRefObject<HTMLInputElement>;
+  const ref = useRef(null) as RefObject<HTMLInputElement | null>;
   const [isFocused, setIsFocused] = useState(false);
   const [caretPosition, setCaretPosition] = useState(value?.length);
 
@@ -66,7 +66,7 @@ export const Input = (props: InputProps) => {
   useEffect(() => {
     if (autofocus) {
       setIsFocused(true);
-      ref.current.focus();
+      ref.current?.focus();
     }
   }, [autofocus]);
 

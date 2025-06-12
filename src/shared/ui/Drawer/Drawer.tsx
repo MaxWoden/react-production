@@ -86,22 +86,22 @@ const DrawerContent = memo((props: DrawerProps) => {
     }
   );
 
-  const display = y.to((py) => (py < height ? "block" : "none"));
+  // const display = y.to((py) => (py < height ? "block" : "none"));
 
   const renderComponent = useCallback(
     () => (
       <div className={classNames(classes.Drawer, mods, [className])}>
         <Overlay onClick={closeHandler} />
-        <Spring.a.div
+        <div
           {...bind()}
           className={classes.sheet}
-          style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+          style={{ bottom: `calc(-100vh + ${height - 100}px)` }}
         >
           {children}
-        </Spring.a.div>
+        </div>
       </div>
     ),
-    [children, mods, closeHandler, Spring, bind, className, display, y]
+    [children, mods, closeHandler, bind, className]
   );
 
   if (!isOpen || (lazy && !isMounted)) return null;

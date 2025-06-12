@@ -1,17 +1,16 @@
-// eslint-disable-next-line wodenPlugin/layer-imports
+//eslint-disable-next-line wodenPlugin/layer-imports
 import { ThemeProvider } from "@/app/providers/ThemeProvider";
 import { Theme } from "@/shared/const/theme";
-import { StoryFn } from "@storybook/react";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 
-export const ThemeDecorator = (theme: Theme) => (Story: StoryFn) => {
+export const ThemeDecorator = (theme: Theme) => (Story: any) => {
   useEffect(() => {
     document.body.className = theme;
   }, []);
 
   return (
     <ThemeProvider initialTheme={theme}>
-      <Story />
+      {(<Story />) as ReactElement}
     </ThemeProvider>
   );
 };

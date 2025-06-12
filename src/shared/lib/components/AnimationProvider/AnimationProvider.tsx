@@ -32,8 +32,8 @@ export const useAnimationLibs = () => {
 };
 
 export const AnimationProvider = ({ children }: { children: ReactNode }) => {
-  const SpringRef = useRef<SpringType>();
-  const GestureRef = useRef<GestureType>();
+  const SpringRef = useRef<SpringType>(null);
+  const GestureRef = useRef<GestureType>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export const AnimationProvider = ({ children }: { children: ReactNode }) => {
   );
 
   return (
-    <AnimationContext.Provider value={value}>
+    <AnimationContext.Provider value={value as AnimationContextPayload}>
       {children}
     </AnimationContext.Provider>
   );
