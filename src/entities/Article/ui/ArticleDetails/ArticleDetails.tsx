@@ -1,5 +1,6 @@
 import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
+import { getRouteProfile } from "@/shared/const/router";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -28,7 +29,6 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
-import { getRouteProfile } from "@/shared/const/router";
 
 interface ArticleDetailsProps {
   className?: string;
