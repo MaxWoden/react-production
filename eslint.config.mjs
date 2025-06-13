@@ -27,6 +27,7 @@ export default [
       },
     },
     rules: {
+      "@typescript-eslint/no-namespace": "off",
       "react-hooks/exhaustive-deps": "error",
       "react/react-in-jsx-scope": "off",
       "no-unused-expressions": "off",

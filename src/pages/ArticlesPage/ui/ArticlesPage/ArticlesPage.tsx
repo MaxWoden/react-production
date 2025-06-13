@@ -46,7 +46,7 @@ const ArticlesPage = () => {
 
   return (
     <DynamicModuleLoader removeAfterRemount={false} reducers={reducers}>
-      <VStack max>
+      <VStack data-testid="ArticlesPage" max>
         <ArticleInfiniteList onLoadNextPart={onLoadNextPart} />
       </VStack>
     </DynamicModuleLoader>

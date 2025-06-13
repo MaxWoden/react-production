@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes, memo, ReactNode } from "react";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
 import classes from "./Flex.module.scss";
+import { TestProps } from "@/shared/types/tests";
 
 export type FlexJustify =
   | "start"
@@ -48,7 +49,7 @@ type DivProps = DetailedHTMLProps<
   HTMLDivElement
 >;
 
-export interface FlexProps extends DivProps {
+export interface FlexProps extends DivProps, TestProps {
   className?: string;
   children: ReactNode;
   justify?: FlexJustify;
@@ -57,7 +58,6 @@ export interface FlexProps extends DivProps {
   gap?: FlexGap;
   max?: boolean;
   wrap?: boolean;
-  "data-testid"?: string;
 }
 
 export const Flex = memo((props: FlexProps) => {
@@ -70,7 +70,6 @@ export const Flex = memo((props: FlexProps) => {
     gap,
     max,
     wrap,
-    "data-testid": dataTestId,
   } = props;
 
   const additionalClasses = [
@@ -88,7 +87,7 @@ export const Flex = memo((props: FlexProps) => {
 
   return (
     <div
-      data-testid={dataTestId}
+      data-testid={props["data-testid"] ?? "Flex"}
       className={classNames(classes.Flex, mods, additionalClasses)}
     >
       {children}

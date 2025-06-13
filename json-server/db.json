@@ -67,6 +67,12 @@
       "username": "manager",
       "password": "manager",
       "roles": ["MANAGER"]
+    },
+    {
+      "id": "4",
+      "username": "testuser",
+      "password": "123",
+      "roles": ["ADMIN"]
     }
   ],
   "profile": [
