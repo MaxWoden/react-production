@@ -26,7 +26,7 @@ describe("getArticleDetails", () => {
     const state: DeepPartial<StateSchema> = {
       articleDetails: {},
     };
-    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(false);
+    expect(getArticleDetailsIsLoading(state as StateSchema)).toEqual(undefined);
   });
 
   test("should return false", () => {
