@@ -1,3 +1,8 @@
+import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { HStack, VStack } from "@/shared/ui/Stack";
+import { Text, TextAlign, TextTheme } from "@/shared/ui/Text";
 import {
   HTMLAttributeAnchorTarget,
   memo,
@@ -13,11 +18,6 @@ import {
   VirtuosoGrid,
   VirtuosoGridHandle,
 } from "react-virtuoso";
-import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { HStack, VStack } from "@/shared/ui/Stack";
-import { Text, TextAlign, TextTheme } from "@/shared/ui/Text";
 import { ArticleView } from "../../model/consts/consts";
 import { Article } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
@@ -181,6 +181,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   }
   return (
     <div
+      data-testid="ArticleList"
       className={classNames(classes.ArticleList, {}, [
         className,
         classes[view],

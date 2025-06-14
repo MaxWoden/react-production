@@ -1,3 +1,5 @@
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { TestProps } from "@/shared/types/tests";
 import {
   InputHTMLAttributes,
   RefObject,
@@ -5,7 +7,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { HStack } from "../Stack";
 import classes from "./Input.module.scss";
 
@@ -14,7 +15,7 @@ type HTMLInputProps = Omit<
   "value" | "onChange"
 >;
 
-interface InputProps extends HTMLInputProps {
+interface InputProps extends HTMLInputProps, TestProps {
   className?: string;
   value?: string;
   onChange?: (value: string) => void;
@@ -22,7 +23,6 @@ interface InputProps extends HTMLInputProps {
   placeholder?: string;
   autofocus?: boolean;
   readonly?: boolean;
-  "data-testid"?: string;
 }
 
 const CARET_WIDTH = 8.8;
@@ -36,7 +36,6 @@ export const Input = (props: InputProps) => {
     type = "text",
     autofocus,
     readonly,
-    "data-testid": dataTestId = "Input",
     ...otherProps
   } = props;
 
@@ -80,7 +79,7 @@ export const Input = (props: InputProps) => {
       )}
       <div className={classes.caretWrapper}>
         <input
-          data-testid={dataTestId}
+          data-testid={props["data-testid"]}
           ref={ref}
           type={type}
           value={value}

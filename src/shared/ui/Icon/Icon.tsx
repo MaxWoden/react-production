@@ -1,8 +1,9 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { TestProps } from "@/shared/types/tests";
 import { FC, memo, SVGProps } from "react";
 import classes from "./Icon.module.scss";
 
-interface IconProps extends SVGProps<SVGElement> {
+interface IconProps extends SVGProps<SVGElement>, TestProps {
   className?: string;
   Svg: FC<SVGProps<SVGElement>>;
   inverted?: boolean;
@@ -16,6 +17,7 @@ export const Icon = memo((props: IconProps) => {
       className={classNames(classes.Icon, { [classes.inverted]: inverted }, [
         className,
       ])}
+      data-testid={props["data-testid"]}
       {...otherProps}
     />
   );

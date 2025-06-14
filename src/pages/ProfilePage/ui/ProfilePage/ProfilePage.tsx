@@ -3,11 +3,11 @@ import { ProfileRating } from "@/features/profileRating";
 import { ProfileAverageRating } from "@/features/profileRating";
 import { VStack } from "@/shared/ui/Stack";
 import { Page } from "@/widgets/Page";
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
-  const { id: profileId } = useParams<{ id: string }>();
+  const { id: profileId } = useMemo(() => useParams<{ id: string }>(), []);
   const [profileNotFound, setProfileNotFound] = useState(false);
 
   if (!profileId) {

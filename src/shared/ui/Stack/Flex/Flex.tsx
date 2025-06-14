@@ -70,6 +70,7 @@ export const Flex = memo((props: FlexProps) => {
     gap,
     max,
     wrap,
+    ...otherProps
   } = props;
 
   const additionalClasses = [
@@ -87,8 +88,9 @@ export const Flex = memo((props: FlexProps) => {
 
   return (
     <div
-      data-testid={props["data-testid"] ?? "Flex"}
+      data-testid={props["data-testid"]}
       className={classNames(classes.Flex, mods, additionalClasses)}
+      {...otherProps}
     >
       {children}
     </div>

@@ -1,9 +1,8 @@
 import { ArticleList, ArticleView } from "@/entities/Article";
-import { memo } from "react";
-import { useTranslation } from "react-i18next";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextSize } from "@/shared/ui/Text";
+import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { useArticleRecommendationsList } from "../../api/articleRecommendationsApi";
 import classes from "./ArticleRecommendationList.module.scss";
 
@@ -27,7 +26,12 @@ export const ArticleRecommendationList = memo(
     }
 
     return (
-      <VStack max gap="8" className={classNames("", {}, [className])}>
+      <VStack
+        data-testid="ArticleRecommendationsList"
+        max
+        gap="8"
+        className={className}
+      >
         <Text size={TextSize.L} title={t("Рекомендуем")} />
         <ArticleList
           target="_blank"

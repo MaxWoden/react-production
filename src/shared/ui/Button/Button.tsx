@@ -54,7 +54,7 @@ export const Button = memo((props: ButtonProps) => {
   return (
     <button
       disabled={disabled}
-      data-testid={props["data-testid"] ?? "button"}
+      data-testid={props["data-testid"]}
       onClick={onClick}
       className={classNames(classes.Button, mods, [className])}
       {...otherProps}

@@ -2,6 +2,7 @@ import { memo, ReactNode } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import classes from "./AppLink.module.scss";
+import { TestProps } from "@/shared/types/tests";
 
 export enum AppLinkTheme {
   PRIMARY = "primary",
@@ -10,7 +11,7 @@ export enum AppLinkTheme {
   INVERTED_SECONDARY = "inverted-secondary",
 }
 
-interface AppLinkProps extends LinkProps {
+interface AppLinkProps extends LinkProps, TestProps {
   className?: string;
   theme?: AppLinkTheme;
   children?: ReactNode;
@@ -26,6 +27,7 @@ export const AppLink = memo((props: AppLinkProps) => {
   } = props;
   return (
     <Link
+      data-testid={props["data-testid"]}
       to={to}
       className={classNames(classes.AppLink, {}, [classes[theme], className])}
       {...otherProps}

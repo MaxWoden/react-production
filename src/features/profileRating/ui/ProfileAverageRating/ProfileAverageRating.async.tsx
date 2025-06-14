@@ -2,9 +2,7 @@ import { Skeleton } from "@/shared/ui/Skeleton";
 import { lazy, Suspense } from "react";
 import { ProfileAverageRatingProps } from "./ProfileAverageRating";
 
-export const ProfileAverageRatingLazy = lazy(
-  () => import("./ProfileAverageRating")
-);
+const ProfileAverageRatingLazy = lazy(() => import("./ProfileAverageRating"));
 
 export const ProfileAverageRatingAsync = (props: ProfileAverageRatingProps) => {
   return (

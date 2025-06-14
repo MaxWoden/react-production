@@ -6,10 +6,9 @@ import {
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextTheme } from "@/shared/ui/Text";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import {
@@ -56,7 +55,9 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
     [ValidateProfileErrors.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useInitialEffects(() => dispatch(fetchProfileDataById(profileId)));
+  useEffect(() => {
+    dispatch(fetchProfileDataById(profileId));
+  }, [dispatch, profileId]);
 
   const onChangeFirstname = useCallback(
     (value?: string) => {
@@ -74,7 +75,7 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 
   const onChangeAge = useCallback(
     (value?: string) => {
-      dispatch(profileActions.updateProfile({ age: Number(value) | 0 }));
+      dispatch(profileActions.updateProfile({ age: Number(value) || 0 }));
     },
     [dispatch]
   );

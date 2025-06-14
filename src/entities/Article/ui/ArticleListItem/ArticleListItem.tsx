@@ -56,7 +56,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const additionalClasses = [className, classes[view]];
 
     return (
-      <Card className={classNames("", {}, additionalClasses)}>
+      <Card
+        data-testid="ArticleListItem"
+        className={classNames("", {}, additionalClasses)}
+      >
         <VStack gap="8">
           <HStack max justify="between">
             <AppLink target={target} to={pathToAuthor}>
@@ -107,6 +110,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   return (
     <AppLink
+      data-testid="ArticleListItem"
       onClick={handleButtonClick}
       target={target}
       className={classNames(classes.ArticleListItem, {}, [

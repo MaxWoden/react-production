@@ -6,14 +6,13 @@ import {
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { AppLink } from "@/shared/ui/AppLink";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Icon } from "@/shared/ui/Icon";
 import { Skeleton } from "@/shared/ui/Skeleton";
 import { HStack, VStack } from "@/shared/ui/Stack";
 import { Text, TextAlign, TextSize, TextTheme } from "@/shared/ui/Text";
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { ArticleBlockType } from "../../model/consts/consts";
@@ -29,11 +28,13 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
+import { AppImage } from "@/shared/ui/AppImage";
+import ArticleIcon from "@/shared/assets/icons/article.svg";
 
 interface ArticleDetailsProps {
   className?: string;
-  articleId?: string;
-  setArticleNotFound?: (flag: boolean) => void;
+  articleId: string;
+  setArticleNotFound: (flag: boolean) => void;
 }
 
 const reducers: ReducersList = {
@@ -41,7 +42,7 @@ const reducers: ReducersList = {
 };
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
-  const { className, articleId, setArticleNotFound } = props;
+  const { className, setArticleNotFound, articleId } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -49,11 +50,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const isLoading = useSelector(getArticleDetailsIsLoading);
   const error = useSelector(getArticleDetailsError);
 
-  useInitialEffects(() => dispatch(fetchArticleById(articleId)));
-
-  if (!article?.user) {
-    return null;
-  }
+  useEffect(() => {
+    dispatch(fetchArticleById(articleId));
+  }, [dispatch, articleId]);
 
   const renderBLock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
@@ -113,18 +112,18 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         title={t("Статья не найдена")}
       />
     );
-  } else {
+  } else if (article) {
     content = (
       <>
-        <HStack max>
-          <Avatar
+        <HStack max justify="center">
+          <AppImage
             src={article?.img}
-            alt="avatar"
-            size={200}
-            className={classes.avatar}
+            alt="Article Image"
+            className={classes.articleImage}
+            errorFallback={<Icon width={200} height={200} Svg={ArticleIcon} />}
           />
         </HStack>
-        <VStack gap="8">
+        <VStack gap="8" max data-testid="ArticleDetails.Info">
           <Text
             size={TextSize.L}
             className={classes.title}
@@ -132,7 +131,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             text={t(`${article?.subtitle}`)}
           />
 
-          <AppLink to={getRouteProfile(article?.user.id)}>
+          <AppLink to={getRouteProfile(article.user.id)}>
             <HStack gap="16">
               <Avatar size={50} src={article?.user.avatar} />
               <Text text={article?.user.username} />

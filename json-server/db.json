@@ -97,6 +97,17 @@
       "city": "Казань",
       "username": "user",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgsS6IZjfprBE4HN9HL2T7axwA7b2mOJAJ0Pq7eq8BmrWu4m9vTrdc-R-eQETLKDru0Ds&usqp=CAU"
+    },
+    {
+      "id": "4",
+      "firstname": "test",
+      "lastname": "user",
+      "age": 20,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Казань",
+      "username": "testuser",
+      "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgsS6IZjfprBE4HN9HL2T7axwA7b2mOJAJ0Pq7eq8BmrWu4m9vTrdc-R-eQETLKDru0Ds&usqp=CAU"
     }
   ],
   "comments": [
@@ -141,78 +152,6 @@
       "userId": "2",
       "text": "привет мир",
       "id": "dBacYRZ"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "хехехехе",
-      "id": "rBX_C-e"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "фыафыа",
-      "id": "5k0ApX-"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "sdfsdfsd",
-      "id": "w-HDIRq"
-    },
-    {
-      "articleId": "1",
-      "userId": "2",
-      "text": "asdasdasd",
-      "id": "MVvGQoZ"
-    },
-    {
-      "articleId": "3",
-      "userId": "1",
-      "text": "comment 1",
-      "id": "bAs7YBE"
-    },
-    {
-      "articleId": "2",
-      "userId": "1",
-      "text": "python!!!",
-      "id": "p5rMadd"
-    },
-    {
-      "articleId": "4",
-      "userId": "2",
-      "text": "da",
-      "id": "M1Jwo07"
-    },
-    {
-      "articleId": "4",
-      "userId": "2",
-      "text": "FDA",
-      "id": "NNUOxoz"
-    },
-    {
-      "articleId": "4",
-      "userId": "2",
-      "text": "21",
-      "id": "xOaqfN0"
-    },
-    {
-      "articleId": "7",
-      "userId": "2",
-      "text": "12",
-      "id": "r2DyqB8"
-    },
-    {
-      "articleId": "4",
-      "userId": "2",
-      "text": "fds",
-      "id": "xkTy60Q"
-    },
-    {
-      "articleId": "7",
-      "userId": "2",
-      "text": "fda",
-      "id": "rYqS8zu"
     }
   ],
   "articles": [
@@ -681,6 +620,28 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Javascript news СВЕЖАЯ",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "createdAt": "26.04.2022",
+      "userId": "1",
+      "type": ["IT"],
+      "blocks": [],
+      "id": "CtPFiML"
+    },
+    {
+      "title": "Javascript news СВЕЖАЯ",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "createdAt": "26.04.2022",
+      "userId": "1",
+      "type": ["IT"],
+      "blocks": [],
+      "id": "ytloV5X"
     }
   ],
   "article-ratings": [
