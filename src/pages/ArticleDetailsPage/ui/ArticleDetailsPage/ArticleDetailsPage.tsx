@@ -1,6 +1,7 @@
 import { ArticleDetails } from "@/entities/Article";
 import { ArticleAverageRating, ArticleRating } from "@/features/articleRating";
 import { ArticleRecommendationList } from "@/features/articleRecommendationsList";
+import { getFeatureFlags } from "@/shared/features";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -20,6 +21,8 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = () => {
   const { id: articleId } = useParams<{ id: string }>();
   const [articleNotFound, setArticleNotFound] = useState(false);
+  const isArticleRatingEnabled = getFeatureFlags("isArticleRatingEnabled");
+  const showArticleRating = !articleNotFound && isArticleRatingEnabled;
 
   if (!articleId) {
     return null;
@@ -30,12 +33,12 @@ const ArticleDetailsPage = () => {
       <Page>
         <VStack gap="32">
           <ArticleDetailsPageHeader articleId={articleId} />
-          {!articleNotFound && <ArticleAverageRating articleId={articleId} />}
+          {showArticleRating && <ArticleAverageRating articleId={articleId} />}
           <ArticleDetails
             setArticleNotFound={setArticleNotFound}
             articleId={articleId}
           />
-          {!articleNotFound && <ArticleRating articleId={articleId} />}
+          {showArticleRating && <ArticleRating articleId={articleId} />}
           <ArticleRecommendationList />
           {!articleNotFound && <ArticleDetailsComments articleId={articleId} />}
         </VStack>
