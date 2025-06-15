@@ -1,6 +1,4 @@
-import { memo, useCallback } from "react";
-import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
+import { ArticlePageGreeting } from "@/features/articlePageGreeting";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -10,6 +8,9 @@ import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useIniti
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextAlign } from "@/shared/ui/Text";
 import { Page } from "@/widgets/Page";
+import { memo, useCallback } from "react";
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import {
   getArticlesPageError,
   getArticlesPageInited,
@@ -49,6 +50,7 @@ const ArticlesPage = () => {
       <VStack data-testid="ArticlesPage" max>
         <ArticleInfiniteList onLoadNextPart={onLoadNextPart} />
       </VStack>
+      <ArticlePageGreeting />
     </DynamicModuleLoader>
   );
 };

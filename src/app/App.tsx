@@ -1,23 +1,27 @@
-import { getUserInited, useUserActions } from "@/entities/User";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { getUserInited, initAuthData } from "@/entities/User";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { HStack } from "@/shared/ui/Stack";
 import { Header } from "@/widgets/Header";
+import { PageLoader } from "@/widgets/PageLoader";
 import { Sidebar } from "@/widgets/Sidebar";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AppRouter } from "./providers/router";
 
 export const App = () => {
-  const { initAuthData } = useUserActions();
+  const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
 
-  useInitialEffects(() => {
-    initAuthData();
-  });
+  useEffect(() => {
+    dispatch(initAuthData());
+  }, [dispatch]);
+
+  if (!inited) {
+    return <PageLoader />;
+  }
 
   return (
-    <div className={classNames("app", {}, [])}>
+    <div className="app">
       <Suspense fallback="">
         <Header />
         <HStack align="start">

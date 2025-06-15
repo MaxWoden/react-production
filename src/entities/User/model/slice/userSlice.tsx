@@ -2,6 +2,9 @@ import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage";
 import { setFeatureFlags } from "@/shared/features";
 import { buildSlice } from "@/shared/store/buildSlice";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { initAuthData } from "../services/initAuthData";
+import { saveJsonSettings } from "../services/saveJsonSettings";
+import { JsonSettings } from "../types/jsonSettings";
 import { User, UserSchema } from "../types/user";
 
 const initialState: UserSchema = {
@@ -12,23 +15,37 @@ export const userSlice = buildSlice({
   name: "user",
   initialState,
   reducers: {
-    setAuthData: (state, action: PayloadAction<User>) => {
-      state.authData = action.payload;
-      setFeatureFlags(action.payload.features);
-    },
-    initAuthData: (state) => {
-      const user = localStorage.getItem(USER_LOCALSTORAGE_KEY);
-      if (user) {
-        const json = JSON.parse(user) as User;
-        state.authData = json;
-        setFeatureFlags(json.features);
-      }
-      state._inited = true;
+    setAuthData: (state, { payload }: PayloadAction<User>) => {
+      state.authData = payload;
+      setFeatureFlags(payload.features);
+      localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload.id));
     },
     logout: (state) => {
       localStorage.removeItem(USER_LOCALSTORAGE_KEY);
       state.authData = undefined;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(
+      saveJsonSettings.fulfilled,
+      (state, { payload }: PayloadAction<JsonSettings>) => {
+        if (state.authData) {
+          state.authData.jsonSettings = payload;
+        }
+      }
+    );
+    builder.addCase(
+      initAuthData.fulfilled,
+      (state, { payload }: PayloadAction<User>) => {
+        state.authData = payload;
+        setFeatureFlags(payload.features);
+        localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload.id));
+        state._inited = true;
+      }
+    );
+    builder.addCase(initAuthData.rejected, (state) => {
+      state._inited = true;
+    });
   },
 });
 

@@ -11,6 +11,7 @@ interface PageLoaderProps {
 export const PageLoader = memo(({ className }: PageLoaderProps) => {
   return (
     <HStack
+      max
       justify="center"
       className={classNames(classes.PageLoader, {}, [className])}
     >
