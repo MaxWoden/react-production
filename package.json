@@ -76,7 +76,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "eslint-plugin-woden-plugin": "^0.1.12",
+    "eslint-plugin-woden-plugin": "^0.1.13",
     "file-loader": "^6.2.0",
     "fork-ts-checker-webpack-plugin": "^7.2.13",
     "globals": "^16.0.0",
