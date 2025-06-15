@@ -1,11 +1,15 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
-import { ProfileAverageRating, ProfileRating } from "@/features/profileRating";
+import { ProfileAverageRating } from "@/features/profileRating";
+import { ToggleFeatures } from "@/shared/features";
 import { VStack } from "@/shared/ui/Stack";
+import { Text } from "@/shared/ui/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
+  const { t } = useTranslation();
   const { id: profileId } = useMemo(() => useParams<{ id: string }>(), []);
   const [profileNotFound, setProfileNotFound] = useState(false);
 
@@ -13,18 +17,27 @@ const ProfilePage = () => {
     return null;
   }
 
-  const profileAverageRating = <ProfileAverageRating profileId={profileId} />;
-  const profileRating = <ProfileRating profileId={profileId} />;
-
   return (
     <Page data-testid="ProfilePage">
       <VStack max gap="32">
-        {!profileNotFound && profileAverageRating}
+        {!profileNotFound && (
+          <ToggleFeatures
+            on={<ProfileAverageRating profileId={profileId} />}
+            off={<Text text={t("Оценка профиля скоро будет доступна")} />}
+            feature={"isProfileRatingEnabled"}
+          />
+        )}
         <EditableProfileCard
           setProfileNotFound={setProfileNotFound}
           profileId={profileId}
         />
-        {!profileNotFound && profileRating}
+        {!profileNotFound && (
+          <ToggleFeatures
+            on={<ProfileAverageRating profileId={profileId} />}
+            off={<Text text={t("Оценка профиля скоро будет доступна")} />}
+            feature={"isProfileRatingEnabled"}
+          />
+        )}
       </VStack>
     </Page>
   );

@@ -39,7 +39,6 @@ export const userSlice = buildSlice({
       (state, { payload }: PayloadAction<User>) => {
         state.authData = payload;
         setFeatureFlags(payload.features);
-        localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(payload.id));
         state._inited = true;
       }
     );
