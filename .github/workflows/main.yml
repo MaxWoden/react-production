@@ -43,7 +43,7 @@ jobs:
         uses: actions/configure-pages@v5
         if: always()
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: github-pages
