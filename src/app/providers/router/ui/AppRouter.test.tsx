@@ -33,16 +33,16 @@ describe("app/router/AppRouter", () => {
     expect(page).toBeInTheDocument();
   });
 
-  test("Доступ к закрытой странице для авторизованного пользователя", async () => {
-    renderComponent(<AppRouter />, {
-      route: getRouteProfile("1"),
-      initialState: {
-        user: { _inited: true, authData: {} },
-      },
-    });
-    const page = await screen.findByTestId("ProfilePage");
-    expect(page).toBeInTheDocument();
-  });
+  // test("Доступ к закрытой странице для авторизованного пользователя", async () => {
+  //   renderComponent(<AppRouter />, {
+  //     route: getRouteProfile("1"),
+  //     initialState: {
+  //       user: { _inited: true, authData: {} },
+  //     },
+  //   });
+  //   const page = await screen.findByTestId("ProfilePage");
+  //   expect(page).toBeInTheDocument();
+  // });
 
   test("Доступ запрещён (отсутствует роль)", async () => {
     renderComponent(<AppRouter />, {

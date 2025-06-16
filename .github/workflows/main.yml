@@ -43,7 +43,7 @@ jobs:
         if: always()
         with:
           name: github-pages
-          path: "reports"
+          path: "reports/unit/report.html"
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
