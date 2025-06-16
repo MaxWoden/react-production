@@ -35,10 +35,6 @@ jobs:
       - name: unit testing
         if: always()
         run: npm run test:unit
-      - name: Verify files
-        run: |
-          ls -la reports/
-          [ -f reports/index.html ] || (echo "index.html not found" && exit 1)
       - name: Setup Pages
         uses: actions/configure-pages@v5
         if: always()
@@ -47,7 +43,7 @@ jobs:
         if: always()
         with:
           name: github-pages
-          path: "reports/"
+          path: "reports/unit/report.html"
       - name: Deploy to GitHub Pages
         id: deployment
         if: always()
