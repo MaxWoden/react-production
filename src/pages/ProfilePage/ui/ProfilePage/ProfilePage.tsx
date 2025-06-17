@@ -1,5 +1,5 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
-import { ProfileAverageRating } from "@/features/profileRating";
+import { ProfileAverageRating, ProfileRating } from "@/features/profileRating";
 import { ToggleFeatures } from "@/shared/features";
 import { VStack } from "@/shared/ui/Stack";
 import { Text } from "@/shared/ui/Text";
@@ -33,7 +33,7 @@ const ProfilePage = () => {
         />
         {!profileNotFound && (
           <ToggleFeatures
-            on={<ProfileAverageRating profileId={profileId} />}
+            on={<ProfileRating profileId={profileId} />}
             off={<Text text={t("Оценка профиля скоро будет доступна")} />}
             feature={"isProfileRatingEnabled"}
           />
