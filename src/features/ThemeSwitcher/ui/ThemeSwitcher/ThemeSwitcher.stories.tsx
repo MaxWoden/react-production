@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { ThemeSwitcher, ThemeSwitcherStyle } from "./ThemeSwitcher";
-import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
+import { Theme } from "@/shared/const/theme";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const meta: Meta<typeof ThemeSwitcher> = {
-  title: "widgets/ThemeSwitcher",
+  title: "features/ThemeSwitcher",
   component: ThemeSwitcher,
   tags: ["autodocs"],
 };
@@ -14,43 +14,34 @@ export default meta;
 type Story = StoryObj<typeof ThemeSwitcher>;
 
 export const Primary: Story = {
-  args: {
-    style: ThemeSwitcherStyle.PRIMARY,
-  },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Inverted: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    inverted: true,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const PrimaryDark: Story = {
-  args: {
-    style: ThemeSwitcherStyle.PRIMARY,
-  },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const InvertedDark: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    inverted: true,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const PrimaryOrange: Story = {
-  args: {
-    style: ThemeSwitcherStyle.PRIMARY,
-  },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };
 
 export const InvertedOrange: Story = {
   args: {
-    style: ThemeSwitcherStyle.INVERTED,
+    inverted: true,
   },
   decorators: [ThemeDecorator(Theme.ORANGE)],
 };

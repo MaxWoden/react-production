@@ -1,4 +1,5 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
+import { toggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
@@ -61,7 +62,15 @@ export const Page = memo((props: PageProps) => {
       data-testid={props["data-testid"] ?? "Page"}
       onScroll={onScrollHandler}
       ref={wrapperRef}
-      className={classNames(classes.Page, {}, [className])}
+      className={classNames(
+        toggleFeatures({
+          name: "isAppRedesigned",
+          on: () => classes.PageRedesigned,
+          off: () => classes.Page,
+        }),
+        {},
+        [className]
+      )}
     >
       {children}
       {onScrollEnd ? (

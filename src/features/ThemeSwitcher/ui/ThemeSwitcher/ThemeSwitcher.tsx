@@ -10,18 +10,13 @@ import { Button } from "@/shared/ui/Button";
 import { memo, useCallback } from "react";
 import classes from "./ThemeSwitcher.module.scss";
 
-export enum ThemeSwitcherStyle {
-  PRIMARY = "primary",
-  INVERTED = "inverted",
-}
-
 interface ThemeSwitcherProps {
   className?: string;
-  style?: ThemeSwitcherStyle;
+  inverted?: boolean;
 }
 
 export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
-  const { className, style = ThemeSwitcherStyle.INVERTED } = props;
+  const { className, inverted } = props;
   const dispatch = useAppDispatch();
   const { theme, toggleTheme } = useTheme();
 
@@ -45,12 +40,14 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
       break;
   }
 
-  const additionalClasses = [classes[style], className];
-
   return (
     <Button
       onClick={onToggleHandler}
-      className={classNames(classes.ThemeSwitcher, {}, additionalClasses)}
+      className={classNames(
+        classes.ThemeSwitcher,
+        { [classes.inverted]: inverted },
+        [className]
+      )}
     >
       {icon}
     </Button>

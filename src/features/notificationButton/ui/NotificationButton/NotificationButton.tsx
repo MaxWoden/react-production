@@ -20,7 +20,7 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
   const onOpenDrawer = useCallback(() => setIsOpen(true), [setIsOpen]);
   const onCloseDrawer = useCallback(() => setIsOpen(false), [setIsOpen]);
 
-  const trigger = <Icon inverted Svg={NotificationIcon} />;
+  const trigger = <Icon Svg={NotificationIcon} inverted />;
 
   return (
     <>

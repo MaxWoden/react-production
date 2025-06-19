@@ -5,9 +5,7 @@
   transition: all var(--animation-fast);
   background: transparent;
   border: none;
-}
 
-.primary {
   &:hover {
     background: var(--inverted-shadow-color);
   }

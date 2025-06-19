@@ -2,6 +2,8 @@ import { getUserAuthData } from "@/entities/User";
 import { LoginModal } from "@/features/AuthByUsername";
 import { AvatarDropdown } from "@/features/avatarDropdown";
 import { NotificationButton } from "@/features/notificationButton";
+import { getRouteArticleCreate, getRouteMain } from "@/shared/const/router";
+import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
@@ -11,7 +13,6 @@ import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import classes from "./Header.module.scss";
-import { getRouteArticleCreate, getRouteMain } from "@/shared/const/router";
 
 interface HeaderProps {
   className?: string;
@@ -33,24 +34,40 @@ export const Header = memo(({ className }: HeaderProps) => {
 
   if (authData) {
     return (
-      <HStack max className={classNames(classes.Header, {}, [className])}>
-        <AppLink className={classes.appName} to={getRouteMain()}>
-          <Text theme={TextTheme.INVERTED} title="Woden App" />
-        </AppLink>
-        <HStack max justify="between">
-          <AppLink
-            className={classes.createBtn}
-            theme={AppLinkTheme.INVERTED_SECONDARY}
-            to={getRouteArticleCreate()}
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        on={
+          <HStack
+            max
+            className={classNames(classes.HeaderRedesigned, {}, [className])}
           >
-            {t("Создать статью")}
-          </AppLink>
-          <HStack gap="24">
-            <NotificationButton />
-            <AvatarDropdown />
+            <HStack gap="24">
+              <NotificationButton />
+              <AvatarDropdown />
+            </HStack>
           </HStack>
-        </HStack>
-      </HStack>
+        }
+        off={
+          <HStack max className={classNames(classes.Header, {}, [className])}>
+            <AppLink className={classes.appName} to={getRouteMain()}>
+              <Text theme={TextTheme.INVERTED} title="Woden App" />
+            </AppLink>
+            <HStack max justify="between">
+              <AppLink
+                className={classes.createBtn}
+                theme={AppLinkTheme.INVERTED_SECONDARY}
+                to={getRouteArticleCreate()}
+              >
+                {t("Создать статью")}
+              </AppLink>
+              <HStack gap="24">
+                <NotificationButton />
+                <AvatarDropdown />
+              </HStack>
+            </HStack>
+          </HStack>
+        }
+      />
     );
   }
 
