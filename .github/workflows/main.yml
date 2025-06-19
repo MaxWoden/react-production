@@ -65,5 +65,5 @@ jobs:
       - name: linting typescript
         run: npm run lint:ts
         if: always()
-      - name: linting css
+      - name: linting scss
         run: npm run lint:scss
