@@ -2,9 +2,9 @@ import { getUserAuthData } from "@/entities/User";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Skeleton } from "@/shared/ui/Skeleton";
-import { VStack } from "@/shared/ui/Stack";
-import { Text, TextAlign } from "@/shared/ui/Text";
+import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { VStack } from "@/shared/ui/deprecated/Stack";
+import { Text, TextAlign } from "@/shared/ui/deprecated/Text";
 import { useNotificationsByUserId } from "../../api/notificationApi";
 import { NotificationItem } from "../NotificationItem/NotificationItem";
 

@@ -3,10 +3,10 @@ import { memo } from "react";
 import Grid from "@/shared/assets/icons/grid.svg";
 import List from "@/shared/assets/icons/list.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
+import { Button } from "@/shared/ui/deprecated/Button";
+import { Icon } from "@/shared/ui/deprecated/Icon";
 import classes from "./ArticlesPageViewSelector.module.scss";
-import { HStack } from "@/shared/ui/Stack";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 
 interface ArticlesPageViewSelectorProps {
   className?: string;

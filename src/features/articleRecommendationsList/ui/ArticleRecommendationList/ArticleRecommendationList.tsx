@@ -1,6 +1,6 @@
 import { ArticleList, ArticleView } from "@/entities/Article";
-import { VStack } from "@/shared/ui/Stack";
-import { Text, TextSize } from "@/shared/ui/Text";
+import { VStack } from "@/shared/ui/deprecated/Stack";
+import { Text, TextSize } from "@/shared/ui/deprecated/Text";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useArticleRecommendationsList } from "../../api/articleRecommendationsApi";

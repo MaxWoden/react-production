@@ -1,9 +1,9 @@
 import editIcon from "@/shared/assets/icons/edit.svg";
 import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/Button";
-import { Icon } from "@/shared/ui/Icon";
-import { HStack } from "@/shared/ui/Stack";
+import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { Icon } from "@/shared/ui/deprecated/Icon";
+import { HStack } from "@/shared/ui/deprecated/Stack";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";

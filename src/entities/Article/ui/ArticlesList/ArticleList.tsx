@@ -1,8 +1,8 @@
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { HStack, VStack } from "@/shared/ui/Stack";
-import { Text, TextAlign, TextTheme } from "@/shared/ui/Text";
+import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { Text, TextAlign, TextTheme } from "@/shared/ui/deprecated/Text";
 import {
   HTMLAttributeAnchorTarget,
   memo,
