@@ -1,0 +1,27 @@
+.AppLink {
+  font: var(--font-m);
+}
+
+.primary {
+  color: var(--text-redesigned);
+
+  &:hover {
+    opacity: var(--accent-redesigned);
+  }
+}
+
+.red {
+  color: var(--cancel-redesigned);
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.inverted {
+  color: var(--hint-redesigned);
+
+  &:hover {
+    opacity: var(--accent-redesigned);
+  }
+}
