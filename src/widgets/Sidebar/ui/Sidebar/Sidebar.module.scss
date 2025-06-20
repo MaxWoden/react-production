@@ -7,7 +7,7 @@
   background: var(--inverted-bg-color);
   transition: width var(--animation-fast);
   width: var(--sidebar-width);
-  padding: 30px 15px;
+  padding: 100px 15px;
   position: relative;
   align-self: normal;
   min-height: 100%;
@@ -29,21 +29,21 @@
   &:hover {
     background: var(--shadow-color);
   }
-}
 
-.navbar {
-  margin-top: 90px;
-  transition: var(--animation-fast);
-}
+  .navbar {
+    margin-top: 90px;
+    transition: var(--animation-fast);
+  }
 
-.line {
-  height: 1px;
-  width: 100%;
-  background: var(--inverted-primary-color);
-}
+  .line {
+    height: 1px;
+    width: 100%;
+    background: var(--inverted-primary-color);
+  }
 
-.item {
-  transition: opacity var(--animation-fast);
+  .item {
+    transition: opacity var(--animation-fast);
+  }
 }
 
 .collapsed {
@@ -55,8 +55,8 @@
   width: 220px;
   height: 100%;
   border-radius: 32px;
-}
 
-.appLogo {
-  padding-top: 20px;
+  .appLogo {
+    padding-top: 20px;
+  }
 }

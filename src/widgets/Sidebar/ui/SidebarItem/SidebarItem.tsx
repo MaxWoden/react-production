@@ -1,9 +1,10 @@
-import { useTranslation } from "react-i18next";
+import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "@/shared/ui/deprecated/AppLink";
+import { HStack } from "@/shared/ui/deprecated/Stack";
+import { AppLink } from "@/shared/ui/redesigned/AppLink";
+import { useTranslation } from "react-i18next";
 import { SidebarItemType } from "../../model/types/sidebar";
 import classes from "./SidebarItem.module.scss";
-import { HStack } from "@/shared/ui/deprecated/Stack";
 
 interface SidebarItemProps {
   item: SidebarItemType;
@@ -16,20 +17,42 @@ export const SidebarItem = (props: SidebarItemProps) => {
   const { t } = useTranslation();
 
   return (
-    <AppLink to={path} theme={AppLinkTheme.INVERTED_PRIMARY}>
-      <HStack
-        className={classNames(
-          classes.SidebarItem,
-          {
-            [classes.collapsed]: collapsed,
-          },
-          []
-        )}
-        gap="16"
-      >
-        <Icon className={classes.img} />
-        <span className={classes.text}>{t(text)}</span>
-      </HStack>
-    </AppLink>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={
+        <AppLink to={path} variant="inverted">
+          <HStack
+            className={classNames(
+              classes.SidebarItem,
+              {
+                [classes.collapsed]: collapsed,
+              },
+              []
+            )}
+            gap="16"
+          >
+            <Icon className={classes.img} />
+            <span className={classes.text}>{t(text)}</span>
+          </HStack>
+        </AppLink>
+      }
+      on={
+        <AppLink to={path}>
+          <HStack
+            className={classNames(
+              classes.SidebarItemRedesigned,
+              {
+                [classes.collapsed]: collapsed,
+              },
+              []
+            )}
+            gap="16"
+          >
+            <Icon className={classes.img} />
+            <span className={classes.text}>{t(text)}</span>
+          </HStack>
+        </AppLink>
+      }
+    />
   );
 };

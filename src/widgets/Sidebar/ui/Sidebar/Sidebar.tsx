@@ -2,9 +2,9 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
 import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLogo } from "@/shared/ui/deprecated/AppLogo";
-import { Button, ButtonSize } from "@/shared/ui/deprecated/Button";
 import { VStack } from "@/shared/ui/deprecated/Stack";
+import { AppLogo } from "@/shared/ui/redesigned/AppLogo";
+import { Button } from "@/shared/ui/redesigned/Button";
 import { memo, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
@@ -50,7 +50,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             className={classes.toggleBtn}
             onClick={onToggle}
             square={true}
-            size={ButtonSize.SIZE_XL}
+            size="size_xl"
             data-testid="toggle-btn"
           >
             {collapsed ? ">" : "<"}
@@ -87,7 +87,16 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
           )}
         >
           <AppLogo className={classes.appLogo} />
-          <ThemeSwitcher />
+
+          <VStack
+            role="navigation"
+            max
+            align="center"
+            className={classes.navbar}
+            gap="32"
+          >
+            {sidebarItemsList}
+          </VStack>
         </VStack>
       }
     />
