@@ -4,7 +4,7 @@ import ArticleIconDeprecated from "@/shared/assets/icons/article-deprecated.svg"
 import ArticleIcon from "@/shared/assets/icons/article.svg";
 import ProfileIcon from "@/shared/assets/icons/avatar.svg";
 import MainIcon from "@/shared/assets/icons/home.svg";
-import AboutIcon from "@/shared/assets/icons/info.svg";
+import AboutIcon from "@/shared/assets/icons/Info.svg";
 import MainIconDeprecated from "@/shared/assets/icons/home-deprecated.svg";
 import ProfileIconDeprecated from "@/shared/assets/icons/profile-deprecated.svg";
 import { createSelector } from "@reduxjs/toolkit";
