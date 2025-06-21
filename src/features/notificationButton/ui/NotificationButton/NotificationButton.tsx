@@ -1,5 +1,5 @@
 import { NotificationList } from "@/entities/Notification";
-import NotificationIcon from "@/shared/assets/icons/notificationIcon.svg";
+import NotificationIcon from "@/shared/assets/icons/NotificationIcon.svg";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { Drawer } from "@/shared/ui/deprecated/Drawer";
 import { Icon } from "@/shared/ui/deprecated/Icon";
