@@ -9,7 +9,8 @@
   outline: none;
   background: none;
   cursor: pointer;
-  Ø &:hover .Icon {
+
+  &:hover .Icon {
     color: var(--accent-redesigned);
   }
 }
