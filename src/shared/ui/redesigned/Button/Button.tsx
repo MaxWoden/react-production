@@ -3,16 +3,9 @@ import { TestProps } from "@/shared/types/tests";
 import { ButtonHTMLAttributes, memo, ReactNode } from "react";
 import classes from "./Button.module.scss";
 
-export type ButtonSize = "size_m" | "size_l" | "size_xl";
+export type ButtonSize = "m" | "l" | "xl";
 
-export type ButtonTheme =
-  | "clear"
-  | "clear_inverted"
-  | "outline"
-  | "outline_inverted"
-  | "outline_green"
-  | "outline_red"
-  | "disabled";
+export type ButtonTheme = "clear" | "outline";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
@@ -31,7 +24,7 @@ export const Button = memo((props: ButtonProps) => {
     children,
     onClick,
     variant = "clear",
-    size = "size_m",
+    size = "m",
     square,
     disabled,
     fullWidth,

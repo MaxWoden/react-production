@@ -1,11 +1,16 @@
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
+import ArrowIcon from "@/shared/assets/icons/arrow-bottom.svg";
 import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import {
+  Button as ButtonDeprecated,
+  ButtonSize,
+} from "@/shared/ui/deprecated/Button";
+import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
 import { AppLogo } from "@/shared/ui/redesigned/AppLogo";
-import { Button } from "@/shared/ui/redesigned/Button";
-import { memo, useMemo, useState } from "react";
+import { Icon } from "@/shared/ui/redesigned/Icon";
+import { memo, useCallback, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
@@ -18,9 +23,10 @@ interface SidebarProps {
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const onToggle = () => {
+  const onToggle = useCallback(() => {
+    console.log(collapsed);
     setCollapsed((prev) => !prev);
-  };
+  }, [collapsed]);
 
   const sidebarItems = useSelector(getSidebarItems);
   const sidebarItemsList = useMemo(
@@ -46,15 +52,15 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             [className]
           )}
         >
-          <Button
+          <ButtonDeprecated
             className={classes.toggleBtn}
             onClick={onToggle}
             square={true}
-            size="size_xl"
+            size={ButtonSize.SIZE_XL}
             data-testid="toggle-btn"
           >
             {collapsed ? ">" : "<"}
-          </Button>
+          </ButtonDeprecated>
 
           <VStack
             role="navigation"
@@ -86,17 +92,28 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             [className]
           )}
         >
-          <AppLogo className={classes.appLogo} />
+          <AppLogo size={collapsed ? 30 : 50} className={classes.appLogo} />
 
           <VStack
             role="navigation"
             max
-            align="center"
+            align="start"
             className={classes.navbar}
-            gap="32"
+            gap="8"
           >
             {sidebarItemsList}
           </VStack>
+          <Icon
+            className={classes.toggleBtn}
+            Svg={ArrowIcon}
+            clickable
+            onClick={onToggle}
+            data-testid="toggle-btn"
+          />
+          <HStack max justify="center" gap="8" className={classes.switchers}>
+            <ThemeSwitcher inverted />
+            <LangSwitcher short={collapsed} inverted />
+          </HStack>
         </VStack>
       }
     />

@@ -1,16 +1,9 @@
-.img {
-  height: 40px;
-  width: 40px;
-  fill: var(--inverted-primary-color);
-  transition: var(--animation-fast);
-}
-
-.text {
-  opacity: 1;
-  transition: all var(--animation-fast);
-}
-
 .SidebarItem {
+  .text {
+    opacity: 1;
+    transition: all var(--animation-fast);
+  }
+
   &.collapsed {
     gap: 0;
 
@@ -20,11 +13,44 @@
     }
   }
 
+  .img {
+    height: 40px;
+    width: 40px;
+    fill: var(--inverted-primary-color);
+    transition: var(--animation-fast);
+  }
+
   &:hover {
     color: var(--inverted-shadow-color);
 
     .img {
       fill: var(--inverted-shadow-color);
     }
+  }
+}
+.SidebarItemRedesigned {
+  padding: 0 16px;
+
+  &.collapsed {
+    padding: 0;
+
+    .text {
+      width: 0;
+      opacity: 0;
+    }
+  }
+}
+
+.appLink {
+  width: 100%;
+
+  &.active {
+    background: linear-gradient(
+      89.97deg,
+      rgba(29, 89, 255, 0.3) 1.15%,
+      rgba(94, 211, 243, 0) 99.97%
+    );
+    position: relative;
+    border-left: 2px solid var(--accent-redesigned);
   }
 }

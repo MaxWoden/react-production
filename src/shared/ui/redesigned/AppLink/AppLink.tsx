@@ -1,8 +1,8 @@
-import { memo, ReactNode } from "react";
-import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import classes from "./AppLink.module.scss";
 import { TestProps } from "@/shared/types/tests";
+import { memo, ReactNode } from "react";
+import { LinkProps, NavLink } from "react-router-dom";
+import classes from "./AppLink.module.scss";
 
 export type AppLinkTheme = "primary" | "red" | "inverted";
 
@@ -10,18 +10,31 @@ interface AppLinkProps extends LinkProps, TestProps {
   className?: string;
   variant?: AppLinkTheme;
   children?: ReactNode;
+  activeClassName?: string;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
-  const { to, children, className, variant = "primary", ...otherProps } = props;
+  const {
+    to,
+    children,
+    className,
+    variant = "primary",
+    activeClassName = "",
+    ...otherProps
+  } = props;
   return (
-    <Link
+    <NavLink
       data-testid={props["data-testid"]}
       to={to}
-      className={classNames(classes.AppLink, {}, [classes[variant], className])}
+      className={({ isActive }) =>
+        classNames(classes.AppLink, { [activeClassName]: isActive }, [
+          classes[variant],
+          className,
+        ])
+      }
       {...otherProps}
     >
       {children}
-    </Link>
+    </NavLink>
   );
 });

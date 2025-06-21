@@ -12,42 +12,42 @@
   align-self: normal;
   min-height: 100%;
   z-index: 10;
-}
 
-.toggleBtn {
-  color: var(--inverted-primary-color);
-  position: absolute;
-  top: 20px;
-  right: 0;
-  border: 1px solid var(--inverted-shadow-color);
-  border-right: none;
-  border-radius: 4px;
-  background: transparent;
-  align-self: end;
-  z-index: 100;
+  .toggleBtn {
+    color: var(--inverted-primary-color);
+    position: absolute;
+    top: 20px;
+    right: 0;
+    border: 1px solid var(--inverted-shadow-color);
+    border-right: none;
+    border-radius: 4px;
+    background: transparent;
+    align-self: end;
+    z-index: 100;
 
-  &:hover {
-    background: var(--shadow-color);
+    &:hover {
+      background: var(--shadow-color);
+    }
+
+    .navbar {
+      margin-top: 90px;
+      transition: var(--animation-fast);
+    }
+
+    .line {
+      height: 1px;
+      width: 100%;
+      background: var(--inverted-primary-color);
+    }
+
+    .item {
+      transition: opacity var(--animation-fast);
+    }
   }
 
-  .navbar {
-    margin-top: 90px;
-    transition: var(--animation-fast);
+  &.collapsed {
+    width: var(--sidebar-width-collapsed);
   }
-
-  .line {
-    height: 1px;
-    width: 100%;
-    background: var(--inverted-primary-color);
-  }
-
-  .item {
-    transition: opacity var(--animation-fast);
-  }
-}
-
-.collapsed {
-  width: var(--sidebar-width-collapsed);
 }
 
 .SidebarRedesigned {
@@ -55,8 +55,37 @@
   width: 220px;
   height: 100%;
   border-radius: 32px;
+  position: relative;
 
   .appLogo {
     padding-top: 20px;
+  }
+
+  .navbar {
+    margin-top: 40px;
+  }
+
+  .toggleBtn {
+    position: absolute;
+    top: 60%;
+    right: -12px;
+    z-index: 100;
+    transform: rotate(90deg);
+  }
+
+  .switchers {
+    margin: auto 0 20px;
+  }
+
+  &.collapsed {
+    width: 50px;
+
+    .switchers {
+      flex-direction: column;
+    }
+
+    .toggleBtn {
+      transform: rotate(-90deg);
+    }
   }
 }

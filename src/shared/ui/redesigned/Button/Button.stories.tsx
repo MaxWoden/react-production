@@ -35,19 +35,11 @@ export const Clear: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const ClearInverted: Story = {
-  args: {
-    children: "clear inverted",
-    variant: "clear_inverted",
-  },
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-};
-
 export const ClearM: Story = {
   args: {
     children: "clear",
     variant: "clear",
-    size: "size_m",
+    size: "m",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -56,7 +48,7 @@ export const ClearL: Story = {
   args: {
     children: "clear",
     variant: "clear",
-    size: "size_l",
+    size: "l",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -65,7 +57,7 @@ export const ClearXL: Story = {
   args: {
     children: "clear",
     variant: "clear",
-    size: "size_xl",
+    size: "xl",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -74,14 +66,6 @@ export const Outline: Story = {
   args: {
     children: "outline",
     variant: "outline",
-  },
-  decorators: [ThemeDecorator(Theme.LIGHT)],
-};
-
-export const OutlineInverted: Story = {
-  args: {
-    children: "outline",
-    variant: "outline_inverted",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -143,7 +127,7 @@ export const SquareSizeM: Story = {
   args: {
     children: ">",
     square: true,
-    size: "size_m",
+    size: "m",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -152,7 +136,7 @@ export const SquareSizeL: Story = {
   args: {
     children: ">",
     square: true,
-    size: "size_l",
+    size: "l",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
@@ -161,7 +145,7 @@ export const SquareSizeXL: Story = {
   args: {
     children: ">",
     square: true,
-    size: "size_xl",
+    size: "xl",
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
