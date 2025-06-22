@@ -141,7 +141,19 @@ export const ArticleList = memo((props: ArticleListProps) => {
       />
     );
   } else if (!articles.length) {
-    content = <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />;
+    if (virtualized) {
+      const { Header } = virtualized;
+      content = (
+        <VStack gap="32" max align="center">
+          <Header context={() => {}} />
+          <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />
+        </VStack>
+      );
+    } else {
+      content = (
+        <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />
+      );
+    }
   } else if (virtualized) {
     const { Header, onLoadNextPart } = virtualized;
 
@@ -179,6 +191,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       </Stack>
     );
   }
+
   return (
     <div
       data-testid="ArticleList"
