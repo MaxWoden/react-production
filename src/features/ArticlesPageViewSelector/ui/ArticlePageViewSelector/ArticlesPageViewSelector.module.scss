@@ -1,6 +1,6 @@
 .icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   fill: var(--secondary-color);
   opacity: 0.2;
   transition: all var(--animation-fast);
@@ -12,4 +12,10 @@
 
 .selected {
   opacity: 1;
+}
+
+.ArticlesViewSelectorRedesigned {
+  fill: var(--light-bg-redesigned);
+  display: flex;
+  gap: 8px;
 }

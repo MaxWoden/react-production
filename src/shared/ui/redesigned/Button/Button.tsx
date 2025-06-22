@@ -5,7 +5,7 @@ import classes from "./Button.module.scss";
 
 export type ButtonSize = "m" | "l" | "xl";
 
-export type ButtonVariant = "clear" | "outline";
+export type ButtonVariant = "clear" | "outline" | "filled";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,

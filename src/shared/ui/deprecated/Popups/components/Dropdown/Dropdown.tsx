@@ -18,11 +18,6 @@ interface DropdownProps {
   trigger: ReactNode;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-
 export const Dropdown = memo((props: DropdownProps) => {
   const { className, items, trigger } = props;
 

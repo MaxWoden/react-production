@@ -1,16 +1,16 @@
 import { ArticleSortField, ArticleType, ArticleView } from "@/entities/Article";
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { ArticlesPageSortSelect } from "@/features/ArticlesPageSortSelect";
+import { ArticlesPageTypeTabs } from "@/features/ArticlesPageTypeTabs";
+import { ArticlesPageViewSelector } from "@/features/ArticlesPageViewSelector";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
 import { SortOrder } from "@/shared/types/sort";
 import { Card } from "@/shared/ui/deprecated/Card";
 import { Input } from "@/shared/ui/deprecated/Input";
 import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
-import { ArticlesPageSortSelect } from "@/features/ArticlesPageSortSelect";
-import { ArticlesPageTypeTabs } from "@/features/ArticlesPageTypeTabs";
-import { ArticlesPageViewSelector } from "@/features/ArticlesPageViewSelector";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
@@ -37,57 +37,55 @@ export const ArticlesPageFilters = memo(() => {
     [dispatch]
   );
 
-  const debouncedFetchData = useDebounce(() => {
+  const debouncedFetchData = useDebounce(fetchData, 500);
+
+  const fetchNextPage = useCallback(() => {
+    dispatch(articlesPageActions.setPage(1));
     fetchData();
-  }, 500);
+  }, [dispatch, fetchData]);
 
   const onChangeView = useCallback(
     (articleView: ArticleView) => {
       dispatch(articlesPageActions.setView(articleView));
-      dispatch(articlesPageActions.setPage(1));
-      fetchData();
+      fetchNextPage();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchNextPage]
   );
 
   const onChangeType = useCallback(
     (articleType: ArticleType) => {
       dispatch(articlesPageActions.setType(articleType));
-      dispatch(articlesPageActions.setPage(1));
-      fetchData();
+      fetchNextPage();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchNextPage]
   );
 
   const onChangeSort = useCallback(
     (newSort: ArticleSortField) => {
       dispatch(articlesPageActions.setSort(newSort));
-      dispatch(articlesPageActions.setPage(1));
-      fetchData();
+      fetchNextPage();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchNextPage]
   );
 
   const onChangeOrder = useCallback(
     (newOrder: SortOrder) => {
       dispatch(articlesPageActions.setOrder(newOrder));
-      dispatch(articlesPageActions.setPage(1));
-      fetchData();
+      fetchNextPage();
     },
-    [dispatch, fetchData]
+    [dispatch, fetchNextPage]
   );
 
   const onChangeSearch = useCallback(
     (newSearch: string) => {
       dispatch(articlesPageActions.setSearch(newSearch));
-      dispatch(articlesPageActions.setPage(1));
       debouncedFetchData();
     },
     [dispatch, debouncedFetchData]
   );
 
   return (
-    <VStack max gap="16">
+    <VStack className={classes.ArticlesPageFilters} max gap="16">
       <HStack max justify="between">
         <ArticlesPageSortSelect
           order={order}

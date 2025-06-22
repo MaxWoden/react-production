@@ -1,8 +1,11 @@
 import { ArticleSortField } from "@/entities/Article";
+import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { SortOrder } from "@/shared/types/sort";
 import { Select, SelectOption } from "@/shared/ui/deprecated/Select";
+import { ListBox } from "@/shared/ui/redesigned/Popups/components/ListBox/ListBox";
 import { HStack } from "@/shared/ui/redesigned/Stack";
+import { Text } from "@/shared/ui/redesigned/Text";
 import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -43,20 +46,42 @@ export const ArticlesPageSortSelect = memo(
     );
 
     return (
-      <HStack gap="32" className={classNames("", {}, [className])}>
-        <Select<ArticleSortField>
-          label={t("Сортировать по")}
-          options={sortFieldOptions}
-          onSelect={onChangeSort}
-          value={sort}
-        ></Select>
-        <Select<SortOrder>
-          label={t("↑↓")}
-          options={orderOptions}
-          onSelect={onChangeOrder}
-          value={order}
-        ></Select>
-      </HStack>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <HStack gap="32" className={classNames("", {}, [className])}>
+            <Select<ArticleSortField>
+              label={t("Сортировать по")}
+              options={sortFieldOptions}
+              onSelect={onChangeSort}
+              value={sort}
+            ></Select>
+            <Select<SortOrder>
+              label={t("↑↓")}
+              options={orderOptions}
+              onSelect={onChangeOrder}
+              value={order}
+            ></Select>
+          </HStack>
+        }
+        on={
+          <div className={classNames("", {}, [className])}>
+            <HStack gap="8">
+              <Text text={t("Сортировать по:")} />
+              <ListBox
+                items={sortFieldOptions}
+                value={sort}
+                onChange={onChangeSort}
+              />
+              <ListBox
+                items={orderOptions}
+                value={order}
+                onChange={onChangeOrder}
+              />
+            </HStack>
+          </div>
+        }
+      />
     );
   }
 );

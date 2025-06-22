@@ -19,22 +19,26 @@
   border: 1px solid var(--accent-redesigned);
 }
 
+.round {
+  border-radius: 40px;
+}
+
 .max {
   width: 100%;
 }
 
-.gap_0 {
+.padding_0 {
   padding: 0;
 }
 
-.gap_8 {
+.padding_8 {
   padding: 8px;
 }
 
-.gap_16 {
+.padding_16 {
   padding: 16px;
 }
 
-.gap_24 {
+.padding_24 {
   padding: 24px;
 }
