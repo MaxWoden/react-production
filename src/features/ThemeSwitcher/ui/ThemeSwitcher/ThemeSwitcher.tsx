@@ -33,13 +33,13 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
 
   switch (theme) {
     case Theme.LIGHT:
-      icon = <Sun />;
+      icon = <Sun height={40} width={40} />;
       break;
     case Theme.DARK:
-      icon = <Moon />;
+      icon = <Moon height={40} width={40} />;
       break;
     case Theme.ORANGE:
-      icon = <Orange />;
+      icon = <Orange height={40} width={40} />;
       break;
   }
 
@@ -58,7 +58,14 @@ export const ThemeSwitcher = memo((props: ThemeSwitcherProps) => {
           {icon}
         </Button>
       }
-      on={<Icon Svg={ThemeIcon} clickable onClick={onToggleHandler} />}
+      on={
+        <Icon
+          color="orange"
+          Svg={ThemeIcon}
+          clickable
+          onClick={onToggleHandler}
+        />
+      }
     />
   );
 });

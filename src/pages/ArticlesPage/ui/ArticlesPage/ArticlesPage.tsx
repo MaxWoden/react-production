@@ -5,7 +5,7 @@ import {
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextAlign } from "@/shared/ui/deprecated/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useCallback } from "react";

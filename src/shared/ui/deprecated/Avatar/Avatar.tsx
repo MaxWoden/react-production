@@ -1,7 +1,7 @@
 import avatarFiller from "@/shared/assets/icons/avatar-filler.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { CSSProperties, useMemo } from "react";
-import { AppImage } from "../AppImage";
+import { AppImage } from "../../redesigned/AppImage";
 import { Icon } from "../Icon";
 import { Skeleton } from "../Skeleton";
 import classes from "./Avatar.module.scss";

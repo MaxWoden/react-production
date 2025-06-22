@@ -1,7 +1,7 @@
 import { getUserInited, initAuthData } from "@/entities/User";
 import { ToggleFeatures } from "@/shared/features";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Header } from "@/widgets/Header";
 import { PageLoader } from "@/widgets/PageLoader";
 import { Sidebar } from "@/widgets/Sidebar";

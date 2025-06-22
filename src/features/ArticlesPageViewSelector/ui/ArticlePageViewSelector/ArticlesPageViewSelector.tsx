@@ -6,7 +6,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button } from "@/shared/ui/deprecated/Button";
 import { Icon } from "@/shared/ui/deprecated/Icon";
 import classes from "./ArticlesPageViewSelector.module.scss";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 
 interface ArticlesPageViewSelectorProps {
   className?: string;

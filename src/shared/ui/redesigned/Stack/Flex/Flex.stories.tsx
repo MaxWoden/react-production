@@ -4,7 +4,7 @@ import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Flex> = {
-  title: "shared/Flex",
+  title: "shared/redesigned/Flex",
   component: Flex,
   tags: ["autodocs"],
   args: {

@@ -2,7 +2,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
 import { Refresher, RefresherTheme } from "@/shared/ui/deprecated/Refresher";
-import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import classes from "./PageError.module.scss";

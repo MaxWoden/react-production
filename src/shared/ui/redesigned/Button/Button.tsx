@@ -5,13 +5,13 @@ import classes from "./Button.module.scss";
 
 export type ButtonSize = "m" | "l" | "xl";
 
-export type ButtonTheme = "clear" | "outline";
+export type ButtonVariant = "clear" | "outline";
 
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     TestProps {
   className?: string;
-  variant?: ButtonTheme;
+  variant?: ButtonVariant;
   square?: boolean;
   size?: ButtonSize;
   children?: ReactNode;

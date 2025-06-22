@@ -7,7 +7,7 @@ import {
   Button as ButtonDeprecated,
   ButtonSize,
 } from "@/shared/ui/deprecated/Button";
-import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
 import { AppLogo } from "@/shared/ui/redesigned/AppLogo";
 import { Icon } from "@/shared/ui/redesigned/Icon";
 import { memo, useCallback, useMemo, useState } from "react";
@@ -24,9 +24,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
   const onToggle = useCallback(() => {
-    console.log(collapsed);
     setCollapsed((prev) => !prev);
-  }, [collapsed]);
+  }, []);
 
   const sidebarItems = useSelector(getSidebarItems);
   const sidebarItemsList = useMemo(

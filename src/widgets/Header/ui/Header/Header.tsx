@@ -7,7 +7,7 @@ import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "@/shared/ui/deprecated/AppLink";
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -39,9 +39,10 @@ export const Header = memo(({ className }: HeaderProps) => {
         on={
           <HStack
             max
+            justify="end"
             className={classNames(classes.HeaderRedesigned, {}, [className])}
           >
-            <HStack gap="24">
+            <HStack gap="16">
               <NotificationButton />
               <AvatarDropdown />
             </HStack>

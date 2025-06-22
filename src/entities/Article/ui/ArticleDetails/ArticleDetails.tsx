@@ -10,7 +10,7 @@ import { AppLink } from "@/shared/ui/deprecated/AppLink";
 import { Avatar } from "@/shared/ui/deprecated/Avatar";
 import { Icon } from "@/shared/ui/deprecated/Icon";
 import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
-import { HStack, VStack } from "@/shared/ui/deprecated/Stack";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
 import {
   Text,
   TextAlign,
@@ -33,7 +33,7 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
-import { AppImage } from "@/shared/ui/deprecated/AppImage";
+import { AppImage } from "@/shared/ui/redesigned/AppImage";
 import ArticleIcon from "@/shared/assets/icons/article.svg";
 
 interface ArticleDetailsProps {

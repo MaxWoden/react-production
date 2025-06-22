@@ -1,7 +1,7 @@
 import { ReactNode, useCallback, useState } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Card } from "../Card/Card";
-import { HStack } from "../Stack";
+import { HStack } from "../../redesigned/Stack";
 import classes from "./Tabs.module.scss";
 
 export enum TabsTheme {

@@ -1,7 +1,7 @@
 import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import {
   AppLink as AppLinkDeprecated,
   AppLinkTheme,

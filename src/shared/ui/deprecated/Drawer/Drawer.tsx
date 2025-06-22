@@ -6,7 +6,7 @@ import {
 import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Portal } from "@headlessui/react";
 import { memo, ReactNode, useCallback, useEffect, useMemo } from "react";
-import { Overlay } from "../Overlay/Overlay";
+import { Overlay } from "../../redesigned/Overlay/Overlay";
 import classes from "./Drawer.module.scss";
 
 interface DrawerProps {

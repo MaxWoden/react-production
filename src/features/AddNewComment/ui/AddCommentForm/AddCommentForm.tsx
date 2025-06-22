@@ -15,7 +15,7 @@ import {
   getAddCommentFormText,
 } from "../../model/selectors/addCommentFormSelectors";
 
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import {
   addCommentFormActions,
   addCommentFormReducer,

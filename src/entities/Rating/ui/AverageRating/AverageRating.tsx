@@ -1,7 +1,7 @@
 import Star from "@/shared/assets/icons/star.svg";
 import { Icon } from "@/shared/ui/deprecated/Icon";
 import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextSize } from "@/shared/ui/deprecated/Text";
 import { memo } from "react";
 import { Rating } from "../../model/types/types";

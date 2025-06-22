@@ -4,11 +4,11 @@ import { memo, ReactNode } from "react";
 import { LinkProps, NavLink } from "react-router-dom";
 import classes from "./AppLink.module.scss";
 
-export type AppLinkTheme = "primary" | "red" | "inverted";
+export type AppLinkVariant = "primary" | "red" | "inverted";
 
 interface AppLinkProps extends LinkProps, TestProps {
   className?: string;
-  variant?: AppLinkTheme;
+  variant?: AppLinkVariant;
   children?: ReactNode;
   activeClassName?: string;
 }

@@ -1,11 +1,16 @@
 import { HTMLAttributes, memo, ReactNode } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import classes from "./Card.module.scss";
-import { TestProps } from "@/shared/types/tests";
+import cls from "./Card.module.scss";
 
-interface CardProps extends HTMLAttributes<HTMLDivElement>, TestProps {
+export enum CardTheme {
+  NORMAL = "normal",
+  OUTLINED = "outlined",
+}
+
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
-  children?: ReactNode;
+  children: ReactNode;
+  theme?: CardTheme;
   max?: boolean;
 }
 
@@ -13,13 +18,21 @@ interface CardProps extends HTMLAttributes<HTMLDivElement>, TestProps {
  * Устарел, используем новые компоненты из папки redesigned
  * @deprecated
  */
-
 export const Card = memo((props: CardProps) => {
-  const { className, children, max, ...otherProps } = props;
+  const {
+    className,
+    children,
+    theme = CardTheme.NORMAL,
+    max,
+    ...otherProps
+  } = props;
+
   return (
     <div
-      data-testid={props["data-testid"]}
-      className={classNames(classes.Card, { [classes.max]: max }, [className])}
+      className={classNames(cls.Card, { [cls.max]: max }, [
+        className,
+        cls[theme],
+      ])}
       {...otherProps}
     >
       {children}

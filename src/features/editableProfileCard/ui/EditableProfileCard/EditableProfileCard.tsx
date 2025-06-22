@@ -6,7 +6,7 @@ import {
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
 import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";

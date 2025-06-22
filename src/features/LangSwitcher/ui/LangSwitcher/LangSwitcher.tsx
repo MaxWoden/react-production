@@ -3,7 +3,7 @@ import Uk from "@/shared/assets/icons/uk.svg";
 import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button as ButtonDeprecated } from "@/shared/ui/deprecated/Button";
-import { HStack } from "@/shared/ui/deprecated/Stack";
+import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Button } from "@/shared/ui/redesigned/Button";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";

@@ -6,7 +6,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text } from "@/shared/ui/deprecated/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useState } from "react";
@@ -32,7 +32,7 @@ const ArticleDetailsPage = () => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page>
-        <VStack gap="32">
+        <VStack gap="32" max>
           <ArticleDetailsPageHeader articleId={articleId} />
           {!articleNotFound && (
             <ToggleFeatures

@@ -2,7 +2,7 @@ import Star from "@/shared/assets/icons/star.svg";
 import { classNames, Mods } from "@/shared/lib/classNames/classNames";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Icon } from "../Icon";
-import { HStack } from "../Stack";
+import { HStack } from "../../redesigned/Stack";
 import classes from "./StarRating.module.scss";
 
 interface StarRatingProps {

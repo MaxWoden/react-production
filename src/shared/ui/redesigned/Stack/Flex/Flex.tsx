@@ -60,11 +60,6 @@ export interface FlexProps extends DivProps, TestProps {
   wrap?: boolean;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-
 export const Flex = memo((props: FlexProps) => {
   const {
     className,

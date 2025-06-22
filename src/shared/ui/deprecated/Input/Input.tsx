@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { HStack } from "../Stack";
+import { HStack } from "../../redesigned/Stack";
 import classes from "./Input.module.scss";
 
 type HTMLInputProps = Omit<

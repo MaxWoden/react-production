@@ -1,7 +1,7 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
 import { ProfileAverageRating, ProfileRating } from "@/features/profileRating";
 import { ToggleFeatures } from "@/shared/features";
-import { VStack } from "@/shared/ui/deprecated/Stack";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text } from "@/shared/ui/deprecated/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useMemo, useState } from "react";
