@@ -15,6 +15,7 @@ import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import classes from "./ArtilcesPageFilters.module.scss";
 import {
   getArticlesPageOrder,
   getArticlesPageSearch,
@@ -111,7 +112,7 @@ export const ArticlesPageFilters = memo(() => {
           </CardDeprecated>
         }
         on={
-          <Card padding="0" max>
+          <Card className={classes.inputWrapper} padding="0" max>
             <Input
               size="l"
               addonLeft={<SearchIcon width={32} height={32} />}

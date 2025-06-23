@@ -2,11 +2,14 @@ import { getUserAuthData } from "@/entities/User";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
+import { Skeleton as SkeletonRedesigned } from "@/shared/ui/redesigned/Skeleton";
 import { VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextAlign } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated, TextAlign } from "@/shared/ui/deprecated/Text";
+import { Text } from "@/shared/ui/redesigned/Text";
 import { useNotificationsByUserId } from "../../api/notificationApi";
 import { NotificationItem } from "../NotificationItem/NotificationItem";
+import { toggleFeatures, ToggleFeatures } from "@/shared/features";
 
 interface NotificationListProps {
   className?: string;
@@ -30,6 +33,12 @@ export const NotificationList = memo((props: NotificationListProps) => {
     pollingInterval: 5000,
   });
 
+  const Skeleton = toggleFeatures({
+    name: "isAppRedesigned",
+    off: () => SkeletonDeprecated,
+    on: () => SkeletonRedesigned,
+  });
+
   let content;
 
   if (isLoading) {
@@ -43,13 +52,35 @@ export const NotificationList = memo((props: NotificationListProps) => {
     );
   } else if (error) {
     content = (
-      <Text
-        align={TextAlign.CENTER}
-        text={t("Произошла ошибка при загрузке уведомлений")}
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <TextDeprecated
+            align={TextAlign.CENTER}
+            text={t("Произошла ошибка при загрузке уведомлений")}
+          />
+        }
+        on={
+          <Text
+            align="center"
+            text={t("Произошла ошибка при загрузке уведомлений")}
+          />
+        }
       />
     );
   } else if (!notifications?.length) {
-    content = <Text align={TextAlign.CENTER} text={t("Нет уведомлений")} />;
+    content = (
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <TextDeprecated
+            align={TextAlign.CENTER}
+            text={t("Нет уведомлений")}
+          />
+        }
+        on={<Text align="center" text={t("Нет уведомлений")} />}
+      />
+    );
   } else {
     content = notifications.map((item) => (
       <NotificationItem key={item.id} item={item} />

@@ -12,7 +12,7 @@ export type FlexJustify =
   | "none";
 export type FlexAlign = "start" | "center" | "end" | "none";
 export type FlexDirection = "row" | "column";
-export type FlexGap = "4" | "8" | "16" | "24" | "32";
+export type FlexGap = "0" | "4" | "8" | "16" | "24" | "32";
 export type FlexWrap = "wrap" | "nowrap";
 
 const justifyClasses: Record<FlexJustify, string> = {
@@ -37,6 +37,7 @@ const directionClasses: Record<FlexDirection, string> = {
 };
 
 const gapClasses: Record<FlexGap, string> = {
+  0: classes.gap0,
   4: classes.gap4,
   8: classes.gap8,
   16: classes.gap16,
@@ -67,7 +68,7 @@ export const Flex = memo((props: FlexProps) => {
     justify = "start",
     align = "center",
     direction = "row",
-    gap,
+    gap = "0",
     max,
     wrap,
     ...otherProps
@@ -78,7 +79,7 @@ export const Flex = memo((props: FlexProps) => {
     justifyClasses[justify],
     alignClasses[align],
     directionClasses[direction],
-    gap && gapClasses[gap],
+    gapClasses[gap],
   ];
 
   const mods: Mods = {
