@@ -45,6 +45,7 @@ export const Icon = memo((props: IconPros) => {
   if (clickable) {
     return (
       <button
+        data-testid={props["data-testid"]}
         style={{ height, width }}
         type="button"
         onClick={props.onClick}
