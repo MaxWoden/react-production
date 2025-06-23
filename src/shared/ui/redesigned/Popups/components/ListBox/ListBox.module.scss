@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+.disabled {
+  cursor: not-allowed;
+}
+
 .options {
   max-width: 500px;
   background: var(--dark-bg-redesigned);

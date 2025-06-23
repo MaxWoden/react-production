@@ -1,5 +1,5 @@
 import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { Card } from "@/shared/ui/deprecated/Card";
+import { Card as CardDeprecated } from "@/shared/ui/deprecated/Card";
 import { Drawer } from "@/shared/ui/deprecated/Drawer";
 import { Input } from "@/shared/ui/deprecated/Input";
 import { Modal } from "@/shared/ui/deprecated/Modal";
@@ -9,6 +9,8 @@ import { Text } from "@/shared/ui/deprecated/Text";
 import { memo, useCallback, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
 import { useTranslation } from "react-i18next";
+import { ToggleFeatures } from "@/shared/features";
+import { Card } from "@/shared/ui/redesigned/Card";
 
 interface RatingCardProps {
   className?: string;
@@ -77,56 +79,114 @@ export const RatingCard = memo((props: RatingCardProps) => {
   );
 
   return (
-    <Card max className={className} data-testid="RatingCard">
-      <VStack max align="center" gap="8">
-        <Text title={starsCount ? t("Спасибо за оценку!") : title} />
-        <StarRating
-          size={40}
-          onSelect={onSelectStars}
-          selectedStars={starsCount}
-        />
-      </VStack>
-      {hasFeedback && (
-        <>
-          <BrowserView>
-            <Modal onClose={cancelHandle} isOpen={isModalOpen}>
-              <VStack max gap="32">
-                {modalContent}
-                <HStack max gap="16" justify="end">
-                  <Button
-                    data-testid="RatingCard.Close"
-                    onClick={cancelHandle}
-                    theme={ButtonTheme.OUTLINE_RED}
-                  >
-                    {t("Закрыть")}
-                  </Button>
-                  <Button
-                    data-testid="RatingCard.Send"
-                    onClick={acceptHandle}
-                    theme={ButtonTheme.OUTLINE_GREEN}
-                  >
-                    {t("Отправить")}
-                  </Button>
-                </HStack>
-              </VStack>
-            </Modal>
-          </BrowserView>
-          <MobileView>
-            <Drawer isOpen={isModalOpen} onClose={cancelHandle}>
-              <VStack max gap="32">
-                {modalContent}
-                <Button
-                  fullWidth
-                  onClick={acceptHandle}
-                  theme={ButtonTheme.OUTLINE_GREEN}
-                >
-                  {t("Отправить")}
-                </Button>
-              </VStack>
-            </Drawer>
-          </MobileView>
-        </>
-      )}
-    </Card>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={
+        <CardDeprecated max className={className} data-testid="RatingCard">
+          <VStack max align="center" gap="8">
+            <Text title={starsCount ? t("Спасибо за оценку!") : title} />
+            <StarRating
+              size={40}
+              onSelect={onSelectStars}
+              selectedStars={starsCount}
+            />
+          </VStack>
+          {hasFeedback && (
+            <>
+              <BrowserView>
+                <Modal onClose={cancelHandle} isOpen={isModalOpen}>
+                  <VStack max gap="32">
+                    {modalContent}
+                    <HStack max gap="16" justify="end">
+                      <Button
+                        data-testid="RatingCard.Close"
+                        onClick={cancelHandle}
+                        theme={ButtonTheme.OUTLINE_RED}
+                      >
+                        {t("Закрыть")}
+                      </Button>
+                      <Button
+                        data-testid="RatingCard.Send"
+                        onClick={acceptHandle}
+                        theme={ButtonTheme.OUTLINE_GREEN}
+                      >
+                        {t("Отправить")}
+                      </Button>
+                    </HStack>
+                  </VStack>
+                </Modal>
+              </BrowserView>
+              <MobileView>
+                <Drawer isOpen={isModalOpen} onClose={cancelHandle}>
+                  <VStack max gap="32">
+                    {modalContent}
+                    <Button
+                      fullWidth
+                      onClick={acceptHandle}
+                      theme={ButtonTheme.OUTLINE_GREEN}
+                    >
+                      {t("Отправить")}
+                    </Button>
+                  </VStack>
+                </Drawer>
+              </MobileView>
+            </>
+          )}
+        </CardDeprecated>
+      }
+      on={
+        <Card max className={className} data-testid="RatingCard">
+          <VStack max align="center" gap="8">
+            <Text title={starsCount ? t("Спасибо за оценку!") : title} />
+            <StarRating
+              size={40}
+              onSelect={onSelectStars}
+              selectedStars={starsCount}
+            />
+          </VStack>
+          {hasFeedback && (
+            <>
+              <BrowserView>
+                <Modal onClose={cancelHandle} isOpen={isModalOpen}>
+                  <VStack max gap="32">
+                    {modalContent}
+                    <HStack max gap="16" justify="end">
+                      <Button
+                        data-testid="RatingCard.Close"
+                        onClick={cancelHandle}
+                        theme={ButtonTheme.OUTLINE_RED}
+                      >
+                        {t("Закрыть")}
+                      </Button>
+                      <Button
+                        data-testid="RatingCard.Send"
+                        onClick={acceptHandle}
+                        theme={ButtonTheme.OUTLINE_GREEN}
+                      >
+                        {t("Отправить")}
+                      </Button>
+                    </HStack>
+                  </VStack>
+                </Modal>
+              </BrowserView>
+              <MobileView>
+                <Drawer isOpen={isModalOpen} onClose={cancelHandle}>
+                  <VStack max gap="32">
+                    {modalContent}
+                    <Button
+                      fullWidth
+                      onClick={acceptHandle}
+                      theme={ButtonTheme.OUTLINE_GREEN}
+                    >
+                      {t("Отправить")}
+                    </Button>
+                  </VStack>
+                </Drawer>
+              </MobileView>
+            </>
+          )}
+        </Card>
+      }
+    />
   );
 });

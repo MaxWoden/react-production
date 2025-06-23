@@ -10,7 +10,7 @@ export interface SelectOption<T extends string> {
 interface SelectProps<T extends string> {
   className?: string;
   options: SelectOption<T>[];
-  value?: T | undefined;
+  value?: T;
   label?: string;
   readonly?: boolean;
   onSelect: (value: T) => void;

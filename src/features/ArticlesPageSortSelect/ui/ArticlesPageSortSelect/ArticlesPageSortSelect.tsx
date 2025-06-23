@@ -71,12 +71,12 @@ export const ArticlesPageSortSelect = memo(
               <ListBox
                 items={sortFieldOptions}
                 value={sort}
-                onChange={onChangeSort}
+                onSelect={onChangeSort}
               />
               <ListBox
                 items={orderOptions}
                 value={order}
-                onChange={onChangeOrder}
+                onSelect={onChangeOrder}
               />
             </HStack>
           </div>

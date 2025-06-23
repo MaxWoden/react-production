@@ -21,7 +21,6 @@ import {
 } from "../../model/selectors/articlesPageSelectors";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
 import { articlesPageActions } from "../../model/slice/articlesPageSlice";
-import classes from "./ArticlesPageFilters.module.scss";
 
 export const ArticlesPageFilters = memo(() => {
   const { t } = useTranslation();
@@ -86,7 +85,7 @@ export const ArticlesPageFilters = memo(() => {
   );
 
   return (
-    <VStack className={classes.ArticlesPageFilters} max gap="8">
+    <VStack max gap="24">
       <HStack max justify="between">
         <ArticlesPageSortSelect
           order={order}
@@ -97,9 +96,9 @@ export const ArticlesPageFilters = memo(() => {
         <ArticlesPageViewSelector onViewClick={onChangeView} view={view} />
       </HStack>
 
-      <Card padding="0" max className={classes.searchWrapper}>
+      <Card padding="0" max>
         <Input
-          className={classes.search}
+          size="l"
           addonLeft={<SearchIcon width={32} height={32} />}
           value={search}
           onChange={onChangeSearch}

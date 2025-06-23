@@ -5,7 +5,6 @@ import cls from "./Card.module.scss";
 export type CardVariant = "normal" | "outlined" | "light";
 export type CardPadding = "0" | "8" | "16" | "24";
 export type CardBorder = "round" | "normal";
-export type CardGap = "0" | "8" | "16" | "24";
 export type CardDirection = "horizontal" | "vertical";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -15,7 +14,6 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   max?: boolean;
   padding?: CardPadding;
   border?: CardBorder;
-  gap?: CardGap;
   direction?: CardDirection;
 }
 
@@ -34,7 +32,6 @@ export const Card = memo((props: CardProps) => {
     max,
     padding = "8",
     border = "normal",
-
     ...otherProps
   } = props;
 
