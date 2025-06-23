@@ -1,21 +1,28 @@
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
+import ViewIcon from "@/shared/assets/icons/eye.svg";
 import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage";
 import { getRouteArticleDetails, getRouteProfile } from "@/shared/const/router";
+import { ToggleFeatures, toggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink } from "@/shared/ui/deprecated/AppLink";
-import { Avatar } from "@/shared/ui/deprecated/Avatar";
-import { Card } from "@/shared/ui/deprecated/Card";
-import { Icon } from "@/shared/ui/deprecated/Icon";
+import { AppLink as AppLinkDeprecated } from "@/shared/ui/deprecated/AppLink";
+import { Avatar as AvatarDeprecated } from "@/shared/ui/deprecated/Avatar";
+import { Card as CardDeprecated } from "@/shared/ui/deprecated/Card";
+import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
+import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { Text as TextDeprecated } from "@/shared/ui/deprecated/Text";
+import { AppImage } from "@/shared/ui/redesigned/AppImage";
+import { AppLink as AppLinkRedesigned } from "@/shared/ui/redesigned/AppLink";
+import { Avatar as AvatarRedesigned } from "@/shared/ui/redesigned/Avatar";
+import { Card as CardRedesigned } from "@/shared/ui/redesigned/Card";
+import { Icon as IconRedesigned } from "@/shared/ui/redesigned/Icon";
 import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
-import { Text } from "@/shared/ui/deprecated/Text";
+import { Text as TextRedesigned } from "@/shared/ui/redesigned/Text";
 import { HTMLAttributeAnchorTarget, memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { ArticleBlockType, ArticleView } from "../../model/consts/consts";
 import { Article, ArticleTextBlock } from "../../model/types/article";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleListItem.module.scss";
-import { AppImage } from "@/shared/ui/redesigned/AppImage";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
 
 interface ArticleListItemProps {
   className?: string;
@@ -39,12 +46,49 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   const pathToAuthor = getRouteProfile(article.user.id);
   const pathToArticle = getRouteArticleDetails(article.id);
 
-  const types = <Text text={article.type.join(", ")} />;
+  const AppLink = toggleFeatures({
+    name: "isAppRedesigned",
+    off: () => AppLinkDeprecated,
+    on: () => AppLinkRedesigned,
+  });
+
+  const Card = toggleFeatures({
+    name: "isAppRedesigned",
+    off: () => CardDeprecated,
+    on: () => CardRedesigned,
+  });
+
+  const Avatar = toggleFeatures({
+    name: "isAppRedesigned",
+    off: () => AvatarDeprecated,
+    on: () => AvatarRedesigned,
+  });
+
+  const types = (
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={<TextDeprecated text={article.type.join(", ")} />}
+      on={<TextRedesigned text={article.type.join(", ")} />}
+    />
+  );
 
   const views = (
     <HStack gap="8">
-      <Text text={String(article.views)} />
-      <Icon Svg={EyeIcon} className={classes.viewsIcon} />
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <>
+            <TextDeprecated text={String(article.views)} />
+            <IconDeprecated Svg={EyeIcon} className={classes.viewsIcon} />
+          </>
+        }
+        on={
+          <>
+            <IconRedesigned Svg={ViewIcon} width={32} height={32} />
+            <TextRedesigned text={String(article.views)} />
+          </>
+        }
+      />
     </HStack>
   );
 
@@ -65,14 +109,26 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             <AppLink target={target} to={pathToAuthor}>
               <HStack gap="8">
                 <Avatar src={article.user.avatar} />
-                <Text text={article.user.username} />
+                <ToggleFeatures
+                  feature="isAppRedesigned"
+                  off={<TextDeprecated text={article.user.username} />}
+                  on={<TextRedesigned text={article.user.username} />}
+                />
               </HStack>
             </AppLink>
 
-            <Text text={article.createdAt} />
+            <ToggleFeatures
+              feature="isAppRedesigned"
+              off={<TextDeprecated text={article.createdAt} />}
+              on={<TextRedesigned text={article.createdAt} />}
+            />
           </HStack>
 
-          <Text text={article.title} />
+          <ToggleFeatures
+            feature="isAppRedesigned"
+            off={<TextDeprecated text={article.title} />}
+            on={<TextRedesigned text={article.title} />}
+          />
 
           <VStack gap="32">
             {types}
@@ -136,7 +192,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
               >
                 {article.user.username}
               </AppLink>
-              <Text text={article.createdAt} />
+              <ToggleFeatures
+                feature="isAppRedesigned"
+                off={<TextDeprecated text={article.createdAt} />}
+                on={<TextRedesigned text={article.createdAt} />}
+              />
             </HStack>
           </div>
 
@@ -145,7 +205,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             {views}
           </HStack>
 
-          <Text text={article.title} className={classes.title} />
+          <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+              <TextDeprecated text={article.title} className={classes.title} />
+            }
+            on={
+              <TextRedesigned text={article.title} className={classes.title} />
+            }
+          />
         </VStack>
       </Card>
     </AppLink>

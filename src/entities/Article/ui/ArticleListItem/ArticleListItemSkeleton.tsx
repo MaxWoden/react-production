@@ -1,8 +1,11 @@
-import { memo } from "react";
+import { toggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Card } from "@/shared/ui/deprecated/Card";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { Card as CardDeprecated } from "@/shared/ui/deprecated/Card";
+import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
+import { Card as CardRedesigned } from "@/shared/ui/redesigned/Card";
+import { Skeleton as SkeletonRedesigned } from "@/shared/ui/redesigned/Skeleton";
 import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
+import { memo } from "react";
 import { ArticleView } from "../../model/consts/consts";
 import classes from "./ArticleListItem.module.scss";
 
@@ -16,6 +19,18 @@ export const ArticleListItemSkeleton = memo(
     const { className, view } = props;
 
     const additionalClasses = [className, classes[view]];
+
+    const Card = toggleFeatures({
+      name: "isAppRedesigned",
+      off: () => CardDeprecated,
+      on: () => CardRedesigned,
+    });
+
+    const Skeleton = toggleFeatures({
+      name: "isAppRedesigned",
+      off: () => SkeletonDeprecated,
+      on: () => SkeletonRedesigned,
+    });
 
     if (view === ArticleView.LIST) {
       return (

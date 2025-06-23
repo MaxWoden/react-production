@@ -3,9 +3,12 @@ import { ArticlesPageSortSelect } from "@/features/ArticlesPageSortSelect";
 import { ArticlesPageTypeTabs } from "@/features/ArticlesPageTypeTabs";
 import { ArticlesPageViewSelector } from "@/features/ArticlesPageViewSelector";
 import SearchIcon from "@/shared/assets/icons/search.svg";
+import { ToggleFeatures } from "@/shared/features";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDebounce } from "@/shared/lib/hooks/useDebounce/useDebounce";
 import { SortOrder } from "@/shared/types/sort";
+import { Card as CardDeprecated } from "@/shared/ui/deprecated/Card";
+import { Input as InputDeprecated } from "@/shared/ui/deprecated/Input";
 import { Card } from "@/shared/ui/redesigned/Card";
 import { Input } from "@/shared/ui/redesigned/Input";
 import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
@@ -96,15 +99,29 @@ export const ArticlesPageFilters = memo(() => {
         <ArticlesPageViewSelector onViewClick={onChangeView} view={view} />
       </HStack>
 
-      <Card padding="0" max>
-        <Input
-          size="l"
-          addonLeft={<SearchIcon width={32} height={32} />}
-          value={search}
-          onChange={onChangeSearch}
-          placeholder={t("Поиск")}
-        />
-      </Card>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <CardDeprecated max>
+            <InputDeprecated
+              value={search}
+              onChange={onChangeSearch}
+              placeholder={t("Поиск")}
+            />
+          </CardDeprecated>
+        }
+        on={
+          <Card padding="0" max>
+            <Input
+              size="l"
+              addonLeft={<SearchIcon width={32} height={32} />}
+              value={search}
+              onChange={onChangeSearch}
+              placeholder={t("Поиск")}
+            />
+          </Card>
+        }
+      />
 
       <ArticlesPageTypeTabs type={type} onChangeType={onChangeType} />
     </VStack>
