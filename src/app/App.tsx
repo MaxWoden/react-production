@@ -26,7 +26,7 @@ export const App = () => {
     <ToggleFeatures
       feature="isAppRedesigned"
       off={
-        <div className="app">
+        <div id="app" className="app">
           <Suspense fallback="">
             <Header />
             <HStack align="start">
@@ -37,7 +37,7 @@ export const App = () => {
         </div>
       }
       on={
-        <div className="app_redesigned">
+        <div id="app" className="app_redesigned">
           <Suspense fallback="">
             <MainLayout
               sidebar={<Sidebar />}

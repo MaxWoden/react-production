@@ -4,7 +4,6 @@ import { useModal } from "@/shared/lib/hooks/useModal/useModal";
 import { Overlay } from "../../redesigned/Overlay/Overlay";
 import { Portal } from "../../redesigned/Portal/Portal";
 import classes from "./Modal.module.scss";
-import { toggleFeatures } from "@/shared/features";
 
 interface ModalProps {
   className?: string;
@@ -43,16 +42,7 @@ export const Modal = memo((props: ModalProps) => {
 
   const renderComponent = useCallback(() => {
     return (
-      <div
-        className={classNames(classes.Modal, mods, [
-          className,
-          toggleFeatures({
-            name: "isAppRedesigned",
-            on: () => classes.modalNew,
-            off: () => classes.modalOld,
-          }),
-        ])}
-      >
+      <div className={classNames(classes.Modal, mods, [className])}>
         <Overlay onClick={closeHandler} />
         <div className={classes.content}>{children}</div>
       </div>

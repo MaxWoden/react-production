@@ -88,7 +88,7 @@ export const NotificationList = memo((props: NotificationListProps) => {
   }
 
   return (
-    <VStack max align="center" className={className}>
+    <VStack gap="16" max align="center" className={className}>
       {content}
     </VStack>
   );

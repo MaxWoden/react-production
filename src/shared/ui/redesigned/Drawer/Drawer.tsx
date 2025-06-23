@@ -8,6 +8,7 @@ import { Portal } from "@headlessui/react";
 import { memo, ReactNode, useCallback, useEffect, useMemo } from "react";
 import { Overlay } from "../../redesigned/Overlay/Overlay";
 import classes from "./Drawer.module.scss";
+import { toggleFeatures } from "@/shared/features";
 
 interface DrawerProps {
   className?: string;
@@ -90,7 +91,16 @@ const DrawerContent = memo((props: DrawerProps) => {
 
   const renderComponent = useCallback(
     () => (
-      <div className={classNames(classes.Drawer, mods, [className])}>
+      <div
+        className={classNames(classes.Drawer, mods, [
+          className,
+          toggleFeatures({
+            name: "isAppRedesigned",
+            on: () => classes.drawerNew,
+            off: () => classes.drawerOld,
+          }),
+        ])}
+      >
         <Overlay onClick={closeHandler} />
         <div
           {...bind()}
@@ -122,11 +132,6 @@ const DrawerAsync = (props: DrawerProps) => {
 
   return <DrawerContent {...props} />;
 };
-
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
 
 export const Drawer = memo((props: DrawerProps) => {
   return (

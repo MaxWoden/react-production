@@ -6,14 +6,15 @@ import {
   Button as ButtonDeprecated,
   ButtonTheme,
 } from "@/shared/ui/deprecated/Button";
-import { Drawer } from "@/shared/ui/deprecated/Drawer";
+import { Drawer as DrawerDeprecated } from "@/shared/ui/deprecated/Drawer";
 import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
 import { Popover as PopoverDeprecated } from "@/shared/ui/deprecated/Popups";
+import { Drawer } from "@/shared/ui/redesigned/Drawer";
 import { Icon } from "@/shared/ui/redesigned/Icon";
+import { Popover } from "@/shared/ui/redesigned/Popups";
 import { memo, useCallback, useState } from "react";
 import { BrowserView, MobileView } from "react-device-detect";
 import classes from "./NotificationButton.module.scss";
-import { Popover } from "@/shared/ui/redesigned/Popups";
 
 interface NotificationButtonProps {
   className?: string;
@@ -68,9 +69,19 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 
       <MobileView>
         {trigger}
-        <Drawer portal isOpen={isOpen} onClose={onCloseDrawer}>
-          <NotificationList />
-        </Drawer>
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          off={
+            <DrawerDeprecated portal isOpen={isOpen} onClose={onCloseDrawer}>
+              <NotificationList />
+            </DrawerDeprecated>
+          }
+          on={
+            <Drawer portal isOpen={isOpen} onClose={onCloseDrawer}>
+              <NotificationList />
+            </Drawer>
+          }
+        />
       </MobileView>
     </>
   );

@@ -5,10 +5,17 @@ import { NotificationButton } from "@/features/notificationButton";
 import { getRouteArticleCreate, getRouteMain } from "@/shared/const/router";
 import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { AppLink, AppLinkTheme } from "@/shared/ui/deprecated/AppLink";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import { Button } from "@/shared/ui/redesigned/Button";
+import {
+  AppLink as AppLinkDeprecated,
+  AppLinkTheme,
+} from "@/shared/ui/deprecated/AppLink";
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from "@/shared/ui/deprecated/Button";
 import { HStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated, TextTheme } from "@/shared/ui/deprecated/Text";
 import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -50,17 +57,17 @@ export const Header = memo(({ className }: HeaderProps) => {
         }
         off={
           <HStack max className={classNames(classes.Header, {}, [className])}>
-            <AppLink className={classes.appName} to={getRouteMain()}>
-              <Text theme={TextTheme.INVERTED} title="Woden App" />
-            </AppLink>
+            <AppLinkDeprecated className={classes.appName} to={getRouteMain()}>
+              <TextDeprecated theme={TextTheme.INVERTED} title="Woden App" />
+            </AppLinkDeprecated>
             <HStack max justify="between">
-              <AppLink
+              <AppLinkDeprecated
                 className={classes.createBtn}
                 theme={AppLinkTheme.INVERTED_SECONDARY}
                 to={getRouteArticleCreate()}
               >
                 {t("Создать статью")}
-              </AppLink>
+              </AppLinkDeprecated>
               <HStack gap="24">
                 <NotificationButton />
                 <AvatarDropdown />
@@ -73,22 +80,44 @@ export const Header = memo(({ className }: HeaderProps) => {
   }
 
   return (
-    <HStack
-      max
-      justify="between"
-      className={classNames(classes.Header, {}, [className])}
-    >
-      <Text
-        className={classes.appName}
-        theme={TextTheme.INVERTED}
-        title={"Woden App"}
-      />
-      <Button theme={ButtonTheme.OUTLINE_INVERTED} onClick={onOpenModal}>
-        {t("Войти")}
-      </Button>
-      {isAuthModal && (
-        <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
-      )}
-    </HStack>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={
+        <HStack
+          max
+          justify="between"
+          className={classNames(classes.Header, {}, [className])}
+        >
+          <TextDeprecated
+            className={classes.appName}
+            theme={TextTheme.INVERTED}
+            title={"Woden App"}
+          />
+          <ButtonDeprecated
+            theme={ButtonTheme.OUTLINE_INVERTED}
+            onClick={onOpenModal}
+          >
+            {t("Войти")}
+          </ButtonDeprecated>
+          {isAuthModal && (
+            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+          )}
+        </HStack>
+      }
+      on={
+        <HStack
+          max
+          justify="between"
+          className={classNames(classes.HeaderRedesigned, {}, [className])}
+        >
+          <Button variant="filled" onClick={onOpenModal}>
+            {t("Войти")}
+          </Button>
+          {isAuthModal && (
+            <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
+          )}
+        </HStack>
+      }
+    />
   );
 });
