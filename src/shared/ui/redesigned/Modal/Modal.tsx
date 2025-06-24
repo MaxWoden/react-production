@@ -14,11 +14,6 @@ interface ModalProps {
   children?: ReactNode;
 }
 
-/**
- * Устарел, используем новые компоненты из папки redesigned
- * @deprecated
- */
-
 export const Modal = memo((props: ModalProps) => {
   const { className, children, isOpen, onClose, portal = true, lazy } = props;
 

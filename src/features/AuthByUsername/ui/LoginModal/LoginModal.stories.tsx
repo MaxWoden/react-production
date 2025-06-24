@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { LoginModal } from "./LoginModal";
+import { LoginModal } from "./LoginModal.1";
 import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 import { StoreDecorator } from "@/shared/config/storybook/Decorators/StoreDecorator";

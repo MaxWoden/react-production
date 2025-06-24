@@ -7,7 +7,8 @@ import {
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Text } from "@/shared/ui/redesigned/Text";
 import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -23,6 +24,8 @@ import { profileActions, profileReducer } from "../../model/slice/profileSlice";
 
 import { ValidateProfileErrors } from "../../model/consts/consts";
 import { EditableProfileCardHeader } from "../EditableProfileCardHeader/EditableProfileCardHeader";
+import { ToggleFeatures } from "@/shared/features";
+import { Card } from "@/shared/ui/redesigned/Card";
 
 interface EditableProfileCardProps {
   className?: string;
@@ -131,28 +134,43 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         )}
         {validateErrors?.length &&
           validateErrors.map((error: ValidateProfileErrors) => (
-            <Text
+            <ToggleFeatures
               key={error}
-              theme={TextTheme.ERROR}
-              text={validateErrorTranslation[error]}
-              data-testid="EditableProfileCard.Error"
+              feature="isAppRedesigned"
+              off={
+                <TextDeprecated
+                  key={error}
+                  theme={TextTheme.ERROR}
+                  text={validateErrorTranslation[error]}
+                  data-testid="EditableProfileCard.Error"
+                />
+              }
+              on={
+                <Text
+                  key={error}
+                  variant="error"
+                  text={validateErrorTranslation[error]}
+                  data-testid="EditableProfileCard.Error"
+                />
+              }
             />
           ))}
-
-        <ProfileCard
-          data={form}
-          isLoading={isLoading}
-          error={error}
-          readonly={readonly}
-          onChangeFirstname={onChangeFirstname}
-          onChangeLastname={onChangeLastname}
-          onChangeAge={onChangeAge}
-          onChangeCity={onChangeCity}
-          onChangeUsername={onChangeUsername}
-          onChangeAvatar={onChangeAvatar}
-          onChangeCurrency={onChangeCurrency}
-          onChangeCountry={onChangeCountry}
-        />
+        <Card padding="24" border="partial" max>
+          <ProfileCard
+            data={form}
+            isLoading={isLoading}
+            error={error}
+            readonly={readonly}
+            onChangeFirstname={onChangeFirstname}
+            onChangeLastname={onChangeLastname}
+            onChangeAge={onChangeAge}
+            onChangeCity={onChangeCity}
+            onChangeUsername={onChangeUsername}
+            onChangeAvatar={onChangeAvatar}
+            onChangeCurrency={onChangeCurrency}
+            onChangeCountry={onChangeCountry}
+          />
+        </Card>
       </VStack>
     </DynamicModuleLoader>
   );
