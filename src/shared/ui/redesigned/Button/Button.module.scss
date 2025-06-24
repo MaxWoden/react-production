@@ -1,7 +1,7 @@
 .Button {
   cursor: pointer;
   color: var(--text-redesigned);
-  padding: 8px 16px;
+  padding: 6px 16px;
   display: flex;
   align-items: center;
 
@@ -16,7 +16,7 @@
 }
 
 .withAddon {
-  padding: 8px 16px;
+  padding: 0 16px;
 }
 
 .addonLeft,
@@ -41,6 +41,27 @@
   border: none;
   outline: none;
   border-radius: 34px;
+}
+
+.outline {
+  background: none;
+  border-radius: 34px;
+
+  &:hover {
+    border: 2px solid var(--accent-redesigned);
+  }
+
+  &.normal {
+    border: 2px solid var(--icon-redesigned);
+  }
+
+  &.error {
+    border: 2px solid var(--cancel-redesigned);
+  }
+
+  &.success {
+    border: 2px solid var(--save-redesigned);
+  }
 }
 
 .square {

@@ -7,7 +7,7 @@ import {
 } from "@/shared/ui/deprecated/Button";
 import { Button } from "@/shared/ui/redesigned/Button";
 import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
-import { Icon } from "@/shared/ui/deprecated/Icon";
+import { Icon } from "@/shared/ui/redesigned/Icon";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
@@ -68,12 +68,12 @@ export const ArticleDetailsPageHeader = memo(
         }
         on={
           <HStack max justify="between" className={className}>
-            <Button variant="filled" onClick={onBackToList}>
+            <Button size="m" variant="outline" onClick={onBackToList}>
               {t("Все статьи")}
             </Button>
 
             {canEdit && (
-              <Button onClick={onEditArticle} variant="filled">
+              <Button size="m" variant="outline" onClick={onEditArticle}>
                 <HStack gap="8">
                   <Icon
                     Svg={editIcon}

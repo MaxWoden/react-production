@@ -1,20 +1,27 @@
-import { memo, useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
-import { Input } from "@/shared/ui/deprecated/Input";
-import { Text, TextTheme } from "@/shared/ui/deprecated/Text";
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from "@/shared/ui/deprecated/Button";
+import { Input as InputDeprecated } from "@/shared/ui/deprecated/Input";
+import { Text as TextDeprecated, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Button } from "@/shared/ui/redesigned/Button";
+import { Input } from "@/shared/ui/redesigned/Input";
+import { Text } from "@/shared/ui/redesigned/Text";
+import { memo, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import {
   getAddCommentFormError,
   getAddCommentFormText,
 } from "../../model/selectors/addCommentFormSelectors";
-
+import { ToggleFeatures } from "@/shared/features";
+import { Card } from "@/shared/ui/redesigned/Card";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import {
   addCommentFormActions,
@@ -60,36 +67,76 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <HStack
-        max
-        data-testid="AddCommentForm"
-        className={classNames(classes.AddCommentForm, {}, [className])}
-      >
-        {error ? (
-          <Text
-            theme={TextTheme.ERROR}
-            text={t("Произошла непредвиденная ошибка")}
-          />
-        ) : (
-          <>
-            <Input
-              data-testid="AddCommentForm.Input"
-              className={classes.input}
-              onChange={onChange}
-              value={text}
-              placeholder={t("Введите комментарий")}
-            />
-            <Button
-              data-testid="AddCommentForm.Button"
-              disabled={disabled}
-              onClick={onSendHandler}
-              theme={ButtonTheme.OUTLINE}
-            >
-              {t("Отправить")}
-            </Button>
-          </>
-        )}
-      </HStack>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <HStack
+            max
+            data-testid="AddCommentForm"
+            className={classNames(classes.AddCommentForm, {}, [className])}
+          >
+            {error ? (
+              <TextDeprecated
+                theme={TextTheme.ERROR}
+                text={t("Произошла непредвиденная ошибка")}
+              />
+            ) : (
+              <>
+                <InputDeprecated
+                  data-testid="AddCommentForm.Input"
+                  className={classes.input}
+                  onChange={onChange}
+                  value={text}
+                  placeholder={t("Введите комментарий")}
+                />
+                <ButtonDeprecated
+                  data-testid="AddCommentForm.Button"
+                  disabled={disabled}
+                  onClick={onSendHandler}
+                  theme={ButtonTheme.OUTLINE}
+                >
+                  {t("Отправить")}
+                </ButtonDeprecated>
+              </>
+            )}
+          </HStack>
+        }
+        on={
+          <Card
+            max
+            padding="24"
+            data-testid="AddCommentForm"
+            className={className}
+          >
+            {error ? (
+              <Text
+                variant="error"
+                text={t("Произошла непредвиденная ошибка")}
+              />
+            ) : (
+              <HStack max gap="24">
+                <Input
+                  size="l"
+                  data-testid="AddCommentForm.Input"
+                  className={classes.input}
+                  onChange={onChange}
+                  value={text}
+                  placeholder={t("Введите комментарий")}
+                />
+                <Button
+                  size="l"
+                  data-testid="AddCommentForm.Button"
+                  disabled={disabled}
+                  onClick={onSendHandler}
+                  variant="outline"
+                >
+                  {t("Отправить")}
+                </Button>
+              </HStack>
+            )}
+          </Card>
+        }
+      />
     </DynamicModuleLoader>
   );
 });
