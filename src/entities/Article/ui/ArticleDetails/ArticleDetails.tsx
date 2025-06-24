@@ -1,22 +1,31 @@
+import ArticleIcon from "@/shared/assets/icons/article.svg";
 import CalendarIcon from "@/shared/assets/icons/calendarIcon.svg";
 import EyeIcon from "@/shared/assets/icons/eyeIcon.svg";
+import ViewIcon from "@/shared/assets/icons/eye.svg";
 import { getRouteProfile } from "@/shared/const/router";
+import { ToggleFeatures, toggleFeatures } from "@/shared/features";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { AppLink } from "@/shared/ui/deprecated/AppLink";
-import { Avatar } from "@/shared/ui/deprecated/Avatar";
-import { Icon } from "@/shared/ui/deprecated/Icon";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
-import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
+import { AppLink as AppLinkDeprecated } from "@/shared/ui/deprecated/AppLink";
+import { Avatar as AvatarDeprecated } from "@/shared/ui/deprecated/Avatar";
+import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
+import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
 import {
-  Text,
   TextAlign,
+  Text as TextDeprecated,
   TextSize,
   TextTheme,
 } from "@/shared/ui/deprecated/Text";
+import { AppImage } from "@/shared/ui/redesigned/AppImage";
+import { AppLink } from "@/shared/ui/redesigned/AppLink";
+import { Avatar } from "@/shared/ui/redesigned/Avatar";
+import { Icon } from "@/shared/ui/redesigned/Icon";
+import { Skeleton as SkeletonRedesigned } from "@/shared/ui/redesigned/Skeleton";
+import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
+import { Text } from "@/shared/ui/redesigned/Text";
 import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -33,8 +42,6 @@ import { ArticleCodeBlockComponent } from "../../ui/ArticleCodeBlockComponent/Ar
 import { ArticleImageBlockComponent } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
 import classes from "./ArticleDetails.module.scss";
-import { AppImage } from "@/shared/ui/redesigned/AppImage";
-import ArticleIcon from "@/shared/assets/icons/article.svg";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -92,6 +99,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   let content;
 
+  const Skeleton = toggleFeatures({
+    name: "isAppRedesigned",
+    off: () => SkeletonDeprecated,
+    on: () => SkeletonRedesigned,
+  });
+
   if (isLoading) {
     content = (
       <>
@@ -110,7 +123,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   } else if (error) {
     setArticleNotFound?.(true);
     content = (
-      <Text
+      <TextDeprecated
         align={TextAlign.CENTER}
         theme={TextTheme.ERROR}
         className={classes.error}
@@ -120,38 +133,99 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   } else if (article) {
     content = (
       <>
-        <HStack max justify="center">
-          <AppImage
-            src={article?.img}
-            alt="Article Image"
-            className={classes.articleImage}
-            errorFallback={<Icon width={200} height={200} Svg={ArticleIcon} />}
-          />
-        </HStack>
-        <VStack gap="8" max data-testid="ArticleDetails.Info">
-          <Text
-            size={TextSize.L}
-            className={classes.title}
-            title={t(`${article?.title}`)}
-            text={t(`${article?.subtitle}`)}
-          />
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          off={
+            <>
+              <HStack max justify="center">
+                <AppImage
+                  src={article?.img}
+                  alt="Article Image"
+                  className={classes.articleImage}
+                  errorFallback={
+                    <IconDeprecated
+                      width={200}
+                      height={200}
+                      Svg={ArticleIcon}
+                    />
+                  }
+                />
+              </HStack>
+              <VStack gap="8" max data-testid="ArticleDetails.Info">
+                <TextDeprecated
+                  size={TextSize.L}
+                  className={classes.title}
+                  title={t(`${article?.title}`)}
+                  text={t(`${article?.subtitle}`)}
+                />
 
-          <AppLink to={getRouteProfile(article.user.id)}>
-            <HStack gap="16">
-              <Avatar size={50} src={article?.user.avatar} />
-              <Text text={article?.user.username} />
-            </HStack>
-          </AppLink>
+                <AppLinkDeprecated to={getRouteProfile(article.user.id)}>
+                  <HStack gap="16">
+                    <AvatarDeprecated size={50} src={article?.user.avatar} />
+                    <TextDeprecated text={article?.user.username} />
+                  </HStack>
+                </AppLinkDeprecated>
 
-          <HStack gap="8">
-            <Icon Svg={CalendarIcon} className={classes.icon} />
-            <Text text={t(`${article?.createdAt}`)} />
-          </HStack>
-          <HStack gap="8">
-            <Icon Svg={EyeIcon} className={classes.icon} />
-            <Text text={t(`${article?.views}`)} />
-          </HStack>
-        </VStack>
+                <HStack gap="8">
+                  <IconDeprecated Svg={CalendarIcon} className={classes.icon} />
+                  <TextDeprecated text={t(`${article?.createdAt}`)} />
+                </HStack>
+                <HStack gap="8">
+                  <IconDeprecated Svg={EyeIcon} className={classes.icon} />
+                  <TextDeprecated text={t(`${article?.views}`)} />
+                </HStack>
+              </VStack>
+            </>
+          }
+          on={
+            <>
+              <HStack max justify="center">
+                <AppImage
+                  src={article?.img}
+                  alt="Article Image"
+                  className={classes.articleImage}
+                  errorFallback={
+                    <Icon width={200} height={200} Svg={ArticleIcon} />
+                  }
+                />
+              </HStack>
+              <VStack gap="8" max data-testid="ArticleDetails.Info">
+                <Text
+                  size="l"
+                  className={classes.title}
+                  title={t(`${article?.title}`)}
+                  text={t(`${article?.subtitle}`)}
+                />
+
+                <AppLink to={getRouteProfile(article.user.id)}>
+                  <HStack gap="16">
+                    <Avatar size={50} src={article?.user.avatar} />
+                    <Text text={article?.user.username} />
+                  </HStack>
+                </AppLink>
+
+                <HStack gap="8">
+                  <Icon
+                    Svg={CalendarIcon}
+                    width={20}
+                    height={20}
+                    className={classes.iconRedesigned}
+                  />
+                  <Text text={t(`${article?.createdAt}`)} />
+                </HStack>
+                <HStack gap="8">
+                  <Icon
+                    width={20}
+                    height={20}
+                    Svg={ViewIcon}
+                    className={classes.iconRedesigned}
+                  />
+                  <Text text={t(`${article?.views}`)} />
+                </HStack>
+              </VStack>
+            </>
+          }
+        />
 
         {article?.blocks.map(renderBLock)}
       </>

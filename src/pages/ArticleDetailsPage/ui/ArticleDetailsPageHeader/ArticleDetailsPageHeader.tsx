@@ -1,7 +1,12 @@
 import editIcon from "@/shared/assets/icons/edit.svg";
 import { getRouteArticleEdit, getRouteArticles } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "@/shared/ui/deprecated/Button";
+import {
+  Button as ButtonDeprecated,
+  ButtonTheme,
+} from "@/shared/ui/deprecated/Button";
+import { Button } from "@/shared/ui/redesigned/Button";
+import { Icon as IconDeprecated } from "@/shared/ui/deprecated/Icon";
 import { Icon } from "@/shared/ui/deprecated/Icon";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import { memo, useCallback } from "react";
@@ -10,6 +15,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCanEditArticle } from "../../model/selectors/article";
 import classes from "./ArticleDetailsPageHeader.module.scss";
+import { ToggleFeatures } from "@/shared/features";
 
 interface ArticleDetailsPageHeaderProps {
   className?: string;
@@ -33,23 +39,53 @@ export const ArticleDetailsPageHeader = memo(
     }, [navigate, articleId]);
 
     return (
-      <HStack max justify="between" className={className}>
-        <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-          {t("Все статьи")}
-        </Button>
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <HStack max justify="between" className={className}>
+            <ButtonDeprecated
+              theme={ButtonTheme.OUTLINE}
+              onClick={onBackToList}
+            >
+              {t("Все статьи")}
+            </ButtonDeprecated>
 
-        {canEdit && (
-          <Button onClick={onEditArticle} theme={ButtonTheme.OUTLINE}>
-            <HStack gap="8">
-              <Icon
-                Svg={editIcon}
-                className={classNames(classes.icon, {}, [classes.editIcon])}
-              />
-              {t("Редактировать")}
-            </HStack>
-          </Button>
-        )}
-      </HStack>
+            {canEdit && (
+              <ButtonDeprecated
+                onClick={onEditArticle}
+                theme={ButtonTheme.OUTLINE}
+              >
+                <HStack gap="8">
+                  <IconDeprecated
+                    Svg={editIcon}
+                    className={classNames(classes.icon, {}, [classes.editIcon])}
+                  />
+                  {t("Редактировать")}
+                </HStack>
+              </ButtonDeprecated>
+            )}
+          </HStack>
+        }
+        on={
+          <HStack max justify="between" className={className}>
+            <Button variant="filled" onClick={onBackToList}>
+              {t("Все статьи")}
+            </Button>
+
+            {canEdit && (
+              <Button onClick={onEditArticle} variant="filled">
+                <HStack gap="8">
+                  <Icon
+                    Svg={editIcon}
+                    className={classNames(classes.icon, {}, [classes.editIcon])}
+                  />
+                  {t("Редактировать")}
+                </HStack>
+              </Button>
+            )}
+          </HStack>
+        }
+      />
     );
   }
 );
