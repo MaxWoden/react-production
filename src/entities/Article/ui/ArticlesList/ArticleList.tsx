@@ -2,7 +2,12 @@ import { ARTICLE_LIST_ITEM_LOCALSTORAGE_IDX } from "@/shared/const/localstorage"
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
 import { HStack, VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextAlign, TextTheme } from "@/shared/ui/deprecated/Text";
+import {
+  Text as TextDeprecated,
+  TextAlign,
+  TextTheme,
+} from "@/shared/ui/deprecated/Text";
+import { Text } from "@/shared/ui/redesigned/Text";
 import {
   HTMLAttributeAnchorTarget,
   memo,
@@ -23,6 +28,7 @@ import { Article } from "../../model/types/article";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton";
 import classes from "./ArticleList.module.scss";
+import { ToggleFeatures } from "@/shared/features";
 
 interface VirtualizedArticlesList {
   Header: React.ComponentType<ContextProp<any>>;
@@ -134,10 +140,18 @@ export const ArticleList = memo((props: ArticleListProps) => {
     content = renderSkeletons();
   } else if (error) {
     content = (
-      <Text
-        theme={TextTheme.ERROR}
-        align={TextAlign.CENTER}
-        text={t("Произошла ошибка")}
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={
+          <TextDeprecated
+            theme={TextTheme.ERROR}
+            align={TextAlign.CENTER}
+            text={t("Произошла ошибка")}
+          />
+        }
+        on={
+          <Text variant="error" align="center" text={t("Произошла ошибка")} />
+        }
       />
     );
   } else if (!articles.length) {
@@ -151,7 +165,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
       );
     } else {
       content = (
-        <Text align={TextAlign.CENTER} text={t("Статьи отсутствуют")} />
+        <ToggleFeatures
+          feature="isAppRedesigned"
+          off={<TextDeprecated text={t("Статьи отсутствуют")} />}
+          on={<Text text={t("Статьи отсутствуют")} />}
+        />
       );
     }
   } else if (virtualized) {

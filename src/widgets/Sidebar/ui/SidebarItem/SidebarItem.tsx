@@ -44,11 +44,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
         </AppLinkDeprecated>
       }
       on={
-        <AppLink
-          to={path}
-          className={classes.appLink}
-          activeClassName={classes.active}
-        >
+        <AppLink to={path} activeClassName={classes.active}>
           <HStack
             className={classNames(
               classes.SidebarItemRedesigned,

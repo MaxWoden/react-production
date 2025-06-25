@@ -1,16 +1,16 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
 import { ProfileAverageRating, ProfileRating } from "@/features/profileRating";
 import { ToggleFeatures } from "@/shared/features";
-import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text } from "@/shared/ui/deprecated/Text";
+import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Page } from "@/widgets/Page";
-import { memo, useMemo, useState } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 const ProfilePage = () => {
   const { t } = useTranslation();
-  const { id: profileId } = useMemo(() => useParams<{ id: string }>(), []);
+  const { id: profileId } = useParams<{ id: string }>();
   const [profileNotFound, setProfileNotFound] = useState(false);
 
   if (!profileId) {

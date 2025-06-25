@@ -165,57 +165,108 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <AppLink
-      data-testid="ArticleListItem"
-      onClick={handleButtonClick}
-      target={target}
-      className={classNames(classes.ArticleListItem, {}, [
-        className,
-        classes[view],
-      ])}
-      to={pathToArticle}
-    >
-      <Card>
-        <VStack gap="8">
-          <div className={classes.imageWrapper}>
+    <ToggleFeatures
+      feature="isAppRedesigned"
+      off={
+        <AppLink
+          data-testid="ArticleListItem"
+          onClick={handleButtonClick}
+          target={target}
+          className={classNames(classes.ArticleListItem, {}, [
+            className,
+            classes[view],
+          ])}
+          to={pathToArticle}
+        >
+          <Card>
+            <VStack gap="8">
+              <div className={classes.imageWrapper}>
+                <AppImage
+                  fallback={<Skeleton width={200} height={200} />}
+                  alt={article.title}
+                  src={article.img}
+                  className={classes.img}
+                />
+                <HStack max justify="between" className={classes.top}>
+                  <AppLink
+                    target={target}
+                    onClick={(e) => e.stopPropagation()}
+                    to={pathToAuthor}
+                  >
+                    {article.user.username}
+                  </AppLink>
+                  <ToggleFeatures
+                    feature="isAppRedesigned"
+                    off={<TextDeprecated text={article.createdAt} />}
+                    on={<TextRedesigned text={article.createdAt} />}
+                  />
+                </HStack>
+              </div>
+
+              <HStack max justify="between">
+                {types}
+                {views}
+              </HStack>
+
+              <ToggleFeatures
+                feature="isAppRedesigned"
+                off={
+                  <TextDeprecated
+                    text={article.title}
+                    className={classes.title}
+                  />
+                }
+                on={
+                  <TextRedesigned
+                    text={article.title}
+                    className={classes.title}
+                  />
+                }
+              />
+            </VStack>
+          </Card>
+        </AppLink>
+      }
+      on={
+        <AppLink
+          data-testid="ArticleListItem"
+          target={target}
+          to={getRouteArticleDetails(article.id)}
+          className={classNames(classes.ArticleListItem, {}, [
+            className,
+            classes[view],
+          ])}
+        >
+          <Card className={classes.card} border="partial" padding="0">
             <AppImage
-              fallback={<Skeleton width={200} height={200} />}
+              fallback={<Skeleton width="100%" height={200} />}
               alt={article.title}
               src={article.img}
               className={classes.img}
             />
-            <HStack max justify="between" className={classes.top}>
-              <AppLink
-                target={target}
-                onClick={(e) => e.stopPropagation()}
-                to={pathToAuthor}
-              >
-                {article.user.username}
-              </AppLink>
-              <ToggleFeatures
-                feature="isAppRedesigned"
-                off={<TextDeprecated text={article.createdAt} />}
-                on={<TextRedesigned text={article.createdAt} />}
-              />
-            </HStack>
-          </div>
-
-          <HStack max justify="between">
-            {types}
-            {views}
-          </HStack>
-
-          <ToggleFeatures
-            feature="isAppRedesigned"
-            off={
-              <TextDeprecated text={article.title} className={classes.title} />
-            }
-            on={
-              <TextRedesigned text={article.title} className={classes.title} />
-            }
-          />
-        </VStack>
-      </Card>
-    </AppLink>
+            <VStack className={classes.info} gap="4">
+              <TextRedesigned title={article.title} className={classes.title} />
+              <VStack gap="4" className={classes.footer} max>
+                <HStack justify="between" max>
+                  <TextRedesigned
+                    text={article.createdAt}
+                    className={classes.date}
+                  />
+                  {views}
+                </HStack>
+                <HStack gap="4">
+                  <Avatar
+                    size={32}
+                    src={article.user.avatar}
+                    className={classes.avatar}
+                  />
+                  <TextRedesigned text={article.user.username} />
+                </HStack>
+              </VStack>
+            </VStack>
+          </Card>
+        </AppLink>
+      }
+    />
   );
 });

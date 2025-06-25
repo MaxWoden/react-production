@@ -23,8 +23,11 @@
 }
 
 .GRID {
-  width: 230px;
   cursor: pointer;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: end;
 
   .imageWrapper {
     position: relative;
