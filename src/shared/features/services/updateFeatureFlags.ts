@@ -28,9 +28,10 @@ export const updateFeatureFlag = createAsyncThunk<
         features: allFeatures,
       })
     );
-
     setFeatureFlags(allFeatures);
+
     window.location.reload();
+
     return undefined;
   } catch (e) {
     console.log(e);

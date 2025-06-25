@@ -10,7 +10,7 @@ import { LoginFormAsync } from "../LoginForm/LoginForm.async";
 interface LoginModalProps {
   className?: string;
   isOpen?: boolean;
-  onClose?: () => void;
+  onClose: () => void;
   portal?: boolean;
 }
 

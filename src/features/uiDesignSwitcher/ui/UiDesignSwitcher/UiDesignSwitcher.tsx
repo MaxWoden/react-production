@@ -2,11 +2,11 @@ import { useUserAuthData } from "@/entities/User";
 import { getFeatureFlags } from "@/shared/features";
 import { updateFeatureFlag } from "@/shared/features/services/updateFeatureFlags";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { Skeleton } from "@/shared/ui/redesigned/Skeleton";
 import { ListBox } from "@/shared/ui/redesigned/Popups";
+import { Skeleton } from "@/shared/ui/redesigned/Skeleton";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Text } from "@/shared/ui/redesigned/Text";
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 interface UiDesignSwitcherProps {
@@ -42,19 +42,16 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
     return null;
   }
 
-  const onSelect = useCallback(
-    async (designType: DesignType) => {
-      setIsLoading(true);
-      dispatch(
-        updateFeatureFlag({
-          userId,
-          newFeatures: { isAppRedesigned: designType === "new" },
-        })
-      ).unwrap();
-      setIsLoading(true);
-    },
-    [dispatch, userId]
-  );
+  const onSelect = async (designType: DesignType) => {
+    setIsLoading(true);
+    dispatch(
+      updateFeatureFlag({
+        userId,
+        newFeatures: { isAppRedesigned: designType === "new" },
+      })
+    ).unwrap();
+    setIsLoading(false);
+  };
 
   return (
     <HStack gap="16">

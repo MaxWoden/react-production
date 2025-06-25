@@ -4,7 +4,7 @@ import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Skeleton> = {
-  title: "shared/Skeleton",
+  title: "shared/redesigned/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
 };

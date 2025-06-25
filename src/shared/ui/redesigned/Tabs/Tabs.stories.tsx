@@ -5,7 +5,7 @@ import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Tabs> = {
-  title: "shared/Tabs",
+  title: "shared/redesigned/Tabs",
   component: Tabs,
   tags: ["autodocs"],
   args: {

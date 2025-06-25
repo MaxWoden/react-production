@@ -5,7 +5,7 @@ import avatar from "@/shared/assets/tests/avatar.jpg";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Avatar> = {
-  title: "shared/Avatar",
+  title: "shared/redesigned/Avatar",
   component: Avatar,
   tags: ["autodocs"],
   args: {

@@ -1,9 +1,11 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Text } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated } from "@/shared/ui/deprecated/Text";
+import { Text } from "@/shared/ui/redesigned/Text";
 import { ArticleTextBlock } from "../../model/types/article";
 import { VStack } from "@/shared/ui/redesigned/Stack";
+import { ToggleFeatures } from "@/shared/features";
 
 interface ArticleTextBlockComponentProps {
   className?: string;
@@ -16,10 +18,22 @@ export const ArticleTextBlockComponent = memo(
 
     return (
       <VStack gap="16" className={classNames("", {}, [className])}>
-        {block.title && <Text title={t(block.title)} />}
+        {block.title && (
+          <ToggleFeatures
+            feature="isAppRedesigned"
+            off={<TextDeprecated title={t(block.title)} />}
+            on={<Text title={t(block.title)} />}
+          />
+        )}
+
         <VStack gap="8">
           {block.paragraphs.map((paragraph) => (
-            <Text key={paragraph} text={paragraph} />
+            <ToggleFeatures
+              key={paragraph}
+              feature="isAppRedesigned"
+              off={<TextDeprecated key={paragraph} text={paragraph} />}
+              on={<Text key={paragraph} text={paragraph} />}
+            />
           ))}
         </VStack>
       </VStack>

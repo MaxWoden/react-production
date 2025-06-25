@@ -5,7 +5,7 @@ import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof Modal> = {
-  title: "shared/Modal",
+  title: "shared/redesigned/Modal",
   component: Modal,
   tags: ["autodocs"],
   args: {

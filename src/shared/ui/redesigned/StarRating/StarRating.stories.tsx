@@ -5,7 +5,7 @@ import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
 
 const meta: Meta<typeof StarRating> = {
-  title: "shared/StarRating",
+  title: "shared/redesigned/StarRating",
   component: StarRating,
   tags: ["autodocs"],
 };

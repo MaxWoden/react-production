@@ -4,7 +4,7 @@ import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecora
 import { Input } from "./Input";
 
 const meta: Meta<typeof Input> = {
-  title: "shared/Input",
+  title: "shared/redesigned/Input",
   component: Input,
   tags: ["autodocs"],
   args: {

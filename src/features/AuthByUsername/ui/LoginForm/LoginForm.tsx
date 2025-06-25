@@ -1,6 +1,4 @@
-import { memo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { ToggleFeatures } from "@/shared/features";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
@@ -12,8 +10,14 @@ import {
   ButtonTheme,
 } from "@/shared/ui/deprecated/Button";
 import { Input as InputDeprecated } from "@/shared/ui/deprecated/Input";
-import { VStack } from "@/shared/ui/redesigned/Stack";
 import { Text as TextDeprecated, TextTheme } from "@/shared/ui/deprecated/Text";
+import { Button } from "@/shared/ui/redesigned/Button";
+import { Input } from "@/shared/ui/redesigned/Input";
+import { VStack } from "@/shared/ui/redesigned/Stack";
+import { Text } from "@/shared/ui/redesigned/Text";
+import { memo, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
@@ -21,14 +25,10 @@ import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLogi
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
 import { loginActions, loginReducer } from "../../model/slice/loginSlice";
 import classes from "./LoginForm.module.scss";
-import { ToggleFeatures } from "@/shared/features";
-import { Text } from "@/shared/ui/redesigned/Text";
-import { Button } from "@/shared/ui/redesigned/Button";
-import { Input } from "@/shared/ui/redesigned/Input";
 
 export interface LoginFormProps {
   className?: string;
-  onSuccess?: () => void;
+  onSuccess: () => void;
 }
 
 const reducers: ReducersList = {
@@ -63,7 +63,7 @@ const LoginForm = (props: LoginFormProps) => {
     try {
       const result = await dispatch(loginByUsername({ username, password }));
       if (result.meta.requestStatus === "fulfilled") {
-        onSuccess && onSuccess();
+        onSuccess();
       }
     } catch (error) {
       console.error("Dispatch failed", error);
