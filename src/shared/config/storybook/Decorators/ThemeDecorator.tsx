@@ -1,7 +1,7 @@
 //eslint-disable-next-line wodenPlugin/layer-imports
 import { ThemeProvider } from "@/app/providers/ThemeProvider";
 import { Theme } from "@/shared/const/theme";
-import { ReactElement, useEffect } from "react";
+import { useEffect } from "react";
 
 export const ThemeDecorator = (theme: Theme) => (Story: any) => {
   useEffect(() => {
@@ -10,7 +10,9 @@ export const ThemeDecorator = (theme: Theme) => (Story: any) => {
 
   return (
     <ThemeProvider initialTheme={theme}>
-      {(<Story />) as ReactElement}
+      <div className={`app ${theme}`}>
+        <Story />
+      </div>
     </ThemeProvider>
   );
 };

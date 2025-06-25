@@ -9,12 +9,13 @@ import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Header } from "@/widgets/Header";
 import { PageLoader } from "@/widgets/PageLoader";
 import { Sidebar } from "@/widgets/Sidebar";
-import { Suspense, useEffect } from "react";
+import { memo, Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useAppToolbar } from "./lib/useAppToolbar";
 import { AppRouter } from "./providers/router";
+import { withTheme } from "./providers/ThemeProvider/ui/withTheme";
 
-export const App = () => {
+const App = memo(() => {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
@@ -68,4 +69,6 @@ export const App = () => {
       }
     />
   );
-};
+});
+
+export default withTheme(App);

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import { Theme } from "@/shared/const/theme";
 import { ThemeDecorator } from "@/shared/config/storybook/Decorators/ThemeDecorator";
+import { Theme } from "@/shared/const/theme";
+import type { Meta, StoryObj } from "@storybook/react";
 import { CommentCard } from "./CommentCard";
 
 const meta: Meta<typeof CommentCard> = {

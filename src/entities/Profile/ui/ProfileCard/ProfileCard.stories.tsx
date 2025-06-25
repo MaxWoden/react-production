@@ -4,6 +4,7 @@ import { ProfileCard } from "./ProfileCard";
 import { Theme } from "@/shared/const/theme";
 import { Currency } from "@/entities/Currency";
 import { Country } from "@/entities/Country";
+import { FeaturesFlagsDecorator } from "@/shared/config/storybook/Decorators/FeatureFlagsDecorator";
 
 const meta: Meta<typeof ProfileCard> = {
   title: "entities/ProfileCard",
@@ -45,6 +46,13 @@ export const LoadingLight: Story = {
 
 export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const DarkRedesigned: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    FeaturesFlagsDecorator({ isAppRedesigned: true }),
+  ],
 };
 
 export const withErrorDark: Story = {

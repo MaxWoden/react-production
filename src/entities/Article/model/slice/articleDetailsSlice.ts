@@ -18,8 +18,6 @@ export const articleDetailsSlice = createSlice({
       .addCase(fetchArticleById.pending, (state) => {
         state.isLoading = true;
         state.error = undefined;
-
-        console.log(state.isLoading);
       })
       .addCase(
         fetchArticleById.fulfilled,

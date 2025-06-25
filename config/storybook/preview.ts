@@ -1,3 +1,4 @@
+import { FeaturesFlagsDecorator } from "./../../src/shared/config/storybook/Decorators/FeatureFlagsDecorator";
 import type { Preview } from "@storybook/react";
 import { RouterDecorator } from "../../src/shared/config/storybook/Decorators/RouterDecorator";
 import { StoreDecorator } from "../../src/shared/config/storybook/Decorators/StoreDecorator";
@@ -20,6 +21,7 @@ const preview: Preview = {
     RouterDecorator,
     StyleDecorator,
     SuspenseDecorator,
+    FeaturesFlagsDecorator({}),
   ],
 };
 export default preview;

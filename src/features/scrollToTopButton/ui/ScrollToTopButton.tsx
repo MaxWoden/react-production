@@ -1,8 +1,6 @@
 import circleUpIcon from "@/shared/assets/icons/circle-up.svg";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { Icon } from "@/shared/ui/redesigned/Icon";
 import { memo, useCallback } from "react";
-import classes from "./ScrollToTopButton.module.scss";
 
 interface ScrollToTopButtonProps {
   className?: string;
@@ -22,7 +20,7 @@ export const ScrollToTopButton = memo((props: ScrollToTopButtonProps) => {
       height={32}
       onClick={onClick}
       Svg={circleUpIcon}
-      className={classNames(classes.ScrollToTopButton, {}, [className])}
+      className={className}
     />
   );
 });
