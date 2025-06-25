@@ -58,7 +58,7 @@
       "features": {
         "isArticleRatingEnabled": true,
         "isProfileRatingEnabled": true,
-        "isAppRedesigned": false
+        "isAppRedesigned": true
       },
       "jsonSettings": {
         "theme": "darkTheme",

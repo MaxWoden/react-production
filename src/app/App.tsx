@@ -1,22 +1,24 @@
 import { getUserInited, initAuthData } from "@/entities/User";
 import { ToggleFeatures } from "@/shared/features";
-import { MainLayout } from "@/shared/layouts/MainLayout";
 import { AppLoaderLayout } from "@/shared/layouts/AppLoaderLayout";
+import { MainLayout } from "@/shared/layouts/MainLayout";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
 import { HStack } from "@/shared/ui/redesigned/Stack";
 import { Header } from "@/widgets/Header";
 import { PageLoader } from "@/widgets/PageLoader";
 import { Sidebar } from "@/widgets/Sidebar";
 import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useAppToolbar } from "./lib/useAppToolbar";
 import { AppRouter } from "./providers/router";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
 
 export const App = () => {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
+  const toolbar = useAppToolbar();
 
   useEffect(() => {
     if (!inited) {
@@ -59,7 +61,7 @@ export const App = () => {
               sidebar={<Sidebar />}
               header={<Header />}
               content={<AppRouter />}
-              toolbar={<div>qwe</div>}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>

@@ -59,6 +59,7 @@ export interface FlexProps extends DivProps, TestProps {
   gap?: FlexGap;
   max?: boolean;
   wrap?: boolean;
+  fullHeight?: boolean;
 }
 
 export const Flex = memo((props: FlexProps) => {
@@ -71,6 +72,7 @@ export const Flex = memo((props: FlexProps) => {
     gap = "0",
     max,
     wrap,
+    fullHeight,
     ...otherProps
   } = props;
 
@@ -85,6 +87,7 @@ export const Flex = memo((props: FlexProps) => {
   const mods: Mods = {
     [classes.max]: max,
     [classes.wrap]: wrap,
+    [classes.fullHeight]: fullHeight,
   };
 
   return (
