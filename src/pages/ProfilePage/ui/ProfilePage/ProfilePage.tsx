@@ -1,8 +1,9 @@
 import { EditableProfileCard } from "@/features/editableProfileCard";
 import { ProfileAverageRating, ProfileRating } from "@/features/profileRating";
 import { ToggleFeatures } from "@/shared/features";
-import { Text } from "@/shared/ui/deprecated/Text";
+import { Text as TextDeprecated } from "@/shared/ui/deprecated/Text";
 import { VStack } from "@/shared/ui/redesigned/Stack";
+import { Text as TextRedesigned } from "@/shared/ui/redesigned/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -23,7 +24,21 @@ const ProfilePage = () => {
         {!profileNotFound && (
           <ToggleFeatures
             on={<ProfileAverageRating profileId={profileId} />}
-            off={<Text text={t("Оценка профиля скоро будет доступна")} />}
+            off={
+              <ToggleFeatures
+                on={
+                  <TextDeprecated
+                    text={t("Оценка профиля скоро будет доступна")}
+                  />
+                }
+                off={
+                  <TextRedesigned
+                    text={t("Оценка профиля скоро будет доступна")}
+                  />
+                }
+                feature={"isProfileRatingEnabled"}
+              />
+            }
             feature={"isProfileRatingEnabled"}
           />
         )}
@@ -34,7 +49,21 @@ const ProfilePage = () => {
         {!profileNotFound && (
           <ToggleFeatures
             on={<ProfileRating profileId={profileId} />}
-            off={<Text text={t("Оценка профиля скоро будет доступна")} />}
+            off={
+              <ToggleFeatures
+                on={
+                  <TextDeprecated
+                    text={t("Оценка профиля скоро будет доступна")}
+                  />
+                }
+                off={
+                  <TextRedesigned
+                    text={t("Оценка профиля скоро будет доступна")}
+                  />
+                }
+                feature={"isProfileRatingEnabled"}
+              />
+            }
             feature={"isProfileRatingEnabled"}
           />
         )}
