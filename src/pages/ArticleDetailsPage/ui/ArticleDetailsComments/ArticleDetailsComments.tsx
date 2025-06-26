@@ -1,8 +1,10 @@
 import { CommentList } from "@/entities/Comment";
 import { AddCommentForm } from "@/features/AddNewComment";
+import { ToggleFeatures } from "@/shared/features";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Text as TextDeprecated, TextSize } from "@/shared/ui/deprecated/Text";
 import { VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextSize } from "@/shared/ui/deprecated/Text";
+import { Text as TextRedesigned } from "@/shared/ui/redesigned/Text";
 import { memo, useCallback, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -41,9 +43,35 @@ export const ArticleDetailsComments = memo(
 
     return (
       <VStack max gap="16" className={className}>
-        <Text size={TextSize.L} title={t(`Комментарии(${comments.length})`)} />
+        <ToggleFeatures
+          on={
+            <TextDeprecated
+              size={TextSize.L}
+              title={t(`Комментарии(${comments.length})`)}
+            />
+          }
+          off={
+            <TextRedesigned
+              size="l"
+              title={t(`Комментарии(${comments.length})`)}
+            />
+          }
+          feature={"isProfileRatingEnabled"}
+        />
         {error ? (
-          <Text title={t("Произошла ошибка при загрузке комментариев")} />
+          <ToggleFeatures
+            on={
+              <TextDeprecated
+                title={t("Произошла ошибка при загрузке комментариев")}
+              />
+            }
+            off={
+              <TextRedesigned
+                title={t("Произошла ошибка при загрузке комментариев")}
+              />
+            }
+            feature={"isProfileRatingEnabled"}
+          />
         ) : (
           <>
             <AddCommentForm onSendComment={onSendComment}></AddCommentForm>

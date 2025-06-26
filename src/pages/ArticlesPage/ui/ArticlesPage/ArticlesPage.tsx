@@ -1,12 +1,14 @@
 import { ArticlePageGreeting } from "@/features/articlePageGreeting";
+import { ToggleFeatures } from "@/shared/features";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffects } from "@/shared/lib/hooks/useInitialEffects/useInitialsEffects";
+import { TextAlign, Text as TextDeprecated } from "@/shared/ui/deprecated/Text";
 import { VStack } from "@/shared/ui/redesigned/Stack";
-import { Text, TextAlign } from "@/shared/ui/deprecated/Text";
+import { Text as TextRedesigned } from "@/shared/ui/redesigned/Text";
 import { Page } from "@/widgets/Page";
 import { memo, useCallback } from "react";
 import { useSelector } from "react-redux";
@@ -40,7 +42,11 @@ const ArticlesPage = () => {
   if (error) {
     return (
       <Page>
-        <Text align={TextAlign.CENTER} title={error} />
+        <ToggleFeatures
+          on={<TextDeprecated align={TextAlign.CENTER} title={error} />}
+          off={<TextRedesigned align="center" title={error} />}
+          feature={"isProfileRatingEnabled"}
+        />
       </Page>
     );
   }
