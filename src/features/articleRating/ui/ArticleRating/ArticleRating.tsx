@@ -1,6 +1,8 @@
 import { RatingCard } from "@/entities/Rating";
 import { getUserAuthData } from "@/entities/User";
-import { Skeleton } from "@/shared/ui/deprecated/Skeleton";
+import { ToggleFeatures } from "@/shared/features";
+import { Skeleton as SkeletonDeprecated } from "@/shared/ui/deprecated/Skeleton";
+import { Skeleton } from "@/shared/ui/redesigned/Skeleton";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -47,7 +49,13 @@ const ArticleRating = (props: ArticleRatingProps) => {
   );
 
   if (isLoading) {
-    return <Skeleton width="100%" height={120} />;
+    return (
+      <ToggleFeatures
+        feature="isAppRedesigned"
+        off={<SkeletonDeprecated width="100%" height={120} />}
+        on={<Skeleton width="100%" height={120} />}
+      />
+    );
   }
 
   return (
